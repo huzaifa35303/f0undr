@@ -766,7 +766,7 @@ export const DEFAULT_SEO_SETTINGS: SeoSettings = {
   primaryKeywords: 'f0 book, f0undr book, f e books, f0undr, f0undr Team, Abdull Rehman Khizar, M.Huzaifa, Systems Architecture, Founder Tools, Tech Bookshelf, Computing Curriculum',
   canonicalUrl: 'https://f0undr.vercel.app/',
   ogImage: 'https://f-e-book.vercel.app/og-cover.png',
-  googleVerificationId: 'googlefc9762157f1d6265',
+  googleVerificationId: 'gy6YtcdV0VMfz2OCWbp8JfHQlbc6fUMZl9wqzAJX5Yo',
   googleAnalyticsId: 'G-F0UNDRHQ2026',
   authorName: 'f0undr, Abdull Rehman Khizar, M.Huzaifa',
   twitterHandle: '@f0undr_core',
