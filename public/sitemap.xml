@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Homepage & Editorial Overview -->
+  <url>
+    <loc>https://f0undr.vercel.app/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Flagship Curriculum: f0undr Book Units 1-6 -->
+  <url>
+    <loc>https://f0undr.vercel.app/#curriculum</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Direct Link to Live E-Book on Vercel -->
+  <url>
+    <loc>https://f-e-book.vercel.app/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Master Bookshelf & Reading Vault -->
+  <url>
+    <loc>https://f0undr.vercel.app/#books</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- f0undr Team Roster (Abdull Rehman Khizar, f0undr, M.Huzaifa, and 5 fellows) -->
+  <url>
+    <loc>https://f0undr.vercel.app/#team</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Founder Interactive Workbench & Tools -->
+  <url>
+    <loc>https://f0undr.vercel.app/#tools</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Physical Artifacts & Hardware Lab -->
+  <url>
+    <loc>https://f0undr.vercel.app/#things</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+</urlset>

@@ -1,0 +1,20 @@
+# Robots.txt for f0undr Headquarters & Digital Publications
+# Optimized for Googlebot, Bingbot, and AI Search Crawlers
+
+User-agent: *
+Allow: /
+Allow: /#books
+Allow: /#curriculum
+Allow: /#team
+Allow: /#tools
+Allow: /#things
+
+# Disallow sensitive internal endpoints
+Disallow: /admin
+Disallow: /api/internal
+
+# XML Sitemap Index
+Sitemap: /sitemap.xml
+Sitemap: https://f0undr.vercel.app/sitemap.xml
+Sitemap: https://f-e-book.vercel.app/sitemap.xml
+

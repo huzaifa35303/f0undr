@@ -1,0 +1,9 @@
+/* App-specific custom animations */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.animate-pulse-slow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
