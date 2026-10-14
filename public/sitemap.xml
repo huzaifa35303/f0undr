@@ -11,6 +11,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Complete Interactive f0undr Book: Computing & Technology (Units 1-6) -->
+  <url>
+    <loc>https://f0undr.vercel.app/book/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
   <!-- Flagship Curriculum: f0undr Book Units 1-6 -->
   <url>
     <loc>https://f0undr.vercel.app/#curriculum</loc>

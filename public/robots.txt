@@ -3,6 +3,8 @@
 
 User-agent: *
 Allow: /
+Allow: /book
+Allow: /book/
 Allow: /#books
 Allow: /#curriculum
 Allow: /#team

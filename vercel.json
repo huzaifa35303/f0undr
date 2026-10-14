@@ -4,6 +4,14 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
+      "source": "/book",
+      "destination": "/book/index.html"
+    },
+    {
+      "source": "/book/(.*)",
+      "destination": "/book/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

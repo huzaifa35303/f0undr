@@ -42,7 +42,7 @@ export const HeroSection = ({ onNavigate, stats }: HeroSectionProps) => {
         {/* Action Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-16">
           <a
-            href="https://f-e-book.vercel.app/"
+            href="/book/"
             target="_blank"
             rel="noreferrer"
             className="flex items-center gap-2 px-6 py-3.5 rounded-xl btn-editorial-accent text-sm font-semibold shadow-xs transition-all hover:-translate-y-0.5"

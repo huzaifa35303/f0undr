@@ -131,19 +131,19 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
 
             <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
               <a
-                href="https://f-e-book.vercel.app/"
+                href="/book/"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl btn-editorial-accent text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5"
               >
                 <BookOpen className="w-4 h-4" />
-                <span>Open Live Textbook</span>
+                <span>Read f0undr Book (Units 1–6)</span>
                 <ArrowUpRight className="w-4 h-4 opacity-80" />
               </a>
 
               <button
                 onClick={() => {
-                  const flagship = books.find((b) => b.id === 'f0undr-book-flagship');
+                  const flagship = books.find((b) => b.id === 'book-foundr-ebook' || b.id === 'f0undr-book-flagship');
                   if (flagship) setActiveBook(flagship);
                 }}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl btn-editorial-outline text-xs font-semibold transition-all hover:-translate-y-0.5"

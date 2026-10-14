@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://f-e-book.vercel.app/sitemap.xml

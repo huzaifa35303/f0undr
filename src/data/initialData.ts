@@ -166,7 +166,7 @@ export const INITIAL_BOOKS: Book[] = [
     rating: 5,
     category: 'AI & Technology',
     featured: true,
-    externalUrl: 'https://f-e-book.vercel.app/',
+    externalUrl: '/book/',
     units: [
       'Unit 1: ICT Fundamentals & Hardware IPO Cycle',
       'Unit 2: Digital Skills & Document Publishing',

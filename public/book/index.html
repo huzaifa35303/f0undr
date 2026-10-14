@@ -1,0 +1,2609 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f1e8">
+    <meta name="description" content="f0undr Book (also known as f0 book or f e books) — Complete Computing &amp; Technology Curriculum by Huzaifa and the f0undr Team. Covers hardware foundations, digital productivity, algorithmic thinking, Scratch programming, cybersecurity, and digital entrepreneurship.">
+    <meta name="keywords" content="f0undr book, f0 book, f e books, f0undr, f0undr team, f0undr series, computing curriculum, huzaifa f0undr, computer science grade 7, learn scratch programming">
+    <meta name="author" content="Huzaifa (f0undr Team)">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://f0undr.vercel.app/book/">
+    <meta name="google-site-verification" content="gy6YtcdV0VMfz2OCWbp8JfHQlbc6fUMZl9wqzAJX5Yo" />
+    <meta name="google-site-verification" content="oPgfrng_8nMQM7I8VnJ9HcOEZmGPs2sWjFHSjjYxKeM" />
+    <meta name="google-site-verification" content="googlefc9762157f1d6265" />
+
+    <!-- Open Graph / Social Sharing (WhatsApp, Facebook, Discord, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://f0undr.vercel.app/book/">
+    <meta property="og:title" content="f0undr Book (f0 book / f e books) — Computing &amp; Technology by f0undr Team">
+    <meta property="og:description" content="An original hands-on computing curriculum and interactive workbook created by Huzaifa and the f0undr Team. Units 1–6 with quizzes, search, and flashcards.">
+    <meta property="og:site_name" content="f0undr Book">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="f0undr Book by f0undr Team">
+    <meta name="twitter:description" content="Explore Computing &amp; Technology (Units 1–6): hardware, digital skills, algorithmic thinking, Scratch coding, and digital ventures.">
+
+    <title>f0undr Book (f0 book / f e books) — Computing &amp; Technology by f0undr Team</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Google AdSense Verification -->
+    <meta name="google-adsense-account" content="ca-pub-4625874944598787">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4625874944598787" crossorigin="anonymous"></script>
+
+    <!-- Schema.org Structured Data (Google Rich Snippets & Search Ranking) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://f-e-book.vercel.app/#website",
+          "url": "https://f-e-book.vercel.app/",
+          "name": "f0undr Book",
+          "alternateName": ["f0 book", "f e books", "f0undr", "f0undr Team", "f0undr Team Book"],
+          "description": "An original hands-on computing and technology handbook by Huzaifa and the f0undr Team.",
+          "inLanguage": "en",
+          "publisher": {
+            "@type": "Organization",
+            "name": "f0undr Team",
+            "url": "https://f-e-book.vercel.app/"
+          }
+        },
+        {
+          "@type": "Course",
+          "name": "f0undr Book — Computing & Technology Curriculum (Units 1 to 6)",
+          "alternateName": ["f0 book curriculum", "f e books computer course"],
+          "description": "Comprehensive practical computing textbook covering ICT Fundamentals, Digital Skills, Algorithmic Thinking, Scratch Programming, Cybersecurity, and Digital Entrepreneurship.",
+          "provider": {
+            "@type": "Organization",
+            "name": "f0undr Team",
+            "sameAs": "https://f-e-book.vercel.app/"
+          },
+          "author": {
+            "@type": "Person",
+            "name": "Huzaifa"
+          }
+        }
+      ]
+    }
+    </script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main curriculum content</a>
+
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="f0undr Book home">
+        <span class="brand-mark" aria-hidden="true">f<span>0</span>undr</span>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-edition">f0undr Book · Digital Series<br><span>By Huzaifa &amp; f0undr Team</span></span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#unit-one">Unit 1</a>
+        <a href="#unit-two">Unit 2</a>
+        <a href="#unit-three">Unit 3</a>
+        <a href="#unit-four">Unit 4</a>
+        <a href="#unit-five">Unit 5</a>
+        <a href="#unit-six">Unit 6</a>
+        <a href="#flashcards">Flashcards</a>
+        <a href="#glossary">Glossary</a>
+        <div class="header-actions">
+          <button class="header-action-btn" type="button" id="search-trigger" title="Quick Search (Ctrl + K)">
+            <span aria-hidden="true">🔍</span> Search <kbd>Ctrl K</kbd>
+          </button>
+          <button class="header-action-btn" type="button" id="theme-toggle" title="Switch Theme (Parchment / Dark / Clean White)">
+            <span id="theme-icon" aria-hidden="true">🌓</span> <span id="theme-name">Theme</span>
+          </button>
+        </div>
+        <button class="contents-trigger" type="button" data-open-contents aria-haspopup="dialog" aria-controls="contents-dialog">Contents <span aria-hidden="true">↗</span></button>
+      </nav>
+    </header>
+
+    <div class="reading-strip" aria-label="Unit reading progress">
+      <div class="reading-strip-inner">
+        <div class="reading-strip-left">
+          <a href="#syllabus-table" class="strip-back-btn" title="Go back to course syllabus">← Back to Syllabus</a>
+          <span class="reading-label"><span class="reading-dot" aria-hidden="true"></span> Unit 1 · ICT Fundamentals</span>
+        </div>
+        <progress id="chapter-progress" max="100" value="0" aria-label="Reading progress">0%</progress>
+        <span class="progress-copy" id="progress-copy" aria-live="polite">0% read</span>
+      </div>
+    </div>
+
+    <main id="main">
+      <!-- Hero Section -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span>f0undr Team · f0 book Series</span><span class="eyebrow-rule" aria-hidden="true"></span><span>Practical f e books Edition</span></p>
+          <h1 id="hero-title">Computing &amp; <em>Technology.</em></h1>
+          <p class="hero-deck">Welcome to the official <strong>f0undr Book</strong> (also known as <strong>f0 book</strong> / <strong>f e books</strong>) created by Huzaifa and the <strong>f0undr Team</strong>. An original hands-on computing curriculum with clear everyday explanations, interactive visual logic, coding labs, and practical skills you can actually use.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#unit-one">Start Reading Unit 1 <span aria-hidden="true">↓</span></a>
+            <a class="button button-outline" href="#syllabus-table">Curriculum Map <span aria-hidden="true">↗</span></a>
+          </div>
+          <p class="hero-note"><span class="note-stamp">06</span> Complete units with original diagrams, real-world case studies, and autosaving student lab workbooks.</p>
+        </div>
+        <figure class="hero-art">
+          <div class="art-frame">
+            <svg viewBox="0 0 400 480" width="100%" height="auto" role="img" aria-label="Illustration representing computing, algorithmic logic, and digital networks" style="background:#203634; display:block; border-radius:2px;">
+              <defs>
+                <linearGradient id="screenGlow" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#286d66" />
+                  <stop offset="100%" stop-color="#152d2a" />
+                </linearGradient>
+                <linearGradient id="chipGlow" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#bd5d4c" />
+                  <stop offset="100%" stop-color="#e28373" />
+                </linearGradient>
+              </defs>
+              <path d="M40 80 H360 M40 160 H360 M40 240 H360 M40 320 H360 M40 400 H360" stroke="#286d66" stroke-opacity="0.25" stroke-dasharray="4,4" />
+              <path d="M80 40 V440 M160 40 V440 M240 40 V440 M320 40 V440" stroke="#286d66" stroke-opacity="0.25" stroke-dasharray="4,4" />
+              <!-- Monitor Frame -->
+              <rect x="70" y="70" width="260" height="170" rx="10" fill="#f5f1e8" stroke="#cfc9bb" stroke-width="3" />
+              <rect x="85" y="85" width="230" height="135" rx="6" fill="url(#screenGlow)" />
+              <rect x="100" y="105" width="80" height="6" rx="3" fill="#bed8ce" />
+              <rect x="100" y="120" width="120" height="6" rx="3" fill="#bed8ce" fill-opacity="0.6" />
+              <rect x="100" y="135" width="95" height="6" rx="3" fill="#bed8ce" fill-opacity="0.6" />
+              <path d="M100 190 L130 165 L160 175 L200 145 L240 160 L280 130" fill="none" stroke="#bd5d4c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="280" cy="130" r="4" fill="#f3e2da" />
+              <path d="M185 240 L175 275 H225 L215 240 Z" fill="#cfc9bb" />
+              <rect x="155" y="275" width="90" height="10" rx="4" fill="#cfc9bb" />
+              <!-- CPU Chip -->
+              <rect x="140" y="315" width="120" height="100" rx="12" fill="url(#chipGlow)" stroke="#f5f1e8" stroke-width="3" />
+              <text x="200" y="360" text-anchor="middle" fill="#fffdf8" font-family="'Segoe UI', sans-serif" font-weight="800" font-size="20" letter-spacing="2">CPU</text>
+              <text x="200" y="380" text-anchor="middle" fill="#f3e2da" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="11" letter-spacing="1">PROCESSING</text>
+              <g stroke="#bed8ce" stroke-width="3" stroke-linecap="round">
+                <line x1="120" y1="335" x2="140" y2="335" /><line x1="120" y1="365" x2="140" y2="365" /><line x1="120" y1="395" x2="140" y2="395" />
+                <line x1="260" y1="335" x2="280" y2="335" /><line x1="260" y1="365" x2="280" y2="365" /><line x1="260" y1="395" x2="280" y2="395" />
+                <line x1="165" y1="295" x2="165" y2="315" /><line x1="200" y1="295" x2="200" y2="315" /><line x1="235" y1="295" x2="235" y2="315" />
+                <line x1="165" y1="415" x2="165" y2="435" /><line x1="200" y1="415" x2="200" y2="435" /><line x1="235" y1="415" x2="235" y2="435" />
+              </g>
+              <text x="45" y="290" fill="#bed8ce" font-family="monospace" font-size="13" opacity="0.7">01001001</text>
+              <text x="300" y="320" fill="#bed8ce" font-family="monospace" font-size="13" opacity="0.7">01000011</text>
+              <text x="50" y="440" fill="#bed8ce" font-family="monospace" font-size="13" opacity="0.7">01010100</text>
+            </svg>
+            <span class="art-index" aria-hidden="true">DIGITAL SERIES · COMPLETE</span>
+          </div>
+          <figcaption>Connecting computational foundations, human reasoning, and practical creative skills.</figcaption>
+        </figure>
+        <div class="hero-margin-note" aria-hidden="true">All 6 Units<br>in one unified<br>digital edition.</div>
+      </section>
+
+      <!-- Author Welcome Note -->
+      <section class="author-welcome" aria-labelledby="author-welcome-title">
+        <div class="author-welcome-box">
+          <div class="author-tag">A Note from the Author</div>
+          <h2 id="author-welcome-title">Why I wrote this book</h2>
+          <p>Too many computing textbooks feel like they were written for machines rather than curious minds. They throw complicated definitions at you without explaining <em>why</em> things work the way they do or how it connects to the real apps, games, and tools we use every single day.</p>
+          <p>I put together this 6-unit curriculum to bridge that gap. Every concept here—from how a CPU processes electrical charges to designing a game in Scratch, understanding cybersecurity, or launching your first digital venture—is explained from first principles using everyday analogies and interactive practice exercises. Take your time, test your knowledge with the built-in quizzes, and enjoy the journey!</p>
+          <div class="author-signature">— <strong>Huzaifa</strong>, <em>Creator &amp; Author of f0undr Book</em></div>
+        </div>
+      </section>
+
+      <!-- Curriculum Overview Table -->
+      <section class="curriculum-box" id="syllabus-table" aria-labelledby="syllabus-title">
+        <div class="section-heading">
+          <p class="eyebrow">f0undr Book · Curriculum Map</p>
+          <h2 id="syllabus-title">All Course Units &amp; Learning Modules</h2>
+          <p>Explore all 6 structured modules covering computing foundations, practical creative workflows, and digital entrepreneurship.</p>
+        </div>
+        <table class="curriculum-table">
+          <thead>
+            <tr>
+              <th scope="col">Unit No.</th>
+              <th scope="col">Unit Title &amp; Core Topics</th>
+              <th scope="col" style="width:140px; text-align:center;">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Unit 1</strong></td>
+              <td><strong>ICT Fundamentals</strong> — Data vs Information, IPO Cycle, Hardware, CPU &amp; Memory, Software &amp; Emerging Tech</td>
+              <td style="text-align:center;"><a class="button button-outline" style="min-height:34px; padding:.3rem .7rem;" href="#unit-one">Read Unit 1</a></td>
+            </tr>
+            <tr>
+              <td><strong>Unit 2</strong></td>
+              <td><strong>Digital Skills</strong> — Word Processing, Ribbon Tabs, Keyboard Shortcuts, PowerPoint, Slide Master, Email &amp; Netiquette</td>
+              <td style="text-align:center;"><a class="button button-outline" style="min-height:34px; padding:.3rem .7rem;" href="#unit-two">Read Unit 2</a></td>
+            </tr>
+            <tr>
+              <td><strong>Unit 3</strong></td>
+              <td><strong>Algorithmic Thinking &amp; Problem Solving</strong> — Computational Thinking, 5-Step Process, Flowchart Symbols, Decision Logic, Trace Tables</td>
+              <td style="text-align:center;"><a class="button button-outline" style="min-height:34px; padding:.3rem .7rem;" href="#unit-three">Read Unit 3</a></td>
+            </tr>
+            <tr>
+              <td><strong>Unit 4</strong></td>
+              <td><strong>Programming</strong> — Visual Block-Based Coding (Scratch 3.0), Sequences, Loops, Decisions, Variables, Game Project</td>
+              <td style="text-align:center;"><a class="button button-outline" style="min-height:34px; padding:.3rem .7rem;" href="#unit-four">Read Unit 4</a></td>
+            </tr>
+            <tr>
+              <td><strong>Unit 5</strong></td>
+              <td><strong>Digital Citizenship</strong> — Digital Footprints, Cyber Hygiene, 2FA, Malware Taxonomy, Cyber Laws (PECA), Anti-Cyberbullying, CRAAP Test</td>
+              <td style="text-align:center;"><a class="button button-outline" style="min-height:34px; padding:.3rem .7rem;" href="#unit-five">Read Unit 5</a></td>
+            </tr>
+            <tr>
+              <td><strong>Unit 6</strong></td>
+              <td><strong>Entrepreneurship in Digital Age</strong> — Digital Venture Mindset, 5-Stage Design Thinking, Business Models, Lean Startup Canvas, Pitching</td>
+              <td style="text-align:center;"><a class="button button-outline" style="min-height:34px; padding:.3rem .7rem;" href="#unit-six">Read Unit 6</a></td>
+            </tr>
+            <tr>
+              <td><em>Ref. A</em></td>
+              <td><strong>Master Glossary</strong> — Over 50 key computer science terms and definitions</td>
+              <td style="text-align:center;"><a class="button button-outline" style="min-height:34px; padding:.3rem .7rem;" href="#glossary">View Glossary</a></td>
+            </tr>
+            <tr>
+              <td><em>Ref. B</em></td>
+              <td><strong>Abbreviations &amp; Acronyms Directory</strong> — Essential computing terms decoded</td>
+              <td style="text-align:center;"><a class="button button-outline" style="min-height:34px; padding:.3rem .7rem;" href="#abbreviations">View Abbreviations</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- UNIT 1: ICT FUNDAMENTALS -->
+      <!-- ========================================================================= -->
+      <article class="chapter" id="unit-one" aria-labelledby="unit-one-title">
+        <header class="chapter-heading">
+          <div class="chapter-heading-mark" aria-hidden="true">01</div>
+          <div>
+            <a href="#syllabus-table" class="unit-back-link">← Back to Course Syllabus</a>
+            <div class="unit-badge">Unit 01 · Foundations</div>
+            <h2 id="unit-one-title">ICT Fundamentals</h2>
+          </div>
+        </header>
+
+        <div class="reading-column">
+          <p class="lead-paragraph">Whenever you tap your smartphone screen, search for a video, or send a quick message to a friend across the globe, you are putting Information and Communication Technology (ICT) to work. Rather than memorizing dry academic definitions, I want you to see ICT as a living ecosystem: the devices, networks, and logical tools we use to solve real human problems and turn messy data into valuable knowledge.</p>
+          
+          <h3>1. What is ICT? (Breaking it down)</h3>
+          <p>I find it easiest to understand <strong>ICT</strong> by looking at its three core pillars:</p>
+          <ul>
+            <li><strong>Information:</strong> Meaningful knowledge and structured facts that you can actually use to make a smart decision.</li>
+            <li><strong>Communication:</strong> The highways and pathways—like Wi-Fi, fiber cables, and satellites—that carry our digital voices, photos, and files anywhere in milliseconds.</li>
+            <li><strong>Technology:</strong> The tangible hardware (microchips, displays, laptops) and clever software programs that do the actual thinking, calculating, and heavy lifting.</li>
+          </ul>
+
+          <h3>2. Data vs. Information: The Golden Rule</h3>
+          <p>Beginners often use the words <em>data</em> and <em>information</em> interchangeably, but in computer science, they are two completely different stages of a process:</p>
+          <ul>
+            <li><strong>Data:</strong> Unprocessed, raw ingredients with no built-in explanation. If someone walks up to you and says <code>"98, 86, 92"</code> or <code>"Ahmed, pass"</code>, you have no idea what that means yet. That is raw data.</li>
+            <li><strong>Information:</strong> Data that has been cleaned, calculated, and arranged with context so it tells a clear story. For instance: <em>"Ahmed earned an overall average of 92%, achieving top ranking in his Grade 7 Mathematics exam."</em></li>
+          </ul>
+
+          <div class="author-insight">
+            <div class="author-insight-icon" aria-hidden="true">💡</div>
+            <div class="author-insight-body">
+              <h4>Huzaifa's Practical Rule</h4>
+              <p>Whenever you are trying to tell whether something is <strong>Data</strong> or <strong>Information</strong>, ask yourself: <em>"Can I take action or make a decision right now just by reading this?"</em> If the answer is no, it's still raw Data. Once it gives you the context needed to make a clear decision, it has become Information!</p>
+            </div>
+          </div>
+
+          <p><strong>My Favorite Kitchen Analogy:</strong> Think of raw eggs, flour, and cocoa powder sitting on a counter as <em>data</em>. Mixing the batter and baking it in an oven is <em>processing</em>. The warm, iced birthday cake you serve to your friends is <em>information</em>!</p>
+        </div>
+
+        <!-- IPO Cycle Diagram -->
+        <figure class="story-figure">
+          <svg viewBox="0 0 900 320" width="100%" height="auto" role="img" aria-label="Diagram of the Input Process Output Storage Cycle in Computing" style="background:#fcfbf7; border-radius:4px; display:block;">
+            <defs>
+              <marker id="arrow1" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-reverse">
+                <path d="M 0 1 L 8 5 L 0 9 z" fill="#bd5d4c" />
+              </marker>
+            </defs>
+            <line x1="210" y1="130" x2="280" y2="130" stroke="#bd5d4c" stroke-width="3" marker-end="url(#arrow1)" />
+            <line x1="430" y1="130" x2="500" y2="130" stroke="#bd5d4c" stroke-width="3" marker-end="url(#arrow1)" />
+            <path d="M 355 190 V 230" stroke="#286d66" stroke-width="3" stroke-dasharray="6,4" />
+
+            <!-- Box 1: Input -->
+            <rect x="50" y="60" width="160" height="140" rx="8" fill="#fffdf8" stroke="#286d66" stroke-width="2" />
+            <rect x="50" y="60" width="160" height="34" rx="8" fill="#286d66" />
+            <text x="130" y="83" text-anchor="middle" fill="#fffdf8" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="14">1. INPUT</text>
+            <text x="130" y="115" text-anchor="middle" fill="#203634" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="13">Entering Data</text>
+            <text x="130" y="140" text-anchor="middle" fill="#4d625e" font-size="11">Keyboard · Mouse</text>
+            <text x="130" y="160" text-anchor="middle" fill="#4d625e" font-size="11">Microphone · Scanner</text>
+            <text x="130" y="180" text-anchor="middle" fill="#4d625e" font-size="11">Touchscreen · Sensor</text>
+
+            <!-- Box 2: Processing -->
+            <rect x="280" y="50" width="150" height="150" rx="8" fill="#fffdf8" stroke="#bd5d4c" stroke-width="3" />
+            <rect x="280" y="50" width="150" height="36" rx="8" fill="#bd5d4c" />
+            <text x="355" y="74" text-anchor="middle" fill="#fffdf8" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="14">2. PROCESSING</text>
+            <text x="355" y="110" text-anchor="middle" fill="#203634" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="14">CPU (The Brain)</text>
+            <text x="355" y="135" text-anchor="middle" fill="#4d625e" font-size="11">Arithmetic (ALU)</text>
+            <text x="355" y="155" text-anchor="middle" fill="#4d625e" font-size="11">Control Unit (CU)</text>
+            <text x="355" y="175" text-anchor="middle" fill="#4d625e" font-size="11">Logic &amp; Decisions</text>
+
+            <!-- Box 3: Output -->
+            <rect x="500" y="60" width="160" height="140" rx="8" fill="#fffdf8" stroke="#286d66" stroke-width="2" />
+            <rect x="500" y="60" width="160" height="34" rx="8" fill="#286d66" />
+            <text x="580" y="83" text-anchor="middle" fill="#fffdf8" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="14">3. OUTPUT</text>
+            <text x="580" y="115" text-anchor="middle" fill="#203634" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="13">Presenting Results</text>
+            <text x="580" y="140" text-anchor="middle" fill="#4d625e" font-size="11">Monitor Screen</text>
+            <text x="580" y="160" text-anchor="middle" fill="#4d625e" font-size="11">Speakers · Headphones</text>
+            <text x="580" y="180" text-anchor="middle" fill="#4d625e" font-size="11">Printers · Projectors</text>
+
+            <!-- Box 4: Storage -->
+            <rect x="250" y="230" width="210" height="70" rx="8" fill="#e8eee5" stroke="#1c514c" stroke-width="2" />
+            <text x="355" y="255" text-anchor="middle" fill="#1c514c" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="13">4. STORAGE (Persistent)</text>
+            <text x="355" y="280" text-anchor="middle" fill="#203634" font-size="11">SSD · Hard Disk · Flash Drive · Cloud</text>
+
+            <!-- Note badge -->
+            <rect x="690" y="90" width="170" height="90" rx="6" fill="#f3e2da" stroke="#bd5d4c" stroke-width="1" />
+            <text x="775" y="115" text-anchor="middle" fill="#bd5d4c" font-weight="800" font-size="12">THE IPO CYCLE</text>
+            <text x="775" y="135" text-anchor="middle" fill="#203634" font-size="11">Every digital device</text>
+            <text x="775" y="152" text-anchor="middle" fill="#203634" font-size="11">follows this core</text>
+            <text x="775" y="169" text-anchor="middle" fill="#203634" font-size="11">operational flow.</text>
+          </svg>
+          <figcaption><span class="caption-number">FIG. 1.1</span> The Input-Process-Output (IPO) Cycle with persistent secondary storage.</figcaption>
+        </figure>
+
+        <div class="reading-column">
+          <h3>3. Hardware Architecture &amp; System Components</h3>
+          <p>Computer hardware comprises all tangible, physical parts of a computing system. Inside the system unit, components interact through high-speed electronic buses:</p>
+          
+          <figure class="diagram-frame">
+            <img src="assets/motherboard.png" alt="Computer Motherboard Architecture" style="max-height:380px;">
+            <figcaption>The Motherboard: The main circuit board connecting the processor, memory, storage, and expansion cards.</figcaption>
+          </figure>
+
+          <ul>
+            <li><strong>Central Processing Unit (CPU):</strong> Known as the "brain" of the computer. The CPU contains two core subunits:
+              <ul>
+                <li><strong>Arithmetic Logic Unit (ALU):</strong> Performs mathematical arithmetic (+, -, *, /) and logical comparisons (&lt;, &gt;, =, AND, OR).</li>
+                <li><strong>Control Unit (CU):</strong> Directs the flow of instructions and data like a traffic controller, coordinating operations between ALU, memory, and peripherals.</li>
+              </ul>
+            </li>
+          </ul>
+
+          <figure class="diagram-frame">
+            <img src="assets/cpu_block_diagram.png" alt="CPU Block Diagram showing ALU and Control Unit" style="max-height:320px;">
+            <figcaption>CPU Internal Architecture: Control Unit (CU), Arithmetic Logic Unit (ALU), and high-speed internal registers.</figcaption>
+          </figure>
+
+          <h3>4. Memory vs. Storage</h3>
+          <p>Computers utilize a memory hierarchy to balance speed, cost, and volatility:</p>
+
+          <figure class="diagram-frame">
+            <img src="assets/memory_tree.png" alt="Computer Memory Classification Tree" style="max-height:320px;">
+            <figcaption>Memory Hierarchy: Primary Memory (RAM, ROM, Cache) vs Secondary Storage (SSD, HDD, Optical, Cloud).</figcaption>
+          </figure>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin:1.5rem 0;">
+            <figure class="diagram-frame" style="margin:0;">
+              <img src="assets/ram_chip.png" alt="RAM chip module" style="max-height:160px;">
+              <figcaption><strong>RAM:</strong> Volatile working memory. Data disappears when power turns off.</figcaption>
+            </figure>
+            <figure class="diagram-frame" style="margin:0;">
+              <img src="assets/rom_chip.png" alt="ROM BIOS chip" style="max-height:160px;">
+              <figcaption><strong>ROM:</strong> Non-volatile memory holding permanent boot instructions (BIOS/firmware).</figcaption>
+            </figure>
+          </div>
+
+          <div class="author-insight">
+            <div class="author-insight-icon" aria-hidden="true">🧠</div>
+            <div class="author-insight-body">
+              <h4>Huzaifa's Memory Mental Model: Desk vs. Bookshelf</h4>
+              <p>Students frequently confuse <strong>RAM</strong> with <strong>Storage (SSD/Hard Drive)</strong>. Think of RAM as your physical study desk: whatever books and notebooks you have open right now sit on the desk so your hands can reach them in a split second. But when you turn off the room lights to go to sleep, the desk is wiped clean (volatile memory). Your SSD or hard drive is the heavy bookshelf across the room: it holds your whole library safely and permanently, even when the power is completely shut down.</p>
+            </div>
+          </div>
+
+          <h3>5. The Family Tree of Computers</h3>
+          <p>Not every computer looks like a desktop tower. Depending on what job needs doing, computing power spans four major tiers:</p>
+          <ul>
+            <li><strong>Supercomputers:</strong> Giant rooms of linked processors tackling massive global questions—simulating tomorrow's weather patterns, predicting earthquakes, or modeling complex protein molecules.</li>
+            <li><strong>Mainframes:</strong> The dependable workhorses behind the scenes. If you swipe a bank debit card or book an airline ticket, a mainframe is processing that transaction securely among millions of others in that exact second.</li>
+            <li><strong>Minicomputers (Midrange):</strong> Multi-user computers commonly deployed across university campuses and factories to coordinate local operations.</li>
+            <li><strong>Microcomputers (Personal Computers):</strong> The machines we know and love: laptops, desktop workstations, tablets, and the smartphone sitting in your pocket right now.</li>
+          </ul>
+
+          <h3>6. System Software vs. Application Software</h3>
+          <p>Without software, your computer is just an expensive collection of silicon, metal, and glass. Software gives it life:</p>
+          <ul>
+            <li><strong>System Software:</strong> The unseen manager working in the background. The most critical piece is your <strong>Operating System (OS)</strong> (such as Windows, Android, macOS, or Linux). It talks directly to your hardware, handles memory, and keeps things running smoothly.</li>
+            <li><strong>Application Software:</strong> The specific tools and apps you actually interact with to get work done or have fun (like typing in Microsoft Word, browsing with Google Chrome, editing pictures in Photoshop, or playing your favorite game).</li>
+          </ul>
+        </div>
+
+        <aside class="try-card" aria-labelledby="try-check-1">
+          <div class="try-card-label"><span class="try-icon" aria-hidden="true">✳</span> Real-World Concept Check</div>
+          <div class="try-card-content">
+            <h3 id="try-check-1">The Supermarket Barcode Checkout</h3>
+            <blockquote>
+              “<strong>Input:</strong> The scanner reads the barcode number on a cereal box.<br>
+              <strong>Processing:</strong> The CPU searches the store inventory database, retrieves price and tax, and tallies the bill.<br>
+              <strong>Output:</strong> The price shows on the LCD screen, and the receipt printer prints the item.<br>
+              <strong>Storage:</strong> The remaining store stock quantity is decremented and saved in the database.”
+            </blockquote>
+          </div>
+        </aside>
+
+        <!-- Unit 1 Interactive Student Lab Workbook -->
+                <!-- Unit 1 Interactive Self-Assessment Quiz -->
+        <section class="quiz-section" id="quiz-unit-1" data-quiz-unit="1" aria-labelledby="quiz-u1-title">
+          <div class="quiz-header">
+            <div>
+              <p class="eyebrow">Unit 01 · Interactive Assessment</p>
+              <h3 id="quiz-u1-title">ICT Fundamentals Quiz — Check Your Knowledge</h3>
+              <p>Test your understanding with instant feedback and explanations.</p>
+            </div>
+            <div class="quiz-score-badge">Score: 0 / 5 (0%)</div>
+          </div>
+          <div class="quiz-grid">
+          <div class="quiz-card" data-answer="1" data-explain="Data is raw, unprocessed observations or facts. Information is data that has been organized, processed, and given context so humans can use it.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">01</span> What is the primary distinction between data and information?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Data is processed and meaningful; information is raw facts.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Data is raw, unorganized facts; information is processed and meaningful.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Data is stored permanently in ROM; information is temporary in RAM.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Data refers strictly to video files; information refers to audio files.</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="1" data-explain="The ALU (Arithmetic Logic Unit) executes calculations (+, -, *, /) and logical comparisons (<, >, =, AND, OR).">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">02</span> Which internal subunit of the CPU carries out mathematical arithmetic and logical comparisons?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Control Unit (CU)</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Arithmetic Logic Unit (ALU)</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>System Clock</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Secondary Storage Cache</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="0" data-explain="RAM requires continuous electrical power to maintain stored data. If the power cuts out, all active unsaved data inside RAM disappears instantly.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">03</span> Why is Random Access Memory (RAM) categorized as volatile storage?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Because it loses all of its contents when electrical power is turned off.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Because it is permanently written at the microchip factory.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Because it can only store operating system files, not application files.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Because it operates at dangerously high voltages.</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="2" data-explain="Supercomputers are the fastest and most computationally intensive systems on Earth, dedicated to massive scientific modeling.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">04</span> Which classification of computers is utilized for weather forecasting, climate modeling, and space simulations?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Microcomputers (PCs)</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Minicomputers</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Supercomputers</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Mainframe Computers</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="1" data-explain="The OS is the cornerstone of System Software—it manages hardware components and provides the foundation for application software to run.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">05</span> What software category does the Operating System (e.g. Windows, Android) belong to?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Application Software</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>System Software</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Hardware Firmware Peripheral</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Secondary Optical Storage</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          </div>
+          <button type="button" class="quiz-reset-btn">↺ Reset Quiz</button>
+        </section>
+
+<section class="workbook-section" id="workbook-unit-1" aria-labelledby="wb-title-1">
+          <div class="section-heading">
+            <p class="eyebrow">Interactive Student Lab Workbook · Unit 01</p>
+            <h3 id="wb-title-1">Unit 1 Reflection &amp; Lab Notes</h3>
+            <p>Answer these review questions. Your responses are automatically saved in your browser.</p>
+          </div>
+          <form id="reflection-form-1" class="reflection-form">
+            <div class="prompt-row">
+              <label for="u1-p1"><span class="prompt-number">01</span><span><strong>Data vs. Information</strong><small>Give an example from your school routine showing raw data transforming into valuable information.</small></span></label>
+              <textarea id="u1-p1" name="data-vs-info" rows="3" placeholder="Raw data: ...&#10;Useful processed information: ..." autocomplete="off"></textarea>
+            </div>
+            <div class="prompt-row">
+              <label for="u1-p2"><span class="prompt-number">02</span><span><strong>Everyday IPO Cycle</strong><small>Trace the Input, Process, Output, and Storage steps of a smartphone camera taking a photo.</small></span></label>
+              <textarea id="u1-p2" name="ipo-camera" rows="3" placeholder="Input: ...&#10;Process: ...&#10;Output: ...&#10;Storage: ..." autocomplete="off"></textarea>
+            </div>
+            <div class="prompt-row">
+              <label for="u1-p3"><span class="prompt-number">03</span><span><strong>RAM Volatility vs ROM</strong><small>Explain why computer users lose unsaved work during a sudden power outage, citing RAM and secondary storage.</small></span></label>
+              <textarea id="u1-p3" name="ram-rom-diff" rows="3" placeholder="When power is lost, RAM... whereas storage..." autocomplete="off"></textarea>
+            </div>
+            <div class="form-footer">
+              <p class="privacy-note"><span aria-hidden="true">◉</span> Autosaved locally in your browser.</p>
+              <span class="save-status" id="save-status-1" role="status" aria-live="polite">Your lab notes are ready.</span>
+            </div>
+            <div class="form-actions">
+              <button class="button button-primary" type="button" data-save-notes>Save Notes <span aria-hidden="true">✓</span></button>
+              <button class="button button-outline" type="button" data-print-page>Print / Save PDF <span aria-hidden="true">↗</span></button>
+              <button class="quiet-button" type="button" data-clear-notes>Clear Notes</button>
+            </div>
+          </form>
+        </section>
+
+        <nav class="chapter-navigation" aria-label="Unit 1 navigation">
+          <button class="chapter-nav-card" type="button" disabled aria-label="First unit in book">
+            <span class="nav-direction">← &nbsp; PREVIOUS</span><strong>Start of Curriculum</strong><span class="nav-subtext">Unit 01</span>
+          </button>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:.4rem;">
+            <button class="contents-center" type="button" data-open-contents><span aria-hidden="true">▤</span> Table of Contents</button>
+            <a href="#syllabus-table" class="nav-back-syllabus" title="Return to syllabus map">↑ Back to Syllabus</a>
+          </div>
+          <a class="chapter-nav-card next-card" href="#unit-two" aria-label="Proceed to Unit 2">
+            <span class="nav-direction">NEXT &nbsp; →</span><strong>Unit 2: Digital Skills</strong><span class="nav-subtext">Word Processing &amp; Presentations</span>
+          </a>
+        </nav>
+      </article>
+
+      <!-- ========================================================================= -->
+      <!-- UNIT 2: DIGITAL SKILLS -->
+      <!-- ========================================================================= -->
+      <article class="chapter" id="unit-two" aria-labelledby="unit-two-title">
+        <header class="chapter-heading">
+          <div class="chapter-heading-mark" aria-hidden="true">02</div>
+          <div>
+            <a href="#syllabus-table" class="unit-back-link">← Back to Course Syllabus</a>
+            <div class="unit-badge">Unit 02 · Productivity</div>
+            <h2 id="unit-two-title">Digital Skills</h2>
+          </div>
+        </header>
+
+        <div class="reading-column">
+          <p class="lead-paragraph">Having a computer is great, but knowing how to use it with speed and style is what truly sets you apart. In this unit, I want to teach you the practical digital skills that will help you write stellar reports, design captivating presentations, and compose emails like a seasoned professional.</p>
+
+          <h3>1. Choosing the Right Word Processor</h3>
+          <p>A <strong>Word Processor</strong> is your digital notepad, typewriter, and publishing press all in one. Here are the tools I recommend depending on your situation:</p>
+          <ul>
+            <li><strong>Microsoft Word:</strong> The gold standard for offline, full-featured reports, academic papers, and detailed formatting control.</li>
+            <li><strong>Google Docs:</strong> My personal favorite for team projects, group assignments, and anywhere you need instant cloud autosave and real-time collaboration.</li>
+            <li><strong>Apple Pages / iWork:</strong> Clean, minimalist, and built right into Macs and iPads with gorgeous typography templates.</li>
+            <li><strong>LibreOffice Writer:</strong> A fantastic, 100% free and open-source alternative that doesn't cost a single rupee.</li>
+          </ul>
+
+          <div class="author-insight">
+            <div class="author-insight-icon" aria-hidden="true">💡</div>
+            <div class="author-insight-body">
+              <h4>Huzaifa's Formatting Pro-Tip: Clean Breaks</h4>
+              <p>Stop hitting the <kbd>Enter</kbd> key five times to push text to the next page! Instead, press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> to insert a clean <strong>Page Break</strong>. It keeps your headings locked at the top of the new page, no matter how much you edit or delete earlier paragraphs.</p>
+            </div>
+          </div>
+
+          <h3>2. Navigating the Microsoft Word Ribbon</h3>
+          <p>The <strong>Ribbon</strong> is the command bar spanning the top of Microsoft Word. Think of it as your toolbox with organized drawers:</p>
+          <ul>
+            <li><strong>Home Tab:</strong> The most frequently accessed tab, featuring:
+              <ul>
+                <li><em>Clipboard:</em> Cut (Ctrl+X), Copy (Ctrl+C), Paste (Ctrl+V), and Format Painter.</li>
+                <li><em>Font:</em> Font family, font size, bold (Ctrl+B), italic (Ctrl+I), underline (Ctrl+U), strikethrough, subscript, superscript, text highlight, and font color.</li>
+                <li><em>Paragraph:</em> Bulleted/numbered lists, indentation, line &amp; paragraph spacing, alignment (Left, Center, Right, Justify), and borders.</li>
+                <li><em>Styles:</em> Pre-designed typography hierarchies (Title, Heading 1, Heading 2, Normal) that automatically generate structured Tables of Contents.</li>
+              </ul>
+            </li>
+            <li><strong>Insert Tab:</strong> Allows embedding non-text elements: Tables, Pictures, Shapes, Icons, SmartArt diagrams, Charts, Header &amp; Footer, Page Numbers, Text Boxes, WordArt, Symbols, and Mathematical Equations.</li>
+            <li><strong>Page Layout &amp; Design:</strong> Margins (Normal, Narrow, Wide), Page Orientation (Portrait vs. Landscape), Paper Size (A4, Letter, Legal), Multi-column text columns, Page Breaks, and Page Borders.</li>
+            <li><strong>Review Tab:</strong> Quality assurance tools including Spelling &amp; Grammar checking (F7), Thesaurus, Word Count statistics, and Track Changes for editorial collaboration.</li>
+          </ul>
+
+          <h3>3. Document Printing &amp; Output Configuration</h3>
+          <p>When preparing physical prints or PDF exports in Word (Ctrl+P):</p>
+          <ul>
+            <li><strong>Print All Pages:</strong> Prints the entire document from start to finish.</li>
+            <li><strong>Print Selection:</strong> Prints only the specific paragraph or table currently highlighted.</li>
+            <li><strong>Print Current Page:</strong> Prints only the page currently visible under the cursor.</li>
+            <li><strong>Custom Print Range:</strong> Prints specific pages or ranges (e.g., <code>1-3, 5, 8-10</code>).</li>
+            <li><strong>Collation:</strong> Prints multi-page copies in sequence (1,2,3... 1,2,3) rather than grouped by page (1,1... 2,2...).</li>
+          </ul>
+
+          <h3>4. Essential Keyboard Shortcuts Reference</h3>
+          <p>Mastering shortcut keys significantly accelerates writing and editing workflows:</p>
+        </div>
+
+        <div class="data-table-wrapper" style="width:min(100%, 930px); margin:2rem auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:180px;">Shortcut Key</th>
+                <th>Action &amp; Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><kbd>Ctrl</kbd> + <kbd>N</kbd></td><td>Create a new blank document window</td></tr>
+              <tr><td><kbd>Ctrl</kbd> + <kbd>O</kbd></td><td>Open an existing saved document</td></tr>
+              <tr><td><kbd>Ctrl</kbd> + <kbd>S</kbd></td><td>Save the active document to disk or cloud storage</td></tr>
+              <tr><td><kbd>Ctrl</kbd> + <kbd>P</kbd></td><td>Open the Print dialogue window and print settings</td></tr>
+              <tr><td><kbd>Ctrl</kbd> + <kbd>Z</kbd></td><td>Undo the last editing or formatting action</td></tr>
+              <tr><td><kbd>Ctrl</kbd> + <kbd>Y</kbd></td><td>Redo the previously undone action</td></tr>
+              <tr><td><kbd>Ctrl</kbd> + <kbd>F</kbd></td><td>Open the Find navigation pane to search for text</td></tr>
+              <tr><td><kbd>Ctrl</kbd> + <kbd>H</kbd></td><td>Open Find &amp; Replace dialogue</td></tr>
+              <tr><td><kbd>Ctrl</kbd> + <kbd>A</kbd></td><td>Select all content across the entire document</td></tr>
+              <tr><td><kbd>Ctrl</kbd> + <kbd>B</kbd> / <kbd>I</kbd> / <kbd>U</kbd></td><td>Apply Bold, Italic, or Underline to selected text</td></tr>
+              <tr><td><kbd>Ctrl</kbd> + <kbd>L</kbd> / <kbd>E</kbd> / <kbd>R</kbd> / <kbd>J</kbd></td><td>Align text: Left, Center, Right, or Justified</td></tr>
+              <tr><td><kbd>F7</kbd></td><td>Initiate comprehensive Spelling and Grammar check</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="reading-column">
+          <h3>5. Multimedia Presentation Skills</h3>
+          <p>A <strong>Multimedia Presentation</strong> integrates text, high-resolution imagery, audio voiceovers, video clips, and motion animations to convey ideas dynamically to an audience. Common tools include <strong>Microsoft PowerPoint</strong>, <strong>Google Slides</strong>, <strong>Canva</strong>, and <strong>Prezi</strong>.</p>
+          
+          <h4>The Power of the Slide Master</h4>
+          <p>The <strong>Slide Master</strong> is the master template controlling default typography, logos, background themes, and placeholder positioning for all slides in a deck. Editing the Slide Master once ensures automatic visual consistency across every single slide in the presentation.</p>
+
+          <h4>Slide Transitions vs. Object Animations</h4>
+          <ul>
+            <li><strong>Slide Transition:</strong> The visual motion effect that occurs when advancing from one slide to the next (e.g., Fade, Push, Wipe).</li>
+            <li><strong>Object Animation:</strong> The motion applied to individual elements within a slide (e.g., bullets appearing on click, diagrams zooming in).</li>
+          </ul>
+
+          <div class="author-insight">
+            <div class="author-insight-icon" aria-hidden="true">🎯</div>
+            <div class="author-insight-body">
+              <h4>Huzaifa's Presentation Rule: One Core Idea Per Slide</h4>
+              <p>The biggest presentation mistake is treating a slide like a crowded book page! If you paste 10 lines of text, your audience will read the screen instead of listening to you speak. Follow the <strong>One Idea Rule</strong>: give each slide one clear headline, one striking diagram or photo, and at most three brief bullet points.</p>
+            </div>
+          </div>
+
+          <h3>6. Electronic Mail (Email) Systems &amp; Netiquette</h3>
+          <p><strong>Electronic mail (Email)</strong> is a rapid, asynchronous method of exchanging structured digital messages and file attachments across the Internet.</p>
+
+          <h4>Anatomy of an Email Address</h4>
+          <div class="code-box">
+            <span class="code-keyword">username</span><span class="code-string">@</span><span class="code-highlight">domain.name</span>
+            <br><span class="code-comment">// Example: student.contact@school.edu.pk</span>
+            <br><span class="code-comment">// 1. Username: unique account name chosen by the user</span>
+            <br><span class="code-comment">// 2. '@' Symbol: universal separator ("at")</span>
+            <br><span class="code-comment">// 3. Domain: organization and mail server host</span>
+            <br><span class="code-comment">// Rule: Email addresses are not case-sensitive and cannot contain spaces!</span>
+          </div>
+
+          <h4>Message Composition Fields</h4>
+          <ul>
+            <li><strong>To:</strong> The primary recipients intended to read and act upon the message.</li>
+            <li><strong>Cc (Carbon Copy):</strong> Secondary recipients kept informed for visibility. All recipients can see who is in the Cc list.</li>
+            <li><strong>Bcc (Blind Carbon Copy):</strong> Hidden recipients. Neither 'To' nor 'Cc' recipients can see addresses listed in Bcc, protecting recipient privacy.</li>
+            <li><strong>Subject Line:</strong> A concise, specific summary of the email's purpose (e.g., <em>"Grade 7 Science Project Proposal — Ahmed Khan"</em>).</li>
+            <li><strong>Attachments:</strong> Digital files (PDFs, images, spreadsheets) attached directly to the message.</li>
+          </ul>
+
+          <div class="author-insight">
+            <div class="author-insight-icon" aria-hidden="true">🛡️</div>
+            <div class="author-insight-body">
+              <h4>Huzaifa's Email Rule of Thumb: The Bcc Privacy Shield</h4>
+              <p>Whenever you are emailing a group of people who do not know each other (such as a school club or event invitees), <strong>always put their addresses in Bcc</strong>, never in To or Cc. This prevents everyone's personal email from being exposed to dozens of strangers, protecting their digital privacy.</p>
+            </div>
+          </div>
+
+          <h4>Rules of Professional Netiquette</h4>
+          <ol>
+            <li>Always include a courteous greeting (e.g., <em>"Dear Teacher / Hello Ms. Sarah"</em>) and polite sign-off.</li>
+            <li><strong>Never write in ALL CAPS:</strong> In digital communication, uppercase text is perceived as aggressive shouting.</li>
+            <li>Carefully review spelling, grammar, and attached files before clicking Send.</li>
+            <li>Respect confidentiality: never forward private correspondence without sender permission.</li>
+          </ol>
+        </div>
+
+        <aside class="try-card" aria-labelledby="try-check-2">
+          <div class="try-card-label"><span class="try-icon" aria-hidden="true">✳</span> Real-World Concept Check</div>
+          <div class="try-card-content">
+            <h3 id="try-check-2">Drafting a School Project Pitch via Email</h3>
+            <blockquote>
+              “<strong>Subject:</strong> Unit 2 Collaborative Tech Presentation — Team Alpha<br>
+              <strong>To:</strong> teacher@school.edu.pk<br>
+              <strong>Cc:</strong> ahmed.teammate@school.edu.pk<br>
+              <strong>Body:</strong> Dear Mr. Tariq, please find attached our PowerPoint slide deck covering 'Emerging ICT in Pakistan'. We utilized the Slide Master to maintain consistent layout standards. Let us know if any revisions are needed.<br>
+              <strong>Attachment:</strong> ICT_Presentation_TeamAlpha.pptx (4.2 MB)”
+            </blockquote>
+          </div>
+        </aside>
+
+        <!-- Unit 2 Interactive Student Lab Workbook -->
+                <!-- Unit 2 Interactive Self-Assessment Quiz -->
+        <section class="quiz-section" id="quiz-unit-2" data-quiz-unit="2" aria-labelledby="quiz-u2-title">
+          <div class="quiz-header">
+            <div>
+              <p class="eyebrow">Unit 02 · Interactive Assessment</p>
+              <h3 id="quiz-u2-title">Digital Skills Quiz — Check Your Knowledge</h3>
+              <p>Test your understanding with instant feedback and explanations.</p>
+            </div>
+            <div class="quiz-score-badge">Score: 0 / 5 (0%)</div>
+          </div>
+          <div class="quiz-grid">
+          <div class="quiz-card" data-answer="1" data-explain="The Layout (or Page Layout) tab controls page geometry: Margins, Orientation (Portrait/Landscape), Paper Size, and Columns.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">01</span> In Microsoft Word, which Ribbon tab houses Page Margins, Orientation, and Paper Size?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Home Tab</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Layout / Page Layout Tab</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Insert Tab</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Review Tab</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="1" data-explain="Ctrl + Z undoes the last action, while Ctrl + Y redoes the undone action.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">02</span> What is the universal keyboard shortcut to Undo the most recent action in Word?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Ctrl + Y</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Ctrl + Z</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Ctrl + U</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Ctrl + S</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="1" data-explain="Editing the Slide Master applies design modifications (branding, font styles, colors, and layout templates) across all slides in the deck automatically.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">03</span> What is the main benefit of utilizing PowerPoint's Slide Master?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>It automatically emails the slides to everyone in your contact list.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>It controls fonts, logos, and layout standards across every slide in the presentation simultaneously.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>It translates speech into different languages.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>It checks the computer hard drive for viruses.</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="2" data-explain="Bcc (Blind Carbon Copy) keeps addresses hidden from other recipients, which is crucial for recipient privacy.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">04</span> Which email header field conceals recipient email addresses from other recipients?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>To</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Cc (Carbon Copy)</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Bcc (Blind Carbon Copy)</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Subject Line</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="1" data-explain="In digital etiquette, typing in all capital letters conveys anger or shouting. Always use standard sentence case.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">05</span> Why is typing entire emails in ALL CAPS strongly discouraged by digital Netiquette?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Because capital letters use twice as much network bandwidth.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Because typing in all capital letters is perceived as shouting or yelling.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Because email servers refuse to deliver uppercase messages.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Because capital letters cannot be read on smartphones.</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          </div>
+          <button type="button" class="quiz-reset-btn">↺ Reset Quiz</button>
+        </section>
+
+<section class="workbook-section" id="workbook-unit-2" aria-labelledby="wb-title-2">
+          <div class="section-heading">
+            <p class="eyebrow">Interactive Student Lab Workbook · Unit 02</p>
+            <h3 id="wb-title-2">Unit 2 Review &amp; Practical Notes</h3>
+            <p>Complete these questions to test your word processing, presentation, and email skills.</p>
+          </div>
+          <form id="reflection-form-2" class="reflection-form">
+            <div class="prompt-row">
+              <label for="u2-p1"><span class="prompt-number">01</span><span><strong>Slide Master Purpose</strong><small>Explain how using PowerPoint's Slide Master saves time when designing a 30-slide presentation.</small></span></label>
+              <textarea id="u2-p1" name="slide-master-role" rows="3" placeholder="Instead of formatting each slide individually, the Slide Master..." autocomplete="off"></textarea>
+            </div>
+            <div class="prompt-row">
+              <label for="u2-p2"><span class="prompt-number">02</span><span><strong>Cc vs. Bcc in Email</strong><small>Describe a scenario where a school principal should use Bcc instead of Cc when sending an announcement to 500 parents.</small></span></label>
+              <textarea id="u2-p2" name="cc-vs-bcc" rows="3" placeholder="The principal should use Bcc because..." autocomplete="off"></textarea>
+            </div>
+            <div class="prompt-row">
+              <label for="u2-p3"><span class="prompt-number">03</span><span><strong>Essential Word Shortcuts</strong><small>List four keyboard shortcuts you used today and explain what each did to speed up your work.</small></span></label>
+              <textarea id="u2-p3" name="word-shortcuts" rows="3" placeholder="1. Ctrl+... did ...&#10;2. Ctrl+... did ..." autocomplete="off"></textarea>
+            </div>
+            <div class="form-footer">
+              <p class="privacy-note"><span aria-hidden="true">◉</span> Autosaved locally in your browser.</p>
+              <span class="save-status" id="save-status-2" role="status" aria-live="polite">Your lab notes are ready.</span>
+            </div>
+            <div class="form-actions">
+              <button class="button button-primary" type="button" data-save-notes>Save Notes <span aria-hidden="true">✓</span></button>
+              <button class="button button-outline" type="button" data-print-page>Print / Save PDF <span aria-hidden="true">↗</span></button>
+              <button class="quiet-button" type="button" data-clear-notes>Clear Notes</button>
+            </div>
+          </form>
+        </section>
+
+        <nav class="chapter-navigation" aria-label="Unit 2 navigation">
+          <a class="chapter-nav-card" href="#unit-one" aria-label="Return to Unit 1">
+            <span class="nav-direction">← &nbsp; PREVIOUS</span><strong>Unit 1: ICT Fundamentals</strong><span class="nav-subtext">Hardware &amp; Architecture</span>
+          </a>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:.4rem;">
+            <button class="contents-center" type="button" data-open-contents><span aria-hidden="true">▤</span> Table of Contents</button>
+            <a href="#syllabus-table" class="nav-back-syllabus" title="Return to syllabus map">↑ Back to Syllabus</a>
+          </div>
+          <a class="chapter-nav-card next-card" href="#unit-three" aria-label="Proceed to Unit 3">
+            <span class="nav-direction">NEXT &nbsp; →</span><strong>Unit 3: Algorithmic Thinking</strong><span class="nav-subtext">Problem Solving &amp; Flowcharts</span>
+          </a>
+        </nav>
+      </article>
+
+      <!-- ========================================================================= -->
+      <!-- UNIT 3: ALGORITHMIC THINKING AND PROBLEM SOLVING -->
+      <!-- ========================================================================= -->
+      <article class="chapter" id="unit-three" aria-labelledby="unit-three-title">
+        <header class="chapter-heading">
+          <div class="chapter-heading-mark" aria-hidden="true">03</div>
+          <div>
+            <a href="#syllabus-table" class="unit-back-link">← Back to Course Syllabus</a>
+            <div class="unit-badge">Unit 03 · Computational Logic</div>
+            <h2 id="unit-three-title">Algorithmic Thinking &amp; Problem Solving</h2>
+          </div>
+        </header>
+
+        <div class="reading-column">
+          <p class="lead-paragraph">Computers are extraordinarily fast, but they don't possess an ounce of common sense. If you tell a computer to "make a breakfast sandwich", it won't know where the bread is or how to open the cupboard unless you give it exact, unskippable instructions. That is why algorithmic thinking is the single most valuable superpower in technology: it teaches you how to teach a machine.</p>
+
+          <h3>1. What is Computational Thinking? (The 4 Superpowers)</h3>
+          <p><strong>Computational thinking</strong> isn't about thinking like a robot; it is about training your human mind to solve complex problems systematically through four pillars:</p>
+          <ul class="step-list">
+            <li><strong>Decomposition:</strong> Breaking a massive, intimidating problem into bite-sized pieces. (e.g., Instead of saying "Build an entire social app", you break it into user login, photo upload, comment feed, and settings).</li>
+            <li><strong>Pattern Recognition:</strong> Spotting shared traits and repeating rhythms. (e.g., Noticing that searching for a student's roll number uses the exact same search logic as looking up a phone number in your contacts).</li>
+            <li><strong>Abstraction:</strong> Ignoring unnecessary noise to focus purely on what matters. (e.g., A metro train map shows station stops and connections clearly, while completely ignoring trees, roads, and building heights).</li>
+            <li><strong>Algorithm Design:</strong> Writing an unambiguous, step-by-step recipe that delivers the correct result every single time.</li>
+          </ul>
+
+          <div class="author-insight">
+            <div class="author-insight-icon" aria-hidden="true">🥪</div>
+            <div class="author-insight-body">
+              <h4>Huzaifa's Algorithm Mental Test: The Sandwich Challenge</h4>
+              <p>Whenever you write an algorithm, imagine giving your steps to an alien who takes every word 100% literally. If your instruction says <em>"Put the peanut butter on the bread"</em>, the alien might drop the entire heavy glass jar on top of the loaf! You have to specify: unscrew the jar lid, insert a butter knife, scoop a portion, and spread it across the slice. That precise, crystal-clear clarity is the true secret to coding.</p>
+            </div>
+          </div>
+
+          <h3>2. The 5-Stage Problem-Solving Methodology</h3>
+          <ol>
+            <li><strong>Define &amp; Understand the Problem:</strong> What data are you starting with (inputs)? What is the required outcome (output)? What are the limitations?</li>
+            <li><strong>Formulate a Strategy:</strong> Brainstorm mathematical formulas or logical decision pathways to bridge the gap between inputs and outputs.</li>
+            <li><strong>Design the Algorithm:</strong> Write out your recipe in simple, natural language pseudocode.</li>
+            <li><strong>Construct the Flowchart:</strong> Turn your words into a visual map using standardized geometric symbols so anyone can trace the branches.</li>
+            <li><strong>Verify &amp; Dry Run:</strong> Test your logic by hand using a pencil and a sample trace table before you write a single line of computer code.</li>
+          </ol>
+
+          <div class="author-insight">
+            <div class="author-insight-icon" aria-hidden="true">📝</div>
+            <div class="author-insight-body">
+              <h4>Huzaifa's Golden Rule: Paper Before Pixels</h4>
+              <p>The biggest pitfall for beginners is jumping straight onto a keyboard and typing code without a plan. In my experience, 80% of computer programming happens with a pen and a sheet of paper. If your logic doesn't make sense on paper, it definitely won't work on a screen!</p>
+            </div>
+          </div>
+
+          <h3>3. Characteristics of an Effective Algorithm</h3>
+          <ul>
+            <li><strong>Unambiguous (Clear):</strong> Each instruction has only one possible meaning—no guessing allowed.</li>
+            <li><strong>Finite:</strong> It must finish after a specific number of steps and never get trapped in an endless loop.</li>
+            <li><strong>Defined Inputs &amp; Outputs:</strong> Takes clear starting values and produces predictable results.</li>
+            <li><strong>Feasible:</strong> Every step must be realistically possible to perform with current hardware.</li>
+            <li><strong>Language-Independent:</strong> The pure logic is universal. Whether you implement it later in Scratch, Python, C++, or JavaScript, the core algorithm remains identical.</li>
+          </ul>
+
+          <h3>4. Standard Flowchart Geometric Symbols</h3>
+          <p>A <strong>flowchart</strong> is a visual road map for your algorithm. Just like road signs use specific shapes (octagons for stop, triangles for yield), flowcharts use standardized shapes:</p>
+        </div>
+
+        <!-- Flowchart Symbols Table -->
+        <div class="data-table-wrapper" style="width:min(100%, 930px); margin:2rem auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:160px;">Symbol Name</th>
+                <th style="width:140px;">Geometric Shape</th>
+                <th>Functional Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Terminator</strong></td>
+                <td>Oval / Pill</td>
+                <td>Represents the starting point (<code>Start</code>) or termination point (<code>Stop / End</code>) of the process.</td>
+              </tr>
+              <tr>
+                <td><strong>Input / Output</strong></td>
+                <td>Parallelogram</td>
+                <td>Indicates data entered into the system (e.g., <code>Read Number</code>) or results displayed (e.g., <code>Print Average</code>).</td>
+              </tr>
+              <tr>
+                <td><strong>Process</strong></td>
+                <td>Rectangle</td>
+                <td>Denotes an internal calculation, assignment, or manipulation (e.g., <code>Sum = A + B</code>).</td>
+              </tr>
+              <tr>
+                <td><strong>Decision</strong></td>
+                <td>Diamond</td>
+                <td>Evaluates a conditional question with two distinct exit paths (<code>Yes / True</code> or <code>No / False</code>).</td>
+              </tr>
+              <tr>
+                <td><strong>Flow Line</strong></td>
+                <td>Arrow Line (→)</td>
+                <td>Shows the exact directional path and sequence of execution.</td>
+              </tr>
+              <tr>
+                <td><strong>Connector</strong></td>
+                <td>Small Circle</td>
+                <td>Connects intersecting flow lines without cluttering complex diagrams.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Interactive Flowchart SVG: Even/Odd & Pass/Fail -->
+        <figure class="story-figure">
+          <svg viewBox="0 0 850 420" width="100%" height="auto" role="img" aria-label="Flowchart demonstrating decision logic to check whether an integer is Even or Odd" style="background:#fffdf8; border-radius:4px; display:block;">
+            <defs>
+              <marker id="fc-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-reverse">
+                <path d="M 0 1 L 8 5 L 0 9 z" fill="#203634" />
+              </marker>
+            </defs>
+            <!-- Start -->
+            <rect x="360" y="20" width="130" height="42" rx="21" fill="#286d66" stroke="#1c514c" stroke-width="2" />
+            <text x="425" y="46" text-anchor="middle" fill="#fff" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="14">START</text>
+            <line x1="425" y1="62" x2="425" y2="95" stroke="#203634" stroke-width="2" marker-end="url(#fc-arrow)" />
+
+            <!-- Input Parallelogram -->
+            <polygon points="350,140 370,100 500,100 480,140" fill="#f5f1e8" stroke="#286d66" stroke-width="2" />
+            <text x="425" y="125" text-anchor="middle" fill="#203634" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="12">Input: Number N</text>
+            <line x1="425" y1="140" x2="425" y2="175" stroke="#203634" stroke-width="2" marker-end="url(#fc-arrow)" />
+
+            <!-- Process: Remainder -->
+            <rect x="340" y="175" width="170" height="45" rx="4" fill="#f5f1e8" stroke="#286d66" stroke-width="2" />
+            <text x="425" y="202" text-anchor="middle" fill="#203634" font-family="'Segoe UI', sans-serif" font-weight="600" font-size="12">Remainder = N mod 2</text>
+            <line x1="425" y1="220" x2="425" y2="255" stroke="#203634" stroke-width="2" marker-end="url(#fc-arrow)" />
+
+            <!-- Decision Diamond -->
+            <polygon points="425,255 515,295 425,335 335,295" fill="#f3e2da" stroke="#bd5d4c" stroke-width="3" />
+            <text x="425" y="295" text-anchor="middle" fill="#bd5d4c" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="12">Remainder = 0 ?</text>
+
+            <!-- Yes Branch -->
+            <line x1="335" y1="295" x2="220" y2="295" stroke="#203634" stroke-width="2" marker-end="url(#fc-arrow)" />
+            <text x="275" y="285" text-anchor="middle" fill="#286d66" font-weight="700" font-size="12">Yes (True)</text>
+            <polygon points="120,320 140,275 240,275 220,320" fill="#d7e8db" stroke="#286d66" stroke-width="2" />
+            <text x="180" y="302" text-anchor="middle" fill="#16522f" font-weight="700" font-size="12">Print "EVEN"</text>
+
+            <!-- No Branch -->
+            <line x1="515" y1="295" x2="630" y2="295" stroke="#203634" stroke-width="2" marker-end="url(#fc-arrow)" />
+            <text x="575" y="285" text-anchor="middle" fill="#bd5d4c" font-weight="700" font-size="12">No (False)</text>
+            <polygon points="610,320 630,275 730,275 710,320" fill="#fae3e1" stroke="#bd5d4c" stroke-width="2" />
+            <text x="670" y="302" text-anchor="middle" fill="#9c2718" font-weight="700" font-size="12">Print "ODD"</text>
+
+            <!-- Down to End -->
+            <line x1="180" y1="320" x2="180" y2="385" stroke="#203634" stroke-width="2" />
+            <line x1="180" y1="385" x2="360" y2="385" stroke="#203634" stroke-width="2" marker-end="url(#fc-arrow)" />
+            <line x1="670" y1="320" x2="670" y2="385" stroke="#203634" stroke-width="2" />
+            <line x1="670" y1="385" x2="490" y2="385" stroke="#203634" stroke-width="2" marker-end="url(#fc-arrow)" />
+
+            <rect x="360" y="365" width="130" height="42" rx="21" fill="#bd5d4c" stroke="#8a4539" stroke-width="2" />
+            <text x="425" y="391" text-anchor="middle" fill="#fff" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="14">STOP</text>
+          </svg>
+          <figcaption><span class="caption-number">FIG. 3.1</span> Standard Flowchart Architecture: Even/Odd Integer Decision Branching.</figcaption>
+        </figure>
+
+        <div class="reading-column">
+          <h3>5. Trace Tables (Dry Running)</h3>
+          <p>A <strong>trace table</strong> is a diagnostic debugging technique where a programmer manually steps through code on paper row by row, updating variable values to verify logic before coding:</p>
+          
+          <div class="code-box">
+            <span class="code-comment">// Algorithm: Calculate sum of first 3 natural numbers (1, 2, 3)</span>
+            <br>Step 1: Set Sum = 0, Counter = 1
+            <br>Step 2: Repeat while Counter &lt;= 3:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sum = Sum + Counter
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Counter = Counter + 1
+            <br>Step 3: Output Sum
+          </div>
+
+          <div class="data-table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Iteration</th>
+                  <th>Counter Value</th>
+                  <th>Counter &lt;= 3?</th>
+                  <th>New Sum</th>
+                  <th>Next Counter</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Initial</td><td>1</td><td>True</td><td>0 + 1 = 1</td><td>2</td></tr>
+                <tr><td>Pass 2</td><td>2</td><td>True</td><td>1 + 2 = 3</td><td>3</td></tr>
+                <tr><td>Pass 3</td><td>3</td><td>True</td><td>3 + 3 = 6</td><td>4</td></tr>
+                <tr><td>Pass 4</td><td>4</td><td>False (Loop ends)</td><td>Final Sum = 6</td><td>-</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <aside class="try-card" aria-labelledby="try-check-3">
+          <div class="try-card-label"><span class="try-icon" aria-hidden="true">✳</span> Real-World Concept Check</div>
+          <div class="try-card-content">
+            <h3 id="try-check-3">ATM Cash Withdrawal Algorithm</h3>
+            <blockquote>
+              “<strong>Step 1:</strong> Insert ATM card and read PIN.<br>
+              <strong>Step 2 (Decision):</strong> Is PIN valid? If NO → Display 'Invalid PIN' and eject card.<br>
+              <strong>Step 3:</strong> Input desired withdrawal amount <em>A</em>.<br>
+              <strong>Step 4 (Decision):</strong> Is Account Balance &gt;= <em>A</em>? If NO → Display 'Insufficient Funds'.<br>
+              <strong>Step 5:</strong> Dispense cash <em>A</em>, deduct <em>A</em> from balance, print receipt, and eject card.”
+            </blockquote>
+          </div>
+        </aside>
+
+        <!-- Unit 3 Interactive Student Lab Workbook -->
+                <!-- Unit 3 Interactive Self-Assessment Quiz -->
+        <section class="quiz-section" id="quiz-unit-3" data-quiz-unit="3" aria-labelledby="quiz-u3-title">
+          <div class="quiz-header">
+            <div>
+              <p class="eyebrow">Unit 03 · Interactive Assessment</p>
+              <h3 id="quiz-u3-title">Algorithmic Thinking Quiz — Check Your Knowledge</h3>
+              <p>Test your understanding with instant feedback and explanations.</p>
+            </div>
+            <div class="quiz-score-badge">Score: 0 / 5 (0%)</div>
+          </div>
+          <div class="quiz-grid">
+          <div class="quiz-card" data-answer="1" data-explain="Decomposition breaks down an overwhelming problem into manageable modules (e.g. dividing a web project into layout, styles, and scripts).">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">01</span> Which computational thinking technique involves breaking a complex challenge into smaller, solvable sub-problems?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Abstraction</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Decomposition</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Pattern Recognition</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Algorithm Design</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="2" data-explain="A Diamond symbol evaluates a condition (e.g. Remainder == 0?) with two distinct exit flow paths: True (Yes) and False (No).">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">02</span> In a standardized flowchart, which geometric shape represents a conditional Decision (Yes/No branching)?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Parallelogram</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Rectangle</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Diamond</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Oval / Pill</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="0" data-explain="Parallelograms designate data entering the system (Input: Read A) or results presented (Output: Print Sum).">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">03</span> What is the flowchart symbol used to represent Input and Output operations?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Parallelogram</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Circle</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Diamond</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Rectangle</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="1" data-explain="Trace tables allow programmers to simulate execution row by row, verifying variable changes and logic correctness before coding.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">04</span> What is the primary purpose of constructing a Trace Table (dry running)?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>To print documents on high-speed laser printers.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>To manually step through an algorithm on paper to track variable values and detect logic errors.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>To draw 3D graphics in presentation software.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>To format spreadsheets into tables.</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="1" data-explain="Finiteness is mandatory: every valid algorithm must stop after a finite number of steps.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">05</span> Which of the following is an indispensable property of any valid algorithm?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>It must continue running infinitely without stopping.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>It must be finite and terminate after a countable number of execution steps.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>It must be written exclusively in English programming syntax.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>It must contain at least 1,000 lines of code.</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          </div>
+          <button type="button" class="quiz-reset-btn">↺ Reset Quiz</button>
+        </section>
+
+<section class="workbook-section" id="workbook-unit-3" aria-labelledby="wb-title-3">
+          <div class="section-heading">
+            <p class="eyebrow">Interactive Student Lab Workbook · Unit 03</p>
+            <h3 id="wb-title-3">Unit 3 Computational Logic Notes</h3>
+            <p>Solidify your understanding of decomposition, flowcharts, and tracing algorithms.</p>
+          </div>
+          <form id="reflection-form-3" class="reflection-form">
+            <div class="prompt-row">
+              <label for="u3-p1"><span class="prompt-number">01</span><span><strong>Decomposition in Action</strong><small>Apply decomposition to organize an annual school science fair. Break it down into at least 4 smaller sub-tasks.</small></span></label>
+              <textarea id="u3-p1" name="decomposition-task" rows="3" placeholder="Sub-task 1: Venue booking...&#10;Sub-task 2: Project registration..." autocomplete="off"></textarea>
+            </div>
+            <div class="prompt-row">
+              <label for="u3-p2"><span class="prompt-number">02</span><span><strong>Flowchart Symbols Match</strong><small>Why does a computer algorithm require a Diamond symbol for conditions rather than a plain Rectangle?</small></span></label>
+              <textarea id="u3-p2" name="diamond-vs-rect" rows="3" placeholder="A diamond represents branching decisions with two distinct paths (Yes/No), whereas..." autocomplete="off"></textarea>
+            </div>
+            <div class="prompt-row">
+              <label for="u3-p3"><span class="prompt-number">03</span><span><strong>Write a Mini-Algorithm</strong><small>Write step-by-step instructions to find the larger of two numbers, A and B.</small></span></label>
+              <textarea id="u3-p3" name="larger-num-algo" rows="3" placeholder="Step 1: Input A and B&#10;Step 2: If A > B then...&#10;Step 3: Else..." autocomplete="off"></textarea>
+            </div>
+            <div class="form-footer">
+              <p class="privacy-note"><span aria-hidden="true">◉</span> Autosaved locally in your browser.</p>
+              <span class="save-status" id="save-status-3" role="status" aria-live="polite">Your lab notes are ready.</span>
+            </div>
+            <div class="form-actions">
+              <button class="button button-primary" type="button" data-save-notes>Save Notes <span aria-hidden="true">✓</span></button>
+              <button class="button button-outline" type="button" data-print-page>Print / Save PDF <span aria-hidden="true">↗</span></button>
+              <button class="quiet-button" type="button" data-clear-notes>Clear Notes</button>
+            </div>
+          </form>
+        </section>
+
+        <nav class="chapter-navigation" aria-label="Unit 3 navigation">
+          <a class="chapter-nav-card" href="#unit-two" aria-label="Return to Unit 2">
+            <span class="nav-direction">← &nbsp; PREVIOUS</span><strong>Unit 2: Digital Skills</strong><span class="nav-subtext">Word Processing &amp; Mail</span>
+          </a>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:.4rem;">
+            <button class="contents-center" type="button" data-open-contents><span aria-hidden="true">▤</span> Table of Contents</button>
+            <a href="#syllabus-table" class="nav-back-syllabus" title="Return to syllabus map">↑ Back to Syllabus</a>
+          </div>
+          <a class="chapter-nav-card next-card" href="#unit-four" aria-label="Proceed to Unit 4">
+            <span class="nav-direction">NEXT &nbsp; →</span><strong>Unit 4: Programming</strong><span class="nav-subtext">Scratch Coding &amp; Game Logic</span>
+          </a>
+        </nav>
+      </article>
+
+      <!-- ========================================================================= -->
+      <!-- UNIT 4: PROGRAMMING -->
+      <!-- ========================================================================= -->
+      <article class="chapter" id="unit-four" aria-labelledby="unit-four-title">
+        <header class="chapter-heading">
+          <div class="chapter-heading-mark" aria-hidden="true">04</div>
+          <div>
+            <a href="#syllabus-table" class="unit-back-link">← Back to Course Syllabus</a>
+            <div class="unit-badge">Unit 04 · Software Construction</div>
+            <h2 id="unit-four-title">Programming</h2>
+          </div>
+        </header>
+
+        <div class="reading-column">
+          <p class="lead-paragraph">Learning to code is like gaining a superpower: you stop being just a consumer who plays other people's games, and you become a creator who can bring their own digital worlds to life! In this unit, we use Scratch 3.0 to explore the foundational logic that powers everything from mobile apps to spaceflight simulators.</p>
+
+          <h3>1. What is Computer Programming? (Speaking Machine)</h3>
+          <p>A <strong>computer program</strong> is simply a checklist of instructions you write for a machine so it knows how to perform a task. Here is how code travels from your brain to silicon:</p>
+          <ul>
+            <li><strong>Machine Language (Binary):</strong> The computer's native tongue—pure streams of <code>0</code>s and <code>1</code>s (representing electrical OFF and ON states). Writing this by hand is practically impossible for humans.</li>
+            <li><strong>High-Level Languages:</strong> Human-friendly languages (like Python, Scratch, JavaScript, and C++) that use readable English words and logical syntax.</li>
+            <li><strong>Translators (Compilers vs. Interpreters):</strong> The software translators that convert your high-level code into binary. A <em>compiler</em> translates the whole program before running, while an <em>interpreter</em> translates and executes line-by-line in real time.</li>
+          </ul>
+
+          <div class="author-insight">
+            <div class="author-insight-icon" aria-hidden="true">🎮</div>
+            <div class="author-insight-body">
+              <h4>Huzaifa's Note: Why Scratch First?</h4>
+              <p>When professional developers write code in Python or C++, a single misplaced comma or missing bracket can break the entire application! Scratch eliminates that headache with interlocking visual puzzle blocks. By removing syntax frustration, your mind stays 100% focused on mastering pure algorithmic logic. Once you grasp logic here, picking up Python or JavaScript feels like second nature.</p>
+            </div>
+          </div>
+
+          <h3>2. The Scratch 3.0 Visual Development Environment</h3>
+          <p>Developed by the Lifelong Kindergarten Group at MIT Media Lab, <strong>Scratch</strong> makes programming visual and fun:</p>
+          <ul>
+            <li><strong>The Stage:</strong> Your digital theater canvas where sprites interact, glide, and bounce (x coordinate: -240 to +240, y coordinate: -180 to +180).</li>
+            <li><strong>Sprites:</strong> The actors, characters, and props on stage that follow the code you build.</li>
+            <li><strong>Costumes:</strong> Different visual poses for a sprite that create walking animations, expressions, or game-over states.</li>
+            <li><strong>Block Palette:</strong> Color-coded categories of command blocks:
+              <ul>
+                <li><span style="color:#4c97ff; font-weight:700;">Motion (Blue):</span> Move steps, turn degrees, glide to coordinate.</li>
+                <li><span style="color:#9966ff; font-weight:700;">Looks (Purple):</span> Say messages, switch costume, change size.</li>
+                <li><span style="color:#d65cd6; font-weight:700;">Sound (Magenta):</span> Play sound effects and notes.</li>
+                <li><span style="color:#ffd500; font-weight:700; text-shadow:0 0 1px #888;">Events (Yellow):</span> Triggers like <code>when green flag clicked</code> or <code>when space key pressed</code>.</li>
+                <li><span style="color:#ffab19; font-weight:700;">Control (Amber):</span> Loops (<code>repeat</code>, <code>forever</code>) and conditionals (<code>if-then-else</code>).</li>
+                <li><span style="color:#4cbfe6; font-weight:700;">Sensing (Cyan):</span> Detect mouse coordinates, edge boundaries, or touching colors.</li>
+                <li><span style="color:#59c059; font-weight:700;">Operators (Green):</span> Math calculations (+, -, *, /), random numbers, and logic (<code>&gt;</code>, <code>=</code>, <code>&lt;</code>, <code>and</code>, <code>or</code>).</li>
+                <li><span style="color:#ff8c1a; font-weight:700;">Variables (Orange):</span> Create and store data values like <em>Score</em>, <em>Lives</em>, and <em>Timer</em>.</li>
+              </ul>
+            </li>
+            <li><strong>Scripts Area:</strong> The main workspace where command blocks are snapped together to form executable algorithms.</li>
+          </ul>
+
+          <div class="author-insight">
+            <div class="author-insight-icon" aria-hidden="true">🧱</div>
+            <div class="author-insight-body">
+              <h4>Huzaifa's Rule: The Big Three Building Blocks</h4>
+              <p>Every single program ever written—from simple Scratch animations up to Minecraft and Instagram—is built using just three fundamental constructs: <strong>Sequence</strong> (doing tasks in order), <strong>Selection</strong> (making choices with <code>if/else</code>), and <strong>Iteration</strong> (repeating with loops). That is the entire secret of software!</p>
+            </div>
+          </div>
+
+          <h3>3. Core Programming Constructs</h3>
+          <p>Let's look at how these three building blocks appear in action:</p>
+          
+          <h4>A. Sequence</h4>
+          <p>Instructions run strictly one after another from top to bottom:</p>
+          <div class="code-box">
+            <span class="code-keyword">when green flag clicked</span>
+            <br>point in direction 90
+            <br>move 10 steps
+            <br>say "Hello World!" for 2 seconds
+          </div>
+
+          <h4>B. Selection (Conditional Branching)</h4>
+          <p>Decisions executed based on whether a condition evaluates to <code>True</code> or <code>False</code>:</p>
+          <div class="code-box">
+            <span class="code-keyword">if</span> &lt;touching [Star] ?&gt; <span class="code-keyword">then</span>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;change [Score] by 1
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;start sound [Chime]
+            <br><span class="code-keyword">else</span>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;say "Keep looking!"
+          </div>
+
+          <h4>C. Iteration (Loops &amp; Repetition)</h4>
+          <p>Repeating a block of instructions automatically:</p>
+          <ul>
+            <li><strong>Definite Loop (<code>repeat 10</code>):</strong> Executes exactly a specified number of times.</li>
+            <li><strong>Infinite Loop (<code>forever</code>):</strong> Runs continuously until the program is manually stopped (used for game loops and physics engines).</li>
+            <li><strong>Conditional Loop (<code>repeat until &lt;Lives = 0&gt;</code>):</strong> Repeats until a terminating condition is reached.</li>
+          </ul>
+
+          <h3>4. Step-by-Step Project: "The Star Collector Game"</h3>
+          <p>Below is the complete logic for building an interactive 2D arcade game in Scratch:</p>
+          
+          <div class="code-box">
+            <span class="code-comment">// Sprite 1: Player (Rocket / Basket)</span>
+            <br><span class="code-keyword">when green flag clicked</span>
+            <br>set [Score v] to 0
+            <br>go to x: 0 y: -140
+            <br><span class="code-keyword">forever</span>:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">if</span> &lt;key [right arrow v] pressed?&gt; <span class="code-keyword">then</span>:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;change x by 10
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">if</span> &lt;key [left arrow v] pressed?&gt; <span class="code-keyword">then</span>:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;change x by -10
+            <br>
+            <br><span class="code-comment">// Sprite 2: Falling Star</span>
+            <br><span class="code-keyword">when green flag clicked</span>
+            <br><span class="code-keyword">forever</span>:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;go to x: (pick random -200 to 200) y: 160
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">repeat until</span> &lt;(y position) &lt; -160&gt;:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;change y by -6
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">if</span> &lt;touching [Player v]?&gt; <span class="code-keyword">then</span>:
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;change [Score v] by 10
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start sound [Magic Bell v]
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go to x: (pick random -200 to 200) y: 160
+          </div>
+        </div>
+
+        <aside class="try-card" aria-labelledby="try-check-4">
+          <div class="try-card-label"><span class="try-icon" aria-hidden="true">✳</span> Real-World Concept Check</div>
+          <div class="try-card-content">
+            <h3 id="try-check-4">Traffic Light Controller Logic</h3>
+            <blockquote>
+              “<strong>Forever Loop:</strong><br>
+              1. Turn Red Light ON, wait 40 seconds.<br>
+              2. Turn Red Light OFF, turn Yellow Light ON, wait 5 seconds.<br>
+              3. Turn Yellow Light OFF, turn Green Light ON, wait 45 seconds.<br>
+              4. Turn Green Light OFF, turn Yellow Light ON, wait 5 seconds.<br>
+              Every physical automated city signal executes this identical infinite loop construct!”
+            </blockquote>
+          </div>
+        </aside>
+
+        <!-- Unit 4 Interactive Student Lab Workbook -->
+                <!-- Unit 4 Interactive Self-Assessment Quiz -->
+        <section class="quiz-section" id="quiz-unit-4" data-quiz-unit="4" aria-labelledby="quiz-u4-title">
+          <div class="quiz-header">
+            <div>
+              <p class="eyebrow">Unit 04 · Interactive Assessment</p>
+              <h3 id="quiz-u4-title">Programming Quiz — Check Your Knowledge</h3>
+              <p>Test your understanding with instant feedback and explanations.</p>
+            </div>
+            <div class="quiz-score-badge">Score: 0 / 5 (0%)</div>
+          </div>
+          <div class="quiz-grid">
+          <div class="quiz-card" data-answer="0" data-explain="Compilers translate the entire source program into machine code before running. Interpreters translate and execute instructions sequentially on the fly.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">01</span> How does a compiler differ from an interpreter?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>A compiler converts the whole program into machine code beforehand; an interpreter translates and executes line by line.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>A compiler is computer hardware; an interpreter is computer software.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>A compiler is only used in Scratch; an interpreter is used in Word.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>A compiler executes code slower than an interpreter.</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="1" data-explain="The purple Looks category contains blocks for switching costumes, saying messages, changing size, and graphic effects.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">02</span> In MIT Scratch 3.0, which block palette category handles sprite character speech bubbles and costumes?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Motion (Blue)</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Looks (Purple)</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Sensing (Cyan)</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Operators (Green)</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="1" data-explain="Iteration (loops) repeats code blocks automatically, such as 'repeat (10)' or 'forever'.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">03</span> Which programming construct repeats a block of instructions automatically?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Sequence</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Iteration (Loop)</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Abstraction</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Decomposition</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="0" data-explain="Variables are named digital memory holders that store values that change over time as the game progresses.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">04</span> In video game programming, which element is created to store and update changing values like 'Score' or 'Lives'?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Variable</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Backdrop</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Costume</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Sound Effect</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="0" data-explain="Sensing blocks (e.g. 'touching [Player]?') detect sprite collisions, key presses, and mouse coordinates.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">05</span> Detecting whether a player sprite has touched a falling star is an example of:</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Sensing / Collision Detection</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Compilation</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Operating System Formatting</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Data Volatility</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          </div>
+          <button type="button" class="quiz-reset-btn">↺ Reset Quiz</button>
+        </section>
+
+<section class="workbook-section" id="workbook-unit-4" aria-labelledby="wb-title-4">
+          <div class="section-heading">
+            <p class="eyebrow">Interactive Student Lab Workbook · Unit 04</p>
+            <h3 id="wb-title-4">Unit 4 Programming Review</h3>
+            <p>Reflect on core coding concepts, loops, variables, and game logic.</p>
+          </div>
+          <form id="reflection-form-4" class="reflection-form">
+            <div class="prompt-row">
+              <label for="u4-p1"><span class="prompt-number">01</span><span><strong>Compiler vs. Interpreter</strong><small>In your own words, explain how a compiler differs from an interpreter when translating source code.</small></span></label>
+              <textarea id="u4-p1" name="compiler-vs-interpreter" rows="3" placeholder="A compiler translates the entire program before running, while an interpreter..." autocomplete="off"></textarea>
+            </div>
+            <div class="prompt-row">
+              <label for="u4-p2"><span class="prompt-number">02</span><span><strong>Variables in Games</strong><small>Give two examples of variables you would need to track in a digital basketball game.</small></span></label>
+              <textarea id="u4-p2" name="game-variables" rows="3" placeholder="Variable 1: ... because ...&#10;Variable 2: ... because ..." autocomplete="off"></textarea>
+            </div>
+            <div class="prompt-row">
+              <label for="u4-p3"><span class="prompt-number">03</span><span><strong>Infinite vs. Definite Loops</strong><small>Why does a game character control script require a 'forever' loop rather than a 'repeat 10' block?</small></span></label>
+              <textarea id="u4-p3" name="loop-types" rows="3" placeholder="If we used 'repeat 10', the player controls would... whereas 'forever' ensures..." autocomplete="off"></textarea>
+            </div>
+            <div class="form-footer">
+              <p class="privacy-note"><span aria-hidden="true">◉</span> Autosaved locally in your browser.</p>
+              <span class="save-status" id="save-status-4" role="status" aria-live="polite">Your lab notes are ready.</span>
+            </div>
+            <div class="form-actions">
+              <button class="button button-primary" type="button" data-save-notes>Save Notes <span aria-hidden="true">✓</span></button>
+              <button class="button button-outline" type="button" data-print-page>Print / Save PDF <span aria-hidden="true">↗</span></button>
+              <button class="quiet-button" type="button" data-clear-notes>Clear Notes</button>
+            </div>
+          </form>
+        </section>
+
+        <nav class="chapter-navigation" aria-label="Unit 4 navigation">
+          <a class="chapter-nav-card" href="#unit-three" aria-label="Return to Unit 3">
+            <span class="nav-direction">← &nbsp; PREVIOUS</span><strong>Unit 3: Algorithmic Thinking</strong><span class="nav-subtext">Flowcharts &amp; Trace Tables</span>
+          </a>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:.4rem;">
+            <button class="contents-center" type="button" data-open-contents><span aria-hidden="true">▤</span> Table of Contents</button>
+            <a href="#syllabus-table" class="nav-back-syllabus" title="Return to syllabus map">↑ Back to Syllabus</a>
+          </div>
+          <a class="chapter-nav-card next-card" href="#unit-five" aria-label="Proceed to Unit 5">
+            <span class="nav-direction">NEXT &nbsp; →</span><strong>Unit 5: Digital Citizenship</strong><span class="nav-subtext">Cybersecurity &amp; Ethics</span>
+          </a>
+        </nav>
+      </article>
+
+      <!-- ========================================================================= -->
+      <!-- UNIT 5: DIGITAL CITIZENSHIP -->
+      <!-- ========================================================================= -->
+      <article class="chapter" id="unit-five" aria-labelledby="unit-five-title">
+        <header class="chapter-heading">
+          <div class="chapter-heading-mark" aria-hidden="true">05</div>
+          <div>
+            <a href="#syllabus-table" class="unit-back-link">← Back to Course Syllabus</a>
+            <div class="unit-badge">Unit 05 · Ethics &amp; Safety</div>
+            <h2 id="unit-five-title">Digital Citizenship</h2>
+          </div>
+        </header>
+
+        <div class="reading-column">
+          <p class="lead-paragraph">The Internet gives us a portal to explore virtually all human knowledge, connect with people worldwide, and showcase our creative work. But along with that immense power comes a serious responsibility. In this unit, I want to equip you with the practical habits you need to protect your private data, stay safe from online scams, and build a positive digital presence you can be proud of.</p>
+
+          <h3>1. Digital Identity &amp; Your Digital Footprint</h3>
+          <p>Your <strong>digital footprint</strong> is the permanent trail of crumbs you leave behind whenever you browse, post, or tap on the web:</p>
+          <ul>
+            <li><strong>Active Digital Footprint:</strong> Everything you intentionally put out into the world—photos you post, comments you write, messages you send, and forms you submit.</li>
+            <li><strong>Passive Digital Footprint:</strong> Data gathered about your device quietly behind the scenes—such as your IP address, cookies tracking which shoes you looked at online, and location GPS coordinates.</li>
+          </ul>
+
+          <div class="author-insight">
+            <div class="author-insight-icon" aria-hidden="true">🌐</div>
+            <div class="author-insight-body">
+              <h4>Huzaifa's Digital Tattoo Rule</h4>
+              <p>Whenever you are about to post or comment something online, pause and ask yourself: <em>"Would I be happy if my parents, school principal, or future boss saw this on a giant billboard tomorrow?"</em> If the answer is no, do not post it. Even if an app promises that messages 'disappear after 24 hours', anyone can take a quick screenshot or screen recording in a second.</p>
+            </div>
+          </div>
+
+          <h3>2. Cyber Hygiene &amp; Personal Security</h3>
+          <p>You don't need a degree in cryptography to protect yourself online. Good cyber hygiene is just like washing your hands—small daily routines that stop 99% of trouble:</p>
+          <ul>
+            <li><strong>Password Strength:</strong> Avoid simple passwords like your pet's name or <code>123456</code>. Instead, use a four-word passphrase with symbols and numbers (e.g., <code>Blue#Falcon$Flies!99</code>). It takes a supercomputer centuries to crack!</li>
+            <li><strong>Two-Factor Authentication (2FA):</strong> Your digital seatbelt. Even if a scammer manages to guess your password, they still cannot log in without the one-time code sent directly to your physical phone.</li>
+            <li><strong>Public Wi-Fi Danger:</strong> Free cafe or airport Wi-Fi is often completely open and unencrypted. Never log into bank accounts or type sensitive passwords while connected to public Wi-Fi unless you are using a secure Virtual Private Network (VPN).</li>
+          </ul>
+
+          <div class="author-insight">
+            <div class="author-insight-icon" aria-hidden="true">🔒</div>
+            <div class="author-insight-body">
+              <h4>Huzaifa's Scam Radar: Urgency is the Red Flag</h4>
+              <p>Almost every phishing message relies on creating artificial panic: <em>"Your account will be suspended in 2 hours!"</em> or <em>"Click now to claim your free reward!"</em> Legitimate organizations like banks, schools, and Google never demand that you reset your password through a shady link within a ticking countdown. Whenever you feel rushed, that is your signal to stop, step back, and verify the official website directly.</p>
+            </div>
+          </div>
+
+          <h3>3. Malware &amp; Cyber Threat Taxonomy</h3>
+          <p><strong>Malware</strong> is short for <em>malicious software</em>—any program deliberately built by bad actors to damage devices or steal data:</p>
+        </div>
+
+        <!-- Malware Matrix Table -->
+        <div class="data-table-wrapper" style="width:min(100%, 930px); margin:2rem auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:160px;">Threat Type</th>
+                <th>How It Operates</th>
+                <th style="width:240px;">Primary Danger</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Computer Virus</strong></td>
+                <td>Attaches malicious code to legitimate host files (e.g., <code>.exe</code>, documents) and replicates when the host file is executed.</td>
+                <td>Corrupts files, deletes critical system data, slows CPU performance.</td>
+              </tr>
+              <tr>
+                <td><strong>Worm</strong></td>
+                <td>A standalone program that spreads across computer networks independently without requiring human action or host files.</td>
+                <td>Consumes network bandwidth, crashes routers, and opens system backdoors.</td>
+              </tr>
+              <tr>
+                <td><strong>Trojan Horse</strong></td>
+                <td>Disguises itself as desirable, harmless software (e.g., a free game, crack, or utility) to trick users into installing it.</td>
+                <td>Steals passwords, installs keystroke loggers, provides attackers remote access.</td>
+              </tr>
+              <tr>
+                <td><strong>Spyware &amp; Keyloggers</strong></td>
+                <td>Silently monitors user actions, webcam activity, browsing history, and keystrokes in the background.</td>
+                <td>Harvests credit card credentials, bank logins, and confidential private messages.</td>
+              </tr>
+              <tr>
+                <td><strong>Ransomware</strong></td>
+                <td>Encrypts all user files and photos with cryptographic locks, displaying a ransom note demanding payment.</td>
+                <td>Permanently locks access to precious photos and business documents.</td>
+              </tr>
+              <tr>
+                <td><strong>Phishing</strong></td>
+                <td>Fraudulent emails, texts, or websites impersonating trusted banks or schools to trick users into revealing credentials.</td>
+                <td>Identity theft, unauthorized bank withdrawals, account hijacking.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="reading-column">
+          <h3>4. Netiquette &amp; Anti-Cyberbullying</h3>
+          <p><strong>Cyberbullying</strong> is the intentional, repeated use of electronic communication to harass, threaten, humiliate, or intimidate someone. The golden protocol if you encounter cyberbullying:</p>
+          <ol>
+            <li><strong>Stop:</strong> Do not retaliate or engage in an argument; bullies seek angry reactions.</li>
+            <li><strong>Block:</strong> Block the harassing account immediately on the messaging platform or app.</li>
+            <li><strong>Record:</strong> Take screenshots and save digital proof including usernames, dates, and timestamps.</li>
+            <li><strong>Report:</strong> Report the incident to a parent, teacher, school counselor, or cybercrime authority.</li>
+          </ol>
+
+          <h3>5. Intellectual Property, Copyright &amp; Cyber Laws</h3>
+          <ul>
+            <li><strong>Copyright:</strong> Legal protection granting original creators exclusive rights to reproduce, distribute, and monetize their creative work (books, music, software, videos, code).</li>
+            <li><strong>Plagiarism:</strong> Presenting someone else's writing, code, or ideas as your own without proper citation and attribution. Plagiarism is a severe ethical and academic violation.</li>
+            <li><strong>Creative Commons (CC):</strong> Flexible public licenses that allow creators to share their work freely with specified conditions (e.g., requiring attribution or non-commercial usage).</li>
+            <li><strong>Cybercrime Legislation:</strong> In Pakistan, the <strong>Prevention of Electronic Crimes Act (PECA 2016)</strong> establishes criminal penalties for unauthorized access to data, hacking, cyber terrorism, digital harassment, and spreading child exploitation material.</li>
+          </ul>
+
+          <h3>6. Information Literacy: Detecting Fake News (The CRAAP Test)</h3>
+          <p>With massive volumes of unverified claims circulating on social media, evaluate online sources using the <strong>CRAAP Test</strong>:</p>
+          <ul>
+            <li><strong>Currency:</strong> When was the information published or updated? Are links and references current?</li>
+            <li><strong>Relevance:</strong> Does this content directly answer your inquiry? Who is the intended target audience?</li>
+            <li><strong>Authority:</strong> Who is the author or publisher? What are their verified credentials and expertise?</li>
+            <li><strong>Accuracy:</strong> Is the claim backed by evidence and citations? Can it be verified across independent sources?</li>
+            <li><strong>Purpose:</strong> Why does this content exist? Is it informing objectively, selling a product, or manipulating emotions with clickbait?</li>
+          </ul>
+        </div>
+
+        <aside class="try-card" aria-labelledby="try-check-5">
+          <div class="try-card-label"><span class="try-icon" aria-hidden="true">✳</span> Real-World Concept Check</div>
+          <div class="try-card-content">
+            <h3 id="try-check-5">Spotting an SMS / Email Phishing Scam</h3>
+            <blockquote>
+              “<strong>Message:</strong> 'URGENT: Your bank account will be suspended in 24 hours due to security updates! Click http://bank-secure-login123.com immediately to verify your password and CNIC!'<br>
+              <strong>Red Flags:</strong><br>
+              1. High-pressure urgency ('in 24 hours') designed to trigger panic.<br>
+              2. Suspicious web domain (not the official bank portal).<br>
+              3. Requesting confidential password/PIN over an SMS link.<br>
+              <strong>Rule:</strong> Legitimate institutions NEVER ask for your password via email or text!”
+            </blockquote>
+          </div>
+        </aside>
+
+        <!-- Unit 5 Interactive Student Lab Workbook -->
+                <!-- Unit 5 Interactive Self-Assessment Quiz -->
+        <section class="quiz-section" id="quiz-unit-5" data-quiz-unit="5" aria-labelledby="quiz-u5-title">
+          <div class="quiz-header">
+            <div>
+              <p class="eyebrow">Unit 05 · Interactive Assessment</p>
+              <h3 id="quiz-u5-title">Digital Citizenship Quiz — Check Your Knowledge</h3>
+              <p>Test your understanding with instant feedback and explanations.</p>
+            </div>
+            <div class="quiz-score-badge">Score: 0 / 5 (0%)</div>
+          </div>
+          <div class="quiz-grid">
+          <div class="quiz-card" data-answer="1" data-explain="Passive digital footprints are recorded automatically in the background (IP addresses, cookies, browsing metadata) without active submission.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">01</span> What is an example of a 'passive digital footprint'?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Posting a photo and caption on an online profile.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Browsing history, IP addresses, and cookies automatically recorded by web servers.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Leaving a written comment under a video.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Sending an email with your school homework.</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="1" data-explain="2FA requires two separate authentication credentials (something you know + something you have), dramatically reducing unauthorized access.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">02</span> What is Two-Factor Authentication (2FA)?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Using two passwords that have identical characters.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>A security protocol requiring a password plus an independent verification code (e.g. phone code or app token).</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Backing up data on two hard drives.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Logging in on two computers at the same moment.</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="2" data-explain="Ransomware locks victim files with cryptographic encryption and displays a ransom demand.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">03</span> Which category of malware encrypts all user documents and demands payment to restore access?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Worm</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Spyware</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Ransomware</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Trojan Horse</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="1" data-explain="The golden cyber safety rule: Stop, Block, Record evidence, and Report to adults or school authorities.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">04</span> What is the recommended first action if you face cyberbullying or harassment online?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Retaliate with insults.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Do not retaliate; block the harasser, save screenshot evidence, and report to a trusted adult.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Format the computer hard drive.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Share your passwords with friends.</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="1" data-explain="The 'A's stand for Authority (who wrote it and what are their qualifications?) and Accuracy (is it backed by verified evidence?).">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">05</span> In the CRAAP test for evaluating digital media credibility, what does 'A' stand for?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Algorithms & Advertisements</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Authority & Accuracy</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Animation & Audio</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Account & Authentication</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          </div>
+          <button type="button" class="quiz-reset-btn">↺ Reset Quiz</button>
+        </section>
+
+<section class="workbook-section" id="workbook-unit-5" aria-labelledby="wb-title-5">
+          <div class="section-heading">
+            <p class="eyebrow">Interactive Student Lab Workbook · Unit 05</p>
+            <h3 id="wb-title-5">Unit 5 Digital Citizenship Reflections</h3>
+            <p>Demonstrate your understanding of cyber ethics, online threats, and data privacy.</p>
+          </div>
+          <form id="reflection-form-5" class="reflection-form">
+            <div class="prompt-row">
+              <label for="u5-p1"><span class="prompt-number">01</span><span><strong>Active vs. Passive Footprint</strong><small>Give one example of an active digital footprint you created this week, and one passive footprint tracked without you typing.</small></span></label>
+              <textarea id="u5-p1" name="footprint-examples" rows="3" placeholder="Active footprint: ...&#10;Passive footprint: ..." autocomplete="off"></textarea>
+            </div>
+            <div class="prompt-row">
+              <label for="u5-p2"><span class="prompt-number">02</span><span><strong>Malware Prevention Checklist</strong><small>List three practical defensive actions you take on your family computer to prevent ransomware and trojan infections.</small></span></label>
+              <textarea id="u5-p2" name="malware-defense" rows="3" placeholder="1. Keep OS and antivirus updated...&#10;2. Never download pirated cracks...&#10;3. Maintain offline backups..." autocomplete="off"></textarea>
+            </div>
+            <div class="prompt-row">
+              <label for="u5-p3"><span class="prompt-number">03</span><span><strong>Applying the CRAAP Test</strong><small>If you read a sensational health claim on social media, how would you evaluate its Authority and Accuracy?</small></span></label>
+              <textarea id="u5-p3" name="craap-eval" rows="3" placeholder="To test Authority, I would check... and for Accuracy, I would verify..." autocomplete="off"></textarea>
+            </div>
+            <div class="form-footer">
+              <p class="privacy-note"><span aria-hidden="true">◉</span> Autosaved locally in your browser.</p>
+              <span class="save-status" id="save-status-5" role="status" aria-live="polite">Your lab notes are ready.</span>
+            </div>
+            <div class="form-actions">
+              <button class="button button-primary" type="button" data-save-notes>Save Notes <span aria-hidden="true">✓</span></button>
+              <button class="button button-outline" type="button" data-print-page>Print / Save PDF <span aria-hidden="true">↗</span></button>
+              <button class="quiet-button" type="button" data-clear-notes>Clear Notes</button>
+            </div>
+          </form>
+        </section>
+
+        <nav class="chapter-navigation" aria-label="Unit 5 navigation">
+          <a class="chapter-nav-card" href="#unit-four" aria-label="Return to Unit 4">
+            <span class="nav-direction">← &nbsp; PREVIOUS</span><strong>Unit 4: Programming</strong><span class="nav-subtext">Scratch Blocks &amp; Logic</span>
+          </a>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:.4rem;">
+            <button class="contents-center" type="button" data-open-contents><span aria-hidden="true">▤</span> Table of Contents</button>
+            <a href="#syllabus-table" class="nav-back-syllabus" title="Return to syllabus map">↑ Back to Syllabus</a>
+          </div>
+          <a class="chapter-nav-card next-card" href="#unit-six" aria-label="Proceed to Unit 6">
+            <span class="nav-direction">NEXT &nbsp; →</span><strong>Unit 6: Entrepreneurship</strong><span class="nav-subtext">Design Thinking &amp; Digital Ventures</span>
+          </a>
+        </nav>
+      </article>
+
+      <!-- ========================================================================= -->
+      <!-- UNIT 6: ENTREPRENEURSHIP IN DIGITAL AGE -->
+      <!-- ========================================================================= -->
+      <article class="chapter" id="unit-six" aria-labelledby="unit-six-title">
+        <header class="chapter-heading">
+          <div class="chapter-heading-mark" aria-hidden="true">06</div>
+          <div>
+            <a href="#syllabus-table" class="unit-back-link">← Back to Course Syllabus</a>
+            <div class="unit-badge">Unit 06 · Innovation &amp; Ventures</div>
+            <h2 id="unit-six-title">Entrepreneurship in Digital Age</h2>
+          </div>
+        </header>
+
+        <div class="reading-column">
+          <p class="lead-paragraph">Technology is far more than entertainment or games—it is the ultimate creative workshop. Today, you don't need a corporate office in Silicon Valley or millions in funding to build a real business. With just a laptop, an internet connection, and genuine empathy for a problem in your school or neighborhood, you can create a digital solution that impacts thousands of people.</p>
+
+          <h3>1. What is Digital Entrepreneurship? (Maker Mindset)</h3>
+          <p>An <strong>entrepreneur</strong> is someone who spots a frustrating problem in society, designs an innovative way to solve it, takes initiative, and turns that idea into a viable reality:</p>
+          <ul>
+            <li><strong>Traditional Business:</strong> Usually requires physical brick-and-mortar storefronts, purchasing boxes of physical stock upfront, and paying steep rent before ever making a single rupee.</li>
+            <li><strong>Digital Ventures:</strong> Built on cloud infrastructure, websites, and software. Once you build a useful website, mobile app, or digital guide, whether 10 people use it or 10,000 people use it, your cost to deliver it is virtually zero!</li>
+          </ul>
+
+          <div class="author-insight">
+            <div class="author-insight-icon" aria-hidden="true">🚀</div>
+            <div class="author-insight-body">
+              <h4>Huzaifa's Founder Lesson: Build Lean, Talk Early</h4>
+              <p>The single biggest mistake young creators make is hiding in their bedrooms for six months building in complete secrecy, only to discover on launch day that nobody actually wants their product! The modern way to build is <strong>Lean</strong>: create a simple, scrappy prototype in a weekend, show it to five real people, listen with an open mind to their candid reactions, and refine it iteratively based on real feedback.</p>
+            </div>
+          </div>
+
+          <h3>2. The Mindset of a Digital Founder</h3>
+          <ul>
+            <li><strong>Empathy:</strong> Deeply listening to users and understanding their daily headaches instead of assuming you already have all the answers.</li>
+            <li><strong>Growth Mindset:</strong> Reframing early mistakes not as embarrassing failures, but as priceless data that shows you how to improve.</li>
+            <li><strong>Resilience &amp; Adaptability:</strong> The willingness to pivot features smoothly when you discover what users actually love.</li>
+            <li><strong>Resourcefulness:</strong> Accomplishing big things using free open-source tools, cloud services, and community collaboration.</li>
+          </ul>
+
+          <h3>3. The 5-Stage Design Thinking Framework</h3>
+          <p><strong>Design Thinking</strong> is the human-centered innovation method used by leading startups like Airbnb, Apple, and Khan Academy to turn fuzzy problems into beloved products:</p>
+          
+          <ul class="step-list">
+            <li><strong>1. Empathize:</strong> Step into your user's shoes. Talk to students, teachers, or parents and observe where they get stuck in their day.</li>
+            <li><strong>2. Define:</strong> Boil your observations down to one clear, sharp problem statement: <em>"Students spend 20 minutes standing in cafeteria lines during a 30-minute recess, leaving no time to eat."</em></li>
+            <li><strong>3. Ideate:</strong> Brainstorm dozens of possible ways to fix it without judging any idea early. Let creativity flow before picking the strongest concept.</li>
+            <li><strong>4. Prototype:</strong> Build a low-cost, quick model (a Minimum Viable Product, or MVP)—like a clickable wireframe, a simple web page, or paper mockups.</li>
+            <li><strong>5. Test:</strong> Put your MVP directly into users' hands. Watch how they navigate it, ask what surprised them, and iterate until it's effortless.</li>
+          </ul>
+
+          <h3>4. Digital Business Models &amp; Startup Archetypes</h3>
+          <p>Modern founders leverage diverse digital models to generate sustainable revenue:</p>
+          <ul>
+            <li><strong>E-Commerce &amp; Online Marketplaces:</strong> Selling physical handcrafted goods, customized merchandise, or local produce via digital storefronts.</li>
+            <li><strong>Software as a Service (SaaS):</strong> Providing cloud-hosted tools (e.g., student homework organizers, school library managers) on a subscription model.</li>
+            <li><strong>Digital Content Creation &amp; Media:</strong> Publishing educational YouTube videos, podcasts, and informative newsletters monetized through sponsorships and course memberships.</li>
+            <li><strong>Freelance Digital Services:</strong> Offering specialized technical skills such as web development, graphic design, video editing, or translation to international clients on platforms.</li>
+          </ul>
+
+          <h3>5. The One-Page Lean Startup Canvas</h3>
+          <p>Rather than drafting 50-page business plans, modern startups map their hypothesis onto a 1-page canvas:</p>
+        </div>
+
+        <div class="data-table-wrapper" style="width:min(100%, 930px); margin:2rem auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:200px;">Canvas Block</th>
+                <th>Focus Question</th>
+                <th>Example (School Cafeteria Pre-Order App)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. Problem</strong></td>
+                <td>What top 3 problems do target customers face?</td>
+                <td>Long 20-minute cafeteria queues, students running out of lunchtime, food waste.</td>
+              </tr>
+              <tr>
+                <td><strong>2. Customer Segments</strong></td>
+                <td>Who are you specifically building this for?</td>
+                <td>School students, teachers with short breaks, and cafeteria staff.</td>
+              </tr>
+              <tr>
+                <td><strong>3. Unique Value Proposition</strong></td>
+                <td>What makes your solution distinctly better?</td>
+                <td>"Order recess snacks from your classroom in 10 seconds and grab them without waiting in line."</td>
+              </tr>
+              <tr>
+                <td><strong>4. Solution (MVP)</strong></td>
+                <td>What are the core features of your prototype?</td>
+                <td>Mobile web app showing daily menu, 1-click token pre-order, and pickup countdown.</td>
+              </tr>
+              <tr>
+                <td><strong>5. Channels</strong></td>
+                <td>How will you reach your customers?</td>
+                <td>School morning assembly presentation, posters with QR codes on cafeteria tables.</td>
+              </tr>
+              <tr>
+                <td><strong>6. Revenue Model</strong></td>
+                <td>How will the enterprise sustain its costs?</td>
+                <td>Small 5% fee paid by cafeteria vendor for increasing pre-orders and eliminating food waste.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="reading-column">
+          <h3>6. The 2-Minute Elevator Pitch Structure</h3>
+          <p>When presenting your digital business idea to teachers, peers, or potential investors, follow this proven 4-part pitch framework:</p>
+          <ol>
+            <li><strong>The Hook &amp; Problem (30 sec):</strong> Begin with a vivid story or relatable statistic demonstrating the problem.</li>
+            <li><strong>Your Solution &amp; Demo (45 sec):</strong> Present your digital product and explain how it elegantly solves the pain point.</li>
+            <li><strong>Traction &amp; Validation (30 sec):</strong> Share early user feedback or survey numbers demonstrating that people want this.</li>
+            <li><strong>The Call to Action (15 sec):</strong> Clearly state what you need next (e.g., pilot testing with Grade 7 students, school administration approval).</li>
+          </ol>
+
+          <h3>7. Ethics &amp; Sustainability in Tech Ventures</h3>
+          <p>True success requires building socially responsible technology:</p>
+          <ul>
+            <li><strong>Data Privacy by Design:</strong> Safeguard user data and never sell personal information to advertising brokers.</li>
+            <li><strong>Accessibility:</strong> Ensure websites and apps are accessible to people with visual, hearing, or motor disabilities (captions, screen reader tags, high contrast).</li>
+            <li><strong>Green Computing:</strong> Utilize energy-efficient code, renewable-powered cloud servers, and minimize electronic waste.</li>
+          </ul>
+        </div>
+
+        <aside class="try-card" aria-labelledby="try-check-6">
+          <div class="try-card-label"><span class="try-icon" aria-hidden="true">✳</span> Real-World Concept Check</div>
+          <div class="try-card-content">
+            <h3 id="try-check-6">Student Venture: Green Campus Food Share</h3>
+            <blockquote>
+              “<strong>The Problem:</strong> Fresh cafeteria food was being discarded daily at 2:00 PM while neighboring community staff faced food insecurity.<br>
+              <strong>The Prototype:</strong> Two Grade 7 students built a simple web dashboard listing surplus cafeteria meal boxes at 50% discount for pickup during the last 30 minutes of school.<br>
+              <strong>The Result:</strong> 120 meals saved per week, zero waste for the cafeteria, and funds raised for new school library books!”
+            </blockquote>
+          </div>
+        </aside>
+
+        <!-- Unit 6 Interactive Student Lab Workbook -->
+                <!-- Unit 6 Interactive Self-Assessment Quiz -->
+        <section class="quiz-section" id="quiz-unit-6" data-quiz-unit="6" aria-labelledby="quiz-u6-title">
+          <div class="quiz-header">
+            <div>
+              <p class="eyebrow">Unit 06 · Interactive Assessment</p>
+              <h3 id="quiz-u6-title">Entrepreneurship in Digital Age Quiz — Check Your Knowledge</h3>
+              <p>Test your understanding with instant feedback and explanations.</p>
+            </div>
+            <div class="quiz-score-badge">Score: 0 / 5 (0%)</div>
+          </div>
+          <div class="quiz-grid">
+          <div class="quiz-card" data-answer="2" data-explain="Empathize is stage 1: deeply listening to users and observing their daily struggles to understand the real problem.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">01</span> What is the initial stage in the 5-step Design Thinking innovation process?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Prototype</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Ideate</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Empathize</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Test</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="1" data-explain="An MVP is a basic, working prototype launched quickly to test whether people actually want the solution.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">02</span> What is a Minimum Viable Product (MVP)?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>The final polished product sold after 5 years of development.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>The simplest functional prototype built with minimum effort to validate assumptions with real users.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>The most expensive server hardware you can buy.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>A 50-page business proposal for banks.</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="0" data-explain="Digital ventures can scale globally over the internet with low physical overhead and instant digital distribution.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">03</span> Which of the following is a primary advantage of digital entrepreneurship over physical brick-and-mortar business?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Instant global reach and near-zero replication and distribution costs.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Requiring massive warehouse inventory.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Only being operational during daytime shop hours.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Being immune to competition.</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="1" data-explain="The opening 30 seconds must hook the audience's attention and clearly frame the human problem being solved.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">04</span> In a 2-Minute Elevator Pitch, what should the opening 30 seconds be dedicated to?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Asking for investor money.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>A captivating hook and relatable problem statement.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Reading legal copyright terms.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Showing technical programming code.</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <div class="quiz-card" data-answer="1" data-explain="Green computing focuses on energy-efficient programming, low-carbon cloud hosting, and reducing electronic waste.">
+            <h4><span class="prompt-number" style="display:inline-grid; margin-right:.4rem;">05</span> What does 'Green Computing' in sustainable digital startups refer to?</h4>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn" data-option="0">
+                <span class="quiz-option-letter">A</span>
+                <span>Painting computers green.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="1">
+                <span class="quiz-option-letter">B</span>
+                <span>Developing energy-efficient code and utilizing renewable-powered cloud servers to minimize environmental impact.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="2">
+                <span class="quiz-option-letter">C</span>
+                <span>Only developing botany and plant applications.</span>
+              </button>
+              <button type="button" class="quiz-option-btn" data-option="3">
+                <span class="quiz-option-letter">D</span>
+                <span>Turning off computers forever.</span>
+              </button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          </div>
+          <button type="button" class="quiz-reset-btn">↺ Reset Quiz</button>
+        </section>
+
+<section class="workbook-section" id="workbook-unit-6" aria-labelledby="wb-title-6">
+          <div class="section-heading">
+            <p class="eyebrow">Interactive Student Lab Workbook · Unit 06</p>
+            <h3 id="wb-title-6">Unit 6 Founder's Project Canvas</h3>
+            <p>Design your own digital innovation project using the Design Thinking methodology.</p>
+          </div>
+          <form id="reflection-form-6" class="reflection-form">
+            <div class="prompt-row">
+              <label for="u6-p1"><span class="prompt-number">01</span><span><strong>Problem &amp; Empathy</strong><small>What everyday difficulty in your school or neighborhood could be solved with a simple website or app?</small></span></label>
+              <textarea id="u6-p1" name="founder-problem" rows="3" placeholder="Problem observed: ...&#10;Who experiences this frustration: ..." autocomplete="off"></textarea>
+            </div>
+            <div class="prompt-row">
+              <label for="u6-p2"><span class="prompt-number">02</span><span><strong>Your Digital Solution (MVP)</strong><small>Describe the simplest digital prototype (MVP) you could launch in two weeks to test this idea.</small></span></label>
+              <textarea id="u6-p2" name="founder-mvp" rows="3" placeholder="My MVP would be a website/bot that allows users to..." autocomplete="off"></textarea>
+            </div>
+            <div class="prompt-row">
+              <label for="u6-p3"><span class="prompt-number">03</span><span><strong>Elevator Pitch Hook</strong><small>Write the opening 2 sentences of your elevator pitch to captivate your classmates' attention.</small></span></label>
+              <textarea id="u6-p3" name="founder-pitch" rows="3" placeholder="Have you ever wondered why...? That is why we built..." autocomplete="off"></textarea>
+            </div>
+            <div class="form-footer">
+              <p class="privacy-note"><span aria-hidden="true">◉</span> Autosaved locally in your browser.</p>
+              <span class="save-status" id="save-status-6" role="status" aria-live="polite">Your lab notes are ready.</span>
+            </div>
+            <div class="form-actions">
+              <button class="button button-primary" type="button" data-save-notes>Save Notes <span aria-hidden="true">✓</span></button>
+              <button class="button button-outline" type="button" data-print-page>Print / Save PDF <span aria-hidden="true">↗</span></button>
+              <button class="quiet-button" type="button" data-clear-notes>Clear Notes</button>
+            </div>
+          </form>
+        </section>
+
+        <nav class="chapter-navigation" aria-label="Unit 6 navigation">
+          <a class="chapter-nav-card" href="#unit-five" aria-label="Return to Unit 5">
+            <span class="nav-direction">← &nbsp; PREVIOUS</span><strong>Unit 5: Digital Citizenship</strong><span class="nav-subtext">Safety &amp; Cyber Ethics</span>
+          </a>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:.4rem;">
+            <button class="contents-center" type="button" data-open-contents><span aria-hidden="true">▤</span> Table of Contents</button>
+            <a href="#syllabus-table" class="nav-back-syllabus" title="Return to syllabus map">↑ Back to Syllabus</a>
+          </div>
+          <a class="chapter-nav-card next-card" href="#glossary" aria-label="Proceed to Reference Glossary">
+            <span class="nav-direction">NEXT &nbsp; →</span><strong>Master Glossary</strong><span class="nav-subtext">Terms &amp; Abbreviations</span>
+          </a>
+        </nav>
+      </article>
+
+      <!-- ========================================================================= -->
+      <!-- INTERACTIVE FLASHCARDS SECTION -->
+      <!-- ========================================================================= -->
+      <section class="flashcards-section" id="flashcards" aria-labelledby="flashcards-title">
+        <a href="#syllabus-table" class="unit-back-link">← Back to Course Syllabus</a>
+        <div class="section-heading">
+          <p class="eyebrow">Interactive Study Mode · Concept Mastery</p>
+          <h2 id="flashcards-title">Interactive Flashcards</h2>
+          <p>Click any card to flip and reveal the definition. Test your memory across all 6 units!</p>
+        </div>
+
+        <div class="flashcard-toolbar">
+          <div>
+            <label for="flashcard-filter" style="font-size:.82rem; font-weight:700; margin-right:.5rem;">Filter Unit:</label>
+            <select id="flashcard-filter" class="flashcard-filter-select">
+              <option value="all">All Units &amp; Acronyms (Complete Deck)</option>
+              <option value="Unit 1">Unit 1: ICT Fundamentals</option>
+              <option value="Unit 2">Unit 2: Digital Skills</option>
+              <option value="Unit 3">Unit 3: Algorithmic Thinking</option>
+              <option value="Unit 4">Unit 4: Programming</option>
+              <option value="Unit 5">Unit 5: Digital Citizenship</option>
+              <option value="Unit 6">Unit 6: Entrepreneurship</option>
+              <option value="Acronyms">Core Computing Acronyms</option>
+            </select>
+          </div>
+          <div class="flashcard-stats">
+            <span class="flashcard-stat-pill mastered" id="mastered-count">0 Mastered</span>
+            <span class="flashcard-stat-pill review" id="review-count">0 Need Review</span>
+          </div>
+        </div>
+
+        <div class="flashcard-scene">
+          <div class="flashcard-obj" id="flashcard-obj" title="Click to flip card">
+            <!-- Front -->
+            <div class="flashcard-face flashcard-face-front">
+              <span class="flashcard-tag" id="flashcard-tag">Unit 1</span>
+              <h3 class="flashcard-term-text" id="flashcard-term">ICT</h3>
+              <span class="flashcard-click-hint"><span aria-hidden="true">↻</span> Click or tap card to flip</span>
+            </div>
+            <!-- Back -->
+            <div class="flashcard-face flashcard-face-back">
+              <span class="flashcard-tag">Definition &amp; Core Meaning</span>
+              <p class="flashcard-desc-text" id="flashcard-def">Information &amp; Communication Technology: the broad ecosystem of computing devices, telecommunication networks, and software handling digital information.</p>
+              <span class="flashcard-click-hint" style="margin-top:1rem;"><span aria-hidden="true">↺</span> Click again to flip back</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="flashcard-counter" id="flashcard-counter" style="text-align:center; margin-top:1.2rem;">Card 1 of 35</p>
+
+        <div class="flashcard-controls">
+          <button type="button" class="flashcard-btn" id="card-prev">← Previous</button>
+          <button type="button" class="flashcard-btn warning" id="card-review">↺ Review Later</button>
+          <button type="button" class="flashcard-btn success" id="card-master">✓ Mastered</button>
+          <button type="button" class="flashcard-btn" id="card-shuffle">🔀 Shuffle</button>
+          <button type="button" class="flashcard-btn" id="card-next">Next →</button>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- MASTER CURRICULUM GLOSSARY -->
+      <!-- ========================================================================= -->
+      <section class="ref-section" id="glossary" aria-labelledby="glossary-title">
+        <div class="section-heading">
+          <a href="#syllabus-table" class="unit-back-link">← Back to Course Syllabus</a>
+          <p class="eyebrow">Reference Section · Curriculum Terms</p>
+          <h2 id="glossary-title">Master Curriculum Glossary</h2>
+          <p>Essential computing terms, definitions, and concepts across Units 1 to 6.</p>
+        </div>
+        <dl class="ref-grid">
+          <div class="ref-card">
+            <dt>ICT</dt>
+            <dd>Information and Communication Technology: the convergence of computing devices, telecommunication networks, and software handling digital information.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Data</dt>
+            <dd>Raw, unorganized facts, numbers, or symbols that carry no specific meaning without context.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Information</dt>
+            <dd>Data that has been processed, structured, organized, and contextualized into a meaningful, actionable format.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>IPO Cycle</dt>
+            <dd>Input-Process-Output Cycle: the universal four-stage operational model of all computing systems.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Central Processing Unit (CPU)</dt>
+            <dd>The primary electronic processor and "brain" of the computer that carries out program instructions.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Arithmetic Logic Unit (ALU)</dt>
+            <dd>The component of the CPU executing arithmetic operations (+, -, *, /) and logical comparisons (&lt;, &gt;, =).</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Control Unit (CU)</dt>
+            <dd>The component of the CPU coordinating signals and directing instructions between memory, ALU, and input/output devices.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Random Access Memory (RAM)</dt>
+            <dd>High-speed, volatile primary memory holding active instructions and temporary data currently in use. Empties on shutdown.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Read-Only Memory (ROM)</dt>
+            <dd>Non-volatile semiconductor chip permanently storing startup firmware (BIOS) required to boot the computer.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Operating System (OS)</dt>
+            <dd>System software that manages computer hardware resources, file storage, and provides an interface for users and applications.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Word Processor</dt>
+            <dd>Application software dedicated to drafting, editing, formatting, reviewing, and printing text documents.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Slide Master</dt>
+            <dd>The master template in presentation software controlling themes, layout presets, headers, and typography across all slides.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Email (Electronic Mail)</dt>
+            <dd>A network method of exchanging structured digital messages and attached files across the Internet.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Netiquette</dt>
+            <dd>The code of polite, ethical, and respectful communication expected when interacting on the Internet.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Computational Thinking</dt>
+            <dd>A structured cognitive problem-solving approach comprising decomposition, pattern recognition, abstraction, and algorithms.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Algorithm</dt>
+            <dd>A step-by-step, finite, unambiguous sequence of instructions designed to accomplish a specific task or solve a problem.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Flowchart</dt>
+            <dd>A graphical representation of an algorithm using standardized geometric shapes interconnected with directional flow lines.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Trace Table</dt>
+            <dd>A manual matrix used by programmers to dry run an algorithm step-by-step, recording variable changes to identify logic bugs.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Compiler</dt>
+            <dd>A programming tool that translates the complete source code of a program into executable machine code before execution.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Interpreter</dt>
+            <dd>A programming translator that analyzes and runs program instructions sequentially line by line.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Variable</dt>
+            <dd>A named memory location in a program used to store and update values (such as Score, Lives, or PlayerName).</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Iteration (Loop)</dt>
+            <dd>A programming construct that repeats a block of code multiple times (e.g., repeat n times, forever, repeat until).</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Selection</dt>
+            <dd>A conditional programming construct that tests a condition to execute specific code paths (if-then-else).</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Digital Footprint</dt>
+            <dd>The permanent electronic trail of active posts and passive telemetry records left behind when using digital devices.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Two-Factor Authentication (2FA)</dt>
+            <dd>A security process requiring two independent authentication factors (password + OTP code) to verify user identity.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Malware</dt>
+            <dd>Any software deliberately created to infiltrate, disrupt, compromise, or damage a computer system.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Ransomware</dt>
+            <dd>Malicious software that encrypts user files and documents, demanding a ransom payment to restore access.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Phishing</dt>
+            <dd>Social engineering attacks utilizing deceptive messages and fake websites to steal confidential login credentials.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Copyright</dt>
+            <dd>Legal protection granting authors, artists, and creators exclusive ownership and distribution rights over their original works.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>PECA (2016)</dt>
+            <dd>Prevention of Electronic Crimes Act: Pakistan's federal law penalizing hacking, cyber terrorism, and online harassment.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Design Thinking</dt>
+            <dd>A human-centered 5-stage innovation framework: Empathize, Define, Ideate, Prototype, and Test.</dd>
+          </div>
+          <div class="ref-card">
+            <dt>Minimum Viable Product (MVP)</dt>
+            <dd>The simplest version of a product built with minimum features to validate a hypothesis with real customers.</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- MASTER ABBREVIATIONS DIRECTORY -->
+      <!-- ========================================================================= -->
+      <section class="ref-section" id="abbreviations" aria-labelledby="abbrev-title">
+        <div class="section-heading">
+          <a href="#syllabus-table" class="unit-back-link">← Back to Course Syllabus</a>
+          <p class="eyebrow">Reference Section · Computing Acronyms</p>
+          <h2 id="abbrev-title">Abbreviations &amp; Acronyms Directory</h2>
+          <p>Standard computing abbreviations across the entire curriculum.</p>
+        </div>
+        <div class="abbrev-grid">
+          <div class="abbrev-card">
+            <span class="abbrev-short">ICT</span>
+            <span class="abbrev-full">Information and Communication Technology</span>
+            <span class="abbrev-desc">Technologies for processing, storing, and communicating data.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">CPU</span>
+            <span class="abbrev-full">Central Processing Unit</span>
+            <span class="abbrev-desc">The primary microchip processor / "brain" of a computer.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">ALU</span>
+            <span class="abbrev-full">Arithmetic Logic Unit</span>
+            <span class="abbrev-desc">Carries out arithmetic and logical comparisons in the CPU.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">CU</span>
+            <span class="abbrev-full">Control Unit</span>
+            <span class="abbrev-desc">Coordinates signals and instructions across the computer.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">RAM</span>
+            <span class="abbrev-full">Random Access Memory</span>
+            <span class="abbrev-desc">Volatile primary memory holding active data.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">ROM</span>
+            <span class="abbrev-full">Read-Only Memory</span>
+            <span class="abbrev-desc">Non-volatile chip storing permanent boot firmware.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">IPO</span>
+            <span class="abbrev-full">Input, Process, Output</span>
+            <span class="abbrev-desc">The universal model of computational workflow.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">OS</span>
+            <span class="abbrev-full">Operating System</span>
+            <span class="abbrev-desc">Master system software managing hardware and applications.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">SSD</span>
+            <span class="abbrev-full">Solid State Drive</span>
+            <span class="abbrev-desc">High-speed flash secondary storage with no moving mechanical parts.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">HDD</span>
+            <span class="abbrev-full">Hard Disk Drive</span>
+            <span class="abbrev-desc">Magnetic secondary storage utilizing spinning platters.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">USB</span>
+            <span class="abbrev-full">Universal Serial Bus</span>
+            <span class="abbrev-desc">Standard connection protocol for peripherals and flash drives.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">HDMI</span>
+            <span class="abbrev-full">High-Definition Multimedia Interface</span>
+            <span class="abbrev-desc">Transmits high-definition uncompressed audio and video streams.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">URL</span>
+            <span class="abbrev-full">Uniform Resource Locator</span>
+            <span class="abbrev-desc">The unique web address of a digital resource on the Internet.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">LAN</span>
+            <span class="abbrev-full">Local Area Network</span>
+            <span class="abbrev-desc">Network spanning a small geographical area like a school lab.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">WAN</span>
+            <span class="abbrev-full">Wide Area Network</span>
+            <span class="abbrev-desc">Network connecting systems over cities or continents (Internet).</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">AI</span>
+            <span class="abbrev-full">Artificial Intelligence</span>
+            <span class="abbrev-desc">Computer systems simulating human reasoning, vision, or learning.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">2FA</span>
+            <span class="abbrev-full">Two-Factor Authentication</span>
+            <span class="abbrev-desc">Security method requiring two distinct proof factors to log in.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">VPN</span>
+            <span class="abbrev-full">Virtual Private Network</span>
+            <span class="abbrev-desc">Encrypted network tunnel securing communications over public Wi-Fi.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">PECA</span>
+            <span class="abbrev-full">Prevention of Electronic Crimes Act</span>
+            <span class="abbrev-desc">Pakistan's national cybercrime and electronic safety legislation.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">MVP</span>
+            <span class="abbrev-full">Minimum Viable Product</span>
+            <span class="abbrev-desc">Initial prototype built with core features to test with real users.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">SaaS</span>
+            <span class="abbrev-full">Software as a Service</span>
+            <span class="abbrev-desc">Cloud-hosted software applications accessible via web browser.</span>
+          </div>
+          <div class="abbrev-card">
+            <span class="abbrev-short">UI / UX</span>
+            <span class="abbrev-full">User Interface / User Experience</span>
+            <span class="abbrev-desc">The visual layout and experiential ease of digital products.</span>
+          </div>
+        </div>
+      </section>
+      <!-- Modal Dialog: Live In-Book Search Engine -->
+      <dialog class="search-dialog" id="search-dialog" aria-labelledby="search-dialog-title">
+        <div class="search-header">
+          <div class="search-input-box">
+            <span class="search-input-icon" aria-hidden="true">🔍</span>
+            <input type="search" id="search-input" placeholder="Search units, terms, definitions, shortcuts..." autocomplete="off">
+          </div>
+          <button class="dialog-close" type="button" id="search-close" aria-label="Close search">×</button>
+        </div>
+        <div class="search-chips">
+          <button type="button" class="search-chip-btn active" data-filter="all">All Results</button>
+          <button type="button" class="search-chip-btn" data-filter="unit">Units &amp; Topics</button>
+          <button type="button" class="search-chip-btn" data-filter="glossary">Glossary Terms</button>
+          <button type="button" class="search-chip-btn" data-filter="abbrev">Acronyms</button>
+          <button type="button" class="search-chip-btn" data-filter="shortcut">Keyboard Shortcuts</button>
+        </div>
+        <div class="search-results-list" id="search-results">
+          <div class="search-empty">Type any keyword above to search across all 6 units, definitions, and shortcuts...</div>
+        </div>
+      </dialog>
+
+      <!-- Floating Quick-Action Back Navigation Dock -->
+      <aside class="floating-back-dock" aria-label="Quick back navigation">
+        <button type="button" class="floating-btn primary" data-go-back title="Go back to previous view">← Back</button>
+        <a href="#syllabus-table" class="floating-btn" title="Back to course syllabus">▤ Syllabus</a>
+        <a href="#top" class="floating-btn" title="Scroll back to top">↑ Top</a>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <a class="footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">f<span>0</span>undr</span> <span>Book</span></a>
+      <p>Written &amp; Curated by <strong>Huzaifa</strong> and the <strong>f0undr Team</strong> (official home of <strong>f0undr Book</strong>, <strong>f0 book</strong>, and <strong>f e books</strong>). An original hands-on computing curriculum and interactive workbook.</p>
+      <a class="back-to-top" href="#top">Back to top ↑</a>
+    </footer>
+
+    <!-- Modal Dialog: Complete Table of Contents -->
+    <dialog class="contents-dialog" id="contents-dialog" aria-labelledby="contents-title">
+      <div class="dialog-heading">
+        <div><p class="eyebrow">f0undr Book · Syllabus</p><h2 id="contents-title">Table of Contents</h2></div>
+        <button class="dialog-close" type="button" data-close-contents aria-label="Close table of contents">×</button>
+      </div>
+      <p class="dialog-note">The complete curriculum structure of f0undr Book. Select any unit to jump directly:</p>
+      <nav aria-label="Book units"><ol class="contents-list">
+        <li><a href="#unit-one"><span class="toc-number">01</span><span class="toc-title">Unit 1: ICT Fundamentals</span><span class="toc-state">Read</span></a></li>
+        <li><a href="#unit-two"><span class="toc-number">02</span><span class="toc-title">Unit 2: Digital Skills</span><span class="toc-state">Read</span></a></li>
+        <li><a href="#unit-three"><span class="toc-number">03</span><span class="toc-title">Unit 3: Algorithmic Thinking</span><span class="toc-state">Read</span></a></li>
+        <li><a href="#unit-four"><span class="toc-number">04</span><span class="toc-title">Unit 4: Programming</span><span class="toc-state">Read</span></a></li>
+        <li><a href="#unit-five"><span class="toc-number">05</span><span class="toc-title">Unit 5: Digital Citizenship</span><span class="toc-state">Read</span></a></li>
+        <li><a href="#unit-six"><span class="toc-number">06</span><span class="toc-title">Unit 6: Entrepreneurship in Digital Age</span><span class="toc-state">Read</span></a></li>
+        <li><a href="#flashcards"><span class="toc-number">🎴</span><span class="toc-title">Interactive Flashcards</span><span class="toc-state">Study Mode</span></a></li>
+        <li><a href="#glossary"><span class="toc-number">📖</span><span class="toc-title">Master Glossary</span><span class="toc-state">Reference</span></a></li>
+        <li><a href="#abbreviations"><span class="toc-number">🔤</span><span class="toc-title">Abbreviations Directory</span><span class="toc-state">Reference</span></a></li>
+      </ol></nav>
+    </dialog>
+
+    <noscript><p class="noscript-note">JavaScript is off. You can still read and print this book; interactive lab notes require JavaScript.</p></noscript>
+  </body>
+</html>

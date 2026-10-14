@@ -115,7 +115,7 @@ export const Navbar = ({
 
             {/* Direct f0undr Book Link */}
             <a
-              href="https://f-e-book.vercel.app/"
+              href="/book/"
               target="_blank"
               rel="noreferrer"
               className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#fff7ed] hover:bg-[#ffedd5] text-[#c2410c] border border-[#ffedd5] text-xs font-semibold transition-all hover:-translate-y-0.5 shadow-2xs"
