@@ -379,7 +379,7 @@ export const INITIAL_CURATED_TOOLS: CuratedTool[] = [
     tagline: 'Interactive Computing & Technology curriculum platform',
     description: 'The live web edition of the f0undr curriculum covering Units 1 to 6. Complete with chapter progress strips, interactive quizzes, flashcards, and student lab workbooks.',
     category: 'Productivity',
-    url: 'https://f-e-book.vercel.app/',
+    url: '/book/',
     pricing: 'Free',
     featured: true,
     tags: ['Curriculum', 'Education', 'Interactive', 'f0undr Core'],
@@ -624,7 +624,7 @@ export const INITIAL_VENTURES: Venture[] = [
     description: 'Live interactive e-book platform featuring 6 comprehensive units, IPO cycle architectures, algorithmic trace tables, real-world case studies, and browser-autosaving lab workbooks.',
     metrics: 'Live • 6 Complete Units',
     tags: ['Curriculum', 'Interactive E-Book', 'Computer Science', 'Live on Vercel'],
-    link: 'https://f-e-book.vercel.app/',
+    link: '/book/',
   },
   {
     id: 'venture-1',

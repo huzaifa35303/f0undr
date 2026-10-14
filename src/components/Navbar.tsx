@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Search, BookOpen, Users, Wrench, Package, ArrowUpRight, Compass, Shield, Lock } from 'lucide-react';
+import { Search, BookOpen, Users, Wrench, Package, ArrowUpRight, Compass, Shield, Lock, GraduationCap } from 'lucide-react';
 import type { AuthUser } from '../types';
 
 interface NavbarProps {
@@ -38,6 +38,7 @@ export const Navbar = ({
 
   const navItems = [
     { id: 'overview', label: 'Overview', icon: Compass },
+    { id: 'curriculum', label: 'f0undr Book', icon: GraduationCap },
     { id: 'books', label: `Bookshelf (${counts.books})`, icon: BookOpen },
     { id: 'team', label: `Team (${counts.team})`, icon: Users },
     { id: 'tools', label: `Tools (${counts.tools})`, icon: Wrench },

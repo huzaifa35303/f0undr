@@ -110,13 +110,13 @@ export const Footer: React.FC<FooterProps> = ({
 
             <div className="flex flex-wrap items-center gap-2 pt-2">
               <a
-                href="https://f-e-book.vercel.app/"
+                href="/book/"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-[#fff7ed] text-[#c2410c] border border-[#ffedd5] hover:bg-[#ffedd5] transition-colors shadow-2xs"
               >
                 <BookOpen className="w-3.5 h-3.5" />
-                <span>f0undr Book (Live)</span>
+                <span>f0undr Book (Units 1–6)</span>
               </a>
 
               <button
@@ -135,7 +135,7 @@ export const Footer: React.FC<FooterProps> = ({
           <p>© {new Date().getFullYear()} f0undr. Crafted with editorial rigor for founders and engineers.</p>
           <div className="flex items-center gap-4">
             <a
-              href="https://f-e-book.vercel.app/"
+              href="/book/"
               target="_blank"
               rel="noreferrer"
               className="text-[#c2410c] hover:underline flex items-center gap-1 font-semibold"

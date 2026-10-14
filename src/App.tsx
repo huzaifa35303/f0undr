@@ -21,7 +21,7 @@ import { AddModal } from './components/AddModal';
 import { LoginModal } from './components/LoginModal';
 import { AdminPanel } from './components/AdminPanel';
 import { Footer } from './components/Footer';
-import { ArrowUpRight, Award } from 'lucide-react';
+import { ArrowUpRight, Award, BookOpen, GraduationCap, Maximize2 } from 'lucide-react';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<string>('overview');
@@ -44,7 +44,7 @@ export function App() {
   // SEO Settings State
   const [seoSettings, setSeoSettings] = useState<SeoSettings>(() => {
     try {
-      const saved = localStorage.getItem('f0undr_seo_settings');
+      const saved = localStorage.getItem('f0undr_seo_settings_v2');
       if (saved) return JSON.parse(saved);
       const currentOrigin =
         typeof window !== 'undefined' && window.location.origin.includes('vercel.app')
@@ -66,10 +66,10 @@ export function App() {
     }
   });
 
-  // Persistent Content States
+  // Persistent Content States (v2 cache bust ensures fresh updates)
   const [books, setBooks] = useState<Book[]>(() => {
     try {
-      const saved = localStorage.getItem('f0undr_books_editorial_v1');
+      const saved = localStorage.getItem('f0undr_books_editorial_v2');
       return saved ? JSON.parse(saved) : INITIAL_BOOKS;
     } catch {
       return INITIAL_BOOKS;
@@ -78,7 +78,7 @@ export function App() {
 
   const [tools, setTools] = useState<CuratedTool[]>(() => {
     try {
-      const saved = localStorage.getItem('f0undr_tools_editorial_v1');
+      const saved = localStorage.getItem('f0undr_tools_editorial_v2');
       return saved ? JSON.parse(saved) : INITIAL_CURATED_TOOLS;
     } catch {
       return INITIAL_CURATED_TOOLS;
@@ -87,7 +87,7 @@ export function App() {
 
   const [team, setTeam] = useState<TeamMember[]>(() => {
     try {
-      const saved = localStorage.getItem('f0undr_team_editorial_v1');
+      const saved = localStorage.getItem('f0undr_team_editorial_v2');
       return saved ? JSON.parse(saved) : INITIAL_TEAM;
     } catch {
       return INITIAL_TEAM;
@@ -96,7 +96,7 @@ export function App() {
 
   const [things, setThings] = useState<Thing[]>(() => {
     try {
-      const saved = localStorage.getItem('f0undr_things_editorial_v1');
+      const saved = localStorage.getItem('f0undr_things_editorial_v2');
       return saved ? JSON.parse(saved) : INITIAL_THINGS;
     } catch {
       return INITIAL_THINGS;
@@ -105,19 +105,19 @@ export function App() {
 
   // Save to localStorage on changes
   useEffect(() => {
-    localStorage.setItem('f0undr_books_editorial_v1', JSON.stringify(books));
+    localStorage.setItem('f0undr_books_editorial_v2', JSON.stringify(books));
   }, [books]);
 
   useEffect(() => {
-    localStorage.setItem('f0undr_tools_editorial_v1', JSON.stringify(tools));
+    localStorage.setItem('f0undr_tools_editorial_v2', JSON.stringify(tools));
   }, [tools]);
 
   useEffect(() => {
-    localStorage.setItem('f0undr_team_editorial_v1', JSON.stringify(team));
+    localStorage.setItem('f0undr_team_editorial_v2', JSON.stringify(team));
   }, [team]);
 
   useEffect(() => {
-    localStorage.setItem('f0undr_things_editorial_v1', JSON.stringify(things));
+    localStorage.setItem('f0undr_things_editorial_v2', JSON.stringify(things));
   }, [things]);
 
   useEffect(() => {
@@ -387,25 +387,26 @@ export function App() {
                   </div>
 
                   <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
-                    <a
-                      href="https://f-e-book.vercel.app/"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl btn-editorial-accent text-xs sm:text-sm font-semibold shadow-xs transition-all hover:-translate-y-0.5 active:scale-98"
-                    >
-                      <span>Open Live Curriculum ↗</span>
-                      <ArrowUpRight className="w-4 h-4" />
-                    </a>
-
                     <button
                       onClick={() => {
-                        setActiveTab('books');
+                        setActiveTab('curriculum');
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
-                      className="px-4 py-2.5 rounded-xl btn-editorial-outline text-xs font-medium transition-colors"
+                      className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl btn-editorial-accent text-xs sm:text-sm font-semibold shadow-xs transition-all hover:-translate-y-0.5 active:scale-98"
                     >
-                      View in Bookshelf Vault →
+                      <BookOpen className="w-4 h-4" />
+                      <span>Read f0undr Book (Units 1–6)</span>
                     </button>
+
+                    <a
+                      href="/book/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="px-4 py-2.5 rounded-xl btn-editorial-outline text-xs font-medium transition-colors flex items-center justify-center gap-1.5"
+                    >
+                      <span>Open in New Tab</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -540,6 +541,84 @@ export function App() {
                     </span>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* CURRICULUM TAB */}
+        {activeTab === 'curriculum' && (
+          <div className="pt-24 pb-20">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              {/* Header Bar */}
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="editorial-stamp editorial-stamp-terracotta inline-flex items-center gap-1.5">
+                      <GraduationCap className="w-3.5 h-3.5 text-[#c2410c]" />
+                      FLAGSHIP CURRICULUM · UNITS 1 TO 6
+                    </span>
+                    <span className="text-xs font-mono text-[#78716c] bg-[#f5f2eb] px-2.5 py-0.5 rounded-md border border-[#e7e5e4]">
+                      Complete Interactive Edition
+                    </span>
+                  </div>
+                  <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#1c1917] tracking-tight">
+                    f0undr Book: <em className="italic text-[#c2410c] font-normal">Computing &amp; Technology</em>
+                  </h2>
+                  <p className="text-[#57534e] text-xs sm:text-sm mt-2 max-w-3xl leading-relaxed">
+                    Authored by <strong className="text-[#1c1917]">Huzaifa</strong> &amp; the <strong className="text-[#1c1917]">f0undr Team</strong> (with <strong className="text-[#1c1917]">f0undr</strong> &amp; <strong className="text-[#1c1917]">Abdull Rehman Khizar</strong>). Complete computing curriculum with interactive diagrams, quizzes, flashcards, and student lab workbooks.
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3 shrink-0">
+                  <a
+                    href="/book/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl btn-editorial-accent text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5"
+                  >
+                    <Maximize2 className="w-3.5 h-3.5" />
+                    <span>Open Full Screen in New Tab</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Quick Jump Unit Strip */}
+              <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-6 scrollbar-none text-xs font-mono">
+                {[
+                  { label: 'Unit 1: Hardware', hash: 'unit-one' },
+                  { label: 'Unit 2: Digital Skills', hash: 'unit-two' },
+                  { label: 'Unit 3: Algorithms', hash: 'unit-three' },
+                  { label: 'Unit 4: Scratch Coding', hash: 'unit-four' },
+                  { label: 'Unit 5: Cybersecurity', hash: 'unit-five' },
+                  { label: 'Unit 6: Entrepreneurship', hash: 'unit-six' },
+                  { label: 'Flashcards', hash: 'flashcards' },
+                  { label: 'Glossary', hash: 'glossary' },
+                ].map((item, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      const iframe = document.getElementById('curriculum-frame') as HTMLIFrameElement;
+                      if (iframe && iframe.contentWindow) {
+                        iframe.contentWindow.location.hash = item.hash;
+                      }
+                    }}
+                    className="px-3.5 py-1.5 rounded-lg bg-[#f5f2eb] hover:bg-[#ffedd5] text-[#57534e] hover:text-[#c2410c] border border-[#e7e5e4] shrink-0 transition-colors cursor-pointer font-medium"
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Embedded Interactive Reader */}
+              <div className="editorial-card rounded-2xl overflow-hidden border border-[#e7e5e4] shadow-md bg-white">
+                <iframe
+                  id="curriculum-frame"
+                  src="/book/index.html"
+                  title="f0undr Book: Computing & Technology Curriculum"
+                  className="w-full h-[85vh] border-0"
+                />
               </div>
             </div>
           </div>

@@ -134,13 +134,13 @@ export const PortfolioStorySection = ({
 
               <div className="mt-6 pt-4 border-t border-[#e7e5e4]">
                 <a
-                  href="https://f-e-book.vercel.app/"
+                  href="/book/"
                   target="_blank"
                   rel="noreferrer"
                   className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl btn-editorial-accent text-xs font-semibold transition-all hover:-translate-y-0.5"
                 >
                   <BookOpen className="w-3.5 h-3.5" />
-                  <span>Launch Live Curriculum on Vercel</span>
+                  <span>Read f0undr Book Online</span>
                   <ArrowUpRight className="w-3.5 h-3.5 opacity-80" />
                 </a>
               </div>
