@@ -20,6 +20,14 @@
       "destination": "/urdu-book/$1"
     },
     {
+      "source": "/mind-mastery",
+      "destination": "/mind-mastery/index.html"
+    },
+    {
+      "source": "/mind-mastery/(.*)",
+      "destination": "/mind-mastery/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
