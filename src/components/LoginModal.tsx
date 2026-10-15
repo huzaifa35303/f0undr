@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, Lock, KeyRound, Check, Shield, UserCheck, Eye, EyeOff, Sparkles } from 'lucide-react';
+import { X, Lock, KeyRound, Check, Eye, EyeOff } from 'lucide-react';
 import type { AuthUser } from '../types';
 import { DEFAULT_AUTH_USERS } from '../data/initialData';
 
@@ -24,8 +24,11 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }: LoginModalProps)
     setIsLoading(true);
 
     setTimeout(() => {
+      const normalizedInput = email.trim().toLowerCase();
       const match = DEFAULT_AUTH_USERS.find(
-        (u) => u.email.toLowerCase() === email.trim().toLowerCase()
+        (u) =>
+          u.email.toLowerCase() === normalizedInput ||
+          u.email.toLowerCase().replace('@f0undr.org', '@f0undr.dev') === normalizedInput
       );
 
       if (match && match.passwordHash === password) {
@@ -35,18 +38,9 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }: LoginModalProps)
         onClose();
       } else {
         setIsLoading(false);
-        setError('Invalid credentials. Check email and password or use the 1-click demo logins below.');
+        setError('Invalid credentials. Please verify your email and access key.');
       }
     }, 350);
-  };
-
-  const handleQuickLogin = (userId: string) => {
-    const match = DEFAULT_AUTH_USERS.find((u) => u.id === userId);
-    if (match) {
-      const { passwordHash: _, ...authenticatedUser } = match;
-      onLoginSuccess(authenticatedUser);
-      onClose();
-    }
   };
 
   return (
@@ -108,14 +102,9 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }: LoginModalProps)
             </div>
 
             <div>
-              <div className="flex items-center justify-between mb-1.5">
-                <label className="block text-xs font-mono font-medium text-[#57534e] uppercase tracking-wider">
-                  Access Key / Password
-                </label>
-                <span className="text-[10px] font-mono text-[#78716c]">
-                  Default demo: <code className="bg-[#f5f2eb] px-1 py-0.5 rounded text-[#1c1917]">f0undr2026</code>
-                </span>
-              </div>
+              <label className="block text-xs font-mono font-medium text-[#57534e] mb-1.5 uppercase tracking-wider">
+                Access Key / Password
+              </label>
               <div className="relative">
                 <input
                   type={showPassword ? 'text' : 'password'}
@@ -138,7 +127,7 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }: LoginModalProps)
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl btn-editorial-primary text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5 active:scale-98 disabled:opacity-50"
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl btn-editorial-primary text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5 active:scale-98 disabled:opacity-50 cursor-pointer"
             >
               {isLoading ? (
                 <>
@@ -153,103 +142,13 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }: LoginModalProps)
               )}
             </button>
           </form>
-
-          {/* 1-Click Quick Demo Sign-Ins */}
-          <div className="pt-5 border-t border-[#e7e5e4]">
-            <div className="flex items-center gap-2 mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-[#c2410c]" />
-              <span className="text-xs font-mono font-semibold text-[#1c1917] uppercase tracking-wider">
-                1-Click Instant Founder Access
-              </span>
-            </div>
-            <p className="text-xs text-[#78716c] mb-3 leading-relaxed">
-              Select any of the core founders to test full administrator privileges instantly:
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              <button
-                type="button"
-                onClick={() => handleQuickLogin('user-f0undr')}
-                className="flex items-center gap-3 p-2.5 rounded-xl border border-[#e7e5e4] hover:border-[#c2410c] bg-[#faf8f5] hover:bg-white text-left transition-all group shadow-2xs"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80"
-                  alt="f0undr"
-                  className="w-8 h-8 rounded-lg object-cover border border-[#c2410c]"
-                />
-                <div className="overflow-hidden">
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs font-serif font-bold text-[#1c1917] truncate">f0undr</span>
-                    <Shield className="w-3 h-3 text-[#c2410c]" />
-                  </div>
-                  <span className="text-[10px] font-mono text-[#57534e] block truncate">Founder &amp; Superadmin</span>
-                </div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleQuickLogin('user-khizar')}
-                className="flex items-center gap-3 p-2.5 rounded-xl border border-[#e7e5e4] hover:border-[#c2410c] bg-[#faf8f5] hover:bg-white text-left transition-all group shadow-2xs"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80"
-                  alt="Khizar"
-                  className="w-8 h-8 rounded-lg object-cover border border-[#c2410c]"
-                />
-                <div className="overflow-hidden">
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs font-serif font-bold text-[#1c1917] truncate">Abdull Rehman Khizar</span>
-                    <UserCheck className="w-3 h-3 text-[#c2410c]" />
-                  </div>
-                  <span className="text-[10px] font-mono text-[#57534e] block truncate">Co-Founder &amp; Curriculum</span>
-                </div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleQuickLogin('user-huzaifa')}
-                className="flex items-center gap-3 p-2.5 rounded-xl border border-[#e7e5e4] hover:border-[#c2410c] bg-[#faf8f5] hover:bg-white text-left transition-all group shadow-2xs"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80"
-                  alt="Huzaifa"
-                  className="w-8 h-8 rounded-lg object-cover border border-[#c2410c]"
-                />
-                <div className="overflow-hidden">
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs font-serif font-bold text-[#1c1917] truncate">M.Huzaifa</span>
-                    <UserCheck className="w-3 h-3 text-[#c2410c]" />
-                  </div>
-                  <span className="text-[10px] font-mono text-[#57534e] block truncate">Co-Founder &amp; AI Systems</span>
-                </div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleQuickLogin('user-admin')}
-                className="flex items-center gap-3 p-2.5 rounded-xl border border-[#e7e5e4] hover:border-[#1c1917] bg-[#faf8f5] hover:bg-white text-left transition-all group shadow-2xs"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=120&q=80"
-                  alt="Admin"
-                  className="w-8 h-8 rounded-lg object-cover border border-[#78716c]"
-                />
-                <div className="overflow-hidden">
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs font-serif font-bold text-[#1c1917] truncate">Operations Admin</span>
-                  </div>
-                  <span className="text-[10px] font-mono text-[#57534e] block truncate">Executive Ops</span>
-                </div>
-              </button>
-            </div>
-          </div>
         </div>
 
         {/* Footer info */}
         <div className="p-4 bg-[#faf8f5] border-t border-[#e7e5e4] text-center">
           <p className="text-[11px] font-mono text-[#78716c] flex items-center justify-center gap-1.5">
             <Check className="w-3.5 h-3.5 text-[#2b5346]" />
-            Local session secured with encrypted browser cache.
+            Authorized personnel only. Sessions authenticated via encrypted tokens.
           </p>
         </div>
       </div>
