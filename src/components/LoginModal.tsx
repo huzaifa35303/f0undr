@@ -138,46 +138,6 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }: LoginModalProps)
               </div>
             </div>
 
-            {/* Quick Fill Credentials Bar */}
-            <div className="p-2.5 rounded-xl bg-[#faf8f5] border border-[#e7e5e4] flex flex-wrap items-center justify-between gap-2 text-xs">
-              <span className="text-[11px] font-mono text-[#78716c]">Quick Fill:</span>
-              <div className="flex items-center gap-1.5">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setEmail('admin@f0undr.org');
-                    setPassword('admin2026');
-                    setError(null);
-                  }}
-                  className="px-2 py-1 rounded bg-white hover:bg-[#f5f2eb] text-[#1c1917] font-mono text-[11px] border border-[#d6d3d1] transition-colors cursor-pointer"
-                >
-                  admin
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setEmail('huzaifa@f0undr.org');
-                    setPassword('huzaifa2026');
-                    setError(null);
-                  }}
-                  className="px-2 py-1 rounded bg-white hover:bg-[#f5f2eb] text-[#1c1917] font-mono text-[11px] border border-[#d6d3d1] transition-colors cursor-pointer"
-                >
-                  huzaifa
-                </button>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setEmail('founder@f0undr.org');
-                    setPassword('f0undr2026');
-                    setError(null);
-                  }}
-                  className="px-2 py-1 rounded bg-white hover:bg-[#f5f2eb] text-[#1c1917] font-mono text-[11px] border border-[#d6d3d1] transition-colors cursor-pointer"
-                >
-                  f0undr
-                </button>
-              </div>
-            </div>
-
             <button
               type="submit"
               disabled={isLoading}
