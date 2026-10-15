@@ -1,7 +1,7 @@
 # The Art of Mental Mastery — f0undr Book Series
 
 > **Comprehensive Curriculum & Interactive Handbook on Accelerated Learning, Behavioral Profiling, Non-Verbal Mind Reading & Cognitive Science**  
-> *Authored by Huzaifa & the f0undr Team.*
+> *Authored by f0undr.*
 
 ---
 
@@ -52,5 +52,5 @@ start index.html
 
 ## ⚖️ Accreditation & Copyright
 
-© 2026 **Huzaifa & the f0undr Team**. All rights reserved.  
+© 2026 **f0undr**. All rights reserved.  
 Part of the **f0undr Digital Series** at `D:\Huzaifa All Data\Main of f0`.

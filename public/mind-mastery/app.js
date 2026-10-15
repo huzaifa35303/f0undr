@@ -272,7 +272,7 @@
       const title = card.querySelector("h3")?.textContent || "Cognitive Framework";
       const desc = card.querySelector("p")?.textContent || "";
       const quote = card.querySelector("blockquote")?.textContent || "";
-      const payload = `🧠 [f0undr Mental Mastery] ${title}\n\n${desc}\n\nCore Directive:\n${quote}\n\n(From: The Art of Mental Mastery by Huzaifa & f0undr Team)`;
+      const payload = `🧠 [f0undr Mental Mastery] ${title}\n\n${desc}\n\nCore Directive:\n${quote}\n\n(From: The Art of Mental Mastery by f0undr)`;
 
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(payload).then(() => {
@@ -381,7 +381,7 @@
     exportBtn.addEventListener("click", () => {
       let content = "# The Art of Mental Mastery — Complete Student Workbook\n";
       content += `Generated on: ${new Date().toLocaleString()}\n`;
-      content += `Author: Huzaifa & the f0undr Team\n\n`;
+      content += `Author: f0undr\n\n`;
 
       workbookTextareas.forEach(textarea => {
         const row = textarea.closest(".prompt-row");

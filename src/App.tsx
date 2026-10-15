@@ -530,7 +530,7 @@ export function App() {
                       The Art of Mental Mastery
                     </h3>
                     <p className="text-xs text-[#c2410c] font-mono font-medium">
-                      Authors: <strong className="text-[#1c1917]">Huzaifa</strong> &amp; <strong className="text-[#1c1917]">f0undr Team</strong>
+                      Author: <strong className="text-[#1c1917]">f0undr</strong>
                     </p>
                     <p className="text-xs text-[#57534e] leading-relaxed line-clamp-3">
                       Masterclass on accelerated learning, neuroplasticity, memory palaces (Method of Loci), limbic body language, behavioral deception detection, and mental models.
@@ -889,7 +889,7 @@ export function App() {
                         The Art of Mental Mastery: <em className="italic text-[#c2410c] font-normal">Learn Fast &amp; Mind Reading</em>
                       </h2>
                       <p className="text-[#57534e] text-xs sm:text-sm mt-2 max-w-3xl leading-relaxed">
-                        Authored by <strong className="text-[#1c1917]">Huzaifa</strong> &amp; the <strong className="text-[#1c1917]">f0undr Team</strong>. A comprehensive masterclass on accelerated learning, neuroplasticity, memory palaces (Method of Loci), decoding limbic body language, behavioral deception detection, persuasion vectors, and rapid mental models.
+                        Authored by <strong className="text-[#1c1917]">f0undr</strong>. A comprehensive masterclass on accelerated learning, neuroplasticity, memory palaces (Method of Loci), decoding limbic body language, behavioral deception detection, persuasion vectors, and rapid mental models.
                       </p>
                     </div>
 

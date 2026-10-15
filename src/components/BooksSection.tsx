@@ -283,7 +283,7 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
                   The Art of Mental Mastery (Learn Fast &amp; Mind Reading)
                 </h3>
                 <p className="text-xs text-[#c2410c] font-mono font-medium">
-                  Authored by <strong className="text-[#1c1917]">Huzaifa</strong> &amp; the <strong className="text-[#1c1917]">f0undr Team</strong>
+                  Authored by <strong className="text-[#1c1917]">f0undr</strong>
                 </p>
                 <p className="text-xs sm:text-sm text-[#57534e] leading-relaxed font-normal">
                   A comprehensive masterclass on synaptic plasticity, memory palaces (Method of Loci), decoding limbic body language, behavioral deception detection, persuasion vectors, and rapid mental models. Complete with interactive quizzes and 3D flashcards.

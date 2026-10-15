@@ -217,7 +217,7 @@ export const INITIAL_BOOKS: Book[] = [
   {
     id: 'book-mind-mastery',
     title: 'The Art of Mental Mastery (Learn Fast & Mind Reading)',
-    author: 'Huzaifa & the f0undr Team',
+    author: 'f0undr',
     year: '2026 Special Edition',
     coverGradient: 'from-teal-600 via-rose-700 to-slate-950',
     status: 'reading',
@@ -240,7 +240,7 @@ export const INITIAL_BOOKS: Book[] = [
       'Cognitive load in deception can be weaponized using reverse-chronological questioning and SCAN statement analysis.',
       'First Principles thinking and Inversion ("Invert, always invert") eliminate stupidity and uncover non-consensus leverage points.'
     ],
-    notes: 'Comprehensive hands-on digital handbook and curriculum authored by Huzaifa and the f0undr Team. Features custom SVG architectural diagrams, 30 interactive MCQs with instant feedback, auto-saving student lab workbooks, and a 3D flashcard suite.',
+    notes: 'Comprehensive hands-on digital handbook and curriculum authored by f0undr. Features custom SVG architectural diagrams, 30 interactive MCQs with instant feedback, auto-saving student lab workbooks, and a 3D flashcard suite.',
     favoriteQuote: 'Observation is not passive; it is an active deduction.',
     dateAdded: '2026-10-15',
   },
@@ -674,6 +674,26 @@ export const INITIAL_THINGS: Thing[] = [
 ];
 
 export const INITIAL_VENTURES: Venture[] = [
+  {
+    id: 'venture-custom-ai',
+    title: 'f0 custom ai // Search-Augmented Engine',
+    tagline: 'Autonomous search-augmented AI assistant with 2-source verification and page-fetching',
+    stage: 'Active',
+    description: 'High-performance AI engine implementing dynamic temporal search intent, short queries (2-6 words), primary page-fetching, and verified [Source Name](URL) citations.',
+    metrics: 'Active • v1.0 Shipped',
+    tags: ['Search AI', 'Page-Fetch', 'React 19', 'TypeScript', 'Grounding'],
+    link: 'http://localhost:5175',
+  },
+  {
+    id: 'venture-share',
+    title: 'f0-Share // Ultra File Vault & Sharing Engine',
+    tagline: 'Gofile-style high-performance file sharing with cryptographic locks & hybrid cloud',
+    stage: 'Active',
+    description: 'Dark-aesthetic file sharing and media vault with instant drag-and-drop, SHA-256 passkeys, auto-expiring links, and IndexedDB + Supabase storage.',
+    metrics: 'Active • v1.0 Shipped',
+    tags: ['File Vault', 'Crypto Locks', 'PWA & Mobile', 'Supabase'],
+    link: 'http://localhost:5174',
+  },
   {
     id: 'venture-ebook',
     title: 'f0undr Book: Computing & Technology (Units 1–6)',
