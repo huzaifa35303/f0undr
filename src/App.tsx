@@ -377,51 +377,116 @@ export function App() {
               }}
             />
 
-            {/* FLAGSHIP HERO BANNER FOR f0undr Book */}
+            {/* DUAL FLAGSHIP CURRICULUM SPOTLIGHT */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-              <div className="editorial-card rounded-2xl p-6 sm:p-10 relative overflow-hidden group">
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
-                  <div className="space-y-3.5 max-w-2xl">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Flagship 1: Computer Science */}
+                <div className="editorial-card rounded-2xl p-6 sm:p-8 relative overflow-hidden group flex flex-col justify-between">
+                  <div className="space-y-3.5">
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="editorial-stamp editorial-stamp-terracotta inline-flex items-center gap-1.5">
                         <span className="w-2 h-2 rounded-full bg-[#c2410c] animate-pulse" />
-                        FLAGSHIP PRODUCT · LIVE ON VERCEL
+                        FLAGSHIP PRODUCT · LIVE
                       </span>
-                      <span className="text-xs font-mono text-[#78716c] bg-[#f5f2eb] px-2.5 py-1 rounded-md border border-[#e7e5e4]">
-                        Units 1 to 6 Active
+                      <span className="text-xs font-mono text-[#78716c] bg-[#f5f2eb] px-2.5 py-0.5 rounded-md border border-[#e7e5e4]">
+                        Units 1 to 6
                       </span>
                     </div>
 
-                    <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1c1917] tracking-tight">
-                      f0undr Book: Computing &amp; Technology Curriculum
+                    <h3 className="font-serif text-2xl font-bold text-[#1c1917] tracking-tight">
+                      f0undr Book: Computing &amp; Technology
                     </h3>
                     <p className="text-xs text-[#c2410c] font-mono font-medium">
-                      Lead Authors: <strong className="text-[#1c1917]">f0undr</strong> &amp; <strong className="text-[#1c1917]">Abdull Rehman Khizar</strong>
+                      Authors: <strong className="text-[#1c1917]">f0undr</strong> &amp; <strong className="text-[#1c1917]">Abdull Rehman Khizar</strong> (with <strong className="text-[#1c1917]">M.Huzaifa</strong>)
                     </p>
-                    <p className="text-xs sm:text-sm text-[#57534e] leading-relaxed font-normal">
-                      A complete modern interactive computer science textbook covering hardware foundations, digital skills, algorithmic thinking, Scratch programming, cybersecurity, and digital entrepreneurship.
+                    <p className="text-xs sm:text-sm text-[#57534e] leading-relaxed">
+                      Complete modern computing textbook covering hardware IPO cycle, digital productivity, algorithmic thinking, Scratch visual coding, cybersecurity, and entrepreneurship.
                     </p>
+
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {['Unit 1: Hardware', 'Unit 2: Digital Skills', 'Unit 3: Algorithms', 'Unit 4: Scratch', 'Unit 5: Cyber', 'Unit 6: Startup'].map((u, i) => (
+                        <span key={i} className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#f5f2eb] text-[#57534e] border border-[#e7e5e4]">
+                          {u}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+                  <div className="flex flex-wrap items-center gap-3 pt-6 mt-6 border-t border-[#e7e5e4]">
                     <button
                       onClick={() => {
+                        setSelectedCurriculum('computer');
                         setActiveTab('curriculum');
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                       }}
-                      className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl btn-editorial-accent text-xs sm:text-sm font-semibold shadow-xs transition-all hover:-translate-y-0.5 active:scale-98"
+                      className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl btn-editorial-accent text-xs font-semibold shadow-xs"
                     >
-                      <BookOpen className="w-4 h-4" />
-                      <span>Read f0undr Book (Units 1–6)</span>
+                      <BookOpen className="w-3.5 h-3.5" />
+                      <span>Read Online (Units 1–6)</span>
                     </button>
-
                     <a
                       href="/book/"
                       target="_blank"
                       rel="noreferrer"
-                      className="px-4 py-2.5 rounded-xl btn-editorial-outline text-xs font-medium transition-colors flex items-center justify-center gap-1.5"
+                      className="px-3.5 py-2.5 rounded-xl btn-editorial-outline text-xs font-medium flex items-center gap-1"
                     >
-                      <span>Open in New Tab</span>
+                      <span>New Tab</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Flagship 2: Urdu Literature */}
+                <div className="editorial-card rounded-2xl p-6 sm:p-8 relative overflow-hidden group flex flex-col justify-between">
+                  <div className="space-y-3.5">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="editorial-stamp editorial-stamp-terracotta inline-flex items-center gap-1.5">
+                        <GraduationCap className="w-3.5 h-3.5 text-[#c2410c]" />
+                        وفاقی تعلیمی بورڈ (FBISE) · 20 ابواب
+                      </span>
+                      <span className="text-xs font-mono text-[#78716c] bg-[#f5f2eb] px-2.5 py-0.5 rounded-md border border-[#e7e5e4]">
+                        جماعت ہفتم · مکمل نصاب
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif text-2xl font-bold text-[#1c1917] tracking-tight">
+                      صحیفۂ اردو: نصاب و ادب (جماعتِ ہفتم)
+                    </h3>
+                    <p className="text-xs text-[#c2410c] font-mono font-medium">
+                      مرتبین: <strong className="text-[#1c1917]">Huzaifa</strong> اور <strong className="text-[#1c1917]">f0undr Team</strong>
+                    </p>
+                    <p className="text-xs sm:text-sm text-[#57534e] leading-relaxed">
+                      وفاقی بورڈ کے نصاب پر مبنی مستند ادبی شاہکار، کلامِ اقبال، فصیح تشریحات، فرہنگ و لغت، اور امتحانی معروضی مشقیں۔ 20 مکمل ابواب بمع مصور خاکے اور اصل درسی کتاب (PDF)۔
+                    </p>
+
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {['حمد باری تعالیٰ', 'نعت رسول ﷺ', 'طبِ نبوی', 'بابائے اردو', 'کلام اقبال', 'قواعد و انشا'].map((u, i) => (
+                        <span key={i} className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#f5f2eb] text-[#57534e] border border-[#e7e5e4]">
+                          {u}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-3 pt-6 mt-6 border-t border-[#e7e5e4]">
+                    <button
+                      onClick={() => {
+                        setSelectedCurriculum('urdu');
+                        setActiveTab('curriculum');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }}
+                      className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl btn-editorial-accent text-xs font-semibold shadow-xs"
+                    >
+                      <GraduationCap className="w-3.5 h-3.5" />
+                      <span>مطالعہ کریں (20 ابواب)</span>
+                    </button>
+                    <a
+                      href="/urdu-book/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="px-3.5 py-2.5 rounded-xl btn-editorial-outline text-xs font-medium flex items-center gap-1"
+                    >
+                      <span>New Tab</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </a>
                   </div>
@@ -526,7 +591,7 @@ export function App() {
                         Explore {books.length} Books &amp; Interactive Curriculum
                       </h3>
                       <p className="text-xs text-[#57534e] leading-relaxed">
-                        Features our flagship computing curriculum along with classics like Zero to One, High Output Management, and Designing Data-Intensive Applications.
+                        Features our flagship Computing &amp; Technology curriculum and صحیفۂ اردو alongside seminal masterworks on systems, strategy, and engineering.
                       </p>
                     </div>
                     <span className="text-xs font-semibold text-[#c2410c] mt-6 flex items-center gap-1 group-hover:translate-x-1 transition-transform font-mono">

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Book, BookCategory, ReadingStatus } from '../types';
-import { BookOpen, Star, Search, Bookmark, ChevronRight, CheckCircle2, Clock, ArrowUpRight, X } from 'lucide-react';
+import { BookOpen, Star, Search, Bookmark, ChevronRight, CheckCircle2, Clock, ArrowUpRight, X, GraduationCap } from 'lucide-react';
 
 interface BooksSectionProps {
   books: Book[];
@@ -30,6 +30,8 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
   const [selectedStatus, setSelectedStatus] = useState<'all' | ReadingStatus>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [activeBook, setActiveBook] = useState<Book | null>(null);
+
+  const [spotlightCurriculum, setSpotlightCurriculum] = useState<'computer' | 'urdu'>('computer');
 
   // Filtered books
   const filteredBooks = books.filter((book) => {
@@ -85,74 +87,170 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
           </div>
         </div>
 
-        {/* FLAGSHIP SPOTLIGHT: f0undr Book Curriculum Banner */}
+        {/* FLAGSHIP SPOTLIGHT: Dual Flagship E-Books Showcase */}
         <div className="mb-14 editorial-card rounded-2xl p-6 sm:p-10 relative overflow-hidden group">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
-            <div className="space-y-4 max-w-3xl">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="editorial-stamp editorial-stamp-terracotta inline-flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#c2410c] animate-pulse" />
-                  FLAGSHIP CURRICULUM · LIVE ON VERCEL
-                </span>
-                <span className="text-xs font-mono text-[#78716c] bg-[#f5f2eb] px-2.5 py-1 rounded-md border border-[#e7e5e4]">
-                  Units 1 to 6 Complete
-                </span>
-              </div>
+          {/* Top Curriculum Switcher Tabs */}
+          <div className="flex flex-wrap items-center gap-2 mb-6 pb-4 border-b border-[#e7e5e4]">
+            <button
+              onClick={() => setSpotlightCurriculum('computer')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                spotlightCurriculum === 'computer'
+                  ? 'bg-[#1c1917] text-[#faf8f5] shadow-xs'
+                  : 'bg-[#f5f2eb] hover:bg-[#e7e5e4] text-[#57534e]'
+              }`}
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Computer Science (Units 1–6)</span>
+            </button>
 
-              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#1c1917] tracking-tight">
-                f0undr Book: Computing &amp; Technology Curriculum
-              </h3>
-              <p className="text-xs text-[#c2410c] font-mono font-medium">
-                Authored by <strong className="text-[#1c1917]">f0undr</strong> &amp; <strong className="text-[#1c1917]">Abdull Rehman Khizar</strong>
-              </p>
-              <p className="text-xs sm:text-sm text-[#57534e] leading-relaxed font-normal">
-                A complete modern computer science textbook covering hardware foundations, digital productivity, algorithmic thinking, Scratch programming, cybersecurity, and digital entrepreneurship. Featuring real-world case studies, IPO cycle architectures, and autosaving student lab workbooks.
-              </p>
-
-              {/* 6 Unit Badges */}
-              <div className="flex flex-wrap gap-2 pt-1">
-                {[
-                  'Unit 1: ICT & Hardware',
-                  'Unit 2: Digital Skills',
-                  'Unit 3: Algorithmic Thinking',
-                  'Unit 4: Programming (Scratch)',
-                  'Unit 5: Digital Citizenship',
-                  'Unit 6: Entrepreneurship',
-                ].map((unit, idx) => (
-                  <span
-                    key={idx}
-                    className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-[#f5f2eb] text-[#57534e] border border-[#e7e5e4]"
-                  >
-                    {unit}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
-              <a
-                href="/book/"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl btn-editorial-accent text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5"
-              >
-                <BookOpen className="w-4 h-4" />
-                <span>Read f0undr Book (Units 1–6)</span>
-                <ArrowUpRight className="w-4 h-4 opacity-80" />
-              </a>
-
-              <button
-                onClick={() => {
-                  const flagship = books.find((b) => b.id === 'book-foundr-ebook' || b.id === 'f0undr-book-flagship');
-                  if (flagship) setActiveBook(flagship);
-                }}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl btn-editorial-outline text-xs font-semibold transition-all hover:-translate-y-0.5"
-              >
-                <span>Inspect Syllabus Outline</span>
-                <ChevronRight className="w-4 h-4 text-[#78716c]" />
-              </button>
-            </div>
+            <button
+              onClick={() => setSpotlightCurriculum('urdu')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                spotlightCurriculum === 'urdu'
+                  ? 'bg-[#1c1917] text-[#faf8f5] shadow-xs'
+                  : 'bg-[#f5f2eb] hover:bg-[#e7e5e4] text-[#57534e]'
+              }`}
+            >
+              <GraduationCap className="w-3.5 h-3.5" />
+              <span>صحیفۂ اردو: نصاب و ادب (20 ابواب)</span>
+            </button>
           </div>
+
+          {spotlightCurriculum === 'computer' ? (
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10 animate-fade-in">
+              <div className="space-y-4 max-w-3xl">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="editorial-stamp editorial-stamp-terracotta inline-flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#c2410c] animate-pulse" />
+                    FLAGSHIP CURRICULUM · LIVE ON VERCEL
+                  </span>
+                  <span className="text-xs font-mono text-[#78716c] bg-[#f5f2eb] px-2.5 py-1 rounded-md border border-[#e7e5e4]">
+                    Units 1 to 6 Complete
+                  </span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#1c1917] tracking-tight">
+                  f0undr Book: Computing &amp; Technology Curriculum
+                </h3>
+                <p className="text-xs text-[#c2410c] font-mono font-medium">
+                  Authored by <strong className="text-[#1c1917]">f0undr</strong> &amp; <strong className="text-[#1c1917]">Abdull Rehman Khizar</strong> (with <strong className="text-[#1c1917]">M.Huzaifa</strong>)
+                </p>
+                <p className="text-xs sm:text-sm text-[#57534e] leading-relaxed font-normal">
+                  A complete modern computer science textbook covering hardware foundations, digital productivity, algorithmic thinking, Scratch programming, cybersecurity, and digital entrepreneurship. Featuring real-world case studies, IPO cycle architectures, and autosaving student lab workbooks.
+                </p>
+
+                {/* 6 Unit Badges */}
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {[
+                    'Unit 1: ICT & Hardware',
+                    'Unit 2: Digital Skills',
+                    'Unit 3: Algorithmic Thinking',
+                    'Unit 4: Programming (Scratch)',
+                    'Unit 5: Digital Citizenship',
+                    'Unit 6: Entrepreneurship',
+                  ].map((unit, idx) => (
+                    <span
+                      key={idx}
+                      className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-[#f5f2eb] text-[#57534e] border border-[#e7e5e4]"
+                    >
+                      {unit}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+                <a
+                  href="/book/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl btn-editorial-accent text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5"
+                >
+                  <BookOpen className="w-4 h-4" />
+                  <span>Read f0undr Book (Units 1–6)</span>
+                  <ArrowUpRight className="w-4 h-4 opacity-80" />
+                </a>
+
+                <button
+                  onClick={() => {
+                    const flagship = books.find((b) => b.id === 'book-foundr-ebook' || b.id === 'f0undr-book-flagship');
+                    if (flagship) setActiveBook(flagship);
+                  }}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl btn-editorial-outline text-xs font-semibold transition-all hover:-translate-y-0.5"
+                >
+                  <span>Inspect Syllabus Outline</span>
+                  <ChevronRight className="w-4 h-4 text-[#78716c]" />
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10 animate-fade-in">
+              <div className="space-y-4 max-w-3xl">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="editorial-stamp editorial-stamp-terracotta inline-flex items-center gap-1.5">
+                    <GraduationCap className="w-3.5 h-3.5 text-[#c2410c]" />
+                    وفاقی تعلیمی بورڈ نصاب (FBISE) · جماعتِ ہفتم
+                  </span>
+                  <span className="text-xs font-mono text-[#78716c] bg-[#f5f2eb] px-2.5 py-1 rounded-md border border-[#e7e5e4]">
+                    20 ابواب مکمل · 43 مصور خاکے
+                  </span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#1c1917] tracking-tight">
+                  صحیفۂ اردو: نصاب و ادب (جماعتِ ہفتم)
+                </h3>
+                <p className="text-xs text-[#c2410c] font-mono font-medium">
+                  ترتیب و پیشکش: <strong className="text-[#1c1917]">Huzaifa</strong> اور <strong className="text-[#1c1917]">f0undr Team</strong>
+                </p>
+                <p className="text-xs sm:text-sm text-[#57534e] leading-relaxed font-normal">
+                  وفاقی تعلیمی بورڈ (FBISE) کے نصاب پر مبنی مستند اور جدید ترین ادبی و لسانی کتب خانہ۔ اس میں شائستہ ذوقِ ادب، فکری بالیدگی، کلامِ اقبال، فصیح تشریحات، فرہنگ و لغت، اور معروضی امتحانی سوالات شامل ہیں۔ نیز مکمل درسی کتاب (PDF) بھی دستیاب ہے۔
+                </p>
+
+                {/* Urdu Unit Badges */}
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {[
+                    'حمد باری تعالیٰ',
+                    'نعت رسولِ مقبول ﷺ',
+                    'طبِّ نبوی اور جدید حفظانِ صحت',
+                    'بابائے اردو مولوی عبد الحق',
+                    'کلامِ اقبال و فکرِ خودی',
+                    'قواعد و انشا، فرہنگ و لغت',
+                  ].map((unit, idx) => (
+                    <span
+                      key={idx}
+                      className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-[#f5f2eb] text-[#57534e] border border-[#e7e5e4]"
+                    >
+                      {unit}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+                <a
+                  href="/urdu-book/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl btn-editorial-accent text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5"
+                >
+                  <BookOpen className="w-4 h-4" />
+                  <span>مطالعہ کریں صحیفۂ اردو (20 ابواب)</span>
+                  <ArrowUpRight className="w-4 h-4 opacity-80" />
+                </a>
+
+                <button
+                  onClick={() => {
+                    const urduFlagship = books.find((b) => b.id === 'book-urdu-ebook');
+                    if (urduFlagship) setActiveBook(urduFlagship);
+                  }}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl btn-editorial-outline text-xs font-semibold transition-all hover:-translate-y-0.5"
+                >
+                  <span>فہرست و تشریحات ملاحظہ کریں</span>
+                  <ChevronRight className="w-4 h-4 text-[#78716c]" />
+                </button>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Filter and Search Bar */}
