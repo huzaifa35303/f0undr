@@ -25,22 +25,33 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }: LoginModalProps)
 
     setTimeout(() => {
       const normalizedInput = email.trim().toLowerCase();
-      const match = DEFAULT_AUTH_USERS.find(
-        (u) =>
-          u.email.toLowerCase() === normalizedInput ||
-          u.email.toLowerCase().replace('@f0undr.org', '@f0undr.dev') === normalizedInput
-      );
+      const cleanPassword = password.trim();
 
-      if (match && match.passwordHash === password) {
+      const match = DEFAULT_AUTH_USERS.find((u) => {
+        const uEmail = u.email.toLowerCase();
+        const uPrefix = uEmail.split('@')[0];
+        const uName = u.name.toLowerCase();
+        const uId = u.id.toLowerCase().replace('user-', '');
+        return (
+          uEmail === normalizedInput ||
+          uPrefix === normalizedInput ||
+          uName === normalizedInput ||
+          uId === normalizedInput ||
+          uEmail.replace('@f0undr.org', '@f0undr.dev') === normalizedInput ||
+          uEmail.replace('@f0undr.org', '@gmail.com') === normalizedInput
+        );
+      });
+
+      if (match && match.passwordHash === cleanPassword) {
         setIsLoading(false);
         const { passwordHash: _, ...authenticatedUser } = match;
         onLoginSuccess(authenticatedUser);
         onClose();
       } else {
         setIsLoading(false);
-        setError('Invalid credentials. Please verify your email and access key.');
+        setError('Invalid credentials. Please verify your email/username and access key.');
       }
-    }, 350);
+    }, 250);
   };
 
   return (
@@ -88,16 +99,19 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }: LoginModalProps)
 
           <form onSubmit={handleManualLogin} className="space-y-4">
             <div>
-              <label className="block text-xs font-mono font-medium text-[#57534e] mb-1.5 uppercase tracking-wider">
-                Founder / Admin Email
-              </label>
+              <div className="flex items-center justify-between mb-1.5">
+                <label className="block text-xs font-mono font-medium text-[#57534e] uppercase tracking-wider">
+                  Admin Email or Username
+                </label>
+                <span className="text-[10px] font-mono text-[#78716c]">e.g. admin or huzaifa</span>
+              </div>
               <input
-                type="email"
+                type="text"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="founder@f0undr.org"
-                className="w-full px-4 py-2.5 rounded-xl border border-[#d6d3d1] bg-white text-xs text-[#1c1917] focus:outline-none focus:ring-2 focus:ring-[#c2410c]/20 focus:border-[#c2410c] transition-all"
+                placeholder="admin@f0undr.org"
+                className="w-full px-4 py-2.5 rounded-xl border border-[#d6d3d1] bg-white text-xs text-[#1c1917] focus:outline-none focus:ring-2 focus:ring-[#c2410c]/20 focus:border-[#c2410c] transition-all font-mono"
               />
             </div>
 
@@ -112,7 +126,7 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }: LoginModalProps)
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••••••"
-                  className="w-full pl-4 pr-10 py-2.5 rounded-xl border border-[#d6d3d1] bg-white text-xs text-[#1c1917] focus:outline-none focus:ring-2 focus:ring-[#c2410c]/20 focus:border-[#c2410c] transition-all"
+                  className="w-full pl-4 pr-10 py-2.5 rounded-xl border border-[#d6d3d1] bg-white text-xs text-[#1c1917] focus:outline-none focus:ring-2 focus:ring-[#c2410c]/20 focus:border-[#c2410c] transition-all font-mono"
                 />
                 <button
                   type="button"
@@ -120,6 +134,46 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }: LoginModalProps)
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-[#78716c] hover:text-[#1c1917]"
                 >
                   {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Fill Credentials Bar */}
+            <div className="p-2.5 rounded-xl bg-[#faf8f5] border border-[#e7e5e4] flex flex-wrap items-center justify-between gap-2 text-xs">
+              <span className="text-[11px] font-mono text-[#78716c]">Quick Fill:</span>
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEmail('admin@f0undr.org');
+                    setPassword('admin2026');
+                    setError(null);
+                  }}
+                  className="px-2 py-1 rounded bg-white hover:bg-[#f5f2eb] text-[#1c1917] font-mono text-[11px] border border-[#d6d3d1] transition-colors cursor-pointer"
+                >
+                  admin
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEmail('huzaifa@f0undr.org');
+                    setPassword('huzaifa2026');
+                    setError(null);
+                  }}
+                  className="px-2 py-1 rounded bg-white hover:bg-[#f5f2eb] text-[#1c1917] font-mono text-[11px] border border-[#d6d3d1] transition-colors cursor-pointer"
+                >
+                  huzaifa
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEmail('founder@f0undr.org');
+                    setPassword('f0undr2026');
+                    setError(null);
+                  }}
+                  className="px-2 py-1 rounded bg-white hover:bg-[#f5f2eb] text-[#1c1917] font-mono text-[11px] border border-[#d6d3d1] transition-colors cursor-pointer"
+                >
+                  f0undr
                 </button>
               </div>
             </div>

@@ -173,10 +173,12 @@ export function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Guard access to Admin: if hash is #admin, require login
+  // Guard access to Admin: support /admin, #admin, and #login
   useEffect(() => {
-    const handleHash = () => {
-      if (window.location.hash === '#admin') {
+    const handleRoute = () => {
+      const isPathAdmin = window.location.pathname === '/admin' || window.location.pathname === '/admin/';
+      const isHashAdmin = window.location.hash === '#admin' || window.location.hash === '#login';
+      if (isPathAdmin || isHashAdmin) {
         if (currentUser) {
           setIsAdminOpen(true);
         } else {
@@ -184,9 +186,13 @@ export function App() {
         }
       }
     };
-    handleHash();
-    window.addEventListener('hashchange', handleHash);
-    return () => window.removeEventListener('hashchange', handleHash);
+    handleRoute();
+    window.addEventListener('hashchange', handleRoute);
+    window.addEventListener('popstate', handleRoute);
+    return () => {
+      window.removeEventListener('hashchange', handleRoute);
+      window.removeEventListener('popstate', handleRoute);
+    };
   }, [currentUser]);
 
   // Audit Logger
@@ -339,11 +345,13 @@ export function App() {
       setTeam(INITIAL_TEAM);
       setThings(INITIAL_THINGS);
       setSeoSettings(DEFAULT_SEO_SETTINGS);
-      localStorage.removeItem('f0undr_books_editorial_v1');
-      localStorage.removeItem('f0undr_tools_editorial_v1');
-      localStorage.removeItem('f0undr_team_editorial_v1');
-      localStorage.removeItem('f0undr_things_editorial_v1');
+      localStorage.removeItem('f0undr_books_editorial_v3');
+      localStorage.removeItem('f0undr_tools_editorial_v3');
+      localStorage.removeItem('f0undr_team_editorial_v2');
+      localStorage.removeItem('f0undr_things_editorial_v2');
       localStorage.removeItem('f0undr_seo_settings');
+      localStorage.removeItem('f0undr_seo_settings_v2');
+      localStorage.removeItem('f0undr_audit_logs');
       addAuditLog('System Factory Reset', 'All records returned to default seed values');
       alert('Vault reset to defaults.');
     }
@@ -1009,19 +1017,6 @@ export function App() {
         }}
       />
 
-      {/* Add Item Modal (Only accessible by Authenticated Admins from Cockpit) */}
-      {currentUser && (
-        <AddModal
-          isOpen={isAddOpen}
-          onClose={() => setIsAddOpen(false)}
-          defaultTab={addModalDefaultTab}
-          onAddBook={handleAddBook}
-          onAddTool={handleAddTool}
-          onAddTeamMember={handleAddTeamMember}
-          onAddThing={handleAddThing}
-        />
-      )}
-
       {/* Founder / Admin Login Modal */}
       <LoginModal
         isOpen={isLoginOpen}
@@ -1062,8 +1057,24 @@ export function App() {
         />
       )}
 
+      {/* Add Item Modal (Rendered on top of Cockpit with z-[100]) */}
+      {currentUser && (
+        <AddModal
+          isOpen={isAddOpen}
+          onClose={() => setIsAddOpen(false)}
+          defaultTab={addModalDefaultTab}
+          onAddBook={handleAddBook}
+          onAddTool={handleAddTool}
+          onAddTeamMember={handleAddTeamMember}
+          onAddThing={handleAddThing}
+        />
+      )}
+
       {/* Clean Public Colophon Footer */}
       <Footer
+        currentUser={currentUser}
+        onOpenAdmin={() => setIsAdminOpen(true)}
+        onOpenLogin={() => setIsLoginOpen(true)}
         onExportData={handleExportData}
         onNavigateTab={(tab) => {
           setActiveTab(tab);

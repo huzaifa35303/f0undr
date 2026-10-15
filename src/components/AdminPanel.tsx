@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import {
   Shield,
   BookOpen,
@@ -80,7 +80,9 @@ export const AdminPanel = ({
   onDeleteBook,
   onUpdateTeamMember,
   onDeleteTeamMember,
+  onUpdateTool,
   onDeleteTool,
+  onUpdateThing,
   onDeleteThing,
   onUpdateSeoSettings,
   onExportData,
@@ -94,6 +96,20 @@ export const AdminPanel = ({
   const [serpViewMode, setSerpViewMode] = useState<'desktop' | 'mobile'>('desktop');
   const [contentFilter, setContentFilter] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setEditableSeo(seoSettings);
+  }, [seoSettings]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -939,12 +955,23 @@ export const AdminPanel = ({
 
                   <div className="flex items-center gap-2 shrink-0">
                     <button
+                      onClick={() => onUpdateTool({ ...tool, featured: !tool.featured })}
+                      className={`px-2.5 py-1 rounded-lg text-xs font-mono font-medium border transition-colors cursor-pointer ${
+                        tool.featured
+                          ? 'bg-[#fff7ed] border-[#ffedd5] text-[#c2410c]'
+                          : 'bg-[#f5f2eb] border-[#e7e5e4] text-[#78716c]'
+                      }`}
+                      title="Toggle Featured status"
+                    >
+                      {tool.featured ? 'Featured ★' : 'Standard'}
+                    </button>
+                    <button
                       onClick={() => {
                         if (window.confirm(`Delete "${tool.name}"?`)) {
                           onDeleteTool(tool.id);
                         }
                       }}
-                      className="p-1.5 rounded-lg text-[#78716c] hover:text-red-600 hover:bg-red-50 transition-colors"
+                      className="p-1.5 rounded-lg text-[#78716c] hover:text-red-600 hover:bg-red-50 transition-colors cursor-pointer"
                       title="Delete Tool"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -992,11 +1019,23 @@ export const AdminPanel = ({
                   <div className="flex items-center gap-2 shrink-0">
                     <button
                       onClick={() => {
+                        const newTitle = prompt('Edit Artifact Title:', thing.title);
+                        if (newTitle && newTitle.trim()) {
+                          onUpdateThing({ ...thing, title: newTitle.trim() });
+                        }
+                      }}
+                      className="px-2.5 py-1 rounded-lg text-xs font-mono font-medium border bg-[#f5f2eb] border-[#e7e5e4] text-[#57534e] hover:text-[#1c1917] transition-colors cursor-pointer"
+                      title="Edit Artifact Title"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => {
                         if (window.confirm(`Delete "${thing.title}"?`)) {
                           onDeleteThing(thing.id);
                         }
                       }}
-                      className="p-1.5 rounded-lg text-[#78716c] hover:text-red-600 hover:bg-red-50 transition-colors"
+                      className="p-1.5 rounded-lg text-[#78716c] hover:text-red-600 hover:bg-red-50 transition-colors cursor-pointer"
                       title="Delete Artifact"
                     >
                       <Trash2 className="w-4 h-4" />

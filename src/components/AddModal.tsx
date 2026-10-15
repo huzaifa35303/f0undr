@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { Book, CuratedTool, TeamMember, Thing, BookCategory, ReadingStatus, ToolCategory, ThingCategory } from '../types';
 import { BookOpen, Wrench, Users, Package, X } from 'lucide-react';
 
@@ -22,6 +22,12 @@ export const AddModal: React.FC<AddModalProps> = ({
   defaultTab = 'book',
 }) => {
   const [activeTab, setActiveTab] = useState<'book' | 'tool' | 'team' | 'thing'>(defaultTab);
+
+  useEffect(() => {
+    if (defaultTab) {
+      setActiveTab(defaultTab);
+    }
+  }, [defaultTab, isOpen]);
 
   // Book Form State
   const [bookTitle, setBookTitle] = useState('');
@@ -153,7 +159,7 @@ export const AddModal: React.FC<AddModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/50 backdrop-blur-xs animate-fade-in"
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-xs animate-fade-in"
       onClick={onClose}
     >
       <div

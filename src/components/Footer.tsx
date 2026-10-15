@@ -1,12 +1,19 @@
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Shield } from 'lucide-react';
+import type { AuthUser } from '../types';
 
 interface FooterProps {
   onExportData?: () => void;
   onNavigateTab: (tab: string) => void;
+  currentUser?: AuthUser | null;
+  onOpenAdmin?: () => void;
+  onOpenLogin?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onNavigateTab,
+  currentUser,
+  onOpenAdmin,
+  onOpenLogin,
 }) => {
   return (
     <footer className="border-t border-[#e7e5e4] bg-[#faf8f5] text-[#1c1917] mt-24">
@@ -94,6 +101,21 @@ export const Footer: React.FC<FooterProps> = ({
                     className="hover:text-[#1c1917] transition-colors"
                   >
                     Hardware &amp; Artifacts
+                  </button>
+                </li>
+                <li className="pt-1 border-t border-[#e7e5e4]">
+                  <button
+                    onClick={() => {
+                      if (currentUser) {
+                        onOpenAdmin?.();
+                      } else {
+                        onOpenLogin?.();
+                      }
+                    }}
+                    className="hover:text-[#c2410c] text-[#1c1917] transition-colors flex items-center gap-1.5 font-medium cursor-pointer"
+                  >
+                    <Shield className="w-3.5 h-3.5 text-[#c2410c]" />
+                    <span>Admin Studio Cockpit</span>
                   </button>
                 </li>
               </ul>

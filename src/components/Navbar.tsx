@@ -130,21 +130,20 @@ export const Navbar = ({
             {currentUser ? (
               <button
                 onClick={onOpenAdmin}
-                className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#1c1917] hover:bg-[#292524] text-[#faf8f5] text-xs font-semibold transition-all shadow-xs hover:-translate-y-0.5 group"
+                className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#1c1917] hover:bg-[#292524] text-[#faf8f5] text-xs font-semibold transition-all shadow-xs hover:-translate-y-0.5 group cursor-pointer"
                 title="Launch Admin Studio Cockpit"
               >
-                <img
-                  src={currentUser.avatarUrl}
-                  alt={currentUser.name}
-                  className="w-4 h-4 rounded-full object-cover border border-[#c2410c]"
-                />
-                <span className="font-mono text-xs">{currentUser.name}</span>
                 <Shield className="w-3.5 h-3.5 text-[#c2410c] group-hover:rotate-12 transition-transform" />
+                <span className="font-semibold">Admin Panel</span>
+                <span className="hidden sm:inline-block font-mono text-[10px] text-[#a8a29e] border-l border-[#44403c] pl-1.5 ml-0.5">
+                  {currentUser.name.split(' ')[0]}
+                </span>
               </button>
             ) : (
               <button
                 onClick={onOpenLogin}
-                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl btn-editorial-primary text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5"
+                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl btn-editorial-primary text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5 cursor-pointer"
+                title="Open Admin Login"
               >
                 <Lock className="w-3.5 h-3.5 text-[#c2410c]" />
                 <span>Admin Login</span>
@@ -173,6 +172,15 @@ export const Navbar = ({
               </button>
             );
           })}
+          {/* Mobile Admin Quick Access */}
+          <button
+            onClick={currentUser ? onOpenAdmin : onOpenLogin}
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg shrink-0 bg-[#fff7ed] text-[#c2410c] font-semibold border border-[#ffedd5] cursor-pointer"
+            title="Admin Cockpit"
+          >
+            <Shield className="w-3.5 h-3.5" />
+            <span>Admin</span>
+          </button>
         </div>
       </div>
     </header>
