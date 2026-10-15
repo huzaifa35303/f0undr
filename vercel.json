@@ -12,6 +12,14 @@
       "destination": "/book/$1"
     },
     {
+      "source": "/urdu-book",
+      "destination": "/urdu-book/index.html"
+    },
+    {
+      "source": "/urdu-book/(.*)",
+      "destination": "/urdu-book/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="gemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" />
+      <stop offset="50%" stop-color="#047857" />
+      <stop offset="100%" stop-color="#022c22" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fde68a" />
+      <stop offset="50%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#gemGrad)" />
+  <rect x="3" y="3" width="58" height="58" rx="11" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="3 2" />
+  <!-- Open Book Silhouette -->
+  <path d="M14 44 C20 40 28 40 32 43 C36 40 44 40 50 44 L50 22 C44 19 36 19 32 22 C28 19 20 19 14 22 Z" fill="#faf5eb" opacity="0.95" />
+  <path d="M32 22 L32 43" stroke="#064e3b" stroke-width="1.5" stroke-linecap="round" />
+  <!-- Urdu letter 'ف' (f0undr) in Gold -->
+  <text x="32" y="35" font-family="'Noto Nastaliq Urdu', 'Gulzar', 'Jameel Noori Nastaliq', serif" font-size="20" font-weight="bold" fill="url(#goldGrad)" text-anchor="middle" dominant-baseline="middle">ف</text>
+  <!-- Small Star / Diamond Emblem -->
+  <polygon points="32,10 33.5,13.5 37,15 33.5,16.5 32,20 30.5,16.5 27,15 30.5,13.5" fill="url(#goldGrad)" />
+</svg>

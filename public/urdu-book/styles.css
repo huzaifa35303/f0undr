@@ -1,0 +1,1466 @@
+/* ==========================================================================
+   f0undr Urdu e-Book — Professional Nastaliq Literary & Educational Stylesheet
+   Designed for FBISE Grade 7 Urdu Curriculum
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Gulzar&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap');
+
+:root {
+  color-scheme: light;
+  
+  /* Primary Theme: ورقِ قدیم (Antique Parchment) */
+  --bg-page: #faf6ee;
+  --bg-surface: #fffdf9;
+  --bg-elevated: #f3ece0;
+  --bg-subtle: #eee6d6;
+  --border-color: #dfd6c5;
+  --border-focus: #b45309;
+
+  --text-primary: #192b23;
+  --text-secondary: #486156;
+  --text-muted: #6b8277;
+  
+  --emerald-deep: #064e3b;
+  --emerald-main: #047857;
+  --emerald-light: #10b981;
+  --emerald-pale: #ecfdf5;
+  
+  --gold-main: #b45309;
+  --gold-warm: #d97706;
+  --gold-light: #fef3c7;
+  --gold-border: #f59e0b;
+  
+  --ruby-main: #9f1239;
+  --ruby-pale: #ffe4e6;
+  
+  --font-nastaliq: 'Noto Nastaliq Urdu', 'Gulzar', 'Jameel Noori Nastaliq', 'Urdu Typesetting', serif;
+  --font-ui: 'Noto Sans Arabic', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  --content-max-width: 980px;
+  --reading-font-size: 1.28rem;
+  --reading-line-height: 2.5;
+  
+  --shadow-sm: 0 1px 3px rgba(18, 40, 31, 0.05);
+  --shadow-md: 0 4px 14px rgba(18, 40, 31, 0.08);
+  --shadow-lg: 0 12px 30px rgba(18, 40, 31, 0.12);
+  --shadow-glow: 0 0 20px rgba(217, 119, 6, 0.25);
+  
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+  
+  --transition-fast: 0.18s ease;
+  --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Theme: شبستان (Midnight Emerald / Dark Mode) */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-page: #06130e;
+  --bg-surface: #0a1e16;
+  --bg-elevated: #112a20;
+  --bg-subtle: #17382c;
+  --border-color: #1f4738;
+  --border-focus: #fbbf24;
+
+  --text-primary: #e6f2ec;
+  --text-secondary: #a3c2b4;
+  --text-muted: #729686;
+  
+  --emerald-deep: #022c22;
+  --emerald-main: #10b981;
+  --emerald-light: #34d399;
+  --emerald-pale: #062b1e;
+  
+  --gold-main: #fbbf24;
+  --gold-warm: #f59e0b;
+  --gold-light: #2b1f0c;
+  --gold-border: #f59e0b;
+  
+  --ruby-main: #f43f5e;
+  --ruby-pale: #311119;
+  
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Theme: اجلا سفید (Clean Modernist) */
+[data-theme="clean"] {
+  color-scheme: light;
+  --bg-page: #ffffff;
+  --bg-surface: #f8fafc;
+  --bg-elevated: #f1f5f9;
+  --bg-subtle: #e2e8f0;
+  --border-color: #cbd5e1;
+  --border-focus: #047857;
+
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  
+  --emerald-deep: #0f766e;
+  --emerald-main: #0d9488;
+  --emerald-light: #14b8a6;
+  --emerald-pale: #f0fdfa;
+  
+  --gold-main: #d97706;
+  --gold-warm: #f59e0b;
+  --gold-light: #fffbeb;
+  --gold-border: #fbbf24;
+  
+  --ruby-main: #be123c;
+  --ruby-pale: #fff1f2;
+}
+
+/* Base & Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  direction: rtl;
+  text-align: right;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-nastaliq);
+  font-size: var(--reading-font-size);
+  line-height: var(--reading-line-height);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--transition-smooth), color var(--transition-smooth);
+}
+
+/* Nastaliq text should never have unnatural letter spacing */
+p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
+  letter-spacing: 0 !important;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--emerald-pale);
+  color: var(--emerald-deep);
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  background: var(--emerald-deep);
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius-sm);
+  transform: translateY(-200%);
+  transition: transform var(--transition-fast);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Header & Navigation Strip
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(250, 246, 238, 0.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color var(--transition-smooth), border-color var(--transition-smooth);
+}
+[data-theme="dark"] .site-header {
+  background-color: rgba(6, 19, 14, 0.94);
+}
+[data-theme="clean"] .site-header {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.header-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0.65rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Brand Identity */
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+.brand-emblem {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-main));
+  box-shadow: 0 4px 10px rgba(6, 78, 59, 0.25);
+  position: relative;
+  border: 1px solid rgba(251, 191, 36, 0.4);
+}
+.brand-emblem svg {
+  width: 28px;
+  height: 28px;
+}
+.brand-info {
+  display: flex;
+  flex-direction: column;
+}
+.brand-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--emerald-deep);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+[data-theme="dark"] .brand-title {
+  color: var(--emerald-light);
+}
+.brand-subtitle {
+  font-family: var(--font-ui);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.badge-gold {
+  background-color: var(--gold-light);
+  color: var(--gold-main);
+  border: 1px solid var(--gold-border);
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--radius-full);
+}
+
+/* Header Controls & Actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.btn-icon, .btn-action {
+  font-family: var(--font-ui);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+.btn-icon:hover, .btn-action:hover {
+  background-color: var(--bg-elevated);
+  border-color: var(--emerald-main);
+  color: var(--emerald-main);
+  transform: translateY(-1px);
+}
+.btn-icon {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--emerald-deep), var(--emerald-main));
+  color: #fff;
+  border: none;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #022c22, var(--emerald-deep));
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(6, 78, 59, 0.3);
+}
+
+/* Reading Progress Strip */
+.progress-strip {
+  width: 100%;
+  height: 4px;
+  background-color: var(--bg-subtle);
+  position: relative;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold-main), var(--emerald-main));
+  transition: width 0.15s ease-out;
+}
+
+.reading-substrip {
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.35rem 1.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.substrip-unit {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: var(--emerald-deep);
+}
+[data-theme="dark"] .substrip-unit {
+  color: var(--emerald-light);
+}
+.substrip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--gold-warm);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  padding: 3.5rem 1.5rem 2.5rem;
+  background: radial-gradient(circle at 50% 10%, var(--bg-elevated) 0%, var(--bg-page) 75%);
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+  overflow: hidden;
+}
+.hero-ornament {
+  font-size: 1.8rem;
+  color: var(--gold-main);
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+.hero-bismillah {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--emerald-deep);
+  margin: 0 0 1rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+[data-theme="dark"] .hero-bismillah {
+  color: var(--emerald-light);
+}
+.hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 1rem;
+  color: var(--text-primary);
+}
+.hero-title em {
+  font-style: normal;
+  color: var(--emerald-main);
+  border-bottom: 3px double var(--gold-main);
+}
+.hero-desc {
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  font-size: 1.35rem;
+  line-height: 2.2;
+  color: var(--text-secondary);
+}
+
+/* Hero Stats Row */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.stat-pill {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-ui);
+}
+.stat-pill strong {
+  font-size: 1.15rem;
+  color: var(--emerald-deep);
+}
+[data-theme="dark"] .stat-pill strong {
+  color: var(--emerald-light);
+}
+.stat-pill span {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ==========================================================================
+   Unit Navigation Drawer & Quick Switcher
+   ========================================================================== */
+.chapter-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+}
+.chapter-drawer-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.chapter-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(92vw, 420px);
+  background-color: var(--bg-surface);
+  border-left: 1px solid var(--border-color);
+  z-index: 210;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform var(--transition-smooth);
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.2);
+}
+.chapter-drawer-overlay.active .chapter-drawer {
+  transform: translateX(0);
+}
+
+.drawer-header {
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-elevated);
+}
+.drawer-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--emerald-deep);
+}
+[data-theme="dark"] .drawer-title {
+  color: var(--emerald-light);
+}
+
+.drawer-search-box {
+  padding: 0.8rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.drawer-search-input {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  font-family: var(--font-nastaliq);
+  font-size: 1.05rem;
+  outline: none;
+}
+.drawer-search-input:focus {
+  border-color: var(--emerald-main);
+  box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.15);
+}
+
+.drawer-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.8rem;
+  list-style: none;
+  margin: 0;
+}
+.drawer-item {
+  margin-bottom: 0.4rem;
+}
+.drawer-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text-primary);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+.drawer-link:hover {
+  background-color: var(--bg-elevated);
+  border-color: var(--border-color);
+}
+.drawer-link.active {
+  background-color: var(--emerald-pale);
+  border-color: var(--emerald-main);
+  color: var(--emerald-deep);
+  font-weight: 700;
+}
+[data-theme="dark"] .drawer-link.active {
+  color: var(--emerald-light);
+}
+.drawer-link-num {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--gold-main);
+  background-color: var(--gold-light);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+}
+.drawer-link-type {
+  font-size: 0.75rem;
+  font-family: var(--font-ui);
+  color: var(--text-muted);
+}
+
+/* Quick Unit Pills Bar */
+.quick-unit-bar {
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.65rem 1.5rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  scrollbar-width: thin;
+}
+.unit-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+.unit-pill:hover, .unit-pill.active {
+  background-color: var(--emerald-deep);
+  color: #fff;
+  border-color: var(--emerald-deep);
+  transform: translateY(-1px);
+}
+[data-theme="dark"] .unit-pill:hover, [data-theme="dark"] .unit-pill.active {
+  background-color: var(--emerald-main);
+  color: #06130e;
+}
+
+/* ==========================================================================
+   Main Content Layout
+   ========================================================================== */
+.app-container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+
+/* Unit Card Article */
+.unit-article {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2.8rem;
+  margin-bottom: 3.5rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  transition: border-color var(--transition-smooth);
+}
+@media (max-width: 768px) {
+  .unit-article {
+    padding: 1.8rem 1.2rem;
+  }
+}
+
+/* Unit Header */
+.unit-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.8rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.unit-artwork-container {
+  width: 100%;
+  max-height: 380px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.8rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-elevated);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.unit-artwork {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.unit-artwork:hover {
+  transform: scale(1.02);
+}
+
+.unit-meta-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+.unit-badge {
+  background-color: var(--emerald-pale);
+  color: var(--emerald-deep);
+  border: 1px solid var(--emerald-main);
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.25rem 0.8rem;
+  border-radius: var(--radius-full);
+}
+[data-theme="dark"] .unit-badge {
+  color: var(--emerald-light);
+}
+
+.unit-genre-tag {
+  background-color: var(--gold-light);
+  color: var(--gold-main);
+  border: 1px solid var(--gold-border);
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.25rem 0.8rem;
+  border-radius: var(--radius-full);
+}
+
+.unit-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--emerald-deep);
+  margin: 0.4rem 0 0.8rem;
+  line-height: 1.35;
+}
+[data-theme="dark"] .unit-title {
+  color: var(--emerald-light);
+}
+
+.unit-author {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin: 0 0 1.2rem;
+}
+.unit-author strong {
+  color: var(--gold-main);
+}
+
+/* Unit Action Bar */
+.unit-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+/* ==========================================================================
+   Poetry & Verses Presentation (شاعری اور اشعار)
+   ========================================================================== */
+.poetry-container {
+  margin: 2.5rem auto;
+  max-width: 680px;
+}
+.poetry-card {
+  background: radial-gradient(circle at 50% 50%, var(--bg-elevated) 0%, var(--bg-surface) 100%);
+  border: 1px solid var(--border-color);
+  border-right: 4px solid var(--gold-main);
+  border-left: 4px solid var(--gold-main);
+  border-radius: var(--radius-md);
+  padding: 1.8rem 1.5rem;
+  margin-bottom: 1.6rem;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  text-align: center;
+}
+
+.verse-couplet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+.verse-line {
+  font-size: 1.55rem;
+  font-weight: 600;
+  line-height: 2.2;
+  color: var(--text-primary);
+  text-align: center;
+  position: relative;
+}
+.verse-divider {
+  color: var(--gold-main);
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   Prose / Chapters Content (نثر و اسباق)
+   ========================================================================== */
+.prose-content {
+  font-size: var(--reading-font-size);
+  line-height: var(--reading-line-height);
+  color: var(--text-primary);
+  text-align: justify;
+}
+.prose-content p {
+  margin-bottom: 1.8rem;
+  text-indent: 1.5rem;
+}
+.prose-content p.lead {
+  font-size: 1.35rem;
+  color: var(--emerald-deep);
+  font-weight: 600;
+  text-indent: 0;
+  border-right: 4px solid var(--emerald-main);
+  padding-right: 1.2rem;
+  background-color: var(--bg-elevated);
+  padding: 1rem 1.4rem;
+  border-radius: var(--radius-sm);
+}
+[data-theme="dark"] .prose-content p.lead {
+  color: var(--emerald-light);
+}
+
+/* Interactive Vocabulary Highlight */
+.vocab-word {
+  color: var(--emerald-deep);
+  font-weight: 700;
+  border-bottom: 2px dotted var(--gold-main);
+  cursor: pointer;
+  padding: 0 0.2rem;
+  border-radius: 3px;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+[data-theme="dark"] .vocab-word {
+  color: var(--emerald-light);
+}
+.vocab-word:hover {
+  background-color: var(--gold-light);
+  color: var(--gold-main);
+}
+
+/* Floating Vocab Popover */
+.vocab-popover {
+  position: absolute;
+  z-index: 50;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-md);
+  padding: 0.8rem 1.2rem;
+  box-shadow: var(--shadow-lg);
+  max-width: 280px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all var(--transition-fast);
+  text-align: right;
+  direction: rtl;
+}
+.vocab-popover.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.popover-term {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--emerald-deep);
+  margin-bottom: 0.2rem;
+}
+[data-theme="dark"] .popover-term {
+  color: var(--emerald-light);
+}
+.popover-def {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Central Idea, Tashreeh & Collapsibles
+   ========================================================================== */
+.tashreeh-accordion {
+  margin: 2rem 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.accordion-item {
+  border-bottom: 1px solid var(--border-color);
+}
+.accordion-item:last-child {
+  border-bottom: none;
+}
+.accordion-header {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background-color: var(--bg-elevated);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: right;
+  cursor: pointer;
+  color: var(--text-primary);
+  font-family: var(--font-nastaliq);
+  font-size: 1.3rem;
+  font-weight: 700;
+  transition: background-color var(--transition-fast);
+}
+.accordion-header:hover {
+  background-color: var(--bg-subtle);
+}
+.accordion-icon {
+  font-family: var(--font-ui);
+  font-size: 1.2rem;
+  color: var(--gold-main);
+  transition: transform var(--transition-fast);
+}
+.accordion-item.open .accordion-icon {
+  transform: rotate(180deg);
+}
+.accordion-body {
+  padding: 1.4rem 1.8rem;
+  background-color: var(--bg-surface);
+  display: none;
+  line-height: 2.3;
+}
+.accordion-item.open .accordion-body {
+  display: block;
+}
+
+/* Farhang Table (الفاظ و معانی) */
+.farhang-table-wrapper {
+  overflow-x: auto;
+  margin: 1.8rem 0;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+.farhang-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: right;
+}
+.farhang-table th {
+  background-color: var(--bg-elevated);
+  color: var(--emerald-deep);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 0.8rem 1.2rem;
+  border-bottom: 2px solid var(--border-color);
+}
+[data-theme="dark"] .farhang-table th {
+  color: var(--emerald-light);
+}
+.farhang-table td {
+  padding: 0.75rem 1.2rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 1.15rem;
+  line-height: 2.1;
+}
+.farhang-table tr:hover {
+  background-color: var(--bg-elevated);
+}
+.farhang-term {
+  font-weight: 700;
+  color: var(--emerald-deep);
+}
+[data-theme="dark"] .farhang-term {
+  color: var(--emerald-light);
+}
+
+/* ==========================================================================
+   Interactive Quizzes (معروضی سوالات و امتحانات)
+   ========================================================================== */
+.quiz-wrapper {
+  margin: 2.5rem 0;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+.quiz-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+.quiz-title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--emerald-deep);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+[data-theme="dark"] .quiz-title {
+  color: var(--emerald-light);
+}
+.quiz-score-badge {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 700;
+  background-color: var(--emerald-deep);
+  color: #fff;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+}
+
+.quiz-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 1.4rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+.quiz-question {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 2;
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+.quiz-option-btn {
+  font-family: var(--font-nastaliq);
+  font-size: 1.15rem;
+  line-height: 1.8;
+  padding: 0.65rem 1rem;
+  text-align: right;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.quiz-option-btn:hover:not(:disabled) {
+  background-color: var(--bg-subtle);
+  border-color: var(--emerald-main);
+  transform: translateY(-1px);
+}
+.quiz-option-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+.quiz-option-btn.selected-correct {
+  background-color: #d1fae5 !important;
+  border-color: #059669 !important;
+  color: #065f46 !important;
+  font-weight: 700;
+}
+.quiz-option-btn.selected-wrong {
+  background-color: #ffe4e6 !important;
+  border-color: #e11d48 !important;
+  color: #9f1239 !important;
+}
+.quiz-option-btn.is-answer {
+  border: 2px dashed #059669 !important;
+  background-color: #ecfdf5 !important;
+  color: #065f46 !important;
+  font-weight: 700;
+}
+
+.quiz-explanation {
+  display: none;
+  margin-top: 1rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--radius-md);
+  font-size: 1.1rem;
+  line-height: 2;
+}
+.quiz-explanation.show {
+  display: block;
+}
+.quiz-explanation.correct {
+  background-color: var(--emerald-pale);
+  border-right: 4px solid var(--emerald-main);
+  color: var(--emerald-deep);
+}
+.quiz-explanation.wrong {
+  background-color: var(--ruby-pale);
+  border-right: 4px solid var(--ruby-main);
+  color: var(--ruby-main);
+}
+
+/* ==========================================================================
+   Student Notebook & Notes (طالب علم کی ڈائری)
+   ========================================================================== */
+.student-notebook {
+  margin: 2.5rem 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem;
+  background-color: var(--bg-surface);
+}
+.notebook-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.notebook-title {
+  margin: 0;
+  font-size: 1.35rem;
+  color: var(--emerald-deep);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+[data-theme="dark"] .notebook-title {
+  color: var(--emerald-light);
+}
+.notebook-status {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.notebook-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+  font-family: var(--font-nastaliq);
+  font-size: 1.2rem;
+  line-height: 2.2;
+  outline: none;
+  resize: vertical;
+}
+.notebook-textarea:focus {
+  border-color: var(--emerald-main);
+  box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.15);
+}
+
+/* ==========================================================================
+   Bottom Unit Pager (اگلا اور پچھلا سبق)
+   ========================================================================== */
+.unit-pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+.pager-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.pager-btn:hover {
+  background-color: var(--emerald-deep);
+  color: #fff;
+  border-color: var(--emerald-deep);
+  transform: translateY(-2px);
+}
+[data-theme="dark"] .pager-btn:hover {
+  background-color: var(--emerald-main);
+  color: #06130e;
+}
+
+/* ==========================================================================
+   3D Flashcards Section (الفاظ و معانی کے فلیش کارڈز)
+   ========================================================================== */
+.flashcards-section {
+  margin: 4.5rem 0;
+  padding: 2.5rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+.flashcard-stage {
+  perspective: 1200px;
+  width: min(100%, 580px);
+  height: 290px;
+  margin: 2rem auto;
+  cursor: pointer;
+}
+.flashcard-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+.flashcard-stage.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border-color);
+}
+.flashcard-front {
+  background: radial-gradient(circle at 50% 20%, var(--bg-elevated) 0%, var(--bg-surface) 100%);
+  border-color: var(--gold-border);
+}
+.flashcard-back {
+  background: radial-gradient(circle at 50% 20%, var(--emerald-pale) 0%, var(--bg-surface) 100%);
+  transform: rotateY(180deg);
+  border-color: var(--emerald-main);
+}
+
+.flashcard-badge {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold-main);
+  background-color: var(--gold-light);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  margin-bottom: 0.8rem;
+}
+.flashcard-term {
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--emerald-deep);
+  margin: 0;
+}
+[data-theme="dark"] .flashcard-term {
+  color: var(--emerald-light);
+}
+.flashcard-def {
+  font-size: 1.55rem;
+  line-height: 2.2;
+  color: var(--text-primary);
+  margin: 0;
+}
+.flashcard-hint {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 1.2rem;
+}
+
+.flashcard-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+/* ==========================================================================
+   Original Page Lightbox Modal (اصل درسی صفحہ لائٹ باکس)
+   ========================================================================== */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+}
+.lightbox-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox-content {
+  position: relative;
+  max-width: 900px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+.lightbox-header {
+  padding: 0.8rem 1.4rem;
+  background-color: var(--bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+}
+.lightbox-title {
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--emerald-deep);
+}
+.lightbox-body {
+  overflow: auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.lightbox-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+}
+
+/* ==========================================================================
+   Global Search Modal (فوری تلاش - Ctrl+K)
+   ========================================================================== */
+.search-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 350;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5rem 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+}
+.search-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.search-dialog {
+  width: min(100%, 650px);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+.search-input-wrapper {
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.search-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--font-nastaliq);
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  outline: none;
+}
+.search-results-list {
+  max-height: 380px;
+  overflow-y: auto;
+  padding: 0.8rem;
+  list-style: none;
+  margin: 0;
+}
+.search-item {
+  padding: 0.85rem 1.2rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 0.4rem;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+}
+.search-item:hover, .search-item.highlighted {
+  background-color: var(--bg-elevated);
+}
+.search-item-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--emerald-deep);
+}
+[data-theme="dark"] .search-item-title {
+  color: var(--emerald-light);
+}
+.search-item-snippet {
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-color);
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+.footer-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.footer-logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--emerald-deep);
+  margin-bottom: 0.8rem;
+}
+[data-theme="dark"] .footer-logo {
+  color: var(--emerald-light);
+}
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+}
+.footer-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+.footer-links a:hover {
+  color: var(--emerald-main);
+}
+.footer-copy {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Print Stylesheet (طبع و پی ڈی ایف برائے امتحانات)
+   ========================================================================== */
+@media print {
+  .site-header, .quick-unit-bar, .unit-pager, .header-actions, .unit-actions-bar,
+  .flashcards-section, .chapter-drawer-overlay, .search-modal, .lightbox-modal,
+  .site-footer, .progress-strip, .reading-substrip, .btn-icon, .btn-action {
+    display: none !important;
+  }
+  body, html {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 12pt;
+    line-height: 2.2;
+  }
+  .unit-article {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin-bottom: 3rem !important;
+    page-break-after: always;
+  }
+  .unit-artwork-container {
+    max-height: 250px;
+  }
+  .accordion-body {
+    display: block !important;
+  }
+}

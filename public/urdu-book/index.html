@@ -1,0 +1,1446 @@
+<!doctype html>
+<html lang="ur" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#faf6ee">
+    
+    <!-- Primary SEO & Scholarly Meta Tags -->
+    <title>صحیفۂ اردو — نصاب و ادب (جماعت ہفتم) | f0undr Academy</title>
+    <meta name="description" content="وفاقی تعلیمی بورڈ کے نصاب پر مبنی جدید ترین ڈیجیٹل کتب خانہ: منتخب ادبی شاہکار، کلامِ اقبال، فصیح و سلیس تشریحات، فرہنگ و لغت، اور معروضی امتحانی مشقیں۔">
+    <meta name="keywords" content="اردو نصاب جماعت ہفتم, FBISE Grade 7 Urdu, وفاقی بورڈ اردو, کلام اقبال, علامہ اقبال, حمد و نعت, اردو فرہنگ, اردو لغت, فلیش کارڈز">
+    <meta name="author" content="Huzaifa (f0undr Academy)">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://f0undr.vercel.app/urdu-book/">
+    <meta name="google-site-verification" content="gy6YtcdV0VMfz2OCWbp8JfHQlbc6fUMZl9wqzAJX5Yo" />
+    <meta name="google-site-verification" content="oPgfrng_8nMQM7I8VnJ9HcOEZmGPs2sWjFHSjjYxKeM" />
+    <meta name="google-site-verification" content="googlefc9762157f1d6265" />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="book">
+    <meta property="og:url" content="https://f0undr.vercel.app/urdu-book/">
+    <meta property="og:title" content="صحیفۂ اردو — نصاب و ادب (جماعت ہفتم)">
+    <meta property="og:description" content="شائستہ ذوقِ ادب، فکری بالیدگی اور لسانی مہارت کے لیے تیار کردہ مستند ڈیجیٹل درسی کتب خانہ۔">
+    <meta property="og:site_name" content="f0undr Educational Framework">
+
+    <!-- Favicon & Styles -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-link">براہِ راست متن کے مطالعے پر جائیں</a>
+
+    <!-- Sticky Navigation Header -->
+    <header class="site-header" role="banner">
+      <div class="header-container">
+        <!-- Brand Identity -->
+        <a href="#top" class="brand-wrapper" title="صفحۂ اول">
+          <div class="brand-emblem" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M7 23 C11 20 16 20 19 22 C22 20 27 20 30 23 L30 10 C27 8 22 8 19 10 C16 8 11 8 7 10 Z" fill="#faf5eb" />
+              <path d="M19 10 L19 22" stroke="#064e3b" stroke-width="1.5" />
+            </svg>
+          </div>
+          <div class="brand-info">
+            <span class="brand-title">
+              صحیفۂ اردو
+              <span class="badge-gold">جماعتِ ہفتم</span>
+            </span>
+            <span class="brand-subtitle">وفاقی تعلیمی بورڈ نصاب (FBISE Edition)</span>
+          </div>
+        </a>
+
+        <!-- Header Actions & Controls -->
+        <div class="header-actions">
+          <!-- Chapter Drawer Trigger -->
+          <button type="button" class="btn-action" id="drawer-trigger" aria-label="فہرستِ ابواب کھولیں">
+            <span>📚</span>
+            <span>فہرستِ ابواب</span>
+          </button>
+
+          <!-- Dual-Mode Toggle -->
+          <button type="button" class="btn-action" id="view-mode-toggle" title="مطالعہ کا انداز تبدیل کریں">
+            <span>📖</span>
+            <span>مسلسل مطالعہ (Continuous)</span>
+          </button>
+
+          <!-- Audio Speech Synthesizer -->
+          <button type="button" class="btn-action" id="global-audio-toggle" title="اردو قرأت سنیں">
+            <span>🎧</span>
+            <span>صوتی قرأت و تلفظ</span>
+          </button>
+
+          <!-- Search Trigger (Ctrl+K) -->
+          <button type="button" class="btn-icon" id="global-search-trigger" title="فوری فکری تلاش (Ctrl + K)">
+            🔍
+          </button>
+
+          <!-- Font Size Adjusters -->
+          <button type="button" class="btn-icon" id="font-decrease" title="فونٹ سائز چھوٹا کریں">
+            A-
+          </button>
+          <button type="button" class="btn-icon" id="font-increase" title="فونٹ سائز بڑا کریں">
+            A+
+          </button>
+
+          <!-- Theme Toggle -->
+          <button type="button" class="btn-action" id="theme-toggle" title="مطالعہ کی تھیم تبدیل کریں">
+            <span id="theme-icon">📜</span>
+            <span id="theme-label">روایتی ورق</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Top Reading Progress Bar -->
+      <div class="progress-strip" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-fill" id="reading-progress-fill"></div>
+      </div>
+
+      <!-- Substrip with Active Unit & Stats -->
+      <div class="reading-substrip">
+        <div class="substrip-unit">
+          <span class="substrip-dot"></span>
+          <span id="active-unit-label">بابِ اول: حمدِ باری تعالیٰ (عرفانِ الٰہی)</span>
+        </div>
+        <div id="progress-percent-text">0% مکمل مطالعہ</div>
+      </div>
+    </header>
+
+    <!-- Quick Horizontal Unit Selector Pills -->
+    <nav class="quick-unit-bar" aria-label="فوری یونٹ انتخاب">
+      <button type="button" class="unit-pill active" data-unit-id="dua">مناجات</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-1">۱. حمد</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-2">۲. نعت</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-3">۳. طب نبویﷺ</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-4">۴. بابائے اردو</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-5">۵. نغمۂ برسات</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-6">۶. نگارستانِ وطن</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-7">۷. نشانِ حیدر</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-8">۸. ملی نغمہ</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-9">۹. صلاح الدین ایوبی</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-10">۱۰. قدرتی آفات</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-11">۱۱. حضرت ابراہیمؑ</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-12">۱۲. انفارمیشن ٹیکنالوجی</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-13">۱۳. ہلالِ احمر</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-14">۱۴. انوکھی تمنا</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-15">۱۵. فکرِ اقبال و نوجوان</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-16">۱۶. مردِ مسلمان</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-17">۱۷. گلشنِ دو روز</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-18">۱۸. رکشے والا</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-19">۱۹. پرانی موٹر</button>
+      <button type="button" class="unit-pill" data-unit-id="unit-20">۲۰. شہری شعور</button>
+    </nav>
+
+    <!-- Hero Showcase Section -->
+    <section class="hero-section" id="top">
+      <div class="hero-ornament">﷽</div>
+      <h1 class="hero-title">
+        صحیفۂ ادب و زبان — <em>جماعتِ ہفتم</em>
+      </h1>
+      <p class="hero-desc">
+        شائستہ ذوقِ ادب کی آبیاری، فکری بالیدگی اور لسانی مہارت کے لیے تیار کردہ مستند ادبی انتخاب: کلامِ اقبال، پرشکوہ منظومات، تاریخی و معلوماتی نگارشات، سلیس و فصیح مفاہیم، فرہنگِ الفاظ اور خودکار تشخیصی آزمائشوں پر مشتمل جدید ترین ڈیجیٹل کتب خانہ۔
+      </p>
+
+      <!-- Stats Pills -->
+      <div class="hero-stats">
+        <div class="stat-pill">
+          <strong>۲۰ منتخب ابواب</strong>
+          <span>ہمہ جہت علمی و فکری سرمایہ</span>
+        </div>
+        <div class="stat-pill">
+          <strong>۱۵۰+ فرہنگ و لغت</strong>
+          <span>لسانی تحقیق و لفظی معانی</span>
+        </div>
+        <div class="stat-pill">
+          <strong>صوتی ادراک و تلفظ</strong>
+          <span>مستند لب و لہجہ اور سماعت</span>
+        </div>
+        <div class="stat-pill">
+          <strong>معیاری سوالنامہ</strong>
+          <span>امتحانی فہم و خود احتسابی</span>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <button type="button" class="btn-action btn-primary" onclick="document.getElementById('unit-1').scrollIntoView({behavior:'smooth'})">
+          <span>📖</span> مطالعہ کا باقاعدہ آغاز کریں
+        </button>
+        <button type="button" class="btn-action" onclick="document.getElementById('flashcards').scrollIntoView({behavior:'smooth'})">
+          <span>🎴</span> لسانی و ادبی فلیش کارڈز
+        </button>
+        <button type="button" class="btn-action" onclick="document.getElementById('grammar-guide').scrollIntoView({behavior:'smooth'})">
+          <span>✒️</span> قواعد و انشاء کی کلید
+        </button>
+      </div>
+    </section>
+
+    <!-- Main Content Stream -->
+    <main class="app-container" id="main-content" role="main">
+
+      <!-- ====================================================================
+           افتتاحیہ: مناجاتِ سحر (Dua)
+           ==================================================================== -->
+      <article class="unit-article" id="dua">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/dua_art.png" alt="مناجات آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ افتتاح — صحیفۂ بندگی</span>
+            <span class="unit-genre-tag">مناجات و التجائے خلوص</span>
+          </div>
+          <h2 class="unit-title">مناجاتِ سحر</h2>
+          <p class="unit-author">نذرانۂ اخلاص و طلبِ بصیرت برائے شائقینِ علم</p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/dua_page.png" data-page-title="دعا — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="poetry-container">
+          <div class="poetry-card">
+            <div class="verse-couplet">
+              <span class="verse-line">خدایا عطا کر ہمیں <span class="vocab-word" data-term="نیک خوئی" data-def="پاکیزہ عادات، شائستہ سیرت، خوش اخلاقی">نیک خوئی</span></span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">کریں کام سب کے، نہ ہو بدخوئی</span>
+            </div>
+            <div class="verse-couplet">
+              <span class="verse-line">ہمیں سچ کی راہوں پہ چلنا سکھا</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">ہمیں نیک بننا، سنورنا سکھا</span>
+            </div>
+            <div class="verse-couplet">
+              <span class="verse-line">محبت کا جذبہ دلوں میں جگا</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">جہالت کا گہرا اندھیرا مٹا</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Student Notebook -->
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="dua" placeholder="اس مناجات کے فکری و اخلاقی پہلوؤں پر اپنے ذاتی تاثرات قلمبند کریں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۱: حمدِ باری تعالیٰ (Hamd)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-1">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit1_hamd_art.png" alt="حمد آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ اول</span>
+            <span class="unit-genre-tag">صنف: کلامِ منظوم (عرفانِ الٰہی)</span>
+          </div>
+          <h2 class="unit-title">حمدِ باری تعالیٰ — شانِ یکتائی و رحمت</h2>
+          <p class="unit-author">سخن ور: <strong>مولانا خواجہ الطاف حسین حالیؔ</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit1_hamd_page.png" data-page-title="حمد — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="poetry-container">
+          <div class="poetry-card">
+            <div class="verse-couplet">
+              <span class="verse-line">قبضہ ہو دلوں پر کیا اور سوا تیرا</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">اک بندۂ نافرمان ہے <span class="vocab-word" data-term="شکر سرا" data-def="احسانات کا معترف، ہمہ وقت شکر گزار">شکر سرا</span> تیرا</span>
+            </div>
+            <div class="verse-couplet">
+              <span class="verse-line">گو سب سے سوا مانگا گو سب سے برا چاہا</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">پھر بھی نہ چھٹا در سے دامن یہ <span class="vocab-word" data-term="گدا" data-def="سائل، نیازمند بندہ، مانگنے والا">گدا</span> تیرا</span>
+            </div>
+            <div class="verse-couplet">
+              <span class="verse-line">تو ہی نظر آتا ہے ہر شے پہ <span class="vocab-word" data-term="محیط" data-def="احاطہ کرنے والا، کائنات کے ذرے ذرے پر حاوی">محیط</span> اپنا</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">رنج و الم و غم میں دل کو ہے آسرا تیرا</span>
+            </div>
+            <div class="verse-couplet">
+              <span class="verse-line">ہر بول ترا دل سے ٹکرا کے گزرتا ہے</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">کچھ رنگ بیاں حالیؔ ہے سب سے جدا تیرا</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tashreeh & Central Idea Accordion -->
+        <div class="tashreeh-accordion">
+          <div class="accordion-item">
+            <button type="button" class="accordion-header">
+              <span>💡 فکری لبِ لباب و مرکزی جائزہ</span>
+              <span class="accordion-icon">▼</span>
+            </button>
+            <div class="accordion-body">
+              مولانا الطاف حسین حالیؔ اس شاہکار حمد میں انسانی عجز و خطا کاری کے مقابلے میں پروردگارِ عالم کی بے کراں رحمت اور ہمہ گیر حاکمیت کا دلسوز اعتراف کرتے ہیں۔ انسان ناتواں ہونے کے ناطے لغزشوں کا مرتکب ہوتا ہے مگر ذاتِ باری تعالیٰ کی رحمانیت اسے مایوس نہیں ہونے دیتی، کیونکہ کائنات کے ہر گوشے اور ہر رنج و الم میں وہی ذاتِ واحد سب سے سچا سہارا ہے۔
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button type="button" class="accordion-header">
+              <span>📖 سلیس و فصیح تشریح برائے امتحانات</span>
+              <span class="accordion-icon">▼</span>
+            </button>
+            <div class="accordion-body">
+              <strong>مطلع:</strong> اے ربِ کائنات! دلوں کی دنیا پر تیرے سوا کس کا ایسا غیر مشروط غلبہ ہو سکتا ہے کہ مجھ جیسا خطاکار اور کوتاہ بین انسان بھی دل کی گہرائیوں سے تیرے ہی احسانات اور کرم کا شکر ادا کر رہا ہے۔<br><br>
+              <strong>شعر ثانی:</strong> اے خالقِ دو جہاں! تیری صفاتِ کاملہ کائنات کے ذرے ذرے کا احاطہ کیے ہوئے ہیں۔ جب بھی انسان پر غم و اندوہ کے بادل منڈلاتے ہیں، تو اس کا بے قرار دل صرف تیری ہی بارگاہ میں سکون و اطمینان پاتا ہے۔
+            </div>
+          </div>
+        </div>
+
+        <!-- Farhang Table -->
+        <div class="farhang-table-wrapper">
+          <table class="farhang-table">
+            <thead>
+              <tr>
+                <th>لفظ / ترکیب</th>
+                <th>لسانی و ادبی مفہوم</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="farhang-term">شکر سرا</td>
+                <td>احسانات کا اعتراف کرنے والا، حمد و شکر کا نغمہ سنانے والا۔</td>
+              </tr>
+              <tr>
+                <td class="farhang-term">گدا</td>
+                <td>نیازمند، بارگاہِ الٰہی کا محتاج بندہ۔</td>
+              </tr>
+              <tr>
+                <td class="farhang-term">محیط</td>
+                <td>گھیرنے والا، حاوی، وہ ذات جس کے قبضۂ قدرت سے کوئی شے باہر نہیں۔</td>
+              </tr>
+              <tr>
+                <td class="farhang-term">رنج و الم</td>
+                <td>دلی دکھ، تکالیف اور حزن و ملال۔</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Interactive Quiz -->
+        <div class="quiz-wrapper" data-quiz-unit="unit-1">
+          <div class="quiz-header">
+            <h3 class="quiz-title"><span>🎯</span> فہم و ادراک — خود احتسابی آزمائش</h3>
+            <span class="quiz-score-badge">نمبر: 0 / 2 (0%)</span>
+          </div>
+
+          <div class="quiz-card" data-answer="1" data-explain="حمد کے مطلع میں مولانا حالیؔ نے انسانی کوتاہیوں کی عکاسی کرتے ہوئے خود کو 'بندۂ نافرمان' سے تعبیر کیا ہے۔">
+            <div class="quiz-question">۱. حمد کے پہلے شعر میں 'نافرمان بندہ' کس کے عجز و ناتوانی کو ظاہر کرتا ہے؟</div>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn">الف) نادان پرندہ</button>
+              <button type="button" class="quiz-option-btn">ب) انسان / شاعر خود</button>
+              <button type="button" class="quiz-option-btn">ج) مغرور بادشاہ</button>
+              <button type="button" class="quiz-option-btn">د) بے حس نگہبان</button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+
+          <div class="quiz-card" data-answer="2" data-explain="حمد کے مقطع میں خواجہ الطاف حسین حالیؔ کا تخلص موجود ہے جو ان کی ادبی پہچان ہے۔">
+            <div class="quiz-question">۲. اس فصیح اور دلپذیر حمد کے سخن ور کون ہیں؟</div>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn">الف) مرزا اسد اللہ خان غالبؔ</button>
+              <button type="button" class="quiz-option-btn">ب) علامہ محمد اقبالؔ</button>
+              <button type="button" class="quiz-option-btn">ج) خواجہ الطاف حسین حالیؔ</button>
+              <button type="button" class="quiz-option-btn">د) حفیظ جالندھری</button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+
+          <button type="button" class="btn-action quiz-reset-btn">امتحانی آزمائش کی تجدید کریں</button>
+        </div>
+
+        <!-- Student Notebook -->
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-1" placeholder="حمد کے فکری نکات، امتحانی تفہیم اور اپنی ذات پر اس کے اثرات یہاں درج کریں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۲: نعتِ رسولِ مقبولﷺ (Naat)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-2">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit2_naat_art.png" alt="نعت آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ دوم</span>
+            <span class="unit-genre-tag">صنف: مدحتِ سرورِ کونینﷺ</span>
+          </div>
+          <h2 class="unit-title">نعتِ رسولِ مقبولﷺ — آفتابِ رحمت و ہدایت</h2>
+          <p class="unit-author">سخن سنج: <strong>ماہر القادری</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit2_naat_page.png" data-page-title="نعت — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="poetry-container">
+          <div class="poetry-card">
+            <div class="verse-couplet">
+              <span class="verse-line">سلام اس پر کہ جس نے بے کسوں کی <span class="vocab-word" data-term="دستگیری" data-def="مدد کرنا، گرتے ہوئے کا ہاتھ تھامنا">دستگیری</span> کی</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">سلام اس پر کہ جس نے خاکساروں کو <span class="vocab-word" data-term="سرفرازی" data-def="عزت و بلندی، وقار و سرفرازی عطا کرنا">سرفرازی</span> دی</span>
+            </div>
+            <div class="verse-couplet">
+              <span class="verse-line">سلام اس پر کہ جس کے خُلق نے بدخواہ کو جیتا</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">سلام اس پر کہ جس کے رحم نے <span class="vocab-word" data-term="اعدا" data-def="دشمن (عدو کی جمع)">اعدا</span> کو بخشا ہے</span>
+            </div>
+            <div class="verse-couplet">
+              <span class="verse-line">سلام اس پر کہ جس نے بندگی کی راہ دکھلائی</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">سلام اس پر کہ جس نے آدمی کی قدر بتلائی</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="tashreeh-accordion">
+          <div class="accordion-item">
+            <button type="button" class="accordion-header">
+              <span>💡 فکری لبِ لباب و مرکزی جائزہ</span>
+              <span class="accordion-icon">▼</span>
+            </button>
+            <div class="accordion-body">
+              حضور سرورِ کائنات صلی اللہ علیہ و آلہ وسلم کی بعثتِ مبارکہ نسلِ انسانی کے لیے رحمتِ بے پایاں کی نوید بن کر جلوہ گر ہوئی۔ آپﷺ نے درماندہ انسانوں اور مسکینوں کو جینے کا وقار بخشا اور اپنے بدترین مخالفین کو بھی معاف فرما کر عفو و درگزر کا وہ مثالی اور ابدی معیار قائم فرمایا جس کی نظیر تاریخِ عالم میں نہیں ملتی۔
+            </div>
+          </div>
+        </div>
+
+        <div class="farhang-table-wrapper">
+          <table class="farhang-table">
+            <thead>
+              <tr><th>لفظ / ترکیب</th><th>لسانی مفہوم</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="farhang-term">دستگیری</td><td>سہارا دینا، گرے ہوئے انسان کو وقار کے ساتھ اٹھانا۔</td></tr>
+              <tr><td class="farhang-term">سرفرازی</td><td>بلندی، عزتِ نفس، سرخروئی۔</td></tr>
+              <tr><td class="farhang-term">اعدا</td><td>مخالفین و دشمنان (عدو کی جمع)۔</td></tr>
+              <tr><td class="farhang-term">خاکسار</td><td>عاجز، بے وسیلہ اور کمزور انسان۔</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="quiz-wrapper" data-quiz-unit="unit-2">
+          <div class="quiz-header">
+            <h3 class="quiz-title"><span>🎯</span> فہم و ادراک — خود احتسابی آزمائش</h3>
+            <span class="quiz-score-badge">نمبر: 0 / 1 (0%)</span>
+          </div>
+          <div class="quiz-card" data-answer="0" data-explain="دستگیری کے معنی ہیں گرتے ہوئے کا ہاتھ تھامنا اور کمزوروں کی دادرسی کرنا۔">
+            <div class="quiz-question">۱. شعر میں مستعمل لفظ 'دستگیری' کا لغوی و باطنی مفہوم کیا ہے؟</div>
+            <div class="quiz-options">
+              <button type="button" class="quiz-option-btn">الف) ناداروں کی بروقت مدد و دادرسی کرنا</button>
+              <button type="button" class="quiz-option-btn">ب) مال و دولت کا تبادلہ کرنا</button>
+              <button type="button" class="quiz-option-btn">ج) کسی سفر کی تیاری کرنا</button>
+              <button type="button" class="quiz-option-btn">د) کتابت و تدوین کرنا</button>
+            </div>
+            <div class="quiz-explanation"></div>
+          </div>
+          <button type="button" class="btn-action quiz-reset-btn">امتحانی آزمائش کی تجدید کریں</button>
+        </div>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-2" placeholder="حضور نبی کریمﷺ کے اخلاقِ کریمانہ کے اثرات پر مختصر نوٹ قلمبند کریں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۳: طبِ نبویﷺ اور ہماری صحت (Tib-e-Nabwi)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-3">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit3_tib_e_nabwi_art.png" alt="طب نبوی آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ سوم</span>
+            <span class="unit-genre-tag">صنف: اسلامی و سائنسی حکمت</span>
+          </div>
+          <h2 class="unit-title">طبِ نبویﷺ — جدید حفظانِ صحت اور متوازن زندگی کے زریں اصول</h2>
+          <p class="unit-author">تحقیق و نگارش: <strong>مجلسِ تعلیم و تحقیق</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit3_tib_e_nabwi_page.png" data-page-title="طب نبویﷺ — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="prose-content">
+          <p class="lead">
+            دینِ اسلام محض عبادات تک محدود نہیں بلکہ یہ روح کی تابندگی کے ساتھ ساتھ انسانی جسم کی تندرستی، متوازن غذا اور روزمرہ حفظانِ صحت کا ایک شاندار اور جامع دستورِ حیات ہے۔
+          </p>
+          <p>
+            نبی اکرم صلی اللہ علیہ و آلہ وسلم نے فرمایا کہ طہارت اور پاکیزگی ایمان کی روح ہے۔ آپﷺ کی زندگیِ مبارکہ جدید طبی تحقیق اور احتیاطی تدابیر کی بہترین عملی تفسیر ہے۔ طبِ نبویﷺ میں قدرتی غذاؤں مثلاً شہد، زیتون کے تیل، کلونجی اور کھجور کو جسمانی قوتِ مدافعت بڑھانے کے لیے خاص اہمیت دی گئی ہے۔ فرمانِ نبویﷺ کے مطابق کلونجی میں موت کے سوا تمام امراض کی شفا ہے۔ مزید برآں کھانے میں اعتدال برتنا، بھوک باقی رکھتے ہوئے دسترخوان سے اٹھنا، اور رات کو بروقت استراحت فرمانا وہ سدا بہار اصول ہیں جو انسان کو طویل مدتی بیماریوں سے محفوظ رکھتے ہیں۔
+          </p>
+        </section>
+
+        <div class="farhang-table-wrapper">
+          <table class="farhang-table">
+            <thead>
+              <tr><th>لفظ / اصطلاح</th><th>معنی و تشریح</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="farhang-term">دستورِ حیات</td><td>زندگی بسر کرنے کا جامع، متوازن اور مستند طریقہ۔</td></tr>
+              <tr><td class="farhang-term">قوتِ مدافعت</td><td>جسم کی بیماریوں اور جراثیموں کے خلاف قدرتی دفاعی طاقت۔</td></tr>
+              <tr><td class="farhang-term">حفظانِ صحت</td><td>طبی اصولوں کے مطابق صحت کی نگہداشت اور بیماریوں سے بچاؤ کی تدابیر۔</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-3" placeholder="روزمرہ زندگی میں طبِ نبویﷺ کے اصولوں کو نافذ کرنے کے طریقے لکھیں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۴: بابائے اردو مولوی عبدالحق (Baba-e-Urdu)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-4">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit4_baba_e_urdu_art.png" alt="بابائے اردو آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ چہارم</span>
+            <span class="unit-genre-tag">صنف: معمارِ زبان و ادب (سوانحی خاکہ)</span>
+          </div>
+          <h2 class="unit-title">بابائے اردو مولوی عبدالحق — اردو زبان و ثقافت کا عظیم پاسبان</h2>
+          <p class="unit-author">تحریر: <strong>ڈاکٹر عبادت بریلوی</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit4_baba_e_urdu_page.png" data-page-title="بابائے اردو — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="prose-content">
+          <p class="lead">
+            برصغیر میں اردو زبان کو علم و حکمت، تحقیق اور جامعات کے اعلیٰ ایوانوں تک پہنچانے میں مولوی عبدالحق کی تاریخی خدمات ایک درخشندہ مینار کی حیثیت رکھتی ہیں۔
+          </p>
+          <p>
+            انہوں نے انجمن ترقی اردو کے پرچم تلے جدید سائنسی اور فلسفیانہ اصطلاحات سازی کا بیڑا اٹھایا اور قدیم نایاب مخطوطات کو تلاش کر کے شائع کیا۔ جامعہ عثمانیہ حیدرآباد دکن میں اردو کو ذریعۂ تعلیم بنا کر انہوں نے ثابت کیا کہ اردو زبان جدید سائنسی تقاضوں کو نبھانے کی بھرپور صلاحیت رکھتی ہے۔ قیامِ پاکستان کے بعد انہوں نے کراچی میں اردو کالج قائم کیا۔ ان کی عمر بھر کی بے لوث اور والہانہ علمی خدمات کے اعتراف میں اہل قلم اور قوم نے انہیں متفقہ طور پر 'بابائے اردو' کے لقب سے نوازا۔
+          </p>
+        </section>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-4" placeholder="مولوی عبدالحق کی علمی خدمات سے ہمیں کیا ترغیب ملتی ہے؟ اپنے الفاظ میں لکھیں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۵: برسات (Barsat)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-5">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit5_barsat_art.png" alt="برسات آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ پنجم</span>
+            <span class="unit-genre-tag">صنف: منظر کشی و نغمۂ فطرت</span>
+          </div>
+          <h2 class="unit-title">نغمۂ برسات — فطرت کا پرکیف نظارہ اور دھرتی کی شادابی</h2>
+          <p class="unit-author">نظم نگار: <strong>اسماعیل میرٹھی</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit5_barsat_page.png" data-page-title="برسات — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="poetry-container">
+          <div class="poetry-card">
+            <div class="verse-couplet">
+              <span class="verse-line">وہ دیکھو اٹھی کالی کالی گھٹا</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">ہے چاروں طرف چھانے والی گھٹا</span>
+            </div>
+            <div class="verse-couplet">
+              <span class="verse-line">ہوا کے اشارے پہ جھومے شجر</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">زمیں بن گئی رشکِ باغ و ثمر</span>
+            </div>
+            <div class="verse-couplet">
+              <span class="verse-line">برسنے لگی بوندیاں جھوم کے</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">چلی ٹھنڈی ٹھنڈی ہوا چوم کے</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-5" placeholder="برسات کے بعد پیاسی زمین اور چرند پرند کی کیفیت کو اپنے الفاظ میں بیان کریں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۶: پاکستان کی سیر (Pakistan Ki Sair)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-6">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit6_pakistan_sair_art.png" alt="پاکستان کی سیر آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ ششم</span>
+            <span class="unit-genre-tag">صنف: تمدنی و جغرافیائی سفرنامہ</span>
+          </div>
+          <h2 class="unit-title">نگارستانِ وطن — پاکستان کی جغرافیائی و تاریخی سیر</h2>
+          <p class="unit-author">تحریر: <strong>قومی تمدنی ورثہ</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit6_pakistan_sair_page.png" data-page-title="پاکستان کی سیر — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="prose-content">
+          <p class="lead">
+            ارضِ پاک قدرت کا وہ پرشکوہ مرقع ہے جہاں فلک بوس برف پوش چوٹیاں، سنہری ریگزار، سرسبز کھیت اور لہراتے ہوئے سمندر یکجا ہو کر بے مثال جغرافیائی تنوع کا شاہکار پیش کرتے ہیں۔
+          </p>
+          <p>
+            خیبر پختونخوا کے پرفضا درے اور وادیِ سوات کو ایشیا کا سوئٹزرلینڈ مانا جاتا ہے، جبکہ پنجاب کے لہلہاتے زرخیز کھیت اور لاہور کی تاریخی بادشاہی مسجد ہماری تہذیبی عظمت کا آئینہ دار ہیں۔ سندھ کی وادیِ مہران میں موہنجودڑو کا پانچ ہزار سالہ قدیم تمدن اور کراچی کی بندرگاہ ملکی معیشت کی شہ رگ ہیں۔ بلوچستان کے سنگلاخ کوہسار اور گوادر کی اسٹریٹجک بندرگاہ ترقی کا نیا باب ہیں، جبکہ گلگت بلتستان کا کے-ٹو دنیا بھر کے کوہ پیماؤں کا خواب ہے۔
+          </p>
+        </section>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-6" placeholder="پاکستان کے متنوع جغرافیہ اور صوبائی ہم آہنگی پر اپنے فکری تاثرات لکھیں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۷: نشانِ حیدر (Nishan-e-Haider)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-7">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit7_nishan_e_haider_art.png" alt="نشان حیدر آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ ہفتم</span>
+            <span class="unit-genre-tag">صنف: عظمتِ شجاعت و حبِ وطن</span>
+          </div>
+          <h2 class="unit-title">نشانِ حیدر — وطن کے جانبازوں کا لازوال نذرانۂ شجاعت</h2>
+          <p class="unit-author">تحریر: <strong>شہدائے وطن فورم</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit7_nishan_e_haider_page.png" data-page-title="نشانِ حیدر — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="prose-content">
+          <p class="lead">
+            نشانِ حیدر پاکستان کا وہ مقدس اور سب سے بڑا عسکری تمغہ ہے جو وطن کی بقا اور دفاع کے لیے غیر معمولی جانثاری اور بے جگری کا مظاہرہ کرتے ہوئے شہادت پانے والے عظیم سپوتوں کو عطا کیا جاتا ہے۔
+          </p>
+          <p>
+            یہ عظیم الشان اعزاز شیرِ خدا حضرت علی المرتضیٰ کرم اللہ وجہہ کے لقب 'حیدرِ کرار' کی نسبت سے موسوم ہے۔ میجر راجہ عزیز بھٹی، پائلٹ آفیسر راشد منہاس، میجر شبیر شریف، اور حوالدار لالک جان سمیت تمام گیارہ سورماؤں نے دشمن کی جارحیت کے آگے فولادی عزم کے ساتھ سینہ سپر ہو کر مادرِ وطن کا پرچم سرنگوں نہ ہونے دیا۔ ان کی قربانی ہماری قومی سلامتی کا ضامن ہے۔
+          </p>
+        </section>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-7" placeholder="شہداء کی قربانی قوم کے جذبۂ آزادی کو کیسے زندہ رکھتی ہے؟ اپنے الفاظ میں لکھیں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۸: ملی نغمہ (Milli Naghma)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-8">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit8_milli_naghma_art.png" alt="ملی نغمہ آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ ہشتم</span>
+            <span class="unit-genre-tag">صنف: ترانۂ وحدت و وفاداری</span>
+          </div>
+          <h2 class="unit-title">ملی نغمہ — گلشنِ وطن کے محافظوں کا عہدِ وفا</h2>
+          <p class="unit-author">سخن طراز: <strong>جمیل الدین عالیؔ</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit8_milli_naghma_page.png" data-page-title="ملی نغمہ — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="poetry-container">
+          <div class="poetry-card">
+            <div class="verse-couplet">
+              <span class="verse-line">یہ وطن تمہارا ہے، تم ہو <span class="vocab-word" data-term="پاسباں" data-def="محافظ، نگران، سچا چوکیدار">پاسباں</span> اس کے</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">یہ چمن تمہارا ہے، تم ہو نغمہ خواں اس کے</span>
+            </div>
+            <div class="verse-couplet">
+              <span class="verse-line">اس چمن کے پھولوں پر رنگ و روپ تم سے ہے</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">اس زمیں کی مٹی کا سنگ و روپ تم سے ہے</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-8" placeholder="اپنے وطن کی خوشحالی اور امن کے لیے آپ کیا کردار ادا کر سکتے ہیں؟ تحریر کریں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۹: سلطان صلاح الدین ایوبی (Sultan Salahuddin)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-9">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit9_salahuddin_art.png" alt="سلطان صلاح الدین ایوبی آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ نہم</span>
+            <span class="unit-genre-tag">صنف: عہد ساز سپہ سالار و مجسمۂ مروت</span>
+          </div>
+          <h2 class="unit-title">سلطان صلاح الدین ایوبی — شجاعت، عدل اور عالی ظرفی کا تاریخی کردار</h2>
+          <p class="unit-author">تحریر: <strong>شعبۂ تاریخِ اسلامی</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit9_salahuddin_page.png" data-page-title="سلطان صلاح الدین ایوبی — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="prose-content">
+          <p class="lead">
+            سلطان صلاح الدین ایوبی تاریخِ اسلام کا وہ روشن ستارہ ہیں جنہوں نے فتحِ عسکری کے ساتھ ساتھ اخلاقی بلندی اور عالی ظرفی کی ایسی داستان چھوڑی جو دوست اور دشمن سب کے لیے قابلِ احترام ہے۔
+          </p>
+          <p>
+            ۵۸۳ ہجری میں معرکۂ حطین کی فیصلہ کن فتح اور بیت المقدس کی پرامن بازیابی کے وقت سلطان نے ماضی کے مظالم کا بدلہ لینے کے بجائے عام معافی اور غیر مسلم شہریوں کے حقوق کا اعلان کیا۔ جب ان کا سب سے کٹر حریف انگریز بادشاہ رچرڈ شیر دل سخت بیمار ہوا تو سلطان نے انسانیت اور مروت کے تحت اپنا ذاتی شاہی معالج اور برف میں تر تازہ پھل اس کے خیمے میں روانہ کیے۔ یہ وہ بلند اخلاقی کردار تھا جس نے مغربی مورخین کو بھی ان کی عظمت تسلیم کرنے پر مجبور کر دیا۔
+          </p>
+        </section>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-9" placeholder="سلطان صلاح الدین ایوبی کے حسنِ سلوک اور عفو و درگزر پر تفصیلی نوٹ تحریر کریں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۱۰: قدرتی آفات اور ان سے بچاؤ (Qudrati Aafat)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-10">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit10_qudrati_aafat_art.png" alt="قدرتی آفات آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ دہم</span>
+            <span class="unit-genre-tag">صنف: سائنسی ادراک و ہنگامی تدابیر</span>
+          </div>
+          <h2 class="unit-title">قدرتی آفات اور انسانی بقا — شعور، بروقت احتیاط اور حفاظتی تدابیر</h2>
+          <p class="unit-author">تحریر: <strong>شہری دفاع و ڈیزاسٹر مینجمنٹ</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit10_qudrati_aafat_page.png" data-page-title="قدرتی آفات — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="prose-content">
+          <p class="lead">
+            زلزلے، سیلاب، طوفان اور مٹی کے تودے گرنا ارضیاتی اور ماحولیاتی تغیرات کا حصہ ہیں؛ تاہم باشعور تیاری، سائنسی منصوبہ بندی اور بروقت انخلاء سے نقصانات کا تناسب کافی حد تک گھٹایا جا سکتا ہے۔
+          </p>
+          <p>
+            زلزلے کے دوران گھبراہٹ پر قابو پا کر مضبوط فرنیچر کے نیچے سر کو محفوظ رکھنا، بجلی و گیس کے سوئچ بند کرنا اور لفٹ کے بجائے سیڑھیوں سے احتیاط کے ساتھ کھلے میدان کی طرف نکلنا بنیادی تقاضے ہیں۔ سیلاب کے خدشے کے پیشِ نظر پیشگی انتباہ پر عمل کرنا، پینے کے پانی کو جوش دے کر پینا اور فرسٹ ایڈ کی ضروری ادویات پاس رکھنا قیمتی زندگیوں کی حفاظت کی ضمانت بنتا ہے۔
+          </p>
+        </section>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-10" placeholder="اسکول اور گھر میں زلزلے یا ہنگامی صورتحال کے لیے حفاظتی مشق (Mock Drill) کا منصوبہ لکھیں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۱۱: حضرت ابراہیم علیہ السلام (Hazrat Ibrahim A.S)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-11">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit11_hazrat_ibrahim_art.png" alt="حضرت ابراہیم علیہ السلام آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ یازدہم</span>
+            <span class="unit-genre-tag">صنف: عزمِ توحید و تسلیم و رضا</span>
+          </div>
+          <h2 class="unit-title">حضرت ابراہیم علیہ السلام — پیکرِ توحید و خلیلِ خداوندی</h2>
+          <p class="unit-author">تحریر: <strong>سیرت و قصص الانبیاء</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit11_hazrat_ibrahim_page.png" data-page-title="حضرت ابراہیمؑ — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="prose-content">
+          <p class="lead">
+            سیدنا حضرت ابراہیم علیہ السلام وہ جلیل القدر پیغمبر ہیں جنہوں نے بت پرستی اور باطل کے ظلمت کدے میں توحیدِ باری تعالیٰ کی سچی مشعل روشن کر کے خلیل اللہ کا منصب پایا۔
+          </p>
+          <p>
+            نمرود بادشاہ کے دربار میں آپؑ نے بے باک ہو کر یکتائیِ رب کا پرچار کیا۔ جب آگ کا ہولناک الاؤ دہکایا گیا تو آپ کا توکل ایسا کامل تھا کہ اللہ کے حکم سے دہکتی آگ گل و گلزار بن گئی۔ آپ نے خواب کے ذریعے ملنے والے الٰہی امتحان پر اپنے چہیتے فرزند حضرت اسماعیل علیہ السلام کی قربانی کے لیے آمادگی دکھا کر تسلیم و رضا کی وہ معراج پیش کی جس کی یاد ہر سال ایامِ حج و قربانی میں تازہ کی جاتی ہے۔ بعد ازاں باپ بیٹے نے مل کر بیت اللہ شریف کی تعمیر فرمائی۔
+          </p>
+        </section>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-11" placeholder="حضرت ابراہیم علیہ السلام کی ایمانی استقامت سے طلبہ کیا سبق سیکھ سکتے ہیں؟ لکھیں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۱۲: انفارمیشن ٹیکنالوجی اور ہمارا مستقبل (Information Technology)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-12">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit12_it_art.png" alt="انفارمیشن ٹیکنالوجی آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ دوازدہم</span>
+            <span class="unit-genre-tag">صنف: عصرِ حاضر کا سائنسی و ڈیجیٹل انقلاب</span>
+          </div>
+          <h2 class="unit-title">انفارمیشن ٹیکنالوجی — علم کی وسعت اور ڈیجیٹل دنیا کے امکانات</h2>
+          <p class="unit-author">تحریر: <strong>مجلسِ سائنسی و تکنیکی تحقیق</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit12_it_page.png" data-page-title="انفارمیشن ٹیکنالوجی — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="prose-content">
+          <p class="lead">
+            اکیسویں صدی کمپیوٹر، تیز رفتار رابطوں، انٹرنیٹ اور مصنوعی ذہانت (AI) کے اس انقلاب کا دور ہے جس نے دنیا بھر کے علوم کو انسانی انگلش کی پوروں پر سمیٹ دیا ہے۔
+          </p>
+          <p>
+            جدید تعلیمی ماڈلز، ڈیجیٹل لائبریریاں اور آن لائن تحقیقی مقالے اب سرحدوں کی قید سے آزاد ہیں۔ آج کا طالب علم گھر بیٹھے جدید پروگرامنگ اور عالمی علوم حاصل کر سکتا ہے۔ تاہم ضرورت اس امر کی ہے کہ نوجوان اس بے پایاں طاقت کو بے مقصد گیمز یا سوشل میڈیا پر برباد کرنے کے بجائے تحقیق، قومی خود انحصاری، اور بامقصد سافٹ ویئر سازی میں بروئے کار لائیں۔
+          </p>
+        </section>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-12" placeholder="انفارمیشن ٹیکنالوجی کے مثبت اور منفی اثرات کا تقابلی جائزہ تحریر کریں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۱۳: ہلالِ احمر (Hilal-e-Ahmar)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-13">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit13_hilal_e_ahmar_art.png" alt="ہلال احمر آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ سیزدہم</span>
+            <span class="unit-genre-tag">صنف: بے لوث خدمتِ خلق کا ادارہ</span>
+          </div>
+          <h2 class="unit-title">ہلالِ احمر (Red Crescent) — بلا تفریق خدمت کا روشن چراغ</h2>
+          <p class="unit-author">تحریر: <strong>شعبۂ فلاحِ عامہ</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit13_hilal_e_ahmar_page.png" data-page-title="ہلالِ احمر — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="prose-content">
+          <p class="lead">
+            ہلالِ احمر پاکستان ایک ایسی عالمی سطح پر تسلیم شدہ اور قابلِ فخر فلاحی انجمن ہے جو رنگ، نسل اور عقیدے کے امتیاز سے بالاتر ہو کر انسانی دکھوں کا مداوا کرتی ہے۔
+          </p>
+          <p>
+            جنگ ہو یا قدرتی آفت، زلزلہ ہو یا سیلابی ریلے، ہلالِ احمر کے نڈر رضاکار، جدید ایمبولینس سروس، بلڈ بینکس اور موبائل اسپتال فوری امداد فراہم کرتے ہیں۔ یہ ادارہ اسکولوں اور کالجوں کے نوجوانوں میں ابتدائی طبی امداد (First Aid) اور رضاکارانہ خدمت کا سچا جذبہ پیدا کرتا ہے، جو کسی بھی مہذب اور باوقار قوم کا حقیقی اخلاقی سرمایہ ہے۔
+          </p>
+        </section>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-13" placeholder="ہلالِ احمر جیسے فلاحی اداروں میں رضاکارانہ شمولیت کے فوائد پر روشنی ڈالیں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۱۴: ایک بادشاہ کی انوکھی خواہش (Badshah Ki Khwahish)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-14">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit14_badshah_khwahish_art.png" alt="بادشاہ کی انوکھی خواہش آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ چہاردہم</span>
+            <span class="unit-genre-tag">صنف: درسِ قناعت و اخلاقی تمثیل</span>
+          </div>
+          <h2 class="unit-title">ایک بادشاہ کی انوکھی تمنا — دولت کی ہوس اور قناعت کا سبق</h2>
+          <p class="unit-author">تحریر: <strong>ادبی و اخلاقی حکایات</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit14_badshah_khwahish_page.png" data-page-title="ایک بادشاہ کی انوکھی خواہش — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="prose-content">
+          <p class="lead">
+            یہ سبق آموز اور دلکش تمثیل ہمیں یہ گہری بصیرت عطا کرتی ہے کہ سونے چاندی کی بے پناہ ہوس اور لالچ انسان کو اصل خوشی اور قلبی سکون سے محروم کر دیتا ہے۔
+          </p>
+          <p>
+            ایک ناشکرے بادشاہ نے ہر چھونے والی چیز کو خالص سونے میں تبدیل کرنے کا طلسماتی فضل مانگا۔ مگر جب اس کے ہاتھ لگاتے ہی لذیذ کھانا اور شفاف پانی بھی سخت سونے کی دھات بن گیا، اور اس کی چہیتی معصوم بیٹی سونے کا بے جان مجسمہ بن گئی، تو اس پر حقیقت عیاں ہوئی کہ زندگی کا اصل حسن محبت، رشتے، بھوک اور شکر گزاری میں ہے نہ کہ سرد سونے کے ڈھیروں میں۔ اس نے رو رو کر توبہ کی اور قناعت کی دولت کو گلے لگایا۔
+          </p>
+        </section>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-14" placeholder="اس تمثیل سے ہمیں قناعت پسندی کا جو درس ملتا ہے اس کا خلاصہ تحریر کریں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۱۵: علامہ اقبال اور نوجوان (Iqbal Aur Naujawan)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-15">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit15_iqbal_naujawan_art.png" alt="اقبال اور نوجوان آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ پانزدہم</span>
+            <span class="unit-genre-tag">صنف: فکرِ اقبال و شاہین کا استعارہ</span>
+          </div>
+          <h2 class="unit-title">فکرِ اقبال اور نوجوان — خودی کا پیغام اور شاہین کی پرواز</h2>
+          <p class="unit-author">تحریر: <strong>فکرِ اقبال و اصلاحِ ملت فورم</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit15_iqbal_naujawan_page.png" data-page-title="اقبال اور نوجوان — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="prose-content">
+          <p class="lead">
+            حکیم الامت علامہ محمد اقبال نے قوم کی نشاۃ ثانیہ کا اصل انحصار نوجوانوں کی سیرت سازی، بیداری اور خودی کے استحکام پر رکھا ہے۔
+          </p>
+          <p>
+            اقبال اپنے نوجوانوں کو 'شاہین' کے استعارے سے مخاطب کرتے ہیں، کیونکہ شاہین خوددار، غیور، درویش منش اور چٹانوں پر بسیرا کرنے والا وہ عظیم پرندہ ہے جو کبھی دوسروں کے شکار پر قناعت نہیں کرتا۔ اقبال کا فرمان ہے:
+          </p>
+          <div class="poetry-card" style="margin: 1.5rem 0;">
+            <div class="verse-couplet">
+              <span class="verse-line">نہیں تیرا نشیمن قصرِ سلطانی کے گنبد پر</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">تو شاہیں ہے، بسیرا کر پہاڑوں کی چٹانوں میں</span>
+            </div>
+          </div>
+          <p>
+            وہ چاہتے ہیں کہ نوجوان سستی اور نقالی کی زنجیریں توڑ کر سائنسی تحقیق، بلند ہمتی اور خود شناسی کے ساتھ دنیا پر اپنی فکری صلاحیتوں کا لوہا منوائیں۔
+          </p>
+        </section>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-15" placeholder="اقبال کے پیغامِ خودی اور شاہین کے اوصاف پر اپنی رائے قلمبند کریں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۱۶: مردِ مسلمان (Marde Musalman)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-16">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit16_marde_musalman_art.png" alt="مرد مسلمان آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ شانزدہم</span>
+            <span class="unit-genre-tag">صنف: اوصافِ مومن کا آئینہ دار کلام</span>
+          </div>
+          <h2 class="unit-title">مردِ مسلمان — مومن کی صفات کا شاہکار منظوم خاکہ</h2>
+          <p class="unit-author">شاعر: <strong>حکیم الامت علامہ محمد اقبالؔ</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit16_marde_musalman_page.png" data-page-title="مردِ مسلمان — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="poetry-container">
+          <div class="poetry-card">
+            <div class="verse-couplet">
+              <span class="verse-line">ہو حلقۂ یاراں تو بَرَیْشم کی طرح نرم</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">رزمِ حق و باطل ہو تو فولاد ہے مومن</span>
+            </div>
+            <div class="verse-couplet">
+              <span class="verse-line">جس سے جگرِ لالہ میں ٹھنڈک ہو وہ شبنم</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">دریاؤں کے دل جس سے دہل جائیں وہ طوفاں</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-16" placeholder="مومن کے نرم و گرم اوصاف کی حکمت اور توازن پر چند سطور لکھیں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۱۷: گلشن دو روز (Gulshan-e-Do Roz)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-17">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit17_gulshan_do_roz_art.png" alt="گلشن دو روز آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ ہفدہم</span>
+            <span class="unit-genre-tag">صنف: اخلاقِ حسنہ و حقیقتِ کائنات</span>
+          </div>
+          <h2 class="unit-title">گلشنِ دو روز — فانی دنیا کی حقیقت اور نیکی کی لازوال خوشبو</h2>
+          <p class="unit-author">تحریر: <strong>ادبی و فکری نگارشات</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit17_gulshan_do_roz_page.png" data-page-title="گلشن دو روز — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="prose-content">
+          <p class="lead">
+            دنیا کی یہ ساری بہار اور ظاہری چمک دمک دو دن کا عارضی تماشا ہے؛ جو شے آج پررونق ہے کل غروب ہو جائے گی، لیکن انسان کا اخلاص، اعلیٰ اخلاق اور دوسروں کی دستگیری کا نیک نامی کا پرچم ہمیشہ لہراتا رہتا ہے۔
+          </p>
+          <p>
+            دانشمند انسان فانی نمود و نمائش میں کھو کر اپنی ابدی ذمہ داریوں کو فراموش نہیں کرتا۔ وہ اپنے ہر لمحے کو انسانیت کی خدمت اور سچائی کی ترویج میں صرف کرتا ہے۔ جو شخص دوسروں کی راہوں سے کانٹے چنتا ہے، اس کی نیکیوں کی خوشبو اس جہاں کے بعد بھی دلوں میں تازہ رہتی ہے۔
+          </p>
+        </section>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-17" placeholder="دنیا کی عارضی زندگی میں دیرپا نیک نامی کیسے حاصل کی جا سکتی ہے؟ لکھیں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۱۸: رکشے والا (Rikshewala)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-18">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit18_rikshewala_art.png" alt="رکشے والا آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ ہجدہم</span>
+            <span class="unit-genre-tag">صنف: تقدیسِ مشقت و رزقِ حلال</span>
+          </div>
+          <h2 class="unit-title">رکشے والا — رزقِ حلال کی مشقت اور دیانت کی تابندہ مثال</h2>
+          <p class="unit-author">تحریر: <strong>معاشرتی خاکے و بصیرت</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit18_rikshewala_page.png" data-page-title="رکشے والا — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="prose-content">
+          <p class="lead">
+            اپنے دست و بازو سے کما کر پاکیزہ رزقِ حلال حاصل کرنا دینِ فطرت کا وہ سنہری حکم ہے جو محنت کش انسان کو معاشرے کا سب سے باوقار ستون بنا دیتا ہے۔
+          </p>
+          <p>
+            رحیم چچا ایک غریب مگر انتہائی خوددار محنت کش ہیں جو شب و روز کی سخت مشقت کے باوجود اپنے بچوں کو اعلیٰ اخلاق اور تعلیم دلانے کے لیے کوشاں رہتے ہیں۔ ایک روز ایک مسافر جب اپنے رکشے میں کثیر رقم سے بھرا بریف کیس بھول گیا تو شدید غربت اور بیماری کے باوجود رحیم چچا نے بغیر کسی لالچ کے وہ امانت اس کے اصل مالک کو لوٹا دی۔ یہ واقعہ ثابت کرتا ہے کہ اصل امارت دل کی دیانت اور پاکیزہ نیت میں ہے، نہ کہ ناجائز مال و دولت میں۔
+          </p>
+        </section>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-18" placeholder="معاشرے میں عام محنت کشوں کے حقوق اور عزتِ نفس پر اپنے خیالات کا اظہار کریں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۱۹: پرانی موٹر (Purani Motor)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-19">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit19_purani_motor_art.png" alt="پرانی موٹر آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ نوزدہم</span>
+            <span class="unit-genre-tag">صنف: شگفتہ کلامی و لطیف مزاح</span>
+          </div>
+          <h2 class="unit-title">پرانی موٹر — ظرافت و مزاح کے آئینے میں معاشرتی عکاسی</h2>
+          <p class="unit-author">مزاح نگار: <strong>سید ضمیر جعفری</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit19_purani_motor_page.png" data-page-title="پرانی موٹر — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="poetry-container">
+          <div class="poetry-card">
+            <div class="verse-couplet">
+              <span class="verse-line">کسی گرجے کے گھنٹے کی طرح بجتی ہوئی موٹر</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">کبھی رکتی، کبھی چلتی، کبھی لڑتی ہوئی موٹر</span>
+            </div>
+            <div class="verse-couplet">
+              <span class="verse-line">دھواں اڑتا ہے انجن سے، نکلتا ہے پسینہ بھی</span>
+              <span class="verse-divider">ـ ✤ ـ</span>
+              <span class="verse-line">سواروں کا اچھلتا ہے کلیجہ بھی، سفینہ بھی</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-19" placeholder="اس مزاحیہ نظم میں سید ضمیر جعفری کے اندازِ بیان کی ظرافت پر نوٹ لکھیں..."></textarea>
+        </section>
+      </article>
+
+      <!-- ====================================================================
+           سبق ۲۰: ٹریفک کے قوانین اور ہماری ذمہ داریاں (Traffic Rules)
+           ==================================================================== -->
+      <article class="unit-article" id="unit-20">
+        <header class="unit-header">
+          <div class="unit-artwork-container">
+            <img src="assets/book_images/unit20_traffic_rules_art.png" alt="ٹریفک قوانین آرٹ ورک" class="unit-artwork" loading="lazy">
+          </div>
+          <div class="unit-meta-strip">
+            <span class="unit-badge">بابِ بیستم</span>
+            <span class="unit-genre-tag">صنف: قانون کی پاسداری و شہری فہم</span>
+          </div>
+          <h2 class="unit-title">شہری شعور اور ٹریفک کے قوانین — اجتماعی تحفظ اور قومی ذمہ داری</h2>
+          <p class="unit-author">تحریر: <strong>شہری شعور و آگاہی فورم</strong></p>
+
+          <div class="unit-actions-bar">
+            <button type="button" class="btn-action" data-open-page-img="assets/book_images/unit20_traffic_rules_page.png" data-page-title="ٹریفک کے قوانین — اصل درسی کتاب کا طباعتی صفحہ">
+              <span>🖼️</span> اصل کتاب کا طباعتی صفحہ دیکھیں
+            </button>
+          </div>
+        </header>
+
+        <section class="prose-content">
+          <p class="lead">
+            ٹریفک ضوابط کی پاسداری کسی بھی مہذب معاشرے کے شہریوں کی فکری اور اخلاقی بالیدگی کا سب سے روشن ثبوت ہے۔ یہ قوانین دراصل ہماری اپنی زندگیوں اور املاک کی حفاظت کا حفاظتی حصار ہیں۔
+          </p>
+          <p>
+            ٹریفک سگنلز کی پابندی، زیبرا کراسنگ پر پیدل چلنے والوں کو اولیت دینا، رفتار کی حد میں رہنا، اور دورانِ ڈرائیونگ موبائل فون سے مکمل پرہیز حادثات کے سدِ باب کے بنیادی اصول ہیں۔ ایک بیدار اور ذمہ دار طالب علم ہونے کے ناطے سڑک پر خود بھی قانون کی پاسداری کرنا اور اپنے خاندان کے افراد کو اس کی ترغیب دینا ہمارا دینی، قانونی اور اخلاقی فرض ہے۔
+          </p>
+        </section>
+
+        <section class="student-notebook">
+          <div class="notebook-header">
+            <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
+            <span class="notebook-status">خودکار محفوظ شدہ</span>
+          </div>
+          <textarea class="notebook-textarea" data-note-unit="unit-20" placeholder="ٹریفک کی بنیادی ۵ علامات، ان کا مفہوم، اور سڑک پر احتیاط کے تقاضے قلمبند کریں..."></textarea>
+        </section>
+      </article>
+
+      <!-- Bottom Navigation Pager between units -->
+      <div class="unit-pager">
+        <button type="button" class="pager-btn" id="global-prev-unit">
+          <span>➔</span>
+          <span>پچھلا باب: <strong class="pager-title">دعا</strong></span>
+        </button>
+        <button type="button" class="pager-btn" id="global-next-unit">
+          <span>اگلا باب: <strong class="pager-title">حمد</strong></span>
+          <span>⬅</span>
+        </button>
+      </div>
+
+      <!-- ====================================================================
+           فلیش کارڈز سیکشن (Interactive 3D Flashcards)
+           ==================================================================== -->
+      <section class="flashcards-section" id="flashcards">
+        <span class="badge-gold">ادبی و فکری نگارخانہ</span>
+        <h2 style="font-size:2.2rem; color:var(--emerald-deep); margin:0.5rem 0 1rem;">
+          الفاظ، تراکیب اور لسانی اصطلاحات کے 3D فلیش کارڈز
+        </h2>
+        <p style="color:var(--text-secondary); max-width:640px; margin:0 auto 1.5rem; line-height:2.2;">
+          کارڈ کو جنبش دیں اور اردو زبان کی باریکیوں، نایاب تراکیب اور قواعد کے مفاہیم کو ذہن نشین کر کے اپنی فکری صلاحیت جانچیں۔
+        </p>
+
+        <!-- Category Filter -->
+        <div style="margin-bottom: 1.5rem;">
+          <select id="flashcard-filter" class="btn-action" style="padding:0.5rem 1rem; font-family:var(--font-nastaliq); font-size:1.1rem;">
+            <option value="all">تمام ادبی و لسانی زمرہ جات (All Categories)</option>
+            <option value="حمد و نعت">حمد و نعت</option>
+            <option value="شاعری">شاعری و اصطلاحات</option>
+            <option value="قواعد و انشاء">قواعد و انشاء</option>
+            <option value="شخصیات">شخصیات و تاریخ</option>
+            <option value="کلامِ اقبال">کلامِ اقبال</option>
+          </select>
+        </div>
+
+        <!-- 3D Card Stage -->
+        <div class="flashcard-stage" id="flashcard-stage" title="کارڈ کو پلٹنے کے لیے کلک کریں">
+          <div class="flashcard-inner">
+            <div class="flashcard-front">
+              <span class="flashcard-badge" id="flashcard-tag">حمد و نعت</span>
+              <h3 class="flashcard-term" id="flashcard-term">حمد</h3>
+              <span class="flashcard-hint">🔄 پلٹنے کے لیے کلک کریں</span>
+            </div>
+            <div class="flashcard-back">
+              <p class="flashcard-def" id="flashcard-def">وہ پرشکوہ کلام جس میں ربِ کائنات کی عظمت، صفات اور حمد و ثنا بیان کی جائے۔</p>
+              <span class="flashcard-hint">✓ ادراک و فہم</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flashcard Counter & Status -->
+        <div style="font-family:var(--font-ui); font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;" id="flashcard-counter">
+          کارڈ ۱ از ۱۶
+        </div>
+
+        <div style="display:flex; justify-content:center; gap:1.2rem; margin-bottom:1.5rem; font-family:var(--font-ui); font-size:0.85rem; font-weight:700;">
+          <span style="color:var(--emerald-main);" id="mastered-count">0 یاد ہو گئے</span>
+          <span style="color:var(--gold-main);" id="review-count">0 دہرائی درکار</span>
+        </div>
+
+        <!-- Controls -->
+        <div class="flashcard-controls">
+          <button type="button" class="btn-action" id="card-prev"><span>➔</span> پچھلا کارڈ</button>
+          <button type="button" class="btn-action" id="card-shuffle"><span>🔀</span> بے ترتیب آزمائش</button>
+          <button type="button" class="btn-action btn-primary" id="card-master"><span>✓</span> ذہن نشین ہو گیا</button>
+          <button type="button" class="btn-action" id="card-review"><span>⚠️</span> مزید تکرار درکار</button>
+          <button type="button" class="btn-action" id="card-next">اگلا کارڈ <span>⬅</span></button>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           اردو قواعد و انشاء گائیڈ (Grammar Guide)
+           ==================================================================== -->
+      <section class="unit-article" id="grammar-guide" style="margin-top: 4rem;">
+        <header class="unit-header">
+          <span class="unit-badge">امتحانی رہنما کلید</span>
+          <h2 class="unit-title">گنجینۂ قواعد و انشاء — زبان دانی کے بنیادی اصول</h2>
+          <p class="unit-author">وفاقی تعلیمی بورڈ جماعتِ ہفتم کا لازمی امتحانی نصاب</p>
+        </header>
+
+        <div class="prose-content">
+          <h3 style="color:var(--emerald-deep); font-size:1.6rem; border-bottom:2px solid var(--border-color); padding-bottom:0.4rem;">
+            ۱. اسم اور اس کی اقسام بلحاظِ معنی
+          </h3>
+          <p>
+            <strong>اسم معرفہ (خاص نام):</strong> کسی مخصوص شخص، معروف مقام یا خاص شے کے نام کو اسم معرفہ کہتے ہیں، مثلاً: علامہ اقبالؔ، اسلام آباد، ہمالیہ، دریائے راوی۔<br>
+            <strong>اسم نکرہ (عام نام):</strong> کسی غیر معین شخص، عام مقام یا عام چیز کے نام کو اسم نکرہ کہتے ہیں، مثلاً: طالب علم، شہر، دریا، درسی کتاب۔
+          </p>
+
+          <h3 style="color:var(--emerald-deep); font-size:1.6rem; border-bottom:2px solid var(--border-color); padding-bottom:0.4rem; margin-top:2rem;">
+            ۲. صفت اور موصوف کی باہمی نسبت
+          </h3>
+          <p>
+            وہ کلمہ جو کسی اسم کی اچھائی، برائی، طبعی حالت، مقدار یا تعداد کو بیان کرے اسے <strong>صفت</strong> کہتے ہیں۔ اور جس اسم کی وہ حالت یا کیفیت بیان ہو رہی ہو اسے <strong>موصوف</strong> کہا جاتا ہے۔<br>
+            مثال: <em>"دیانت دار محنت کش"</em> میں 'دیانت دار' صفت ہے اور 'محنت کش' موصوف ہے۔
+          </p>
+
+          <h3 style="color:var(--emerald-deep); font-size:1.6rem; border-bottom:2px solid var(--border-color); padding-bottom:0.4rem; margin-top:2rem;">
+            ۳. کلمہ اور مہمل میں فرق
+          </h3>
+          <p>
+            <strong>کلمہ:</strong> ہر وہ لفظ جو اپنا الگ، واضح اور بامعنی مفہوم رکھتا ہو اسے کلمہ کہتے ہیں، جیسے: کتاب، کھانا، قلم۔<br>
+            <strong>مہمل:</strong> وہ لفظ جس کا اپنا کوئی لغوی مفہوم نہ ہو بلکہ روزمرہ بول چال میں صرف روانی یا تاکید کے لیے کلمے کے ساتھ بولا جائے، جیسے: کتاب شتاب، کھانا وانا، قلم ولم۔
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Chapter Navigation Drawer Modal -->
+    <div class="chapter-drawer-overlay" id="chapter-drawer-overlay">
+      <aside class="chapter-drawer" role="dialog" aria-label="فہرستِ ابواب و کتب">
+        <div class="drawer-header">
+          <h3 class="drawer-title">فہرستِ ابواب و مضامین</h3>
+          <button type="button" class="btn-icon" id="drawer-close" aria-label="بند کریں">✕</button>
+        </div>
+        <div class="drawer-search-box">
+          <input type="search" id="drawer-search-input" class="drawer-search-input" placeholder="سبق یا موضوع تلاش کریں...">
+        </div>
+        <ul class="drawer-list" id="drawer-list">
+          <li class="drawer-item"><a href="#dua" class="drawer-link active" data-unit-id="dua"><span>مناجاتِ سحر (افتتاحیہ)</span> <span class="drawer-link-num">افتتاحیہ</span></a></li>
+          <li class="drawer-item"><a href="#unit-1" class="drawer-link" data-unit-id="unit-1"><span>۱. حمدِ باری تعالیٰ</span> <span class="drawer-link-type">عرفانِ الٰہی</span></a></li>
+          <li class="drawer-item"><a href="#unit-2" class="drawer-link" data-unit-id="unit-2"><span>۲. نعتِ رسولِ مقبولﷺ</span> <span class="drawer-link-type">مدحتِ نبویﷺ</span></a></li>
+          <li class="drawer-item"><a href="#unit-3" class="drawer-link" data-unit-id="unit-3"><span>۳. طبِ نبویﷺ اور ہماری صحت</span> <span class="drawer-link-type">اسلامی و سائنسی حکمت</span></a></li>
+          <li class="drawer-item"><a href="#unit-4" class="drawer-link" data-unit-id="unit-4"><span>۴. بابائے اردو مولوی عبدالحق</span> <span class="drawer-link-type">معمارِ ادب</span></a></li>
+          <li class="drawer-item"><a href="#unit-5" class="drawer-link" data-unit-id="unit-5"><span>۵. نغمۂ برسات</span> <span class="drawer-link-type">فطری شاعری</span></a></li>
+          <li class="drawer-item"><a href="#unit-6" class="drawer-link" data-unit-id="unit-6"><span>۶. نگارستانِ وطن (پاکستان کی سیر)</span> <span class="drawer-link-type">سفرنامہ</span></a></li>
+          <li class="drawer-item"><a href="#unit-7" class="drawer-link" data-unit-id="unit-7"><span>۷. نشانِ حیدر</span> <span class="drawer-link-type">عظمتِ شجاعت</span></a></li>
+          <li class="drawer-item"><a href="#unit-8" class="drawer-link" data-unit-id="unit-8"><span>۸. ملی نغمہ (پاسبانانِ وطن)</span> <span class="drawer-link-type">ترانۂ وفا</span></a></li>
+          <li class="drawer-item"><a href="#unit-9" class="drawer-link" data-unit-id="unit-9"><span>۹. سلطان صلاح الدین ایوبی</span> <span class="drawer-link-type">تاریخی سپہ سالار</span></a></li>
+          <li class="drawer-item"><a href="#unit-10" class="drawer-link" data-unit-id="unit-10"><span>۱۰. قدرتی آفات اور سائنسی تدابیر</span> <span class="drawer-link-type">شہری دفاع</span></a></li>
+          <li class="drawer-item"><a href="#unit-11" class="drawer-link" data-unit-id="unit-11"><span>۱۱. حضرت ابراہیم علیہ السلام</span> <span class="drawer-link-type">عزمِ توحید</span></a></li>
+          <li class="drawer-item"><a href="#unit-12" class="drawer-link" data-unit-id="unit-12"><span>۱۲. انفارمیشن ٹیکنالوجی</span> <span class="drawer-link-type">ڈیجیٹل انقلاب</span></a></li>
+          <li class="drawer-item"><a href="#unit-13" class="drawer-link" data-unit-id="unit-13"><span>۱۳. ہلالِ احمر (Red Crescent)</span> <span class="drawer-link-type">خدمتِ خلق</span></a></li>
+          <li class="drawer-item"><a href="#unit-14" class="drawer-link" data-unit-id="unit-14"><span>۱۴. ایک بادشاہ کی انوکھی تمنا</span> <span class="drawer-link-type">اخلاقی تمثیل</span></a></li>
+          <li class="drawer-item"><a href="#unit-15" class="drawer-link" data-unit-id="unit-15"><span>۱۵. فکرِ اقبال اور نوجوان</span> <span class="drawer-link-type">فکری مقالہ</span></a></li>
+          <li class="drawer-item"><a href="#unit-16" class="drawer-link" data-unit-id="unit-16"><span>۱۶. مردِ مسلمان (کلامِ اقبال)</span> <span class="drawer-link-type">اوصافِ مومن</span></a></li>
+          <li class="drawer-item"><a href="#unit-17" class="drawer-link" data-unit-id="unit-17"><span>۱۷. گلشنِ دو روز</span> <span class="drawer-link-type">حقیقتِ حیات</span></a></li>
+          <li class="drawer-item"><a href="#unit-18" class="drawer-link" data-unit-id="unit-18"><span>۱۸. رکشے والا</span> <span class="drawer-link-type">تقدیسِ محنت</span></a></li>
+          <li class="drawer-item"><a href="#unit-19" class="drawer-link" data-unit-id="unit-19"><span>۱۹. پرانی موٹر</span> <span class="drawer-link-type">شگفتہ مزاح</span></a></li>
+          <li class="drawer-item"><a href="#unit-20" class="drawer-link" data-unit-id="unit-20"><span>۲۰. شہری شعور اور ٹریفک قوانین</span> <span class="drawer-link-type">قانون پسندی</span></a></li>
+        </ul>
+      </aside>
+    </div>
+
+    <!-- Original Textbook Page Lightbox Modal -->
+    <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true">
+      <div class="lightbox-content">
+        <div class="lightbox-header">
+          <h3 class="lightbox-title" id="lightbox-title">اصل درسی کتاب کا طباعتی صفحہ</h3>
+          <button type="button" class="btn-icon" id="lightbox-close" aria-label="بند کریں">✕</button>
+        </div>
+        <div class="lightbox-body">
+          <img src="" alt="درسی کتاب کا صفحہ" class="lightbox-img" id="lightbox-img">
+        </div>
+      </div>
+    </div>
+
+    <!-- Global Search Modal (Ctrl+K) -->
+    <div class="search-modal" id="search-modal" role="dialog" aria-modal="true">
+      <div class="search-dialog">
+        <div class="search-input-wrapper">
+          <span style="font-size:1.4rem;">🔍</span>
+          <input type="search" id="global-search-input" class="search-input" placeholder="پورے نصاب میں کوئی بھی موضوع، شعر یا نادر لفظ تلاش کریں...">
+          <button type="button" class="btn-icon" id="search-close" aria-label="بند کریں">✕</button>
+        </div>
+        <ul class="search-results-list" id="search-results-list"></ul>
+      </div>
+    </div>
+
+    <!-- Floating Vocabulary Popover -->
+    <div class="vocab-popover" id="vocab-popover" role="tooltip">
+      <div class="popover-term" id="popover-term">لفظ</div>
+      <div class="popover-def" id="popover-def">معنی و مفہوم</div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-logo">صحیفۂ اردو — f0undr Academy</div>
+        <p style="margin: 0.5rem 0 1.2rem; font-size: 1.15rem; line-height: 2;">
+          وفاقی تعلیمی بورڈ (FBISE) اسلام آباد کے منظور شدہ معیارات کے عین مطابق مرتب کردہ ادبی و تعلیمی ای بک۔
+        </p>
+        <div class="footer-links">
+          <a href="https://f-e-book.vercel.app/" target="_blank" rel="noopener">f0undr Book (کمپیوٹر سائنس ایڈیشن)</a>
+          <span>•</span>
+          <a href="#dua">مناجاتِ سحر</a>
+          <span>•</span>
+          <a href="#unit-1">حمدِ باری تعالیٰ</a>
+          <span>•</span>
+          <a href="#flashcards">الفاظ و معانی فلیش کارڈز</a>
+          <span>•</span>
+          <a href="#grammar-guide">گنجینۂ قواعد و انشاء</a>
+        </div>
+        <div class="footer-copy">
+          © 2026 f0undr Team & Huzaifa. تمام فکری و طباعتی حقوق محفوظ ہیں۔
+        </div>
+      </div>
+    </footer>
+
+    <!-- App Engine Script -->
+    <script src="app.js"></script>
+  </body>
+</html>

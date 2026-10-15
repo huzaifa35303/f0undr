@@ -5,6 +5,8 @@ User-agent: *
 Allow: /
 Allow: /book
 Allow: /book/
+Allow: /urdu-book
+Allow: /urdu-book/
 Allow: /#books
 Allow: /#curriculum
 Allow: /#team

@@ -30,6 +30,7 @@ export function App() {
   const [isLoginOpen, setIsLoginOpen] = useState<boolean>(false);
   const [isAdminOpen, setIsAdminOpen] = useState<boolean>(false);
   const [addModalDefaultTab, setAddModalDefaultTab] = useState<'book' | 'tool' | 'team' | 'thing'>('book');
+  const [selectedCurriculum, setSelectedCurriculum] = useState<'computer' | 'urdu'>('computer');
 
   // Authentication State
   const [currentUser, setCurrentUser] = useState<AuthUser | null>(() => {
@@ -155,6 +156,22 @@ export function App() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
+
+  // Guard access to Admin: if hash is #admin, require login
+  useEffect(() => {
+    const handleHash = () => {
+      if (window.location.hash === '#admin') {
+        if (currentUser) {
+          setIsAdminOpen(true);
+        } else {
+          setIsLoginOpen(true);
+        }
+      }
+    };
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, [currentUser]);
 
   // Audit Logger
   const addAuditLog = (action: string, target: string) => {
@@ -550,76 +567,153 @@ export function App() {
         {activeTab === 'curriculum' && (
           <div className="pt-24 pb-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              {/* Header Bar */}
-              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="editorial-stamp editorial-stamp-terracotta inline-flex items-center gap-1.5">
-                      <GraduationCap className="w-3.5 h-3.5 text-[#c2410c]" />
-                      FLAGSHIP CURRICULUM · UNITS 1 TO 6
-                    </span>
-                    <span className="text-xs font-mono text-[#78716c] bg-[#f5f2eb] px-2.5 py-0.5 rounded-md border border-[#e7e5e4]">
-                      Complete Interactive Edition
-                    </span>
+              {/* Dual Curriculum Switcher */}
+              <div className="flex flex-wrap items-center gap-2 p-1.5 bg-[#f5f2eb] rounded-xl border border-[#e7e5e4] w-fit mb-6">
+                <button
+                  onClick={() => setSelectedCurriculum('computer')}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
+                    selectedCurriculum === 'computer'
+                      ? 'bg-[#1c1917] text-[#faf8f5] shadow-xs'
+                      : 'text-[#57534e] hover:text-[#1c1917]'
+                  }`}
+                >
+                  <BookOpen className="w-3.5 h-3.5" />
+                  <span>Computer Science (Units 1–6)</span>
+                </button>
+
+                <button
+                  onClick={() => setSelectedCurriculum('urdu')}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
+                    selectedCurriculum === 'urdu'
+                      ? 'bg-[#1c1917] text-[#faf8f5] shadow-xs'
+                      : 'text-[#57534e] hover:text-[#1c1917]'
+                  }`}
+                >
+                  <GraduationCap className="w-3.5 h-3.5" />
+                  <span>صحیفۂ اردو (FBISE Grade 7)</span>
+                </button>
+              </div>
+
+              {selectedCurriculum === 'computer' ? (
+                <>
+                  {/* Header Bar */}
+                  <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="editorial-stamp editorial-stamp-terracotta inline-flex items-center gap-1.5">
+                          <GraduationCap className="w-3.5 h-3.5 text-[#c2410c]" />
+                          FLAGSHIP CURRICULUM · UNITS 1 TO 6
+                        </span>
+                        <span className="text-xs font-mono text-[#78716c] bg-[#f5f2eb] px-2.5 py-0.5 rounded-md border border-[#e7e5e4]">
+                          Complete Interactive Edition
+                        </span>
+                      </div>
+                      <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#1c1917] tracking-tight">
+                        f0undr Book: <em className="italic text-[#c2410c] font-normal">Computing &amp; Technology</em>
+                      </h2>
+                      <p className="text-[#57534e] text-xs sm:text-sm mt-2 max-w-3xl leading-relaxed">
+                        Authored by <strong className="text-[#1c1917]">Huzaifa</strong> &amp; the <strong className="text-[#1c1917]">f0undr Team</strong> (with <strong className="text-[#1c1917]">f0undr</strong> &amp; <strong className="text-[#1c1917]">Abdull Rehman Khizar</strong>). Complete computing curriculum with interactive diagrams, quizzes, flashcards, and student lab workbooks.
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-3 shrink-0">
+                      <a
+                        href="/book/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl btn-editorial-accent text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5"
+                      >
+                        <Maximize2 className="w-3.5 h-3.5" />
+                        <span>Open Full Screen in New Tab</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
                   </div>
-                  <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#1c1917] tracking-tight">
-                    f0undr Book: <em className="italic text-[#c2410c] font-normal">Computing &amp; Technology</em>
-                  </h2>
-                  <p className="text-[#57534e] text-xs sm:text-sm mt-2 max-w-3xl leading-relaxed">
-                    Authored by <strong className="text-[#1c1917]">Huzaifa</strong> &amp; the <strong className="text-[#1c1917]">f0undr Team</strong> (with <strong className="text-[#1c1917]">f0undr</strong> &amp; <strong className="text-[#1c1917]">Abdull Rehman Khizar</strong>). Complete computing curriculum with interactive diagrams, quizzes, flashcards, and student lab workbooks.
-                  </p>
-                </div>
 
-                <div className="flex items-center gap-3 shrink-0">
-                  <a
-                    href="/book/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl btn-editorial-accent text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5"
-                  >
-                    <Maximize2 className="w-3.5 h-3.5" />
-                    <span>Open Full Screen in New Tab</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </div>
+                  {/* Quick Jump Unit Strip */}
+                  <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-6 scrollbar-none text-xs font-mono">
+                    {[
+                      { label: 'Unit 1: Hardware', hash: 'unit-one' },
+                      { label: 'Unit 2: Digital Skills', hash: 'unit-two' },
+                      { label: 'Unit 3: Algorithms', hash: 'unit-three' },
+                      { label: 'Unit 4: Scratch Coding', hash: 'unit-four' },
+                      { label: 'Unit 5: Cybersecurity', hash: 'unit-five' },
+                      { label: 'Unit 6: Entrepreneurship', hash: 'unit-six' },
+                      { label: 'Flashcards', hash: 'flashcards' },
+                      { label: 'Glossary', hash: 'glossary' },
+                    ].map((item, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => {
+                          const iframe = document.getElementById('curriculum-frame') as HTMLIFrameElement;
+                          if (iframe && iframe.contentWindow) {
+                            iframe.contentWindow.location.hash = item.hash;
+                          }
+                        }}
+                        className="px-3.5 py-1.5 rounded-lg bg-[#f5f2eb] hover:bg-[#ffedd5] text-[#57534e] hover:text-[#c2410c] border border-[#e7e5e4] shrink-0 transition-colors cursor-pointer font-medium"
+                      >
+                        {item.label}
+                      </button>
+                    ))}
+                  </div>
 
-              {/* Quick Jump Unit Strip */}
-              <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-6 scrollbar-none text-xs font-mono">
-                {[
-                  { label: 'Unit 1: Hardware', hash: 'unit-one' },
-                  { label: 'Unit 2: Digital Skills', hash: 'unit-two' },
-                  { label: 'Unit 3: Algorithms', hash: 'unit-three' },
-                  { label: 'Unit 4: Scratch Coding', hash: 'unit-four' },
-                  { label: 'Unit 5: Cybersecurity', hash: 'unit-five' },
-                  { label: 'Unit 6: Entrepreneurship', hash: 'unit-six' },
-                  { label: 'Flashcards', hash: 'flashcards' },
-                  { label: 'Glossary', hash: 'glossary' },
-                ].map((item, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => {
-                      const iframe = document.getElementById('curriculum-frame') as HTMLIFrameElement;
-                      if (iframe && iframe.contentWindow) {
-                        iframe.contentWindow.location.hash = item.hash;
-                      }
-                    }}
-                    className="px-3.5 py-1.5 rounded-lg bg-[#f5f2eb] hover:bg-[#ffedd5] text-[#57534e] hover:text-[#c2410c] border border-[#e7e5e4] shrink-0 transition-colors cursor-pointer font-medium"
-                  >
-                    {item.label}
-                  </button>
-                ))}
-              </div>
+                  {/* Embedded Interactive Reader */}
+                  <div className="editorial-card rounded-2xl overflow-hidden border border-[#e7e5e4] shadow-md bg-white">
+                    <iframe
+                      id="curriculum-frame"
+                      src="/book/index.html"
+                      title="f0undr Book: Computing & Technology Curriculum"
+                      className="w-full h-[85vh] border-0"
+                    />
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* Urdu Header Bar */}
+                  <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="editorial-stamp editorial-stamp-terracotta inline-flex items-center gap-1.5">
+                          <GraduationCap className="w-3.5 h-3.5 text-[#c2410c]" />
+                          وفاقی تعلیمی بورڈ نصاب (FBISE)
+                        </span>
+                        <span className="text-xs font-mono text-[#78716c] bg-[#f5f2eb] px-2.5 py-0.5 rounded-md border border-[#e7e5e4]">
+                          جماعتِ ہفتم · مکمل ڈیجیٹل ایڈیشن
+                        </span>
+                      </div>
+                      <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#1c1917] tracking-tight">
+                        صحیفۂ اردو: <em className="italic text-[#c2410c] font-normal">نصاب و ادب</em>
+                      </h2>
+                      <p className="text-[#57534e] text-xs sm:text-sm mt-2 max-w-3xl leading-relaxed">
+                        وفاقی بورڈ کے نصاب پر مبنی منتخب ادبی شاہکار، کلامِ اقبال، فصیح تشریحات، فرہنگ و لغت، اور معروضی امتحانی مشقیں۔ ترتیب و پیشکش: <strong className="text-[#1c1917]">Huzaifa</strong> اور <strong className="text-[#1c1917]">f0undr Team</strong>۔
+                      </p>
+                    </div>
 
-              {/* Embedded Interactive Reader */}
-              <div className="editorial-card rounded-2xl overflow-hidden border border-[#e7e5e4] shadow-md bg-white">
-                <iframe
-                  id="curriculum-frame"
-                  src="/book/index.html"
-                  title="f0undr Book: Computing & Technology Curriculum"
-                  className="w-full h-[85vh] border-0"
-                />
-              </div>
+                    <div className="flex items-center gap-3 shrink-0">
+                      <a
+                        href="/urdu-book/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl btn-editorial-accent text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5"
+                      >
+                        <Maximize2 className="w-3.5 h-3.5" />
+                        <span>مکمل اسکرین پر مطالعہ کریں (New Tab)</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Embedded Urdu Interactive Reader */}
+                  <div className="editorial-card rounded-2xl overflow-hidden border border-[#e7e5e4] shadow-md bg-white">
+                    <iframe
+                      id="urdu-curriculum-frame"
+                      src="/urdu-book/index.html"
+                      title="صحیفۂ اردو: نصاب و ادب (جماعت ہفتم)"
+                      className="w-full h-[85vh] border-0"
+                    />
+                  </div>
+                </>
+              )}
             </div>
           </div>
         )}
