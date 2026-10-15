@@ -1,18 +1,25 @@
 (() => {
   // =========================================================================
-  // 1. THEME SWITCHER (Parchment -> Dark -> Clean)
+  // 1. BESPOKE THEME SWITCHER (Editorial Light -> Warm Sand -> Nordic Midnight -> Obsidian Dark)
   // =========================================================================
-  const THEMES = ["parchment", "dark", "clean"];
+  const THEMES = ["light", "sepia", "midnight", "dark"];
   const THEME_LABELS = {
-    parchment: { name: "Parchment", icon: "📜" },
-    dark: { name: "Dark Mode", icon: "🌙" },
-    clean: { name: "Clean White", icon: "☀️" }
+    light: { name: "Editorial Light", icon: "☀️", color: "#fafafc" },
+    sepia: { name: "Warm Sand", icon: "📜", color: "#f7f3e8" },
+    midnight: { name: "Nordic Midnight", icon: "🌊", color: "#0c1222" },
+    dark: { name: "Obsidian Dark", icon: "🌌", color: "#0b0f17" }
   };
 
-  let currentTheme = localStorage.getItem("f0undr-mind-theme") || "parchment";
+  let currentTheme = localStorage.getItem("f0undr-mind-theme") || "light";
+  if (!THEMES.includes(currentTheme)) {
+    currentTheme = "light";
+  }
 
   function applyTheme(theme) {
-    if (theme === "parchment") {
+    if (!THEMES.includes(theme)) {
+      theme = "light";
+    }
+    if (theme === "light") {
       document.documentElement.removeAttribute("data-theme");
     } else {
       document.documentElement.setAttribute("data-theme", theme);
@@ -22,16 +29,26 @@
 
     const iconEl = document.getElementById("theme-icon");
     const labelEl = document.getElementById("theme-name");
-    if (iconEl) iconEl.textContent = THEME_LABELS[theme].icon;
-    if (labelEl) labelEl.textContent = THEME_LABELS[theme].name;
+    if (iconEl && THEME_LABELS[theme]) iconEl.textContent = THEME_LABELS[theme].icon;
+    if (labelEl && THEME_LABELS[theme]) labelEl.textContent = THEME_LABELS[theme].name;
+
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (metaThemeColor && THEME_LABELS[theme]) {
+      metaThemeColor.setAttribute("content", THEME_LABELS[theme].color);
+    }
   }
 
   applyTheme(currentTheme);
 
   document.querySelectorAll("#theme-toggle, [data-theme-toggle]").forEach(btn => {
     btn.addEventListener("click", () => {
-      const nextIdx = (THEMES.indexOf(currentTheme) + 1) % THEMES.length;
-      applyTheme(THEMES[nextIdx]);
+      const currentIndex = THEMES.indexOf(currentTheme);
+      const nextIndex = (currentIndex + 1) % THEMES.length;
+      const nextTheme = THEMES[nextIndex];
+      applyTheme(nextTheme);
+      if (typeof showToast === "function") {
+        showToast(`Theme: ${THEME_LABELS[nextTheme].name}`, THEME_LABELS[nextTheme].icon);
+      }
     });
   });
 
@@ -82,40 +99,200 @@
   updateProgress();
 
   // =========================================================================
-  // 3. TABLE OF CONTENTS MODAL DIALOG
+  // 3. TOAST NOTIFICATION UTILITY
   // =========================================================================
-  const contentsDialog = document.querySelector("#contents-dialog");
-  const openContentsBtn = document.querySelector("[data-open-contents]");
-  const closeContentsBtn = document.querySelector("[data-close-contents]");
-
-  if (contentsDialog && openContentsBtn) {
-    openContentsBtn.addEventListener("click", () => {
-      contentsDialog.showModal();
-    });
-  }
-  if (contentsDialog && closeContentsBtn) {
-    closeContentsBtn.addEventListener("click", () => {
-      contentsDialog.close();
-    });
-  }
-  if (contentsDialog) {
-    contentsDialog.addEventListener("click", e => {
-      if (e.target === contentsDialog) contentsDialog.close();
-    });
-    // Close on navigation click
-    contentsDialog.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => contentsDialog.close());
-    });
+  function showToast(message, icon = "✓") {
+    const toast = document.getElementById("toast");
+    if (!toast) return;
+    toast.innerHTML = `<span style="color:var(--accent-cyan); font-size:1.1rem; font-weight:900;">${icon}</span> <span>${message}</span>`;
+    toast.classList.add("show");
+    clearTimeout(toast._timeout);
+    toast._timeout = setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2800);
   }
 
   // =========================================================================
-  // 4. INTERACTIVE STUDENT LAB WORKBOOK (Auto-saving & Export)
+  // 4. READER CONTROLS: FONT SIZING (A- / A+)
+  // =========================================================================
+  const fontDecreaseBtn = document.getElementById("font-decrease");
+  const fontIncreaseBtn = document.getElementById("font-increase");
+  let currentFontScale = parseFloat(localStorage.getItem("f0undr-mind-font-scale")) || 1.0;
+
+  function applyFontScale(scale) {
+    currentFontScale = Math.min(Math.max(scale, 0.85), 1.35);
+    document.documentElement.style.setProperty("--font-scale", currentFontScale);
+    document.querySelectorAll(".reading-column").forEach(el => {
+      el.style.fontSize = `calc(1.18rem * ${currentFontScale})`;
+      el.style.lineHeight = `${1.85 * (currentFontScale >= 1.2 ? 1.05 : 1)}`;
+    });
+    localStorage.setItem("f0undr-mind-font-scale", currentFontScale.toFixed(2));
+  }
+  applyFontScale(currentFontScale);
+
+  if (fontDecreaseBtn) {
+    fontDecreaseBtn.addEventListener("click", () => {
+      applyFontScale(currentFontScale - 0.08);
+      showToast(`Text size: ${Math.round(currentFontScale * 100)}%`, "🔤");
+    });
+  }
+  if (fontIncreaseBtn) {
+    fontIncreaseBtn.addEventListener("click", () => {
+      applyFontScale(currentFontScale + 0.08);
+      showToast(`Text size: ${Math.round(currentFontScale * 100)}%`, "🔤");
+    });
+  }
+
+  // =========================================================================
+  // 5. ACCESSIBLE AUDIO NARRATION (Web Speech API)
+  // =========================================================================
+  let activeAudioBtn = null;
+
+  function stopCurrentAudio() {
+    if (window.speechSynthesis) {
+      window.speechSynthesis.cancel();
+    }
+    if (activeAudioBtn) {
+      activeAudioBtn.classList.remove("playing");
+      const icon = activeAudioBtn.querySelector(".audio-icon");
+      const text = activeAudioBtn.querySelector(".audio-text");
+      if (icon) icon.textContent = "🔊";
+      if (text) text.textContent = "Listen to Unit";
+      activeAudioBtn = null;
+    }
+  }
+
+  document.querySelectorAll("[data-unit-audio]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      if (!("speechSynthesis" in window)) {
+        showToast("Audio narration is not supported by your browser.", "⚠️");
+        return;
+      }
+
+      if (btn.classList.contains("playing")) {
+        stopCurrentAudio();
+        showToast("Audio recitation stopped.", "⏹");
+        return;
+      }
+
+      stopCurrentAudio();
+
+      const unitId = btn.getAttribute("data-unit-audio");
+      const unitEl = document.getElementById(unitId);
+      if (!unitEl) return;
+
+      const readingCol = unitEl.querySelector(".reading-column");
+      if (!readingCol) return;
+
+      const paragraphs = Array.from(readingCol.querySelectorAll("p, li, blockquote"))
+        .map(p => p.textContent.trim())
+        .filter(t => t.length > 20)
+        .slice(0, 12)
+        .join(". ");
+
+      if (!paragraphs) return;
+
+      btn.classList.add("playing");
+      const icon = btn.querySelector(".audio-icon");
+      const text = btn.querySelector(".audio-text");
+      if (icon) icon.textContent = "⏹";
+      if (text) text.textContent = "Stop Audio";
+      activeAudioBtn = btn;
+
+      const utterance = new SpeechSynthesisUtterance(paragraphs);
+      utterance.rate = 1.0;
+      utterance.pitch = 1.0;
+      utterance.lang = "en-US";
+
+      utterance.onend = () => stopCurrentAudio();
+      utterance.onerror = () => stopCurrentAudio();
+
+      window.speechSynthesis.speak(utterance);
+      const unitName = unitEl.querySelector("h2")?.textContent || "Unit";
+      showToast(`Narrating ${unitName}...`, "🔊");
+    });
+  });
+
+  window.addEventListener("beforeunload", () => {
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+  });
+
+  // =========================================================================
+  // 6. UNIT COMPLETION TRACKER
+  // =========================================================================
+  const COMPLETED_UNITS_KEY = "f0undr-mind-completed-units";
+  let completedUnits = [];
+  try {
+    const raw = localStorage.getItem(COMPLETED_UNITS_KEY);
+    if (raw) completedUnits = JSON.parse(raw);
+  } catch (err) {
+    completedUnits = [];
+  }
+
+  function updateCompletionButtons() {
+    document.querySelectorAll("[data-complete-unit]").forEach(btn => {
+      const unitId = btn.getAttribute("data-complete-unit");
+      const isDone = completedUnits.includes(unitId);
+      const textEl = btn.querySelector(".complete-text");
+      if (isDone) {
+        btn.classList.add("completed");
+        if (textEl) textEl.textContent = "Unit Completed ✓";
+      } else {
+        btn.classList.remove("completed");
+        const unitName = unitId.replace("unit-", "Unit ");
+        if (textEl) textEl.textContent = `Mark ${unitName.charAt(0).toUpperCase() + unitName.slice(1)} Complete`;
+      }
+    });
+  }
+  updateCompletionButtons();
+
+  document.querySelectorAll("[data-complete-unit]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const unitId = btn.getAttribute("data-complete-unit");
+      const idx = completedUnits.indexOf(unitId);
+      if (idx > -1) {
+        completedUnits.splice(idx, 1);
+        showToast("Unit marked as incomplete", "↩");
+      } else {
+        completedUnits.push(unitId);
+        showToast("Unit mastery unlocked & completed!", "🎉");
+      }
+      localStorage.setItem(COMPLETED_UNITS_KEY, JSON.stringify(completedUnits));
+      updateCompletionButtons();
+    });
+  });
+
+  // =========================================================================
+  // 7. COPY TACTICAL DRILLS & FRAMEWORKS
+  // =========================================================================
+  document.querySelectorAll(".copy-framework-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const card = btn.closest(".try-card");
+      if (!card) return;
+      const title = card.querySelector("h3")?.textContent || "Cognitive Framework";
+      const desc = card.querySelector("p")?.textContent || "";
+      const quote = card.querySelector("blockquote")?.textContent || "";
+      const payload = `🧠 [f0undr Mental Mastery] ${title}\n\n${desc}\n\nCore Directive:\n${quote}\n\n(From: The Art of Mental Mastery by Huzaifa & f0undr Team)`;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(payload).then(() => {
+          showToast(`Copied "${title}" to clipboard!`, "📋");
+        }).catch(() => {
+          showToast("Copied framework", "📋");
+        });
+      } else {
+        showToast("Clipboard access unavailable", "⚠️");
+      }
+    });
+  });
+
+  // =========================================================================
+  // 8. INTERACTIVE STUDENT LAB WORKBOOK (Auto-saving, Copy & Export)
   // =========================================================================
   const WORKBOOK_KEY = "f0undr-mind-mastery-workbook";
   const workbookTextareas = document.querySelectorAll(".prompt-row textarea");
   const saveStatusEl = document.querySelector(".save-status");
   const exportBtn = document.querySelector("#export-workbook-btn");
-  const resetWorkbookBtn = document.querySelector("#reset-workbook-btn");
 
   let workbookData = {};
   try {
@@ -138,14 +315,71 @@
       localStorage.setItem(WORKBOOK_KEY, JSON.stringify(workbookData));
       if (saveStatusEl) {
         saveStatusEl.textContent = "Saved locally ✓";
-        saveStatusEl.style.color = "var(--teal)";
+        saveStatusEl.style.color = "var(--accent-cyan)";
       }
     });
   });
 
+  // Individual Unit Save Buttons
+  document.querySelectorAll(".workbook-save-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      localStorage.setItem(WORKBOOK_KEY, JSON.stringify(workbookData));
+      const unitKey = btn.getAttribute("data-unit-save") || "unit";
+      const formattedName = unitKey.replace("unit-", "Unit ");
+      showToast(`${formattedName.charAt(0).toUpperCase() + formattedName.slice(1)} notes saved locally!`, "💾");
+    });
+  });
+
+  // Individual Unit Copy Notes Buttons
+  document.querySelectorAll(".workbook-copy-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const section = btn.closest(".workbook-section");
+      if (!section) return;
+      const unitKey = btn.getAttribute("data-unit-copy") || "Unit";
+      const unitTitle = section.querySelector("h3")?.textContent || unitKey;
+      let notesText = `# ${unitTitle} — Notes\n\n`;
+
+      section.querySelectorAll(".prompt-row").forEach(row => {
+        const title = row.querySelector("strong")?.textContent || "Prompt";
+        const textarea = row.querySelector("textarea");
+        const val = textarea && textarea.value.trim() ? textarea.value.trim() : "[No notes entered]";
+        notesText += `### ${title}\n${val}\n\n`;
+      });
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(notesText).then(() => {
+          showToast(`Copied ${unitTitle} notes to clipboard!`, "📋");
+        }).catch(() => {
+          showToast("Notes copied", "📋");
+        });
+      } else {
+        showToast("Clipboard unavailable", "⚠️");
+      }
+    });
+  });
+
+  // Individual Unit Reset Buttons
+  document.querySelectorAll(".workbook-reset-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const section = btn.closest(".workbook-section");
+      if (!section) return;
+      const unitTitle = section.querySelector("h3")?.textContent || "this unit";
+      if (confirm(`Are you sure you want to clear your notes for ${unitTitle}?`)) {
+        section.querySelectorAll("textarea").forEach(t => {
+          const name = t.getAttribute("name");
+          if (name) delete workbookData[name];
+          t.value = "";
+        });
+        localStorage.setItem(WORKBOOK_KEY, JSON.stringify(workbookData));
+        showToast(`Cleared notes for ${unitTitle}`, "🗑");
+      }
+    });
+  });
+
+  // Global Export All Notes
   if (exportBtn) {
     exportBtn.addEventListener("click", () => {
-      let content = "# The Art of Mental Mastery — My Student Workbook\n";
+      let content = "# The Art of Mental Mastery — Complete Student Workbook\n";
       content += `Generated on: ${new Date().toLocaleString()}\n`;
       content += `Author: Huzaifa & the f0undr Team\n\n`;
 
@@ -163,18 +397,20 @@
       a.download = "Mental-Mastery-Workbook-Notes.md";
       a.click();
       URL.revokeObjectURL(url);
+      showToast("Exported all workbook notes (.md)", "📥");
     });
-  }
+  });
 
-  if (resetWorkbookBtn) {
-    resetWorkbookBtn.addEventListener("click", () => {
-      if (confirm("Are you sure you want to clear all your workbook notes? This cannot be undone.")) {
-        workbookData = {};
-        localStorage.removeItem(WORKBOOK_KEY);
-        workbookTextareas.forEach(t => (t.value = ""));
-        if (saveStatusEl) saveStatusEl.textContent = "Workbook cleared";
+  // Floating Back to Top Button
+  const floatingTopBtn = document.getElementById("floating-top-btn");
+  if (floatingTopBtn) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 380) {
+        floatingTopBtn.classList.add("visible");
+      } else {
+        floatingTopBtn.classList.remove("visible");
       }
-    });
+    }, { passive: true });
   }
 
   // =========================================================================
@@ -773,7 +1009,6 @@
     }
     if (e.key === "Escape") {
       if (searchDialog && searchDialog.open) closeSearch();
-      if (contentsDialog && contentsDialog.open) contentsDialog.close();
     }
   });
 

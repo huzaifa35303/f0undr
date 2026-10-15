@@ -7,6 +7,8 @@ Allow: /book
 Allow: /book/
 Allow: /urdu-book
 Allow: /urdu-book/
+Allow: /mind-mastery
+Allow: /mind-mastery/
 Allow: /#books
 Allow: /#curriculum
 Allow: /#team

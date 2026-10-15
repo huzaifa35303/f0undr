@@ -26,9 +26,16 @@ Styled in the same elegant editorial standard as the acclaimed **f0undr Computer
 - **Interactive Self-Assessment Quizzes**: 30 MCQs across Units 1–6 with live scoring and explanations.
 - **3D Interactive Flashcards**: 30+ cards with categories, flip animation, and Mastered/Review tracking.
 - **In-Book Live Search Engine**: Instant search dialog accessible via `Ctrl + K` or header icon with category filter chips.
-- **3 Visual Reader Themes**: Warm Antique Parchment, Midnight Emerald Dark Mode, and Clean Editorial White.
-- **Vector Architectural Diagrams**: Inline SVG diagrams for LTP plasticity, Ebbinghaus forgetting curve, Mind Palace floorplan, FACS microexpressions, FBI body language pyramid, and Mental Models.
-- **1-Click Print & PDF Generation**: Clean print media CSS optimized for physical reading.
+- **4 Bespoke Visual Themes**: ☀️ Editorial Light (Clean Alabaster default), 📜 Warm Sand (Paper Sepia for eye comfort), 🌊 Nordic Midnight (Deep Oceanic Sapphire & Arctic Sky), and 🌌 Obsidian Dark (OLED Stealth).
+- **High-Utility Reader Controls**:
+  - `A-` / `A+` font size controls with persistent scale saving.
+  - Web Speech API Audio Reciter (`🔊 Listen to Unit`) for hands-free audio listening.
+  - Unit Completion Mastery Tracking (`✓ Mark Unit Complete`) persisted to local storage.
+  - 1-Click `📋 Copy Framework` buttons on all tactical drill cards.
+  - Dedicated `💾 Save Unit Notes` & `📋 Copy Unit Notes` in every student lab workbook.
+  - Sequential Unit Navigation (`← Previous Unit` / `Next Unit →`) for seamless chapter-to-chapter reading.
+  - Smooth floating back-to-top button (`↑`).
+- **Vector Architectural Diagrams**: Bespoke dark executive SVG diagrams for LTP plasticity, Ebbinghaus forgetting curve, Mind Palace floorplan, FACS microexpressions, FBI body language pyramid, Persuasion vectors, and Mental Models tree.
 
 ---
 

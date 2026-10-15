@@ -1,38 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="100%" height="100%">
   <defs>
     <linearGradient id="axonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#217c72"/>
-      <stop offset="100%" stop-color="#3ba49a"/>
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#0284c7"/>
     </linearGradient>
     <linearGradient id="dendriteGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#bd5342"/>
-      <stop offset="100%" stop-color="#e5735f"/>
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#6366f1"/>
     </linearGradient>
     <linearGradient id="sheathGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#f0cb75"/>
-      <stop offset="100%" stop-color="#d4af37"/>
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#2563eb"/>
     </linearGradient>
   </defs>
 
-  <!-- Background -->
-  <rect width="900" height="480" rx="8" fill="#152422" stroke="#2a3c39" stroke-width="1.5"/>
+  <!-- Clean Editorial Background -->
+  <rect width="900" height="480" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
 
   <!-- Title & Banner -->
-  <text x="450" y="42" text-anchor="middle" font-family="'Iowan Old Style', Georgia, serif" font-size="20" font-weight="700" fill="#f5f1e8" letter-spacing="1">SYNAPTIC PLASTICITY &amp; LONG-TERM POTENTIATION (LTP)</text>
-  <text x="450" y="66" text-anchor="middle" font-family="'Avenir Next', sans-serif" font-size="12" fill="#a2b5b0">How Deliberate Practice &amp; Retrieval Physically Rewires the Brain</text>
-  <line x1="200" y1="80" x2="700" y2="80" stroke="#2a3c39" stroke-width="1"/>
+  <text x="450" y="42" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="19" font-weight="800" fill="#0f172a" letter-spacing="0.5">SYNAPTIC PLASTICITY &amp; LONG-TERM POTENTIATION (LTP)</text>
+  <text x="450" y="66" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="12" fill="#64748b">How Deliberate Practice &amp; Retrieval Physically Rewires the Brain</text>
+  <line x1="200" y1="82" x2="700" y2="82" stroke="#e2e8f0" stroke-width="1.2"/>
 
   <!-- Left: Stage 1 - Pre-Synaptic Terminal -->
-  <g transform="translate(60, 110)">
-    <rect width="360" height="310" rx="6" fill="#1a2d2a" stroke="#2a3c39"/>
-    <text x="25" y="32" font-family="'Iowan Old Style', serif" font-size="16" font-weight="700" fill="#3ba49a">1. High-Frequency Signal (Active Recall)</text>
-    <text x="25" y="55" font-family="'Avenir Next', sans-serif" font-size="11.5" fill="#a2b5b0">Repeated mental retrieval triggers intense electrical pulses</text>
+  <g transform="translate(60, 105)">
+    <rect width="360" height="320" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+    <text x="25" y="34" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="14.5" font-weight="800" fill="#0f172a">1. High-Frequency Signal (Active Recall)</text>
+    <text x="25" y="56" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11.5" fill="#64748b">Repeated mental retrieval triggers intense electrical pulses</text>
 
     <!-- Axon Terminal Bulb -->
-    <path d="M 60 160 C 60 100 130 90 200 90 C 270 90 320 130 320 180 C 320 220 260 250 180 250 C 110 250 60 210 60 160 Z" fill="url(#axonGrad)" opacity="0.85"/>
+    <path d="M 60 160 C 60 100 130 90 200 90 C 270 90 320 130 320 180 C 320 220 260 250 180 250 C 110 250 60 210 60 160 Z" fill="url(#axonGrad)" opacity="0.9"/>
     
     <!-- Neurotransmitter Vesicles (Glutamate) -->
-    <g fill="#f0cb75">
+    <g fill="#f59e0b">
       <circle cx="160" cy="140" r="8"/>
       <circle cx="190" cy="130" r="7"/>
       <circle cx="220" cy="150" r="9"/>
@@ -42,25 +42,25 @@
     </g>
 
     <!-- Vesicle Exocytosis into Synaptic Cleft -->
-    <g fill="#f88975">
-      <circle cx="190" cy="225" r="5"/>
-      <circle cx="215" cy="235" r="5"/>
-      <circle cx="240" cy="228" r="5"/>
+    <g fill="#0284c7">
+      <circle cx="190" cy="225" r="5.5"/>
+      <circle cx="215" cy="235" r="5.5"/>
+      <circle cx="240" cy="228" r="5.5"/>
     </g>
-    <text x="25" y="285" font-family="'Avenir Next', sans-serif" font-size="11" font-weight="700" fill="#f0cb75">● Neurotransmitter Release (Glutamate Surge)</text>
+    <text x="25" y="292" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11.5" font-weight="700" fill="#2563eb">● Neurotransmitter Release (Glutamate Surge)</text>
   </g>
 
   <!-- Right: Stage 2 - Post-Synaptic Spine & Myelination -->
-  <g transform="translate(480, 110)">
-    <rect width="360" height="310" rx="6" fill="#1a2d2a" stroke="#2a3c39"/>
-    <text x="25" y="32" font-family="'Iowan Old Style', serif" font-size="16" font-weight="700" fill="#e5735f">2. Receptor Insertion &amp; Myelination</text>
-    <text x="25" y="55" font-family="'Avenir Next', sans-serif" font-size="11.5" fill="#a2b5b0">AMPAR receptors proliferate; myelin sheath insulates circuit</text>
+  <g transform="translate(480, 105)">
+    <rect width="360" height="320" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+    <text x="25" y="34" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="14.5" font-weight="800" fill="#0f172a">2. Receptor Insertion &amp; Myelination</text>
+    <text x="25" y="56" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11.5" fill="#64748b">AMPAR receptors proliferate; myelin sheath insulates circuit</text>
 
     <!-- Post-Synaptic Membrane -->
-    <path d="M 40 100 Q 180 130 320 100 L 320 170 Q 180 190 40 170 Z" fill="url(#dendriteGrad)" opacity="0.85"/>
+    <path d="M 40 100 Q 180 130 320 100 L 320 170 Q 180 190 40 170 Z" fill="url(#dendriteGrad)" opacity="0.9"/>
     
     <!-- Receptor Channels (AMPA & NMDA) -->
-    <g fill="#55cfc1">
+    <g fill="#2563eb">
       <rect x="70" y="88" width="16" height="22" rx="3"/>
       <rect x="120" y="96" width="16" height="22" rx="3"/>
       <rect x="170" y="100" width="16" height="22" rx="3"/>
@@ -68,21 +68,21 @@
       <rect x="270" y="88" width="16" height="22" rx="3"/>
     </g>
 
-    <!-- Myelin Sheath Layer (Insulation for 10x Speed) -->
+    <!-- Myelin Sheath Layer (Insulation for 100x Speed) -->
     <g transform="translate(40, 200)">
-      <rect x="0" y="0" width="70" height="28" rx="4" fill="url(#sheathGrad)"/>
-      <rect x="80" y="0" width="70" height="28" rx="4" fill="url(#sheathGrad)"/>
-      <rect x="160" y="0" width="70" height="28" rx="4" fill="url(#sheathGrad)"/>
-      <rect x="240" y="0" width="70" height="28" rx="4" fill="url(#sheathGrad)"/>
-      <line x1="0" y1="14" x2="310" y2="14" stroke="#eaf1ed" stroke-width="2" stroke-dasharray="4 2"/>
+      <rect x="0" y="0" width="68" height="28" rx="5" fill="url(#sheathGrad)"/>
+      <rect x="78" y="0" width="68" height="28" rx="5" fill="url(#sheathGrad)"/>
+      <rect x="156" y="0" width="68" height="28" rx="5" fill="url(#sheathGrad)"/>
+      <rect x="234" y="0" width="68" height="28" rx="5" fill="url(#sheathGrad)"/>
+      <line x1="0" y1="14" x2="302" y2="14" stroke="#ffffff" stroke-width="2" stroke-dasharray="4 2"/>
     </g>
 
-    <text x="25" y="258" font-family="'Avenir Next', sans-serif" font-size="11" font-weight="700" fill="#f0cb75">★ Myelin Sheath: Up to 100x Conduction Velocity</text>
-    <text x="25" y="285" font-family="'Avenir Next', sans-serif" font-size="11" fill="#a2b5b0">Result: Recall transforms from strenuous effort to reflex</text>
+    <text x="25" y="265" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11.5" font-weight="700" fill="#2563eb">★ Myelin Sheath: Up to 100x Conduction Velocity</text>
+    <text x="25" y="292" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" fill="#64748b">Result: Recall transforms from strenuous effort to reflex</text>
   </g>
 
   <!-- Central Bridge Flow Arrow -->
-  <g transform="translate(425, 250)">
-    <path d="M 5 0 L 45 0 M 35 -7 L 45 0 L 35 7" stroke="#f0cb75" stroke-width="3" fill="none"/>
+  <g transform="translate(430, 255)">
+    <path d="M 0 0 L 35 0 M 27 -6 L 35 0 L 27 6" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
   </g>
 </svg>

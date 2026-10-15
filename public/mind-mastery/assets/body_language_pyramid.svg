@@ -1,78 +1,79 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="100%" height="100%">
   <defs>
     <linearGradient id="pyrGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#2a7a4b"/>
-      <stop offset="100%" stop-color="#3ba49a"/>
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#0284c7"/>
     </linearGradient>
     <linearGradient id="pyrGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#3ba49a"/>
-      <stop offset="100%" stop-color="#55cfc1"/>
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#6366f1"/>
     </linearGradient>
     <linearGradient id="pyrGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#d4af37"/>
-      <stop offset="100%" stop-color="#f0cb75"/>
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
     </linearGradient>
     <linearGradient id="pyrGrad4" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#bd5342"/>
-      <stop offset="100%" stop-color="#e5735f"/>
+      <stop offset="0%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#f43f5e"/>
     </linearGradient>
   </defs>
 
-  <!-- Background -->
-  <rect width="900" height="500" rx="8" fill="#152422" stroke="#2a3c39" stroke-width="1.5"/>
+  <!-- Clean Editorial Background -->
+  <rect width="900" height="500" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
 
   <!-- Header -->
-  <text x="450" y="38" text-anchor="middle" font-family="'Iowan Old Style', Georgia, serif" font-size="20" font-weight="700" fill="#f5f1e8" letter-spacing="1">THE FBI HIERARCHY OF NON-VERBAL TRUTHFULNESS</text>
-  <text x="450" y="60" text-anchor="middle" font-family="'Avenir Next', sans-serif" font-size="12" fill="#a2b5b0">Joe Navarro's Limbic Honesty Inversion: The Further From the Brain, The Truer the Signal</text>
-  <line x1="150" y1="72" x2="750" y2="72" stroke="#2a3c39" stroke-width="1"/>
+  <text x="450" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="19" font-weight="800" fill="#0f172a" letter-spacing="0.5">THE FBI HIERARCHY OF NON-VERBAL TRUTHFULNESS</text>
+  <text x="450" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="12" fill="#64748b">Joe Navarro's Limbic Honesty Inversion: The Further From the Brain, The Truer the Signal</text>
+  <line x1="150" y1="74" x2="750" y2="74" stroke="#e2e8f0" stroke-width="1.2"/>
 
-  <!-- Left Side: Pyramid Graphic (Apex at top (280, 105), Base (100 to 460, 435)) -->
+  <!-- Left Side: Pyramid Graphic -->
   <g transform="translate(40, 20)">
-    <!-- Level 4 (Top): Face & Words (Most Fabricated / Lowest Honesty) -->
-    <polygon points="280,95 235,175 325,175" fill="url(#pyrGrad4)" stroke="#152422" stroke-width="2"/>
-    <text x="280" y="150" text-anchor="middle" font-family="'Avenir Next', sans-serif" font-size="11" font-weight="800" fill="#ffffff">FACE</text>
+    <!-- Level 4 (Top): Face & Words -->
+    <polygon points="280,95 235,175 325,175" fill="url(#pyrGrad4)" stroke="#ffffff" stroke-width="2.5"/>
+    <text x="280" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" font-weight="800" fill="#ffffff">FACE</text>
 
-    <!-- Level 3: Hands & Arms (Moderately Deceptive) -->
-    <polygon points="235,175 325,175 370,255 190,255" fill="url(#pyrGrad3)" stroke="#152422" stroke-width="2"/>
-    <text x="280" y="222" text-anchor="middle" font-family="'Avenir Next', sans-serif" font-size="12" font-weight="800" fill="#152422">ARMS &amp; HANDS</text>
+    <!-- Level 3: Hands & Arms -->
+    <polygon points="235,175 325,175 370,255 190,255" fill="url(#pyrGrad3)" stroke="#ffffff" stroke-width="2.5"/>
+    <text x="280" y="222" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="12" font-weight="800" fill="#ffffff">ARMS &amp; HANDS</text>
 
-    <!-- Level 2: Torso & Breathing (Harder to Fake) -->
-    <polygon points="190,255 370,255 415,335 145,335" fill="url(#pyrGrad2)" stroke="#152422" stroke-width="2"/>
-    <text x="280" y="302" text-anchor="middle" font-family="'Avenir Next', sans-serif" font-size="13" font-weight="800" fill="#152422">TORSO &amp; VENTRAL LEAN</text>
+    <!-- Level 2: Torso & Breathing -->
+    <polygon points="190,255 370,255 415,335 145,335" fill="url(#pyrGrad2)" stroke="#ffffff" stroke-width="2.5"/>
+    <text x="280" y="302" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="13" font-weight="800" fill="#ffffff">TORSO &amp; VENTRAL LEAN</text>
 
-    <!-- Level 1 (Base): Feet & Legs (Maximum Honesty / Evolutionary Reflex) -->
-    <polygon points="145,335 415,335 460,415 100,415" fill="url(#pyrGrad1)" stroke="#152422" stroke-width="2"/>
-    <text x="280" y="382" text-anchor="middle" font-family="'Avenir Next', sans-serif" font-size="14" font-weight="800" fill="#ffffff">FEET &amp; LEGS (HIGHEST TRUTH)</text>
+    <!-- Level 1 (Base): Feet & Legs (Highest Truth) -->
+    <polygon points="145,335 415,335 460,415 100,415" fill="url(#pyrGrad1)" stroke="#ffffff" stroke-width="2.5"/>
+    <text x="280" y="382" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="14" font-weight="800" fill="#ffffff">FEET &amp; LEGS (HIGHEST TRUTH)</text>
   </g>
 
   <!-- Right Side: Tactical Profiling Breakdown Cards -->
-  <g transform="translate(480, 100)">
-    <!-- Item 4: Face Breakdown -->
-    <rect x="0" y="0" width="370" height="75" rx="5" fill="#1b2e2a" stroke="#bd5342" stroke-width="1.2"/>
-    <text x="18" y="24" font-family="'Avenir Next', sans-serif" font-size="12" font-weight="800" fill="#e5735f">LEVEL 4: FACE &amp; MOUTH (LOW RELIABILITY)</text>
-    <text x="18" y="44" font-family="'Avenir Next', sans-serif" font-size="10.5" fill="#f5f1e8">Social conditioning trains us from childhood to smile &amp; nod.</text>
-    <text x="18" y="60" font-family="'Avenir Next', sans-serif" font-size="10" fill="#a2b5b0">Danger: Over-focusing here exposes you to easy manipulation.</text>
+  <g transform="translate(480, 95)">
+    <!-- Item 4: Face -->
+    <rect x="0" y="0" width="370" height="74" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2"/>
+    <text x="18" y="23" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="12" font-weight="800" fill="#e11d48">LEVEL 4: FACE &amp; MOUTH (LOW RELIABILITY)</text>
+    <text x="18" y="43" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" fill="#0f172a">Social conditioning trains us from childhood to smile &amp; nod.</text>
+    <text x="18" y="60" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="10.5" fill="#64748b">Danger: Over-focusing here exposes you to easy manipulation.</text>
 
-    <!-- Item 3: Arms & Hands Breakdown -->
-    <rect x="0" y="85" width="370" height="75" rx="5" fill="#1b2e2a" stroke="#d4af37" stroke-width="1.2"/>
-    <text x="18" y="109" font-family="'Avenir Next', sans-serif" font-size="12" font-weight="800" fill="#f0cb75">LEVEL 3: ARMS &amp; HANDS (SELF-PACIFIERS)</text>
-    <text x="18" y="129" font-family="'Avenir Next', sans-serif" font-size="10.5" fill="#f5f1e8">Suprasternal notch touching, ring twirling, neck massages.</text>
-    <text x="18" y="145" font-family="'Avenir Next', sans-serif" font-size="10" fill="#a2b5b0">Sign: Vagus nerve stimulation to lower fight-or-flight heart rate.</text>
+    <!-- Item 3: Arms & Hands -->
+    <rect x="0" y="84" width="370" height="74" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2"/>
+    <text x="18" y="107" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="12" font-weight="800" fill="#7c3aed">LEVEL 3: ARMS &amp; HANDS (SELF-PACIFIERS)</text>
+    <text x="18" y="127" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" fill="#0f172a">Suprasternal notch touching, ring twirling, neck massages.</text>
+    <text x="18" y="144" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="10.5" fill="#64748b">Sign: Vagus nerve stimulation to lower fight-or-flight heart rate.</text>
 
-    <!-- Item 2: Torso Breakdown -->
-    <rect x="0" y="170" width="370" height="75" rx="5" fill="#1b2e2a" stroke="#3ba49a" stroke-width="1.2"/>
-    <text x="18" y="194" font-family="'Avenir Next', sans-serif" font-size="12" font-weight="800" fill="#55cfc1">LEVEL 2: TORSO &amp; VENTRAL ORIENTATION</text>
-    <text x="18" y="214" font-family="'Avenir Next', sans-serif" font-size="10.5" fill="#f5f1e8">Ventral Denial: Blading torso away from an uncomfortable topic.</text>
-    <text x="18" y="230" font-family="'Avenir Next', sans-serif" font-size="10" fill="#a2b5b0">Ventral Fronting: Total engagement &amp; deep unconscious rapport.</text>
+    <!-- Item 2: Torso -->
+    <rect x="0" y="168" width="370" height="74" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2"/>
+    <text x="18" y="191" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="12" font-weight="800" fill="#4f46e5">LEVEL 2: TORSO &amp; VENTRAL ORIENTATION</text>
+    <text x="18" y="211" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" fill="#0f172a">Ventral Denial: Blading torso away from an uncomfortable topic.</text>
+    <text x="18" y="228" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="10.5" fill="#64748b">Ventral Fronting: Total engagement &amp; deep unconscious rapport.</text>
 
-    <!-- Item 1: Feet & Legs Breakdown -->
-    <rect x="0" y="255" width="370" height="85" rx="5" fill="#1b2e2a" stroke="#2a7a4b" stroke-width="1.5"/>
-    <text x="18" y="279" font-family="'Avenir Next', sans-serif" font-size="12" font-weight="800" fill="#3ba49a">LEVEL 1: FEET &amp; LEGS (THE UNGUARDED LIMBIC TRUTH)</text>
-    <text x="18" y="299" font-family="'Avenir Next', sans-serif" font-size="10.5" fill="#f5f1e8">Direction of toes reveals true destination (exit vs. speaker).</text>
-    <text x="18" y="315" font-family="'Avenir Next', sans-serif" font-size="10.5" fill="#f5f1e8">Ankle locks = mental resistance. Happy feet = secret victory.</text>
-    <text x="18" y="331" font-family="'Avenir Next', sans-serif" font-size="10" fill="#a2b5b0">Evolutionary root: Legs were responsible for survival for 2M years.</text>
+    <!-- Item 1: Feet & Legs -->
+    <rect x="0" y="252" width="370" height="84" rx="8" fill="#f8fafc" stroke="#bfdbfe" stroke-width="1.5"/>
+    <text x="18" y="275" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="12" font-weight="800" fill="#2563eb">LEVEL 1: FEET &amp; LEGS (THE UNGUARDED LIMBIC TRUTH)</text>
+    <text x="18" y="295" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" fill="#0f172a">Direction of toes reveals true destination (exit vs. speaker).</text>
+    <text x="18" y="311" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" fill="#0f172a">Ankle locks = mental resistance. Happy feet = secret victory.</text>
+    <text x="18" y="327" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="10" fill="#64748b">Evolutionary root: Legs were responsible for survival for 2M years.</text>
   </g>
 
   <!-- Bottom Pro-Tip Banner -->
-  <text x="450" y="475" text-anchor="middle" font-family="'Avenir Next', sans-serif" font-size="11.5" font-weight="700" fill="#f0cb75">★ Master Profiler Protocol: Always read non-verbals from the floor up, not from the face down.</text>
+  <rect x="140" y="456" width="620" height="28" rx="14" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="450" y="474" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11.5" font-weight="700" fill="#1d4ed8">★ Master Profiler Protocol: Always read non-verbals from the floor up, not from the face down.</text>
 </svg>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f5f1e8">
+    <meta name="theme-color" content="#fafafc">
     <meta name="description" content="f0undr Book: The Art of Mental Mastery — Accelerated Learning, Non-Verbal Mind Reading, Memory Palaces, and Behavioral Psychology by Huzaifa and the f0undr Team.">
     <meta name="keywords" content="f0undr book, mental mastery, learn fast, how to read someone mind, body language decoding, memory palace, feynman technique, microexpressions, paul ekman, behavioral profiling, huzaifa f0undr">
     <meta name="author" content="Huzaifa &amp; the f0undr Team">
@@ -78,14 +78,17 @@
         <a href="#flashcards">Flashcards</a>
         <a href="#glossary">Glossary</a>
         <div class="header-actions">
+          <div class="font-size-group" aria-label="Reading text size adjustments">
+            <button class="font-ctrl-btn" type="button" id="font-decrease" title="Decrease font size" aria-label="Decrease font size">A-</button>
+            <button class="font-ctrl-btn" type="button" id="font-increase" title="Increase font size" aria-label="Increase font size">A+</button>
+          </div>
           <button class="header-action-btn" type="button" id="search-trigger" title="Quick Search (Ctrl + K)">
             <span aria-hidden="true">🔍</span> Search <kbd>Ctrl K</kbd>
           </button>
-          <button class="header-action-btn" type="button" id="theme-toggle" title="Switch Theme (Parchment / Dark / Clean White)">
-            <span id="theme-icon" aria-hidden="true">📜</span> <span id="theme-name">Parchment</span>
+          <button class="header-action-btn" type="button" id="theme-toggle" title="Switch Theme (Editorial Light, Warm Sand, Nordic Midnight, Obsidian Dark)">
+            <span id="theme-icon" aria-hidden="true">☀️</span> <span id="theme-name">Editorial Light</span>
           </button>
         </div>
-        <button class="contents-trigger" type="button" data-open-contents aria-haspopup="dialog" aria-controls="contents-dialog">Contents <span aria-hidden="true">↗</span></button>
       </nav>
     </header>
 
@@ -215,6 +218,21 @@
           </div>
         </header>
 
+        <div class="unit-meta-bar">
+          <div class="unit-meta-item">
+            <span class="unit-meta-icon" aria-hidden="true">⏱</span>
+            <span>18 min read</span>
+          </div>
+          <div class="unit-meta-item">
+            <span class="unit-meta-icon" aria-hidden="true">🧠</span>
+            <span>Synaptic Plasticity · Active Recall · Feynman Method</span>
+          </div>
+          <button class="unit-audio-btn" type="button" data-unit-audio="unit-one" aria-label="Listen to Unit 1">
+            <span class="audio-icon" aria-hidden="true">🔊</span>
+            <span class="audio-text">Listen to Unit</span>
+          </button>
+        </div>
+
         <div class="reading-column">
           <p class="lead-paragraph">The human brain is not a static recording device; it is a dynamic, living neural circuit that physically remodels its physical architecture in response to cognitive demand. This biological phenomenon—known as <strong>neuroplasticity</strong>—is the bedrock of accelerated learning. Most learners spend years trapped in passive study habits (highlighting notes, casual re-reading, watching lectures on autopilot) that create what cognitive psychologists call the <em>Illusion of Competence</em>: the dangerous sensation that because information looks familiar on a page, it is mastered in your long-term memory.</p>
 
@@ -282,6 +300,7 @@
               <h3>The 30-Day Skill Blitz</h3>
               <p>Pick one skill you’ve delayed learning (Python programming, conversational Spanish, public speaking, or financial accounting). Strip away all theoretical lectures.</p>
               <blockquote>"Spend 80% of your time on direct output—writing code that breaks, speaking broken sentences to native speakers on day two, or solving real case studies. Discomfort is the physiological biomarker of neurogenesis."</blockquote>
+              <button class="copy-framework-btn" type="button" data-copy-title="The 30-Day Skill Blitz">📋 Copy Framework</button>
             </div>
           </div>
         </div>
@@ -332,8 +351,10 @@
               <span class="save-status">Saved locally ✓</span>
             </div>
             <div class="form-actions">
-              <button class="button button-outline" type="button" id="export-workbook-btn">📥 Export My Notes (.md)</button>
-              <button class="quiet-button" type="button" id="reset-workbook-btn">Reset All Answers</button>
+              <button class="button button-outline workbook-save-btn" type="button" data-unit-save="unit-one">💾 Save Unit 1 Notes</button>
+              <button class="button button-outline workbook-copy-btn" type="button" data-unit-copy="unit-one">📋 Copy Unit 1 Notes</button>
+              <button class="button button-outline" type="button" id="export-workbook-btn">📥 Export All Notes (.md)</button>
+              <button class="quiet-button workbook-reset-btn" type="button" data-unit-reset="unit-one">Reset Unit 1</button>
             </div>
           </form>
         </section>
@@ -420,6 +441,32 @@
           </div>
           <button class="quiz-reset-btn" type="button">🔄 Reset Unit 1 Quiz</button>
         </section>
+
+        <!-- Unit 1 Completion Tracker -->
+        <div class="unit-completion-card">
+          <div class="unit-completion-info">
+            <h4>Unit 1 Cognitive Mastery</h4>
+            <p>Ready to lock in Unit 1 concepts? Mark this unit complete to advance your progress tracker.</p>
+          </div>
+          <button class="mark-complete-btn" type="button" data-complete-unit="unit-one">
+            <span class="check-icon" aria-hidden="true">✓</span>
+            <span class="complete-text">Mark Unit 1 Complete</span>
+          </button>
+        </div>
+
+        <!-- Sequential Unit Navigation -->
+        <nav class="unit-nav-row" aria-label="Unit 1 Navigation">
+          <a href="#syllabus" class="unit-nav-btn prev">
+            <span class="unit-nav-direction">← Syllabus</span>
+            <span class="unit-nav-title">Curriculum Overview</span>
+            <span class="unit-nav-subtext">6 Comprehensive Units</span>
+          </a>
+          <a href="#unit-two" class="unit-nav-btn next">
+            <span class="unit-nav-direction">Next Unit →</span>
+            <span class="unit-nav-title">Memory Architecture &amp; The Mind Palace</span>
+            <span class="unit-nav-subtext">Unit 02 · Spatial Mnemonics</span>
+          </a>
+        </nav>
       </article>
 
       <!-- ================================================================= -->
@@ -434,6 +481,21 @@
             <h2>Memory Architecture &amp; The Mind Palace</h2>
           </div>
         </header>
+
+        <div class="unit-meta-bar">
+          <div class="unit-meta-item">
+            <span class="unit-meta-icon" aria-hidden="true">⏱</span>
+            <span>22 min read</span>
+          </div>
+          <div class="unit-meta-item">
+            <span class="unit-meta-icon" aria-hidden="true">🏛</span>
+            <span>Method of Loci · Major System · B.A.K.E.R. Imagery</span>
+          </div>
+          <button class="unit-audio-btn" type="button" data-unit-audio="unit-two" aria-label="Listen to Unit 2">
+            <span class="audio-icon" aria-hidden="true">🔊</span>
+            <span class="audio-text">Listen to Unit</span>
+          </button>
+        </div>
 
         <div class="reading-column">
           <p class="lead-paragraph">For over 200,000 years of evolutionary history, humans did not survive by memorizing abstract spreadsheets, phone numbers, or Latin taxonomy. Our ancestors survived through <strong>spatial navigation and episodic imagery</strong>: remembering which bend in the river had poisonous berries, which cavern harbored predators, and the precise landmarks leading back to camp. Consequently, our brains possess an astonishingly powerful spatial memory engine located in the hippocampus and parahippocampal gyrus.</p>
@@ -561,6 +623,7 @@
               <h3>Memorize a 10-Point Speech With No Notes</h3>
               <p>Walk through your living room. Assign 5 distinct furniture items. Place the core arguments of your speech on each item using exaggerated B.A.K.E.R. imagery.</p>
               <blockquote>"When stepping on stage, never search your mind for abstract words. Simply close your eyes for half a second, walk up to your fireplace, and observe the flaming anchor you placed there."</blockquote>
+              <button class="copy-framework-btn" type="button" data-copy-title="Memorize a 10-Point Speech">📋 Copy Framework</button>
             </div>
           </div>
         </div>
@@ -609,6 +672,11 @@
             <div class="form-footer">
               <p class="privacy-note"><span>🔒 Private &amp; Local:</span> Your entries remain strictly inside your browser.</p>
               <span class="save-status">Saved locally ✓</span>
+            </div>
+            <div class="form-actions">
+              <button class="button button-outline workbook-save-btn" type="button" data-unit-save="unit-two">💾 Save Unit 2 Notes</button>
+              <button class="button button-outline workbook-copy-btn" type="button" data-unit-copy="unit-two">📋 Copy Unit 2 Notes</button>
+              <button class="quiet-button workbook-reset-btn" type="button" data-unit-reset="unit-two">Reset Unit 2</button>
             </div>
           </form>
         </section>
@@ -690,6 +758,32 @@
           </div>
           <button class="quiz-reset-btn" type="button">🔄 Reset Unit 2 Quiz</button>
         </section>
+
+        <!-- Unit 2 Completion Tracker -->
+        <div class="unit-completion-card">
+          <div class="unit-completion-info">
+            <h4>Unit 2 Spatial Mastery</h4>
+            <p>Mastered the Method of Loci and Major System? Mark this unit complete to advance your journey.</p>
+          </div>
+          <button class="mark-complete-btn" type="button" data-complete-unit="unit-two">
+            <span class="check-icon" aria-hidden="true">✓</span>
+            <span class="complete-text">Mark Unit 2 Complete</span>
+          </button>
+        </div>
+
+        <!-- Sequential Unit Navigation -->
+        <nav class="unit-nav-row" aria-label="Unit 2 Navigation">
+          <a href="#unit-one" class="unit-nav-btn prev">
+            <span class="unit-nav-direction">← Previous Unit</span>
+            <span class="unit-nav-title">Accelerated Learning &amp; Neuroplasticity</span>
+            <span class="unit-nav-subtext">Unit 01 · Cognitive Architecture</span>
+          </a>
+          <a href="#unit-three" class="unit-nav-btn next">
+            <span class="unit-nav-direction">Next Unit →</span>
+            <span class="unit-nav-title">Non-Verbal Mind Reading &amp; Body Language</span>
+            <span class="unit-nav-subtext">Unit 03 · Non-Verbal Decoding</span>
+          </a>
+        </nav>
       </article>
 
       <!-- ================================================================= -->
@@ -704,6 +798,21 @@
             <h2>Non-Verbal Mind Reading &amp; Body Language</h2>
           </div>
         </header>
+
+        <div class="unit-meta-bar">
+          <div class="unit-meta-item">
+            <span class="unit-meta-icon" aria-hidden="true">⏱</span>
+            <span>24 min read</span>
+          </div>
+          <div class="unit-meta-item">
+            <span class="unit-meta-icon" aria-hidden="true">👁</span>
+            <span>Microexpressions · Limbic Brain · Baseline Calibration</span>
+          </div>
+          <button class="unit-audio-btn" type="button" data-unit-audio="unit-three" aria-label="Listen to Unit 3">
+            <span class="audio-icon" aria-hidden="true">🔊</span>
+            <span class="audio-text">Listen to Unit</span>
+          </button>
+        </div>
 
         <div class="reading-column">
           <p class="lead-paragraph">When people speak of "mind reading," they often imagine telepathy. In the real world, mind reading is the rigorous science of <strong>decoding somatic leakage</strong>. While the conscious neocortex carefully curates spoken words to present a polite, socially acceptable façade, the primitive <strong>limbic system</strong> (the emotional command center containing the amygdala and hypothalamus) reacts to threats, attraction, anxiety, and contempt in real time through involuntary autonomic nervous reflexes.</p>
@@ -781,6 +890,7 @@
               <h3>The 180-Second Calibration Protocol</h3>
               <p>Never judge a body language cue in isolation. In the first 3 minutes of any meeting, establish the person’s <strong>baseline</strong>: How fast do they blink when talking about the weather? Where do their hands rest when relaxed? What is their normal vocal cadence?</p>
               <blockquote>"Anomalies only exist relative to a baseline. A crossed arm is meaningless if the room is 15°C; it becomes critical evidence only when it snaps shut the moment a financial figure is mentioned."</blockquote>
+              <button class="copy-framework-btn" type="button" data-copy-title="The 180-Second Calibration Protocol">📋 Copy Framework</button>
             </div>
           </div>
         </div>
@@ -829,6 +939,11 @@
             <div class="form-footer">
               <p class="privacy-note"><span>🔒 Private &amp; Local:</span> Your entries remain strictly inside your browser.</p>
               <span class="save-status">Saved locally ✓</span>
+            </div>
+            <div class="form-actions">
+              <button class="button button-outline workbook-save-btn" type="button" data-unit-save="unit-three">💾 Save Unit 3 Notes</button>
+              <button class="button button-outline workbook-copy-btn" type="button" data-unit-copy="unit-three">📋 Copy Unit 3 Notes</button>
+              <button class="quiet-button workbook-reset-btn" type="button" data-unit-reset="unit-three">Reset Unit 3</button>
             </div>
           </form>
         </section>
@@ -910,6 +1025,32 @@
           </div>
           <button class="quiz-reset-btn" type="button">🔄 Reset Unit 3 Quiz</button>
         </section>
+
+        <!-- Unit 3 Completion Tracker -->
+        <div class="unit-completion-card">
+          <div class="unit-completion-info">
+            <h4>Unit 3 Non-Verbal Mastery</h4>
+            <p>Ready to decode real-world somatic leakage and microexpressions? Mark Unit 3 complete.</p>
+          </div>
+          <button class="mark-complete-btn" type="button" data-complete-unit="unit-three">
+            <span class="check-icon" aria-hidden="true">✓</span>
+            <span class="complete-text">Mark Unit 3 Complete</span>
+          </button>
+        </div>
+
+        <!-- Sequential Unit Navigation -->
+        <nav class="unit-nav-row" aria-label="Unit 3 Navigation">
+          <a href="#unit-two" class="unit-nav-btn prev">
+            <span class="unit-nav-direction">← Previous Unit</span>
+            <span class="unit-nav-title">Memory Architecture &amp; The Mind Palace</span>
+            <span class="unit-nav-subtext">Unit 02 · Spatial Mnemonics</span>
+          </a>
+          <a href="#unit-four" class="unit-nav-btn next">
+            <span class="unit-nav-direction">Next Unit →</span>
+            <span class="unit-nav-title">Behavioral Profiling &amp; Deception Detection</span>
+            <span class="unit-nav-subtext">Unit 04 · Forensic Profiling</span>
+          </a>
+        </nav>
       </article>
 
       <!-- ================================================================= -->
@@ -924,6 +1065,21 @@
             <h2>Behavioral Profiling &amp; Deception Detection</h2>
           </div>
         </header>
+
+        <div class="unit-meta-bar">
+          <div class="unit-meta-item">
+            <span class="unit-meta-icon" aria-hidden="true">⏱</span>
+            <span>20 min read</span>
+          </div>
+          <div class="unit-meta-item">
+            <span class="unit-meta-icon" aria-hidden="true">🔍</span>
+            <span>Cognitive Load · SCAN Linguistics · Cluster Analysis</span>
+          </div>
+          <button class="unit-audio-btn" type="button" data-unit-audio="unit-four" aria-label="Listen to Unit 4">
+            <span class="audio-icon" aria-hidden="true">🔊</span>
+            <span class="audio-text">Listen to Unit</span>
+          </button>
+        </div>
 
         <div class="reading-column">
           <p class="lead-paragraph">Contrary to Hollywood mythology, there is no single "Pinocchio's nose" that proves someone is lying. A polygraph test does not measure truth; it measures autonomic sympathetic nervous arousal (perspiration, pulse, respiration rate). Professional intelligence interrogators and behavioral profilers do not look for a single isolated cue. They look for <strong>clusters of incongruence</strong>: moments where the spoken narrative contradicts the structural timing, linguistic syntax, and baseline body language of the subject.</p>
@@ -994,6 +1150,7 @@
               <h3>The Sherlockian Micro-Deduction Walk</h3>
               <p>Practice observing people without looking at their face. Look at the scuff on the inner heel of their left shoe (pronation posture), the wear ring on their smartphone glass (dominant thumb sweep), the crease in their jacket pocket, or ink stains on the side of their fifth finger (left-handed writer).</p>
               <blockquote>"You see, Watson, but you do not observe. The distinction is perfectly clear."</blockquote>
+              <button class="copy-framework-btn" type="button" data-copy-title="The Sherlockian Micro-Deduction Walk">📋 Copy Framework</button>
             </div>
           </div>
         </div>
@@ -1042,6 +1199,11 @@
             <div class="form-footer">
               <p class="privacy-note"><span>🔒 Private &amp; Local:</span> Your entries remain strictly inside your browser.</p>
               <span class="save-status">Saved locally ✓</span>
+            </div>
+            <div class="form-actions">
+              <button class="button button-outline workbook-save-btn" type="button" data-unit-save="unit-four">💾 Save Unit 4 Notes</button>
+              <button class="button button-outline workbook-copy-btn" type="button" data-unit-copy="unit-four">📋 Copy Unit 4 Notes</button>
+              <button class="quiet-button workbook-reset-btn" type="button" data-unit-reset="unit-four">Reset Unit 4</button>
             </div>
           </form>
         </section>
@@ -1123,6 +1285,32 @@
           </div>
           <button class="quiz-reset-btn" type="button">🔄 Reset Unit 4 Quiz</button>
         </section>
+
+        <!-- Unit 4 Completion Tracker -->
+        <div class="unit-completion-card">
+          <div class="unit-completion-info">
+            <h4>Unit 4 Forensic Profiling Mastery</h4>
+            <p>Confident in linguistic statement analysis and cognitive load interrogation? Mark Unit 4 complete.</p>
+          </div>
+          <button class="mark-complete-btn" type="button" data-complete-unit="unit-four">
+            <span class="check-icon" aria-hidden="true">✓</span>
+            <span class="complete-text">Mark Unit 4 Complete</span>
+          </button>
+        </div>
+
+        <!-- Sequential Unit Navigation -->
+        <nav class="unit-nav-row" aria-label="Unit 4 Navigation">
+          <a href="#unit-three" class="unit-nav-btn prev">
+            <span class="unit-nav-direction">← Previous Unit</span>
+            <span class="unit-nav-title">Non-Verbal Mind Reading &amp; Body Language</span>
+            <span class="unit-nav-subtext">Unit 03 · Non-Verbal Decoding</span>
+          </a>
+          <a href="#unit-five" class="unit-nav-btn next">
+            <span class="unit-nav-direction">Next Unit →</span>
+            <span class="unit-nav-title">Persuasion, Mental Influence &amp; Defense</span>
+            <span class="unit-nav-subtext">Unit 05 · Influence &amp; Defense</span>
+          </a>
+        </nav>
       </article>
 
       <!-- ================================================================= -->
@@ -1137,6 +1325,21 @@
             <h2>Persuasion, Mental Influence &amp; Psychological Defense</h2>
           </div>
         </header>
+
+        <div class="unit-meta-bar">
+          <div class="unit-meta-item">
+            <span class="unit-meta-icon" aria-hidden="true">⏱</span>
+            <span>22 min read</span>
+          </div>
+          <div class="unit-meta-item">
+            <span class="unit-meta-icon" aria-hidden="true">🛡️</span>
+            <span>Cialdini Vectors · System 1/2 · Gray Rock Method</span>
+          </div>
+          <button class="unit-audio-btn" type="button" data-unit-audio="unit-five" aria-label="Listen to Unit 5">
+            <span class="audio-icon" aria-hidden="true">🔊</span>
+            <span class="audio-text">Listen to Unit</span>
+          </button>
+        </div>
 
         <div class="reading-column">
           <p class="lead-paragraph">Human decisions are rarely born from pure logical calculation. As Nobel laureate Daniel Kahneman demonstrated in his landmark behavioral economics research, the human brain operates on two distinct computational pathways: <strong>System 1</strong> (an automatic, fast, emotional, and subconscious pattern-matching engine) and <strong>System 2</strong> (a slow, analytical, deliberate, and metabolically lazy conscious evaluator). Over 95% of human choices are initiated by System 1 heuristics, with System 2 stepping in only after the fact to invent a rational-sounding justification.</p>
@@ -1188,6 +1391,7 @@
               <h3>The Anchoring Reversal Drill</h3>
               <p>The next time you receive an absurd anchor in a negotiation, do NOT make a counter-offer. Making a counter-offer within their anchor legitimizes it.</p>
               <blockquote>"Call out the anchor directly with calm, amused detachment: 'That number is so far outside the realm of commercial reality that we don't have a starting point for discussion. Let’s wipe that off the table completely before we begin.'"</blockquote>
+              <button class="copy-framework-btn" type="button" data-copy-title="The Anchoring Reversal Drill">📋 Copy Framework</button>
             </div>
           </div>
         </div>
@@ -1236,6 +1440,11 @@
             <div class="form-footer">
               <p class="privacy-note"><span>🔒 Private &amp; Local:</span> Your entries remain strictly inside your browser.</p>
               <span class="save-status">Saved locally ✓</span>
+            </div>
+            <div class="form-actions">
+              <button class="button button-outline workbook-save-btn" type="button" data-unit-save="unit-five">💾 Save Unit 5 Notes</button>
+              <button class="button button-outline workbook-copy-btn" type="button" data-unit-copy="unit-five">📋 Copy Unit 5 Notes</button>
+              <button class="quiet-button workbook-reset-btn" type="button" data-unit-reset="unit-five">Reset Unit 5</button>
             </div>
           </form>
         </section>
@@ -1317,6 +1526,32 @@
           </div>
           <button class="quiz-reset-btn" type="button">🔄 Reset Unit 5 Quiz</button>
         </section>
+
+        <!-- Unit 5 Completion Tracker -->
+        <div class="unit-completion-card">
+          <div class="unit-completion-info">
+            <h4>Unit 5 Influence &amp; Sovereignty Mastery</h4>
+            <p>Shielded against dark psychology and equipped with ethical persuasion vectors? Mark Unit 5 complete.</p>
+          </div>
+          <button class="mark-complete-btn" type="button" data-complete-unit="unit-five">
+            <span class="check-icon" aria-hidden="true">✓</span>
+            <span class="complete-text">Mark Unit 5 Complete</span>
+          </button>
+        </div>
+
+        <!-- Sequential Unit Navigation -->
+        <nav class="unit-nav-row" aria-label="Unit 5 Navigation">
+          <a href="#unit-four" class="unit-nav-btn prev">
+            <span class="unit-nav-direction">← Previous Unit</span>
+            <span class="unit-nav-title">Behavioral Profiling &amp; Deception Detection</span>
+            <span class="unit-nav-subtext">Unit 04 · Forensic Profiling</span>
+          </a>
+          <a href="#unit-six" class="unit-nav-btn next">
+            <span class="unit-nav-direction">Next Unit →</span>
+            <span class="unit-nav-title">Mental Models &amp; Rapid Decision-Making</span>
+            <span class="unit-nav-subtext">Unit 06 · Executive Superthinking</span>
+          </a>
+        </nav>
       </article>
 
       <!-- ================================================================= -->
@@ -1331,6 +1566,21 @@
             <h2>Mental Models &amp; Rapid Decision-Making</h2>
           </div>
         </header>
+
+        <div class="unit-meta-bar">
+          <div class="unit-meta-item">
+            <span class="unit-meta-icon" aria-hidden="true">⏱</span>
+            <span>26 min read</span>
+          </div>
+          <div class="unit-meta-item">
+            <span class="unit-meta-icon" aria-hidden="true">⚡</span>
+            <span>First Principles · Inversion · Second-Order Thinking</span>
+          </div>
+          <button class="unit-audio-btn" type="button" data-unit-audio="unit-six" aria-label="Listen to Unit 6">
+            <span class="audio-icon" aria-hidden="true">🔊</span>
+            <span class="audio-text">Listen to Unit</span>
+          </button>
+        </div>
 
         <div class="reading-column">
           <p class="lead-paragraph">Most people navigate complex decisions armed with a single, narrow intellectual tool. As legendary Berkshire Hathaway vice-chairman Charlie Munger famously warned: <em>"To the man with only a hammer, every problem looks pretty much like a nail."</em> An engineer tries to solve interpersonal relationship crises using algorithmic optimization; an economist tries to solve mental burnout with monetary incentives. Both fail catastrophically because reality does not respect academic department boundaries.</p>
@@ -1386,6 +1636,7 @@
               <h3>The 10-Minute Pre-Mortem Drill</h3>
               <p>Before launching any major product, career change, or financial investment, gather your notes and pretend you are standing 12 months in the future. The project has failed completely, resulting in a total public embarrassment.</p>
               <blockquote>"Write a detailed post-mortem explaining exactly how and why it died. What you write is your actual risk matrix—kill those vulnerabilities today."</blockquote>
+              <button class="copy-framework-btn" type="button" data-copy-title="The 10-Minute Pre-Mortem Drill">📋 Copy Framework</button>
             </div>
           </div>
         </div>
@@ -1434,6 +1685,11 @@
             <div class="form-footer">
               <p class="privacy-note"><span>🔒 Private &amp; Local:</span> Your entries remain strictly inside your browser.</p>
               <span class="save-status">Saved locally ✓</span>
+            </div>
+            <div class="form-actions">
+              <button class="button button-outline workbook-save-btn" type="button" data-unit-save="unit-six">💾 Save Unit 6 Notes</button>
+              <button class="button button-outline workbook-copy-btn" type="button" data-unit-copy="unit-six">📋 Copy Unit 6 Notes</button>
+              <button class="quiet-button workbook-reset-btn" type="button" data-unit-reset="unit-six">Reset Unit 6</button>
             </div>
           </form>
         </section>
@@ -1515,6 +1771,32 @@
           </div>
           <button class="quiz-reset-btn" type="button">🔄 Reset Unit 6 Quiz</button>
         </section>
+
+        <!-- Unit 6 Completion Tracker -->
+        <div class="unit-completion-card">
+          <div class="unit-completion-info">
+            <h4>Unit 6 Superthinking Mastery</h4>
+            <p>Mastered First Principles, Inversion, and the Cognitive Latticework? Complete the entire curriculum!</p>
+          </div>
+          <button class="mark-complete-btn" type="button" data-complete-unit="unit-six">
+            <span class="check-icon" aria-hidden="true">✓</span>
+            <span class="complete-text">Mark Unit 6 Complete</span>
+          </button>
+        </div>
+
+        <!-- Sequential Unit Navigation -->
+        <nav class="unit-nav-row" aria-label="Unit 6 Navigation">
+          <a href="#unit-five" class="unit-nav-btn prev">
+            <span class="unit-nav-direction">← Previous Unit</span>
+            <span class="unit-nav-title">Persuasion, Mental Influence &amp; Defense</span>
+            <span class="unit-nav-subtext">Unit 05 · Influence &amp; Defense</span>
+          </a>
+          <a href="#flashcards" class="unit-nav-btn next">
+            <span class="unit-nav-direction">Interactive Suite →</span>
+            <span class="unit-nav-title">3D Flashcards Retrieval Engine</span>
+            <span class="unit-nav-subtext">Spaced Retrieval Practice</span>
+          </a>
+        </nav>
       </article>
 
       <!-- ================================================================= -->
@@ -1782,80 +2064,11 @@
       <a class="back-to-top" href="#top">Back to top ↑</a>
     </footer>
 
-    <!-- Floating Quick Navigation Dock -->
-    <aside class="floating-back-dock" aria-label="Quick Navigation Dock">
-      <a class="floating-btn primary" href="#syllabus" title="Curriculum Overview">📚 Syllabus</a>
-      <button class="floating-btn" type="button" data-open-contents title="Table of Contents">📑 Contents</button>
-      <button class="floating-btn" type="button" id="search-dock-btn" onclick="document.querySelector('#search-trigger').click()" title="Search (Ctrl + K)">🔍 Search</button>
-      <a class="floating-btn" href="#top" title="Top of book">↑ Top</a>
-    </aside>
+    <!-- Floating Back-to-Top Button -->
+    <a href="#top" id="floating-top-btn" class="floating-top-btn" title="Back to top" aria-label="Back to top">↑</a>
 
-    <!-- Table of Contents Modal Dialog -->
-    <dialog class="contents-dialog" id="contents-dialog" aria-labelledby="toc-heading">
-      <div class="dialog-heading">
-        <h2 id="toc-heading">Table of Contents</h2>
-        <button class="dialog-close" type="button" data-close-contents aria-label="Close contents dialog">×</button>
-      </div>
-      <p class="dialog-note">The Art of Mental Mastery · Complete Curriculum Units</p>
-      <ol class="contents-list">
-        <li>
-          <a href="#unit-one">
-            <span class="toc-number">01</span>
-            <span class="toc-title">Accelerated Learning &amp; Neuroplasticity</span>
-            <span class="toc-state">Unit 1</span>
-          </a>
-        </li>
-        <li>
-          <a href="#unit-two">
-            <span class="toc-number">02</span>
-            <span class="toc-title">Memory Architecture &amp; The Mind Palace</span>
-            <span class="toc-state">Unit 2</span>
-          </a>
-        </li>
-        <li>
-          <a href="#unit-three">
-            <span class="toc-number">03</span>
-            <span class="toc-title">Non-Verbal Mind Reading &amp; Body Language</span>
-            <span class="toc-state">Unit 3</span>
-          </a>
-        </li>
-        <li>
-          <a href="#unit-four">
-            <span class="toc-number">04</span>
-            <span class="toc-title">Behavioral Profiling &amp; Deception Detection</span>
-            <span class="toc-state">Unit 4</span>
-          </a>
-        </li>
-        <li>
-          <a href="#unit-five">
-            <span class="toc-number">05</span>
-            <span class="toc-title">Persuasion, Influence &amp; Dark Psychology Defense</span>
-            <span class="toc-state">Unit 5</span>
-          </a>
-        </li>
-        <li>
-          <a href="#unit-six">
-            <span class="toc-number">06</span>
-            <span class="toc-title">Mental Models &amp; Rapid Decision-Making</span>
-            <span class="toc-state">Unit 6</span>
-          </a>
-        </li>
-        <li>
-          <a href="#flashcards">
-            <span class="toc-number">3D</span>
-            <span class="toc-title">Interactive 3D Flashcards Engine</span>
-            <span class="toc-state">Practice</span>
-          </a>
-        </li>
-        <li>
-          <a href="#glossary">
-            <span class="toc-number">Ψ</span>
-            <span class="toc-title">Master Glossary (50+ Terms)</span>
-            <span class="toc-state">Lexicon</span>
-          </a>
-        </li>
-      </ol>
-    </dialog>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast-notification" role="status" aria-live="polite"></div>
 
     <!-- In-Book Live Search Engine Dialog -->
     <dialog class="search-dialog" id="search-dialog" aria-labelledby="search-modal-title">

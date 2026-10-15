@@ -1,13 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#182c2a"/>
-  <!-- Neural Cortex & Mind Perception Emblem -->
-  <path d="M32 12 C22 12 15 19 15 28 C15 33 17 37 21 40 C22 43 23 47 24 50 L40 50 C41 47 42 43 43 40 C47 37 49 33 49 28 C49 19 42 12 32 12 Z" fill="none" stroke="#f5f1e8" stroke-width="2.5" stroke-linejoin="round"/>
-  <!-- Perception Eye in Center -->
-  <path d="M22 28 Q32 19 42 28 Q32 37 22 28 Z" fill="none" stroke="#e5735f" stroke-width="2.2"/>
-  <circle cx="32" cy="28" r="3.5" fill="#3ba49a"/>
-  <!-- Synaptic Light Rays -->
-  <circle cx="32" cy="18" r="1.8" fill="#f5f1e8"/>
-  <circle cx="23" cy="22" r="1.8" fill="#f5f1e8"/>
-  <circle cx="41" cy="22" r="1.8" fill="#f5f1e8"/>
-  <line x1="24" y1="46" x2="40" y2="46" stroke="#e5735f" stroke-width="2"/>
+  <defs>
+    <linearGradient id="favGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+    <linearGradient id="neonGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#favGrad)" stroke="#e2e8f0" stroke-width="2"/>
+  <!-- Cognitive Cortex Silhouette -->
+  <path d="M32 11 C21 11 14 18 14 28 C14 33 16 37 20 40 C21 43 22 47 23 51 L41 51 C42 47 43 43 44 40 C48 37 50 33 50 28 C50 18 43 11 32 11 Z" fill="none" stroke="url(#neonGlow)" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Perception Neural Eye -->
+  <path d="M21 28 Q32 18 43 28 Q32 38 21 28 Z" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="32" cy="28" r="3.5" fill="#7c3aed"/>
+  <circle cx="30.5" cy="26.5" r="1.2" fill="#ffffff"/>
+  <!-- Synaptic Radiance Nodes -->
+  <circle cx="32" cy="17" r="1.8" fill="#2563eb"/>
+  <circle cx="22" cy="22" r="1.8" fill="#7c3aed"/>
+  <circle cx="42" cy="22" r="1.8" fill="#7c3aed"/>
+  <line x1="24" y1="47" x2="40" y2="47" stroke="#2563eb" stroke-width="2" stroke-linecap="round"/>
 </svg>
