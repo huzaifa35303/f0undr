@@ -27,14 +27,6 @@
     <priority>0.95</priority>
   </url>
 
-  <!-- Complete Interactive The Art of Mental Mastery (Units 1-6) -->
-  <url>
-    <loc>https://f0undr.vercel.app/mind-mastery/</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-
   <!-- Flagship Curriculum: f0undr Book Units 1-6 -->
   <url>
     <loc>https://f0undr.vercel.app/#curriculum</loc>

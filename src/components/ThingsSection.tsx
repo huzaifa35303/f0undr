@@ -109,7 +109,7 @@ export const ThingsSection: React.FC<ThingsSectionProps> = ({
             <Package className="w-10 h-10 text-[#a8a29e] mx-auto mb-3" />
             <h4 className="font-serif text-lg font-bold text-[#1c1917]">No items found</h4>
             <p className="text-xs text-[#78716c] mt-1 max-w-sm mx-auto">
-              Try searching with different terms or selecting another category filter.
+              Try searching something else or click "Add Item" to add your custom gear.
             </p>
           </div>
         ) : (

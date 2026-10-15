@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { Book, BookCategory, ReadingStatus } from '../types';
-import { BookOpen, Star, Search, Bookmark, ChevronRight, CheckCircle2, Clock, ArrowUpRight, X, GraduationCap, Brain } from 'lucide-react';
+import { BookOpen, Star, Search, Bookmark, ChevronRight, CheckCircle2, Clock, ArrowUpRight, X, GraduationCap } from 'lucide-react';
 
 interface BooksSectionProps {
   books: Book[];
@@ -31,7 +31,7 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [activeBook, setActiveBook] = useState<Book | null>(null);
 
-  const [spotlightCurriculum, setSpotlightCurriculum] = useState<'computer' | 'urdu' | 'mind'>('computer');
+  const [spotlightCurriculum, setSpotlightCurriculum] = useState<'computer' | 'urdu'>('computer');
 
   // Filtered books
   const filteredBooks = books.filter((book) => {
@@ -114,21 +114,9 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
               <GraduationCap className="w-3.5 h-3.5" />
               <span>صحیفۂ اردو: نصاب و ادب (20 ابواب)</span>
             </button>
-
-            <button
-              onClick={() => setSpotlightCurriculum('mind')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
-                spotlightCurriculum === 'mind'
-                  ? 'bg-[#1c1917] text-[#faf8f5] shadow-xs'
-                  : 'bg-[#f5f2eb] hover:bg-[#e7e5e4] text-[#57534e]'
-              }`}
-            >
-              <Brain className="w-3.5 h-3.5" />
-              <span>Mental Mastery (Units 1–6)</span>
-            </button>
           </div>
 
-          {spotlightCurriculum === 'computer' && (
+          {spotlightCurriculum === 'computer' ? (
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10 animate-fade-in">
               <div className="space-y-4 max-w-3xl">
                 <div className="flex flex-wrap items-center gap-2">
@@ -195,9 +183,7 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
                 </button>
               </div>
             </div>
-          )}
-
-          {spotlightCurriculum === 'urdu' && (
+          ) : (
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10 animate-fade-in">
               <div className="space-y-4 max-w-3xl">
                 <div className="flex flex-wrap items-center gap-2">
@@ -260,75 +246,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl btn-editorial-outline text-xs font-semibold transition-all hover:-translate-y-0.5"
                 >
                   <span>فہرست و تشریحات ملاحظہ کریں</span>
-                  <ChevronRight className="w-4 h-4 text-[#78716c]" />
-                </button>
-              </div>
-            </div>
-          )}
-
-          {spotlightCurriculum === 'mind' && (
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10 animate-fade-in">
-              <div className="space-y-4 max-w-3xl">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="editorial-stamp editorial-stamp-terracotta inline-flex items-center gap-1.5">
-                    <Brain className="w-3.5 h-3.5 text-[#c2410c]" />
-                    ACCELERATED LEARNING · LIVE ON VERCEL
-                  </span>
-                  <span className="text-xs font-mono text-[#78716c] bg-[#f5f2eb] px-2.5 py-1 rounded-md border border-[#e7e5e4]">
-                    Units 1 to 6 Complete · Cognitive Architecture
-                  </span>
-                </div>
-
-                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#1c1917] tracking-tight">
-                  The Art of Mental Mastery (Learn Fast &amp; Mind Reading)
-                </h3>
-                <p className="text-xs text-[#c2410c] font-mono font-medium">
-                  Authored by <strong className="text-[#1c1917]">f0undr</strong>
-                </p>
-                <p className="text-xs sm:text-sm text-[#57534e] leading-relaxed font-normal">
-                  A comprehensive masterclass on synaptic plasticity, memory palaces (Method of Loci), decoding limbic body language, behavioral deception detection, persuasion vectors, and rapid mental models. Complete with interactive quizzes and 3D flashcards.
-                </p>
-
-                {/* Mind Mastery Unit Badges */}
-                <div className="flex flex-wrap gap-2 pt-1">
-                  {[
-                    'Unit 1: Accelerated Learning',
-                    'Unit 2: Memory Architecture',
-                    'Unit 3: Non-Verbal Mind Reading',
-                    'Unit 4: Deception Detection',
-                    'Unit 5: Persuasion Vectors',
-                    'Unit 6: Mental Models',
-                  ].map((unit, idx) => (
-                    <span
-                      key={idx}
-                      className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-[#f5f2eb] text-[#57534e] border border-[#e7e5e4]"
-                    >
-                      {unit}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
-                <a
-                  href="/mind-mastery/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl btn-editorial-accent text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5"
-                >
-                  <BookOpen className="w-4 h-4" />
-                  <span>Read Mental Mastery (Units 1–6)</span>
-                  <ArrowUpRight className="w-4 h-4 opacity-80" />
-                </a>
-
-                <button
-                  onClick={() => {
-                    const mindBook = books.find((b) => b.id === 'book-mind-mastery');
-                    if (mindBook) setActiveBook(mindBook);
-                  }}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl btn-editorial-outline text-xs font-semibold transition-all hover:-translate-y-0.5"
-                >
-                  <span>Inspect Syllabus Outline</span>
                   <ChevronRight className="w-4 h-4 text-[#78716c]" />
                 </button>
               </div>

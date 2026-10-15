@@ -215,36 +215,6 @@ export const INITIAL_BOOKS: Book[] = [
     dateAdded: '2026-10-14',
   },
   {
-    id: 'book-mind-mastery',
-    title: 'The Art of Mental Mastery (Learn Fast & Mind Reading)',
-    author: 'f0undr',
-    year: '2026 Special Edition',
-    coverGradient: 'from-teal-600 via-rose-700 to-slate-950',
-    status: 'reading',
-    rating: 5,
-    category: 'Philosophy & Mindset',
-    featured: true,
-    externalUrl: '/mind-mastery/',
-    units: [
-      'Unit 1: Accelerated Learning & Neuroplasticity (Ultralearning, Feynman Technique)',
-      'Unit 2: Memory Architecture & The Mind Palace (Method of Loci & PAO System)',
-      'Unit 3: Non-Verbal Mind Reading & Body Language (Ekman 7 Microexpressions & FBI Inversion)',
-      'Unit 4: Behavioral Profiling & Deception Detection (Cognitive Load & Statement Analysis)',
-      'Unit 5: Persuasion, Mental Influence & Dark Psychology Defense (Cialdini 7 Vectors)',
-      'Unit 6: Mental Models & Rapid Decisions (First Principles, Inversion & Superthinking)',
-    ],
-    keyTakeaways: [
-      'Neuroplasticity and synaptic Long-Term Potentiation (LTP) physically rewire the brain through active retrieval and spaced repetition.',
-      'The Method of Loci converts dry facts into bizarre spatial anchors along a clockwise physical journey for effortless permanent recall.',
-      'Limbic body language (feet and legs) leaks absolute truth, while the face is socialized and deceptively rehearsed.',
-      'Cognitive load in deception can be weaponized using reverse-chronological questioning and SCAN statement analysis.',
-      'First Principles thinking and Inversion ("Invert, always invert") eliminate stupidity and uncover non-consensus leverage points.'
-    ],
-    notes: 'Comprehensive hands-on digital handbook and curriculum authored by f0undr. Features custom SVG architectural diagrams, 30 interactive MCQs with instant feedback, auto-saving student lab workbooks, and a 3D flashcard suite.',
-    favoriteQuote: 'Observation is not passive; it is an active deduction.',
-    dateAdded: '2026-10-15',
-  },
-  {
     id: 'book-1',
     title: 'Zero to One',
     author: 'Peter Thiel & Blake Masters',
@@ -674,26 +644,6 @@ export const INITIAL_THINGS: Thing[] = [
 ];
 
 export const INITIAL_VENTURES: Venture[] = [
-  {
-    id: 'venture-custom-ai',
-    title: 'f0 custom ai // Search-Augmented Engine',
-    tagline: 'Autonomous search-augmented AI assistant with 2-source verification and page-fetching',
-    stage: 'Active',
-    description: 'High-performance AI engine implementing dynamic temporal search intent, short queries (2-6 words), primary page-fetching, and verified [Source Name](URL) citations.',
-    metrics: 'Active • v1.0 Shipped',
-    tags: ['Search AI', 'Page-Fetch', 'React 19', 'TypeScript', 'Grounding'],
-    link: 'http://localhost:5175',
-  },
-  {
-    id: 'venture-share',
-    title: 'f0-Share // Ultra File Vault & Sharing Engine',
-    tagline: 'Gofile-style high-performance file sharing with cryptographic locks & hybrid cloud',
-    stage: 'Active',
-    description: 'Dark-aesthetic file sharing and media vault with instant drag-and-drop, SHA-256 passkeys, auto-expiring links, and IndexedDB + Supabase storage.',
-    metrics: 'Active • v1.0 Shipped',
-    tags: ['File Vault', 'Crypto Locks', 'PWA & Mobile', 'Supabase'],
-    link: 'http://localhost:5174',
-  },
   {
     id: 'venture-ebook',
     title: 'f0undr Book: Computing & Technology (Units 1–6)',
