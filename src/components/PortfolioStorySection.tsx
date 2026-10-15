@@ -232,17 +232,26 @@ export const PortfolioStorySection = ({
                   </div>
                 </div>
 
-                {venture.link && (
-                  <div className="pt-4 border-t border-[#e7e5e4]">
+                {venture.link && venture.link !== '#' ? (
+                  <div className="pt-4 border-t border-[#e7e5e4] flex items-center justify-between gap-2">
                     <a
                       href={venture.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1c1917] hover:text-[#c2410c] transition-colors"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#c2410c] hover:underline transition-colors"
                     >
-                      <span>Inspect Live Deployment</span>
+                      <span>Launch Live Platform</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </a>
+                    <span className="text-[11px] font-mono text-[#78716c] truncate max-w-[150px]">
+                      {new URL(venture.link.startsWith('http') ? venture.link : `https://f0undr.vercel.app${venture.link}`).hostname}
+                    </span>
+                  </div>
+                ) : (
+                  <div className="pt-4 border-t border-[#e7e5e4]">
+                    <span className="text-xs font-mono text-[#a8a29e]">
+                      Private Alpha / Internal R&amp;D
+                    </span>
                   </div>
                 )}
               </div>

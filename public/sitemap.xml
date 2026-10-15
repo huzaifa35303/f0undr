@@ -43,6 +43,14 @@
     <priority>0.95</priority>
   </url>
 
+  <!-- f0-Share: Sovereign Encrypted File Vault & Storage Engine -->
+  <url>
+    <loc>https://f0-share.vercel.app/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
   <!-- Flagship Curriculum: f0undr Book Units 1-6 -->
   <url>
     <loc>https://f0undr.vercel.app/#curriculum</loc>
