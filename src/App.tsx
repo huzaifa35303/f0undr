@@ -87,7 +87,7 @@ export function App() {
 
   const [tools, setTools] = useState<CuratedTool[]>(() => {
     try {
-      const saved = localStorage.getItem('f0undr_tools_editorial_v4');
+      const saved = localStorage.getItem('f0undr_tools_editorial_v5');
       if (saved) {
         const parsed: CuratedTool[] = JSON.parse(saved);
         const missing = INITIAL_CURATED_TOOLS.filter((it) => !parsed.some((t) => t.id === it.id));
@@ -126,7 +126,7 @@ export function App() {
   }, [books]);
 
   useEffect(() => {
-    localStorage.setItem('f0undr_tools_editorial_v4', JSON.stringify(tools));
+    localStorage.setItem('f0undr_tools_editorial_v5', JSON.stringify(tools));
   }, [tools]);
 
   useEffect(() => {
@@ -346,6 +346,8 @@ export function App() {
       setThings(INITIAL_THINGS);
       setSeoSettings(DEFAULT_SEO_SETTINGS);
       localStorage.removeItem('f0undr_books_editorial_v3');
+      localStorage.removeItem('f0undr_tools_editorial_v5');
+      localStorage.removeItem('f0undr_tools_editorial_v4');
       localStorage.removeItem('f0undr_tools_editorial_v3');
       localStorage.removeItem('f0undr_team_editorial_v2');
       localStorage.removeItem('f0undr_things_editorial_v2');
