@@ -21,7 +21,7 @@ import { AddModal } from './components/AddModal';
 import { LoginModal } from './components/LoginModal';
 import { AdminPanel } from './components/AdminPanel';
 import { Footer } from './components/Footer';
-import { ArrowUpRight, Award, BookOpen, GraduationCap, Maximize2 } from 'lucide-react';
+import { ArrowUpRight, Award, BookOpen, GraduationCap, Maximize2, Brain, ExternalLink } from 'lucide-react';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<string>('overview');
@@ -30,7 +30,7 @@ export function App() {
   const [isLoginOpen, setIsLoginOpen] = useState<boolean>(false);
   const [isAdminOpen, setIsAdminOpen] = useState<boolean>(false);
   const [addModalDefaultTab, setAddModalDefaultTab] = useState<'book' | 'tool' | 'team' | 'thing'>('book');
-  const [selectedCurriculum, setSelectedCurriculum] = useState<'computer' | 'urdu'>('computer');
+  const [selectedCurriculum, setSelectedCurriculum] = useState<'computer' | 'urdu' | 'mind'>('computer');
 
   // Authentication State
   const [currentUser, setCurrentUser] = useState<AuthUser | null>(() => {
@@ -67,11 +67,19 @@ export function App() {
     }
   });
 
-  // Persistent Content States (v2 cache bust ensures fresh updates)
+  // Persistent Content States (v3 cache bust ensures fresh updates)
   const [books, setBooks] = useState<Book[]>(() => {
     try {
-      const saved = localStorage.getItem('f0undr_books_editorial_v2');
-      return saved ? JSON.parse(saved) : INITIAL_BOOKS;
+      const saved = localStorage.getItem('f0undr_books_editorial_v3');
+      if (saved) {
+        const parsed: Book[] = JSON.parse(saved);
+        const missing = INITIAL_BOOKS.filter((ib) => !parsed.some((b) => b.id === ib.id));
+        if (missing.length > 0) {
+          return [...INITIAL_BOOKS.filter((ib) => ib.featured), ...parsed.filter((b) => !b.featured)];
+        }
+        return parsed;
+      }
+      return INITIAL_BOOKS;
     } catch {
       return INITIAL_BOOKS;
     }
@@ -106,7 +114,7 @@ export function App() {
 
   // Save to localStorage on changes
   useEffect(() => {
-    localStorage.setItem('f0undr_books_editorial_v2', JSON.stringify(books));
+    localStorage.setItem('f0undr_books_editorial_v3', JSON.stringify(books));
   }, [books]);
 
   useEffect(() => {
@@ -377,9 +385,9 @@ export function App() {
               }}
             />
 
-            {/* DUAL FLAGSHIP CURRICULUM SPOTLIGHT */}
+            {/* TRIPLE FLAGSHIP CURRICULUM SPOTLIGHT */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Flagship 1: Computer Science */}
                 <div className="editorial-card rounded-2xl p-6 sm:p-8 relative overflow-hidden group flex flex-col justify-between">
                   <div className="space-y-3.5">
@@ -488,6 +496,74 @@ export function App() {
                     >
                       <span>New Tab</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Flagship 3: Mental Mastery */}
+                <div className="editorial-card rounded-2xl p-6 sm:p-8 relative overflow-hidden group flex flex-col justify-between">
+                  <div className="space-y-3.5">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="editorial-stamp editorial-stamp-terracotta inline-flex items-center gap-1.5">
+                        <Brain className="w-3.5 h-3.5 text-[#c2410c]" />
+                        ACCELERATED LEARNING · LIVE
+                      </span>
+                      <span className="text-xs font-mono text-[#78716c] bg-[#f5f2eb] px-2.5 py-0.5 rounded-md border border-[#e7e5e4]">
+                        Units 1 to 6 · Cognitive
+                      </span>
+                    </div>
+
+                    <h3 className="font-serif text-2xl font-bold text-[#1c1917] tracking-tight">
+                      The Art of Mental Mastery
+                    </h3>
+                    <p className="text-xs text-[#c2410c] font-mono font-medium">
+                      Author: <strong className="text-[#1c1917]">f0undr</strong>
+                    </p>
+                    <p className="text-xs sm:text-sm text-[#57534e] leading-relaxed">
+                      Masterclass on accelerated learning, neuroplasticity, memory palaces (Method of Loci), limbic body language, behavioral deception detection, and mental models.
+                    </p>
+
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {['Unit 1: Fast Learn', 'Unit 2: Memory', 'Unit 3: Body Lang', 'Unit 4: Deception', 'Unit 5: Persuasion', 'Unit 6: Mental Models'].map((u, i) => (
+                        <span key={i} className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#f5f2eb] text-[#57534e] border border-[#e7e5e4]">
+                          {u}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 pt-6 mt-6 border-t border-[#e7e5e4]">
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => {
+                          setSelectedCurriculum('mind');
+                          setActiveTab('curriculum');
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl btn-editorial-accent text-xs font-semibold shadow-xs"
+                      >
+                        <Brain className="w-3.5 h-3.5" />
+                        <span>Read Online</span>
+                      </button>
+                      <a
+                        href="/mind-mastery/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="p-2.5 rounded-xl btn-editorial-outline text-xs font-medium flex items-center justify-center"
+                        title="Open Reader in New Tab"
+                      >
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                    <a
+                      href="https://fmm-e-book.vercel.app/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="w-full inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-mono text-[#c2410c] hover:bg-[#ffedd5] border border-[#fed7aa] transition-colors"
+                    >
+                      <ExternalLink className="w-3 h-3" />
+                      <span>fmm-e-book.vercel.app</span>
+                      <ArrowUpRight className="w-3 h-3 opacity-70" />
                     </a>
                   </div>
                 </div>
@@ -657,9 +733,21 @@ export function App() {
                   <GraduationCap className="w-3.5 h-3.5" />
                   <span>صحیفۂ اردو (FBISE Grade 7)</span>
                 </button>
+
+                <button
+                  onClick={() => setSelectedCurriculum('mind')}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
+                    selectedCurriculum === 'mind'
+                      ? 'bg-[#1c1917] text-[#faf8f5] shadow-xs'
+                      : 'text-[#57534e] hover:text-[#1c1917]'
+                  }`}
+                >
+                  <Brain className="w-3.5 h-3.5" />
+                  <span>The Art of Mental Mastery</span>
+                </button>
               </div>
 
-              {selectedCurriculum === 'computer' ? (
+              {selectedCurriculum === 'computer' && (
                 <>
                   {/* Header Bar */}
                   <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
@@ -732,7 +820,9 @@ export function App() {
                     />
                   </div>
                 </>
-              ) : (
+              )}
+
+              {selectedCurriculum === 'urdu' && (
                 <>
                   {/* Urdu Header Bar */}
                   <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
@@ -774,6 +864,91 @@ export function App() {
                       id="urdu-curriculum-frame"
                       src="/urdu-book/index.html"
                       title="صحیفۂ اردو: نصاب و ادب (جماعت ہفتم)"
+                      className="w-full h-[85vh] border-0"
+                    />
+                  </div>
+                </>
+              )}
+
+              {selectedCurriculum === 'mind' && (
+                <>
+                  {/* Mental Mastery Header Bar */}
+                  <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="editorial-stamp editorial-stamp-terracotta inline-flex items-center gap-1.5">
+                          <Brain className="w-3.5 h-3.5 text-[#c2410c]" />
+                          f0undr Book Series · Special Edition
+                        </span>
+                        <span className="text-xs font-mono text-[#78716c] bg-[#f5f2eb] px-2.5 py-0.5 rounded-md border border-[#e7e5e4]">
+                          Units 1 to 6 Complete · Interactive Edition
+                        </span>
+                      </div>
+                      <h2 className="text-3xl sm:text-5xl font-serif font-bold text-[#1c1917] tracking-tight">
+                        The Art of Mental Mastery: <em className="italic text-[#c2410c] font-normal">Learn Fast &amp; Mind Reading</em>
+                      </h2>
+                      <p className="text-[#57534e] text-xs sm:text-sm mt-2 max-w-3xl leading-relaxed">
+                        Authored by <strong className="text-[#1c1917]">f0undr</strong>. A comprehensive masterclass on accelerated learning, neuroplasticity, memory palaces (Method of Loci), decoding limbic body language, behavioral deception detection, persuasion vectors, and rapid mental models.
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-3 shrink-0">
+                      <a
+                        href="https://fmm-e-book.vercel.app/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl btn-editorial-outline text-xs font-semibold text-[#c2410c] transition-all hover:-translate-y-0.5"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        <span>Standalone (fmm-e-book.vercel.app)</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                      <a
+                        href="/mind-mastery/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl btn-editorial-accent text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5"
+                      >
+                        <Maximize2 className="w-3.5 h-3.5" />
+                        <span>Open Full Screen in New Tab</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Quick Jump Unit Strip */}
+                  <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-6 scrollbar-none text-xs font-mono">
+                    {[
+                      { label: 'Unit 1: Fast Learning', hash: 'unit-one' },
+                      { label: 'Unit 2: Memory Palace', hash: 'unit-two' },
+                      { label: 'Unit 3: Body Language', hash: 'unit-three' },
+                      { label: 'Unit 4: Deception', hash: 'unit-four' },
+                      { label: 'Unit 5: Persuasion', hash: 'unit-five' },
+                      { label: 'Unit 6: Mental Models', hash: 'unit-six' },
+                      { label: 'Flashcards', hash: 'flashcards' },
+                      { label: 'Glossary', hash: 'glossary' },
+                    ].map((item, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => {
+                          const iframe = document.getElementById('mind-curriculum-frame') as HTMLIFrameElement;
+                          if (iframe && iframe.contentWindow) {
+                            iframe.contentWindow.location.hash = item.hash;
+                          }
+                        }}
+                        className="px-3.5 py-1.5 rounded-lg bg-[#f5f2eb] hover:bg-[#ffedd5] text-[#57534e] hover:text-[#c2410c] border border-[#e7e5e4] shrink-0 transition-colors cursor-pointer font-medium"
+                      >
+                        {item.label}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Embedded Interactive Reader */}
+                  <div className="editorial-card rounded-2xl overflow-hidden border border-[#e7e5e4] shadow-md bg-white">
+                    <iframe
+                      id="mind-curriculum-frame"
+                      src="/mind-mastery/index.html"
+                      title="The Art of Mental Mastery: Learn Fast & Mind Reading"
                       className="w-full h-[85vh] border-0"
                     />
                   </div>

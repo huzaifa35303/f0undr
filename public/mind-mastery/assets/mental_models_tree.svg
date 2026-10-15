@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="100%" height="100%">
+  <!-- Clean Editorial Background -->
+  <rect width="900" height="500" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <text x="450" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="19" font-weight="800" fill="#0f172a" letter-spacing="0.5">THE SUPERTHINKING COGNITIVE LATTICEWORK</text>
+  <text x="450" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="12" fill="#64748b">Charlie Munger &amp; Elon Musk's High-Stakes Rapid Problem-Solving Engines</text>
+  <line x1="150" y1="74" x2="750" y2="74" stroke="#e2e8f0" stroke-width="1.2"/>
+
+  <!-- 4 Core Columns -->
+  <!-- Card 1: First Principles -->
+  <g transform="translate(45, 95)">
+    <rect width="185" height="340" rx="8" fill="#f8fafc" stroke="#bfdbfe" stroke-width="1.5"/>
+    <rect x="0" y="0" width="185" height="42" rx="8" fill="#eff6ff"/>
+    <text x="92" y="26" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="12" font-weight="800" fill="#2563eb">FIRST PRINCIPLES</text>
+    
+    <text x="18" y="72" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="14" font-weight="800" fill="#0f172a">Boil to Truths</text>
+    <text x="18" y="93" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" fill="#64748b">Strip all conventions and hearsay down to fundamental physics.</text>
+
+    <!-- Atom breakdown -->
+    <circle cx="92" cy="155" r="30" fill="none" stroke="#bfdbfe" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <circle cx="92" cy="155" r="16" fill="none" stroke="#2563eb" stroke-width="1.8"/>
+    <circle cx="92" cy="155" r="5" fill="#2563eb"/>
+
+    <text x="18" y="230" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" font-weight="800" fill="#2563eb">Key Question:</text>
+    <text x="18" y="250" font-family="'Newsreader', Georgia, serif" font-size="12" font-style="italic" fill="#0f172a">"What is absolutely true, not just what everyone copies?"</text>
+
+    <text x="18" y="315" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" font-weight="700" fill="#2563eb">Musk / Aristotle</text>
+  </g>
+
+  <!-- Card 2: Inversion -->
+  <g transform="translate(255, 95)">
+    <rect width="185" height="340" rx="8" fill="#f8fafc" stroke="#fecdd3" stroke-width="1.5"/>
+    <rect x="0" y="0" width="185" height="42" rx="8" fill="#fff1f2"/>
+    <text x="92" y="26" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="12" font-weight="800" fill="#e11d48">INVERSION</text>
+    
+    <text x="18" y="72" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="14" font-weight="800" fill="#0f172a">Invert, Always Invert</text>
+    <text x="18" y="93" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" fill="#64748b">Map out how to guarantee catastrophic failure—and avoid it.</text>
+
+    <!-- Inverted Double Arrows -->
+    <g transform="translate(92, 155)">
+      <path d="M-20 -22 L-20 22 M-27 12 L-20 22 L-13 12" stroke="#2563eb" stroke-width="2.5" fill="none"/>
+      <path d="M20 22 L20 -22 M13 -12 L20 -22 L27 -12" stroke="#e11d48" stroke-width="2.5" fill="none"/>
+    </g>
+
+    <text x="18" y="230" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" font-weight="800" fill="#e11d48">Key Question:</text>
+    <text x="18" y="250" font-family="'Newsreader', Georgia, serif" font-size="12" font-style="italic" fill="#0f172a">"What would ruin this completely? How do I kill that risk?"</text>
+
+    <text x="18" y="315" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" font-weight="700" fill="#e11d48">Jacobi / Munger</text>
+  </g>
+
+  <!-- Card 3: Second-Order Thinking -->
+  <g transform="translate(465, 95)">
+    <rect width="185" height="340" rx="8" fill="#f8fafc" stroke="#fde68a" stroke-width="1.5"/>
+    <rect x="0" y="0" width="185" height="42" rx="8" fill="#fffbeb"/>
+    <text x="92" y="26" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="12" font-weight="800" fill="#d97706">2ND-ORDER LOGIC</text>
+    
+    <text x="18" y="72" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="14" font-weight="800" fill="#0f172a">"And Then What?"</text>
+    <text x="18" y="93" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" fill="#64748b">First-order gives quick relief; 2nd and 3rd bring long-term impact.</text>
+
+    <!-- Domino cascade -->
+    <g transform="translate(45, 140)">
+      <rect x="0" y="10" width="12" height="32" rx="2" fill="#2563eb"/>
+      <rect x="25" y="6" width="12" height="36" rx="2" fill="#0284c7" transform="rotate(15, 25, 6)"/>
+      <rect x="52" y="0" width="12" height="42" rx="2" fill="#d97706" transform="rotate(30, 52, 0)"/>
+      <rect x="80" y="-8" width="12" height="50" rx="2" fill="#b45309" transform="rotate(45, 80, -8)"/>
+    </g>
+
+    <text x="18" y="230" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" font-weight="800" fill="#d97706">Key Question:</text>
+    <text x="18" y="250" font-family="'Newsreader', Georgia, serif" font-size="12" font-style="italic" fill="#0f172a">"What happens after the immediate relief fades away?"</text>
+
+    <text x="18" y="315" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" font-weight="700" fill="#d97706">Howard Marks</text>
+  </g>
+
+  <!-- Card 4: Cognitive Razors -->
+  <g transform="translate(675, 95)">
+    <rect width="185" height="340" rx="8" fill="#f8fafc" stroke="#ddd6fe" stroke-width="1.5"/>
+    <rect x="0" y="0" width="185" height="42" rx="8" fill="#f5f3ff"/>
+    <text x="92" y="26" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="12" font-weight="800" fill="#7c3aed">COGNITIVE RAZORS</text>
+    
+    <text x="18" y="72" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="14" font-weight="800" fill="#0f172a">Cut Paranoid Noise</text>
+    <text x="18" y="93" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" fill="#64748b">Occam: The simplest explanation is right. Hanlon: Incompetence over malice.</text>
+
+    <!-- Scalpel / Razor blade -->
+    <g transform="translate(92, 155)">
+      <path d="M-30 -15 L25 -15 L35 0 L25 15 L-30 15 Z" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+      <circle cx="-12" cy="0" r="5" fill="#7c3aed"/>
+      <rect x="0" y="-3" width="18" height="6" fill="#cbd5e1"/>
+    </g>
+
+    <text x="18" y="230" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" font-weight="800" fill="#7c3aed">Key Insight:</text>
+    <text x="18" y="250" font-family="'Newsreader', Georgia, serif" font-size="12" font-style="italic" fill="#0f172a">Stop hallucinating complex conspiracies in everyday human behavior.</text>
+
+    <text x="18" y="315" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" font-weight="700" fill="#7c3aed">William of Ockham</text>
+  </g>
+
+  <!-- Footer Banner -->
+  <rect x="120" y="456" width="660" height="28" rx="14" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="450" y="474" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" font-weight="600" fill="#1d4ed8">★ The Lattice of Models: No single model explains reality; master profilers weave 5+ mental models simultaneously.</text>
+</svg>

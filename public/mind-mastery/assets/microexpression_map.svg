@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" width="100%" height="100%">
+  <!-- Clean Editorial Background -->
+  <rect width="900" height="520" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <text x="450" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="19" font-weight="800" fill="#0f172a" letter-spacing="0.5">PAUL EKMAN'S 7 UNIVERSAL MICROEXPRESSIONS (FACS MAP)</text>
+  <text x="450" y="60" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="12" fill="#64748b">Non-Verbal Leakage Lasting 1/25th of a Second: Involuntary Facial Action Units</text>
+  <line x1="160" y1="74" x2="740" y2="74" stroke="#e2e8f0" stroke-width="1.2"/>
+
+  <!-- Row 1: 4 Cards -->
+  <!-- Card 1: Anger -->
+  <g transform="translate(60, 95)">
+    <rect width="180" height="185" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+    <text x="90" y="26" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="13" font-weight="800" fill="#e11d48">ANGER</text>
+    <circle cx="90" cy="80" r="38" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <!-- Eyebrows lowered & pulled together (AU 4) -->
+    <line x1="68" y1="68" x2="85" y2="75" stroke="#e11d48" stroke-width="2.5"/>
+    <line x1="112" y1="68" x2="95" y2="75" stroke="#e11d48" stroke-width="2.5"/>
+    <circle cx="76" cy="80" r="3" fill="#0f172a"/>
+    <circle cx="104" cy="80" r="3" fill="#0f172a"/>
+    <line x1="75" y1="102" x2="105" y2="102" stroke="#e11d48" stroke-width="3"/>
+    <text x="90" y="145" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">AU 4 + 5 + 23</text>
+    <text x="90" y="165" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="10" fill="#64748b">Brows down, tight lips</text>
+  </g>
+
+  <!-- Card 2: Fear -->
+  <g transform="translate(260, 95)">
+    <rect width="180" height="185" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+    <text x="90" y="26" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="13" font-weight="800" fill="#0284c7">FEAR</text>
+    <circle cx="90" cy="80" r="38" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <line x1="68" y1="66" x2="86" y2="64" stroke="#0284c7" stroke-width="2"/>
+    <line x1="112" y1="66" x2="94" y2="64" stroke="#0284c7" stroke-width="2"/>
+    <circle cx="76" cy="78" r="4.5" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+    <circle cx="76" cy="78" r="2" fill="#0f172a"/>
+    <circle cx="104" cy="78" r="4.5" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+    <circle cx="104" cy="78" r="2" fill="#0f172a"/>
+    <ellipse cx="90" cy="103" rx="14" ry="5" fill="none" stroke="#0284c7" stroke-width="2"/>
+    <text x="90" y="145" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">AU 1 + 2 + 5 + 20</text>
+    <text x="90" y="165" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="10" fill="#64748b">Upper sclera exposed</text>
+  </g>
+
+  <!-- Card 3: Disgust -->
+  <g transform="translate(460, 95)">
+    <rect width="180" height="185" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+    <text x="90" y="26" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="13" font-weight="800" fill="#d97706">DISGUST</text>
+    <circle cx="90" cy="80" r="38" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <path d="M 85 82 Q 90 77 95 82" fill="none" stroke="#d97706" stroke-width="2"/>
+    <path d="M 75 104 Q 90 94 105 104" fill="none" stroke="#d97706" stroke-width="2.5"/>
+    <line x1="70" y1="78" x2="82" y2="78" stroke="#0f172a" stroke-width="1.5"/>
+    <line x1="98" y1="78" x2="110" y2="78" stroke="#0f172a" stroke-width="1.5"/>
+    <text x="90" y="145" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">AU 9 + 10</text>
+    <text x="90" y="165" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="10" fill="#64748b">Nose bridge wrinkles</text>
+  </g>
+
+  <!-- Card 4: Contempt -->
+  <g transform="translate(660, 95)">
+    <rect width="180" height="185" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+    <text x="90" y="26" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="13" font-weight="800" fill="#7c3aed">CONTEMPT ★</text>
+    <circle cx="90" cy="80" r="38" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <circle cx="76" cy="78" r="2.5" fill="#0f172a"/>
+    <circle cx="104" cy="78" r="2.5" fill="#0f172a"/>
+    <path d="M 74 102 Q 88 102 108 94" fill="none" stroke="#7c3aed" stroke-width="3"/>
+    <circle cx="108" cy="94" r="3" fill="#7c3aed"/>
+    <text x="90" y="145" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">AU R12 / L14 (Unilateral)</text>
+    <text x="90" y="165" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="10" fill="#64748b">1-sided smirk: Superiority</text>
+  </g>
+
+  <!-- Row 2: 3 Cards -->
+  <!-- Card 5: Joy -->
+  <g transform="translate(160, 305)">
+    <rect width="180" height="185" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+    <text x="90" y="26" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="13" font-weight="800" fill="#059669">GENUINE JOY</text>
+    <circle cx="90" cy="80" r="38" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <path d="M 64 74 L 58 71 M 64 78 L 56 78 M 64 82 L 58 85" stroke="#059669" stroke-width="1.5"/>
+    <path d="M 116 74 L 122 71 M 116 78 L 124 78 M 116 82 L 122 85" stroke="#059669" stroke-width="1.5"/>
+    <path d="M 70 78 Q 76 74 82 78" fill="none" stroke="#0f172a" stroke-width="2"/>
+    <path d="M 98 78 Q 104 74 110 78" fill="none" stroke="#0f172a" stroke-width="2"/>
+    <path d="M 72 96 Q 90 114 108 96" fill="none" stroke="#059669" stroke-width="2.8"/>
+    <text x="90" y="145" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">AU 6 + 12 (Duchenne)</text>
+    <text x="90" y="165" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="10" fill="#64748b">Eye crinkles; fake lacks AU6</text>
+  </g>
+
+  <!-- Card 6: Sadness -->
+  <g transform="translate(360, 305)">
+    <rect width="180" height="185" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+    <text x="90" y="26" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="13" font-weight="800" fill="#475569">SADNESS</text>
+    <circle cx="90" cy="80" r="38" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <path d="M 68 76 Q 80 68 86 74" fill="none" stroke="#475569" stroke-width="2"/>
+    <path d="M 112 76 Q 100 68 94 74" fill="none" stroke="#475569" stroke-width="2"/>
+    <path d="M 74 105 Q 90 98 106 105" fill="none" stroke="#475569" stroke-width="2.5"/>
+    <text x="90" y="145" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">AU 1 + 4 + 15</text>
+    <text x="90" y="165" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="10" fill="#64748b">Inverted horseshoe mouth</text>
+  </g>
+
+  <!-- Card 7: Surprise -->
+  <g transform="translate(560, 305)">
+    <rect width="180" height="185" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5"/>
+    <text x="90" y="26" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="13" font-weight="800" fill="#2563eb">SURPRISE</text>
+    <circle cx="90" cy="80" r="38" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
+    <path d="M 68 68 Q 77 58 86 68" fill="none" stroke="#2563eb" stroke-width="2"/>
+    <path d="M 94 68 Q 103 58 112 68" fill="none" stroke="#2563eb" stroke-width="2"/>
+    <circle cx="77" cy="78" r="4" fill="#0f172a"/>
+    <circle cx="103" cy="78" r="4" fill="#0f172a"/>
+    <ellipse cx="90" cy="103" rx="8" ry="12" fill="none" stroke="#2563eb" stroke-width="2.2"/>
+    <text x="90" y="145" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="11" font-weight="700" fill="#0f172a">AU 1 + 2 + 5 + 26</text>
+    <text x="90" y="165" text-anchor="middle" font-family="'Plus Jakarta Sans', -apple-system, sans-serif" font-size="10" fill="#64748b">Duration &lt; 1s; longer = fake</text>
+  </g>
+</svg>

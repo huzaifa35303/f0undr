@@ -7,6 +7,8 @@ Allow: /book
 Allow: /book/
 Allow: /urdu-book
 Allow: /urdu-book/
+Allow: /mind-mastery
+Allow: /mind-mastery/
 Allow: /#books
 Allow: /#curriculum
 Allow: /#team
@@ -21,4 +23,6 @@ Disallow: /api/internal
 Sitemap: /sitemap.xml
 Sitemap: https://f0undr.vercel.app/sitemap.xml
 Sitemap: https://f-e-book.vercel.app/sitemap.xml
+Sitemap: https://fmm-e-book.vercel.app/sitemap.xml
+
 

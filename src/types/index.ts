@@ -22,6 +22,7 @@ export interface Book {
   favoriteQuote?: string;
   dateAdded: string;
   externalUrl?: string;
+  standaloneUrl?: string;
   featured?: boolean;
   units?: string[];
 }
