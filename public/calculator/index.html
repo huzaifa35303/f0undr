@@ -1,0 +1,2112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>Calculator by f0undr // Precision Meets Innovation</title>
+  <meta name="description" content="Precision scientific calculator and multi-category unit converter by f0undr. Built for speed, clarity, and innovation. Optimized for mobile and desktop.">
+  <meta name="theme-color" content="#0b0b14">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    :root {
+      --bg: #0b0b14;
+      --bg-dots: rgba(255, 255, 255, 0.04);
+      --panel: rgba(22, 23, 38, 0.75);
+      --panel-border: rgba(128, 138, 180, 0.18);
+      --key: #151628;
+      --keyh: #232542;
+      --key-active: #2b2e52;
+      --sec: #1c1d32;
+      --sec-h: #272846;
+      --fg: #f4f4fa;
+      --mut: #8b8ea8;
+      --pri: #7aa2ff;
+      --des: #ff6077;
+      --acc: #00e5a3;
+      --grad: linear-gradient(135deg, #4f7cff, #a259ff);
+      --grad-glow: 0 8px 24px -4px rgba(110, 80, 255, 0.4);
+      --shadow-soft: 0 20px 48px -12px rgba(0, 0, 0, 0.6);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --font-ui: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    .light {
+      --bg: #eceff8;
+      --bg-dots: rgba(0, 0, 0, 0.04);
+      --panel: rgba(255, 255, 255, 0.88);
+      --panel-border: rgba(120, 130, 170, 0.22);
+      --key: #ffffff;
+      --keyh: #f1f3f9;
+      --key-active: #e3e7f4;
+      --sec: #e6e9f4;
+      --sec-h: #dadff0;
+      --fg: #101124;
+      --mut: #686b84;
+      --pri: #355fe8;
+      --des: #e22d4c;
+      --acc: #00aa74;
+      --grad: linear-gradient(135deg, #3f6eff, #9445f8);
+      --grad-glow: 0 8px 20px -4px rgba(79, 124, 255, 0.35);
+      --shadow-soft: 0 16px 40px -12px rgba(30, 40, 80, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    body {
+      font-family: var(--font-ui);
+      background-color: var(--bg);
+      color: var(--fg);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: env(safe-area-inset-top, 16px) env(safe-area-inset-right, 16px) env(safe-area-inset-bottom, 16px) env(safe-area-inset-left, 16px);
+      position: relative;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(79, 124, 255, 0.18), transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(162, 89, 255, 0.15), transparent 45%),
+        radial-gradient(var(--bg-dots) 1px, transparent 1px);
+      background-size: auto, auto, 24px 24px;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      user-select: none;
+    }
+
+    /* Container wrapper */
+    .wrapper {
+      display: flex;
+      gap: 20px;
+      width: 100%;
+      max-width: 480px;
+      align-items: flex-start;
+      transition: max-width 0.3s cubic-bezier(0.2, 0.9, 0.3, 1);
+      position: relative;
+      z-index: 2;
+    }
+    .wrapper.sci { max-width: 840px; }
+    .wrapper.conv { max-width: 580px; }
+    .wrapper.hist-open { max-width: 860px; }
+    .wrapper.sci.hist-open { max-width: 1200px; }
+    .wrapper.conv.hist-open { max-width: 960px; }
+
+    .main-card {
+      flex: 1;
+      min-width: 0;
+      width: 100%;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding: 0 4px;
+    }
+
+    .brand-title {
+      font-size: clamp(20px, 4.5vw, 28px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .brand-by {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--mut);
+      margin-left: 2px;
+    }
+    .brand-gradient {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 800;
+    }
+    .tagline {
+      color: var(--mut);
+      font-size: 13px;
+      margin-top: 2px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--panel-border);
+      background: var(--panel);
+      color: var(--fg);
+      font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: all 0.15s ease;
+      position: relative;
+    }
+    @media (hover: hover) {
+      .icon-btn:hover {
+        background: var(--keyh);
+        transform: translateY(-1px);
+        border-color: var(--pri);
+      }
+    }
+    .icon-btn:active {
+      transform: scale(0.92);
+      filter: brightness(1.2);
+    }
+    .icon-btn.active {
+      background: var(--grad);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: var(--grad-glow);
+    }
+
+    /* Panels */
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border-radius: var(--radius-lg);
+      padding: clamp(14px, 3.2vw, 24px);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+    }
+
+    /* Top Navigation bar */
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      gap: 10px;
+    }
+
+    .mode-tabs {
+      background: var(--sec);
+      border-radius: 999px;
+      padding: 4px;
+      display: flex;
+      gap: 2px;
+      border: 1px solid var(--panel-border);
+    }
+    .mode-tab {
+      border: 0;
+      background: none;
+      color: var(--mut);
+      padding: 6px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.16s ease;
+      user-select: none;
+    }
+    @media (hover: hover) {
+      .mode-tab:hover { color: var(--fg); }
+    }
+    .mode-tab.active {
+      background: var(--grad);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(110, 80, 255, 0.35);
+    }
+
+    .display-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-pill {
+      border: 1px solid var(--panel-border);
+      background: var(--sec);
+      color: var(--mut);
+      padding: 6px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+    }
+    @media (hover: hover) {
+      .btn-pill:hover {
+        background: var(--sec-h);
+        color: var(--fg);
+        border-color: var(--pri);
+      }
+    }
+    .btn-pill:active { transform: scale(0.95); }
+    .btn-pill.success {
+      background: rgba(0, 229, 163, 0.16);
+      color: var(--acc);
+      border-color: var(--acc);
+    }
+
+    /* Calculator Display */
+    .disp {
+      background: var(--key);
+      border: 1px solid var(--panel-border);
+      border-radius: 22px;
+      padding: 14px 18px;
+      margin-bottom: 12px;
+      text-align: right;
+      font-family: var(--font-mono);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 120px;
+      box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .disp-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 22px;
+      margin-bottom: 4px;
+    }
+
+    .disp-badges {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 2px 7px;
+      border-radius: 6px;
+      background: var(--sec);
+      color: var(--mut);
+      border: 1px solid var(--panel-border);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .badge.active {
+      background: rgba(122, 162, 255, 0.18);
+      color: var(--pri);
+      border-color: var(--pri);
+    }
+    .badge.mem {
+      background: rgba(0, 229, 163, 0.15);
+      color: var(--acc);
+      border-color: var(--acc);
+      display: none;
+    }
+    .badge.mem.show {
+      display: inline-block;
+    }
+
+    #prev {
+      color: var(--mut);
+      font-size: 14px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 80%;
+      user-select: text;
+    }
+
+    #out {
+      font-size: clamp(32px, 6.5vw, 46px);
+      font-weight: 600;
+      word-break: break-all;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      user-select: text;
+      transition: font-size 0.12s ease;
+      cursor: text;
+    }
+    #out.sm { font-size: clamp(24px, 5vw, 32px); }
+    #out.xs { font-size: clamp(18px, 4vw, 24px); }
+    #out.err {
+      color: var(--des);
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    #pv {
+      color: var(--pri);
+      font-size: 17px;
+      font-weight: 500;
+      min-height: 22px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      user-select: text;
+    }
+
+    /* Memory Toolbar */
+    .mem-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .mem-btn {
+      flex: 1;
+      border: 1px solid var(--panel-border);
+      background: var(--sec);
+      color: var(--mut);
+      border-radius: 10px;
+      height: 34px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.14s ease;
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @media (hover: hover) {
+      .mem-btn:hover:not(:disabled) {
+        background: var(--sec-h);
+        color: var(--fg);
+        border-color: var(--pri);
+      }
+    }
+    .mem-btn:active:not(:disabled) {
+      transform: scale(0.94);
+    }
+    .mem-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    /* Keypad Grid Layouts */
+    .pads-container {
+      display: grid;
+      gap: 10px;
+    }
+    .wrapper.sci .pads-container {
+      grid-template-columns: 1.15fr 1.35fr;
+      gap: 12px;
+    }
+
+    .key-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    #sciPad {
+      display: none;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .wrapper.sci #sciPad {
+      display: grid;
+    }
+
+    /* Key styling */
+    .k {
+      border: 1px solid transparent;
+      border-radius: var(--radius-md);
+      height: clamp(52px, 8dvh, 66px);
+      font-size: 22px;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--key);
+      color: var(--fg);
+      transition: all 0.12s cubic-bezier(0.1, 0.7, 0.3, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      user-select: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    }
+    @media (hover: hover) {
+      .k:hover {
+        background: var(--keyh);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+      }
+    }
+    .k:active, .k.p {
+      transform: scale(0.92) translateY(0);
+      background: var(--key-active);
+      filter: brightness(1.22);
+    }
+
+    /* Key Variants */
+    .k.op {
+      color: var(--pri);
+      font-size: 24px;
+    }
+    .k.ut {
+      background: var(--sec);
+      color: var(--mut);
+      font-size: 17px;
+    }
+    .k.ac {
+      background: var(--sec);
+      color: var(--des);
+      font-size: 18px;
+    }
+    .k.fn {
+      background: var(--sec);
+      color: var(--fg);
+      font-size: 15px;
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+    .k.fn.shift-active {
+      color: var(--pri);
+      border-color: rgba(122, 162, 255, 0.4);
+    }
+    .k.eq {
+      background: var(--grad);
+      color: #ffffff;
+      font-size: 28px;
+      font-weight: 700;
+      box-shadow: var(--grad-glow);
+      border: 0;
+    }
+    @media (hover: hover) {
+      .k.eq:hover {
+        filter: brightness(1.1);
+        box-shadow: 0 10px 28px -4px rgba(110, 80, 255, 0.6);
+      }
+    }
+
+    /* Unit Converter Container */
+    #convView {
+      display: none;
+    }
+    .wrapper.conv #calcView { display: none; }
+    .wrapper.conv #convView { display: block; }
+
+    .conv-box {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .conv-category-select {
+      background: var(--key);
+      border: 1px solid var(--panel-border);
+      color: var(--fg);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      outline: none;
+      width: 100%;
+    }
+    .conv-card {
+      background: var(--key);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .conv-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--mut);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .conv-input-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .conv-val-input {
+      flex: 1;
+      background: var(--sec);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      color: var(--fg);
+      font-family: var(--font-mono);
+      font-size: 20px;
+      font-weight: 600;
+      outline: none;
+      min-width: 0;
+      transition: border-color 0.15s ease;
+    }
+    .conv-val-input:focus {
+      border-color: var(--pri);
+    }
+    .conv-unit-select {
+      width: 130px;
+      background: var(--sec);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      color: var(--fg);
+      font-size: 14px;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+    }
+    .conv-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 4px;
+    }
+
+    /* History Sidebar / Mobile Sheet */
+    #histBackdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 80;
+    }
+    #histPanel {
+      display: none;
+      width: 320px;
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+    .wrapper.hist-open #histPanel {
+      display: block;
+    }
+    .hist-drag-handle {
+      display: none;
+      width: 40px;
+      height: 4px;
+      background: var(--panel-border);
+      border-radius: 99px;
+      margin: 0 auto 12px auto;
+    }
+    .hist-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--panel-border);
+    }
+    .hist-header b {
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hist-tools {
+      display: flex;
+      gap: 6px;
+    }
+    .hist-tool-btn {
+      border: 0;
+      background: none;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: background 0.15s ease;
+    }
+    .hist-tool-btn.danger { color: var(--des); }
+    .hist-tool-btn.danger:hover { background: rgba(255, 96, 119, 0.12); }
+    .hist-tool-btn.action { color: var(--pri); }
+    .hist-tool-btn.action:hover { background: rgba(122, 162, 255, 0.12); }
+
+    #histList {
+      list-style: none;
+      max-height: 480px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-right: 4px;
+    }
+    #histList::-webkit-scrollbar { width: 5px; }
+    #histList::-webkit-scrollbar-thumb { background: var(--panel-border); border-radius: 4px; }
+
+    .hist-item {
+      background: var(--key);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      cursor: pointer;
+      text-align: right;
+      font-family: var(--font-mono);
+      transition: all 0.15s ease;
+    }
+    @media (hover: hover) {
+      .hist-item:hover {
+        background: var(--keyh);
+        border-color: var(--pri);
+        transform: translateX(-2px);
+      }
+    }
+    .hist-item:active { transform: scale(0.98); }
+    .hist-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--mut);
+      margin-bottom: 4px;
+    }
+    .hist-expr {
+      color: var(--mut);
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .hist-res {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--fg);
+      margin-top: 2px;
+    }
+
+    /* Modal for Keyboard Shortcuts */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 16px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+    }
+    .download-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      background: var(--key);
+      border: 1px solid var(--panel-border);
+      border-radius: 14px;
+      text-decoration: none;
+      color: var(--fg);
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    @media (hover: hover) {
+      .download-card:hover {
+        background: var(--keyh);
+        border-color: var(--pri);
+        transform: translateY(-1px);
+      }
+    }
+    .download-card:active {
+      transform: scale(0.98);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .modal-header h3 { font-size: 18px; font-weight: 700; }
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--mut);
+      padding: 4px;
+    }
+    .shortcuts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      font-size: 13px;
+    }
+    .shortcut-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 10px;
+      background: var(--key);
+      border-radius: 8px;
+      border: 1px solid var(--panel-border);
+    }
+    .shortcut-row kbd {
+      background: var(--sec);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      border: 1px solid var(--panel-border);
+    }
+
+    /* Floating Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: rgba(15, 16, 28, 0.92);
+      border: 1px solid var(--panel-border);
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 120;
+      opacity: 0;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    #toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer Tip */
+    .footer-tip {
+      text-align: center;
+      color: var(--mut);
+      font-size: 12px;
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .footer-tip a {
+      color: var(--pri);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .footer-tip a:hover {
+      text-decoration: underline;
+    }
+
+    /* =========================================
+       RESPONSIVE OPTIMIZATION: MOBILE & TABLET
+       ========================================= */
+    @media (max-width: 768px) {
+      body {
+        padding: env(safe-area-inset-top, 10px) env(safe-area-inset-right, 10px) env(safe-area-inset-bottom, 10px) env(safe-area-inset-left, 10px);
+        justify-content: flex-start;
+      }
+      .wrapper {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+      .panel {
+        padding: 14px;
+        border-radius: 22px;
+      }
+      .disp {
+        padding: 12px 16px;
+        min-height: 105px;
+        border-radius: 18px;
+        margin-bottom: 10px;
+      }
+      .k {
+        height: 52px;
+        font-size: 20px;
+        border-radius: 14px;
+      }
+      .wrapper.sci .pads-container {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      #sciPad {
+        grid-template-columns: repeat(6, 1fr) !important;
+        gap: 6px;
+      }
+      .wrapper.sci #sciPad .k {
+        height: 44px;
+        font-size: 13px;
+        border-radius: 10px;
+      }
+      .wrapper.sci .key-grid .k {
+        height: 52px;
+      }
+      .footer-tip {
+        display: none;
+      }
+
+      /* Mobile Slide-Up Bottom Sheet for History */
+      #histBackdrop.active {
+        display: block;
+      }
+      #histPanel {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100% !important;
+        max-height: 80vh;
+        border-radius: 28px 28px 0 0;
+        z-index: 90;
+        background: var(--panel);
+        backdrop-filter: blur(36px);
+        -webkit-backdrop-filter: blur(36px);
+        box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.6);
+        transform: translateY(105%);
+        transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+        padding: 16px 20px env(safe-area-inset-bottom, 20px) 20px;
+      }
+      .wrapper.hist-open #histPanel {
+        display: block;
+        transform: translateY(0);
+      }
+      .hist-drag-handle {
+        display: block;
+      }
+      #histList {
+        max-height: calc(80vh - 110px);
+      }
+    }
+
+    /* Small Phone Screens (<= 380px) */
+    @media (max-width: 380px) {
+      body { padding: 6px; }
+      .brand-title { font-size: 19px; }
+      .mode-tab { padding: 5px 10px; font-size: 12px; }
+      .k { height: 48px; font-size: 19px; }
+      #sciPad { grid-template-columns: repeat(3, 1fr) !important; }
+      .wrapper.sci #sciPad .k { height: 40px; font-size: 12px; }
+    }
+
+    /* =========================================
+       RESPONSIVE OPTIMIZATION: MOBILE LANDSCAPE
+       ========================================= */
+    @media (orientation: landscape) and (max-height: 540px) {
+      body {
+        padding: env(safe-area-inset-top, 6px) env(safe-area-inset-right, 14px) env(safe-area-inset-bottom, 6px) env(safe-area-inset-left, 14px);
+        justify-content: center;
+      }
+      .wrapper {
+        max-width: 760px;
+      }
+      header {
+        margin-bottom: 6px;
+      }
+      .brand-title { font-size: 18px; }
+      .tagline { display: none; }
+      .nav-bar { margin-bottom: 6px; }
+      .panel { padding: 10px 14px; border-radius: 18px; }
+      .disp {
+        min-height: 56px;
+        padding: 6px 12px;
+        margin-bottom: 6px;
+      }
+      #out { font-size: 24px; line-height: 1; }
+      #prev, #pv { font-size: 12px; min-height: 14px; }
+      .mem-bar { margin-bottom: 6px; gap: 4px; }
+      .mem-btn { height: 26px; font-size: 11px; }
+      
+      .wrapper.sci .pads-container {
+        grid-template-columns: 1fr 1.25fr;
+        gap: 8px;
+      }
+      #sciPad {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 6px;
+      }
+      .k {
+        height: 38px;
+        font-size: 16px;
+        border-radius: 10px;
+      }
+      .k.op { font-size: 18px; }
+      .k.eq { font-size: 20px; }
+      .footer-tip { display: none; }
+    }
+
+    /* =========================================
+       RESPONSIVE OPTIMIZATION: DESKTOP / PC
+       ========================================= */
+    @media (min-width: 1024px) {
+      .panel {
+        padding: 24px;
+      }
+      .wrapper.sci.hist-open {
+        max-width: 1220px;
+      }
+      .k {
+        height: 64px;
+        font-size: 23px;
+      }
+      .wrapper.sci #sciPad .k {
+        height: 64px;
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="histBackdrop"></div>
+
+<div class="wrapper" id="appWrapper">
+  <!-- Main Calculator Card -->
+  <div class="main-card">
+    <header>
+      <div>
+        <h1 class="brand-title">
+          Calculator <span class="brand-by">by</span> <a href="https://f0undr.vercel.app/" target="_blank" class="brand-gradient" style="text-decoration:none; cursor:pointer;" title="Return to f0undr Atelier">f0undr</a>
+        </h1>
+        <p class="tagline">Precision Meets Innovation.</p>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" id="downloadModalBtn" title="Download App (APK / Windows EXE)" aria-label="Download App">📥</button>
+        <button class="icon-btn" id="soundBtn" title="Toggle Sound Feedback (S)" aria-label="Toggle sound">🔊</button>
+        <button class="icon-btn" id="histToggleBtn" title="Calculation History (H)" aria-label="Open history">⟲</button>
+        <button class="icon-btn" id="themeBtn" title="Toggle Light / Dark Theme (T)" aria-label="Toggle theme">☀</button>
+      </div>
+    </header>
+
+    <main class="panel">
+      <!-- Mode Tabs & Display Actions -->
+      <div class="nav-bar">
+        <div class="mode-tabs" role="tablist">
+          <button class="mode-tab active" id="tabStd" role="tab" aria-selected="true">Standard</button>
+          <button class="mode-tab" id="tabSci" role="tab" aria-selected="false">Scientific</button>
+          <button class="mode-tab" id="tabConv" role="tab" aria-selected="false">Converter</button>
+        </div>
+        <div class="display-actions">
+          <button class="btn-pill" id="copyBtn" title="Copy to clipboard (Ctrl+C)">
+            <span id="copyIcon">📋</span> <span id="copyText">Copy</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- VIEW 1: Standard & Scientific Calculator -->
+      <div id="calcView">
+        <!-- Display Unit -->
+        <div class="disp" id="dispUnit">
+          <div class="disp-meta">
+            <div class="disp-badges">
+              <span class="badge" id="degBadge" title="Click to toggle DEG / RAD (D)">DEG</span>
+              <span class="badge" id="shiftBadge" style="display:none">2nd</span>
+              <span class="badge mem" id="memBadge" title="Memory stored">M = 0</span>
+            </div>
+            <div id="prev"></div>
+          </div>
+          <div id="out">0</div>
+          <div id="pv"></div>
+        </div>
+
+        <!-- Memory Toolbar -->
+        <div class="mem-bar">
+          <button class="mem-btn" id="mClear" title="Memory Clear" disabled>MC</button>
+          <button class="mem-btn" id="mRecall" title="Memory Recall" disabled>MR</button>
+          <button class="mem-btn" id="mAdd" title="Memory Add (M)">M+</button>
+          <button class="mem-btn" id="mSub" title="Memory Subtract">M-</button>
+          <button class="mem-btn" id="mStore" title="Memory Store">MS</button>
+        </div>
+
+        <!-- Keypad Grids -->
+        <div class="pads-container">
+          <!-- Scientific Keypad -->
+          <div id="sciPad"></div>
+          <!-- Standard Keypad -->
+          <div class="key-grid" id="stdPad"></div>
+        </div>
+      </div>
+
+      <!-- VIEW 2: Multi-Category Unit Converter -->
+      <div id="convView">
+        <div class="conv-box">
+          <div>
+            <label class="conv-label" style="margin-bottom:6px">Conversion Category</label>
+            <select class="conv-category-select" id="convCategory">
+              <option value="length">Length (Distance)</option>
+              <option value="mass">Mass / Weight</option>
+              <option value="temp">Temperature</option>
+              <option value="data">Digital Storage</option>
+              <option value="speed">Speed</option>
+              <option value="time">Time</option>
+              <option value="area">Area</option>
+              <option value="volume">Volume / Liquid</option>
+            </select>
+          </div>
+
+          <!-- Unit Card 1 -->
+          <div class="conv-card">
+            <div class="conv-label">
+              <span>From</span>
+              <span id="fromUnitName">Meters</span>
+            </div>
+            <div class="conv-input-row">
+              <input type="number" inputmode="decimal" step="any" class="conv-val-input" id="convFromVal" value="1">
+              <select class="conv-unit-select" id="convFromUnit"></select>
+            </div>
+          </div>
+
+          <!-- Swap Icon -->
+          <div style="text-align:center; margin:-6px 0;">
+            <button class="icon-btn" id="convSwapBtn" style="width:36px; height:36px; font-size:14px;" title="Swap units">⇅</button>
+          </div>
+
+          <!-- Unit Card 2 -->
+          <div class="conv-card">
+            <div class="conv-label">
+              <span>To</span>
+              <span id="toUnitName">Feet</span>
+            </div>
+            <div class="conv-input-row">
+              <input type="number" inputmode="decimal" step="any" class="conv-val-input" id="convToVal" value="3.28084">
+              <select class="conv-unit-select" id="convToUnit"></select>
+            </div>
+          </div>
+
+          <div class="conv-actions">
+            <button class="btn-pill" id="convCopyBtn">Copy Result</button>
+            <button class="btn-pill success" id="convSendBtn">Send to Calculator →</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Tip -->
+    <footer class="footer-tip">
+      <span>Keyboard Shortcuts enabled</span> ·
+      <a id="shortcutsLink">View Shortcuts (?)</a>
+    </footer>
+  </div>
+
+  <!-- History Sidebar / Mobile Sheet Panel -->
+  <aside class="panel" id="histPanel">
+    <div class="hist-drag-handle" id="histDragHandle"></div>
+    <div class="hist-header">
+      <b><span>⟲</span> Calculation History</b>
+      <div class="hist-tools">
+        <button class="hist-tool-btn action" id="histExportBtn" title="Export History as CSV">Export</button>
+        <button class="hist-tool-btn danger" id="histClearBtn" title="Clear All History">Clear</button>
+      </div>
+    </div>
+    <ul id="histList"></ul>
+  </aside>
+</div>
+
+<!-- Floating Toast -->
+<div id="toast"><span>✓</span> <span id="toastMsg">Copied to clipboard</span></div>
+
+<!-- Modal: Keyboard Shortcuts Cheat Sheet -->
+<div class="modal-overlay" id="shortcutsModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Keyboard Shortcuts</h3>
+      <button class="close-btn" id="closeModalBtn" aria-label="Close modal">&times;</button>
+    </div>
+    <div class="shortcuts-grid">
+      <div class="shortcut-row"><span>Numbers & NumPad</span> <kbd>0 – 9</kbd></div>
+      <div class="shortcut-row"><span>Arithmetic</span> <kbd>+ − * /</kbd></div>
+      <div class="shortcut-row"><span>Equals / Calculate</span> <kbd>Enter / =</kbd></div>
+      <div class="shortcut-row"><span>Clear All / Delete</span> <kbd>Esc / ⌫</kbd></div>
+      <div class="shortcut-row"><span>Copy Result</span> <kbd>Ctrl + C</kbd></div>
+      <div class="shortcut-row"><span>Paste Equation</span> <kbd>Ctrl + V</kbd></div>
+      <div class="shortcut-row"><span>Toggle History</span> <kbd>H</kbd></div>
+      <div class="shortcut-row"><span>Toggle Theme</span> <kbd>T</kbd></div>
+      <div class="shortcut-row"><span>Angle DEG / RAD</span> <kbd>D</kbd></div>
+      <div class="shortcut-row"><span>Sine / Cos / Tan</span> <kbd>s / c / t</kbd></div>
+      <div class="shortcut-row"><span>Pi / Euler</span> <kbd>p / e</kbd></div>
+      <div class="shortcut-row"><span>Factorial / Power</span> <kbd>! / ^</kbd></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Download App -->
+<div class="modal-overlay" id="downloadModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Download f0 Calculator</h3>
+      <button class="close-btn" id="closeDownloadBtn" aria-label="Close modal">&times;</button>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:12px; margin-top:8px;">
+      <!-- Android Option -->
+      <a href="./downloads/f0-Calculator.apk" download="f0-Calculator.apk" class="download-card">
+        <div style="font-size:26px;">📱</div>
+        <div style="flex:1;">
+          <div style="font-weight:700; font-size:14px;">Android App (.apk)</div>
+          <div style="font-size:12px; color:var(--mut);">Direct download for Android devices (v1.0.0)</div>
+        </div>
+        <div class="btn-pill success" style="pointer-events:none;">APK ↓</div>
+      </a>
+
+      <!-- Windows Option -->
+      <a href="https://github.com/huzaifa35303/Calculator/releases/latest" target="_blank" rel="noopener" class="download-card">
+        <div style="font-size:26px;">💻</div>
+        <div style="flex:1;">
+          <div style="font-weight:700; font-size:14px;">Windows Desktop (.exe)</div>
+          <div style="font-size:12px; color:var(--mut);">Portable 64-bit desktop build on GitHub</div>
+        </div>
+        <div class="btn-pill" style="pointer-events:none;">EXE ↗</div>
+      </a>
+
+      <!-- PWA Option -->
+      <div class="download-card" id="pwaInstallCard">
+        <div style="font-size:26px;">⚡</div>
+        <div style="flex:1;">
+          <div style="font-weight:700; font-size:14px;">Install as Web App (PWA)</div>
+          <div style="font-size:12px; color:var(--mut);">Instant offline access on phone or desktop</div>
+        </div>
+        <button class="btn-pill" id="pwaInstallBtn" style="pointer-events:none;">Install +</button>
+      </div>
+
+      <!-- GitHub Link -->
+      <div style="text-align:center; margin-top:6px;">
+        <a href="https://github.com/huzaifa35303/Calculator" target="_blank" rel="noopener" style="font-size:12px; color:var(--pri); text-decoration:none;">
+          View source on GitHub (huzaifa35303/Calculator) ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  // --- STATE MANAGEMENT ---
+  let expr = "";
+  let prev = "";
+  let err = "";
+  let done = false;
+  let deg = true;
+  let shift2nd = false;
+  let soundEnabled = localStorage.getItem("f0_sound") !== "false";
+  let mem = parseFloat(localStorage.getItem("f0_mem") || "0");
+  let hist = JSON.parse(localStorage.getItem("f0_calc_history") || "[]");
+
+  const $ = id => document.getElementById(id);
+  const W = $("appWrapper");
+
+  // --- TOAST NOTIFICATIONS ---
+  let toastTimer = null;
+  function showToast(msg) {
+    const t = $("toast");
+    $("toastMsg").textContent = msg;
+    t.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove("show"), 1800);
+  }
+
+  // --- HAPTIC & AUDIO FEEDBACK ---
+  function triggerHaptic(strong = false) {
+    if (navigator.vibrate) {
+      try { navigator.vibrate(strong ? 25 : 12); } catch {}
+    }
+  }
+
+  let audioCtx = null;
+  function playClick(freq = 600, duration = 0.015) {
+    triggerHaptic(duration > 0.02);
+    if (!soundEnabled) return;
+    try {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    } catch {}
+  }
+
+  // --- MATHEMATICAL ENGINE (Recursive Descent AST Precedence Parser) ---
+  const toDeg = r => deg ? (r * 180 / Math.PI) : r;
+  const fromDeg = d => deg ? (d * Math.PI / 180) : d;
+
+  function factorial(n) {
+    if (n < 0 || n !== Math.floor(n)) throw Error("Invalid factorial domain");
+    if (n > 170) throw Error("Result too large");
+    let r = 1;
+    for (let i = 2; i <= n; i++) r *= i;
+    return r;
+  }
+
+  function evaluate(s) {
+    let i = 0;
+    const t = [];
+    const funcs = ["asin", "acos", "atan", "sinh", "cosh", "tanh", "sin", "cos", "tan", "log2", "log", "ln", "sqrt", "cbrt", "abs", "exp"];
+
+    while (i < s.length) {
+      const c = s[i];
+      if (/[0-9.]/.test(c)) {
+        let n = "";
+        while (i < s.length && /[0-9.eE]/.test(s[i])) {
+          if (/[eE]/.test(s[i]) && /[+-]/.test(s[i + 1])) { n += s[i++]; }
+          n += s[i++];
+        }
+        t.push({ n: parseFloat(n) });
+        continue;
+      }
+      const f = funcs.find(w => s.startsWith(w, i));
+      if (f) { t.push({ f }); i += f.length; continue; }
+      if (c === "√") { t.push({ f: "sqrt" }); i++; continue; }
+      if (c === "∛") { t.push({ f: "cbrt" }); i++; continue; }
+      if (c === "π") { t.push({ n: Math.PI }); i++; continue; }
+      if (c === "e" && (i + 1 >= s.length || !/[a-zA-Z0-9_]/.test(s[i + 1]))) { t.push({ n: Math.E }); i++; continue; }
+      if ("+-×*÷/^%!()".includes(c)) {
+        const op = c === "*" ? "×" : c === "/" ? "÷" : c;
+        t.push({ o: op });
+        i++;
+        continue;
+      }
+      if (c === " ") { i++; continue; }
+      throw Error("Invalid symbol: " + c);
+    }
+
+    let p = 0;
+    const pk = () => t[p];
+    const is = o => t[p] && t[p].o === o;
+
+    function E() {
+      let v = T();
+      while (is("+") || is("-")) {
+        const o = t[p++].o;
+        const r = T();
+        v = o === "+" ? v + r : v - r;
+      }
+      return v;
+    }
+
+    function T() {
+      let v = U();
+      while (is("×") || is("÷")) {
+        const o = t[p++].o;
+        const r = U();
+        if (o === "÷" && r === 0) throw Error("Cannot divide by zero");
+        v = o === "×" ? v * r : v / r;
+      }
+      return v;
+    }
+
+    function U() {
+      if (is("-")) { p++; return -U(); }
+      if (is("+")) { p++; return U(); }
+      return P();
+    }
+
+    function P() {
+      let b = F();
+      if (is("^")) {
+        p++;
+        return Math.pow(b, U());
+      }
+      return b;
+    }
+
+    function F() {
+      let v = X();
+      while (is("!") || is("%")) {
+        const o = t[p++].o;
+        if (o === "!") v = factorial(v);
+        else if (o === "%") v = v / 100;
+      }
+      return v;
+    }
+
+    function X() {
+      let v = A();
+      while (pk() && (pk().n !== undefined || pk().f || is("("))) {
+        v *= A();
+      }
+      return v;
+    }
+
+    function A() {
+      const k = t[p++];
+      if (!k) throw Error("Incomplete expression");
+      if (k.n !== undefined) return k.n;
+      if (k.o === "(") {
+        const v = E();
+        if (is(")")) p++;
+        return v;
+      }
+      if (k.f) {
+        let a;
+        if (is("(")) {
+          p++;
+          a = E();
+          if (is(")")) p++;
+        } else {
+          a = A();
+        }
+        switch (k.f) {
+          case "sin": return Math.round(Math.sin(fromDeg(a)) * 1e12) / 1e12;
+          case "cos": return Math.round(Math.cos(fromDeg(a)) * 1e12) / 1e12;
+          case "tan": {
+            const cosVal = Math.cos(fromDeg(a));
+            if (Math.abs(cosVal) < 1e-12) throw Error("Undefined (tan 90°)");
+            return Math.round(Math.tan(fromDeg(a)) * 1e12) / 1e12;
+          }
+          case "asin": {
+            if (a < -1 || a > 1) throw Error("asin domain is [-1, 1]");
+            return Math.round(toDeg(Math.asin(a)) * 1e12) / 1e12;
+          }
+          case "acos": {
+            if (a < -1 || a > 1) throw Error("acos domain is [-1, 1]");
+            return Math.round(toDeg(Math.acos(a)) * 1e12) / 1e12;
+          }
+          case "atan": return Math.round(toDeg(Math.atan(a)) * 1e12) / 1e12;
+          case "sinh": return Math.sinh(a);
+          case "cosh": return Math.cosh(a);
+          case "tanh": return Math.tanh(a);
+          case "log": if (a <= 0) throw Error("Log of non-positive"); return Math.log10(a);
+          case "ln": if (a <= 0) throw Error("Ln of non-positive"); return Math.log(a);
+          case "log2": if (a <= 0) throw Error("Log2 of non-positive"); return Math.log2(a);
+          case "sqrt": if (a < 0) throw Error("Invalid square root"); return Math.sqrt(a);
+          case "cbrt": return Math.cbrt(a);
+          case "abs": return Math.abs(a);
+          case "exp": return Math.exp(a);
+        }
+      }
+      throw Error("Incomplete expression");
+    }
+
+    const res = E();
+    if (p < t.length) throw Error("Invalid expression");
+    if (!isFinite(res)) throw Error("Result too large");
+    return res;
+  }
+
+  const plain = v => String(parseFloat(v.toPrecision(12)));
+  const fmt = v => {
+    if (isNaN(v)) return "Error";
+    const abs = Math.abs(v);
+    if (abs >= 1e15 || (v !== 0 && abs < 1e-9)) return v.toExponential(6);
+    return parseFloat(v.toPrecision(12)).toLocaleString("en-US", { maximumFractionDigits: 10 });
+  };
+
+  // --- ACTIONS ---
+  function input(s) {
+    err = "";
+    const isOp = /^[+\-×÷^%]$/.test(s);
+
+    if (done) {
+      done = false;
+      if (!isOp) expr = "";
+    }
+
+    if (isOp && s !== "%" && /[+\-×÷^]$/.test(expr) && !(s === "-" && /[×÷^]$/.test(expr))) {
+      expr = expr.slice(0, -1) + s;
+    } else if (s === ".") {
+      const last = expr.split(/[^0-9.]/).pop();
+      if (last.includes(".")) return;
+      expr += last ? "." : "0.";
+    } else {
+      expr += s;
+    }
+    playClick(700);
+    render();
+  }
+
+  function clearAll() {
+    expr = "";
+    prev = "";
+    err = "";
+    done = false;
+    playClick(400);
+    render();
+  }
+
+  function backspace() {
+    err = "";
+    done = false;
+    const m = expr.match(/(asin\(|acos\(|atan\(|sinh\(|cosh\(|tanh\(|sin\(|cos\(|tan\(|log2\(|log\(|ln\(|sqrt\(|cbrt\(|abs\(|exp\()$/);
+    if (m) expr = expr.slice(0, -m[0].length);
+    else expr = expr.slice(0, -1);
+    playClick(500);
+    render();
+  }
+
+  function equals() {
+    if (!expr) return;
+    try {
+      const val = evaluate(expr);
+      const r = plain(val);
+      prev = expr + " =";
+      
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+      hist.unshift({ e: expr, r, t: timeStr });
+      hist = hist.slice(0, 50);
+      localStorage.setItem("f0_calc_history", JSON.stringify(hist));
+
+      expr = r;
+      done = true;
+      playClick(900, 0.025);
+    } catch (e) {
+      err = e.message;
+      playClick(300, 0.03);
+    }
+    render();
+  }
+
+  function negate() {
+    err = "";
+    done = false;
+    const m = expr.match(/(\d*\.?\d+)$/);
+    if (!m) expr += "-";
+    else {
+      const h = expr.slice(0, -m[0].length);
+      expr = h.endsWith("(-") ? h.slice(0, -2) + m[0] : h + "(-" + m[0];
+    }
+    playClick(600);
+    render();
+  }
+
+  // --- MEMORY SYSTEM ---
+  function getCurrVal() {
+    try {
+      if (expr) return evaluate(expr);
+    } catch {}
+    return 0;
+  }
+
+  function updateMemUI() {
+    const hasMem = Math.abs(mem) > 1e-12;
+    $("mClear").disabled = !hasMem;
+    $("mRecall").disabled = !hasMem;
+    const b = $("memBadge");
+    if (hasMem) {
+      b.classList.add("show");
+      b.textContent = "M = " + fmt(mem);
+    } else {
+      b.classList.remove("show");
+    }
+    localStorage.setItem("f0_mem", String(mem));
+  }
+
+  $("mClear").onclick = () => { mem = 0; updateMemUI(); playClick(500); showToast("Memory cleared"); };
+  $("mRecall").onclick = () => { input(plain(mem)); playClick(700); };
+  $("mAdd").onclick = () => { mem += getCurrVal(); updateMemUI(); playClick(750); showToast("Added to memory (M+)"); };
+  $("mSub").onclick = () => { mem -= getCurrVal(); updateMemUI(); playClick(750); showToast("Subtracted from memory (M-)"); };
+  $("mStore").onclick = () => { mem = getCurrVal(); updateMemUI(); playClick(800); showToast("Stored in memory (MS)"); };
+
+  // --- RENDER FUNCTION ---
+  function render() {
+    const d = err || expr || "0";
+    const out = $("out");
+    out.textContent = d;
+    out.className = err ? "err" : d.length > 20 ? "xs" : d.length > 13 ? "sm" : "";
+    
+    $("prev").textContent = prev;
+    
+    let pv = "";
+    if (expr && !done && !err) {
+      try {
+        const val = evaluate(expr);
+        pv = fmt(val);
+      } catch {}
+    }
+    $("pv").textContent = pv && pv !== expr ? "= " + pv : "";
+
+    $("degBadge").textContent = deg ? "DEG" : "RAD";
+    $("degBadge").className = "badge " + (deg ? "active" : "");
+    $("shiftBadge").style.display = shift2nd ? "inline-block" : "none";
+    if ($("degBtn")) $("degBtn").textContent = deg ? "DEG" : "RAD";
+
+    $("histList").innerHTML = hist.length
+      ? hist.map((h, i) => `
+        <li class="hist-item" data-i="${i}" role="button" tabindex="0">
+          <div class="hist-meta"><span>#${hist.length - i}</span><span>${h.t || ""}</span></div>
+          <div class="hist-expr">${h.e} =</div>
+          <div class="hist-res">${fmt(+h.r)}</div>
+        </li>
+      `).join("")
+      : '<p style="color:var(--mut);text-align:center;padding:24px 16px;font-size:13px">No calculations yet.</p>';
+  }
+
+  // --- KEYPAD GENERATION ---
+  const stdKeys = [
+    ["AC", "ac", clearAll], ["DEL", "ut", backspace], ["%", "ut", () => input("%")], ["÷", "op", () => input("÷")],
+    ["7", "", () => input("7")], ["8", "", () => input("8")], ["9", "", () => input("9")], ["×", "op", () => input("×")],
+    ["4", "", () => input("4")], ["5", "", () => input("5")], ["6", "", () => input("6")], ["-", "op", () => input("-")],
+    ["1", "", () => input("1")], ["2", "", () => input("2")], ["3", "", () => input("3")], ["+", "op", () => input("+")],
+    ["±", "ut", negate], ["0", "", () => input("0")], [".", "", () => input(".")], ["=", "eq", equals]
+  ];
+
+  function renderSciPad() {
+    const pad = $("sciPad");
+    pad.innerHTML = "";
+    
+    const sciDefs = [
+      ["2nd", "fn", () => { shift2nd = !shift2nd; renderSciPad(); render(); }],
+      [deg ? "DEG" : "RAD", "fn", () => { deg = !deg; render(); }],
+      ["π", "fn", () => input("π")],
+      
+      [shift2nd ? "sin⁻¹" : "sin", "fn", () => input(shift2nd ? "asin(" : "sin(")],
+      [shift2nd ? "cos⁻¹" : "cos", "fn", () => input(shift2nd ? "acos(" : "cos(")],
+      [shift2nd ? "tan⁻¹" : "tan", "fn", () => input(shift2nd ? "atan(" : "tan(")],
+
+      [shift2nd ? "sinh" : "ln", "fn", () => input(shift2nd ? "sinh(" : "ln(")],
+      [shift2nd ? "cosh" : "log", "fn", () => input(shift2nd ? "cosh(" : "log(")],
+      [shift2nd ? "tanh" : "e", "fn", () => input(shift2nd ? "tanh(" : "e")],
+
+      [shift2nd ? "x³" : "x²", "fn", () => input(shift2nd ? "^3" : "^2")],
+      ["xʸ", "fn", () => input("^")],
+      [shift2nd ? "∛x" : "√x", "fn", () => input(shift2nd ? "∛(" : "√(")],
+
+      ["(", "fn", () => input("(")],
+      [")", "fn", () => input(")")],
+      ["x!", "fn", () => input("!")],
+
+      [shift2nd ? "2ˣ" : "10ˣ", "fn", () => input(shift2nd ? "2^" : "10^")],
+      [shift2nd ? "eˣ" : "1/x", "fn", () => {
+        if (shift2nd) input("exp(");
+        else {
+          if (!expr) expr = "1÷";
+          else expr = `1÷(${expr})`;
+          render();
+        }
+      }],
+      [shift2nd ? "RAND" : "|x|", "fn", () => {
+        if (shift2nd) input(String(Math.round(Math.random() * 1000) / 1000));
+        else input("abs(");
+      }]
+    ];
+
+    sciDefs.forEach(([label, cls, action]) => {
+      const b = document.createElement("button");
+      b.className = "k " + cls;
+      if (label === "2nd" && shift2nd) b.classList.add("shift-active");
+      if (label === (deg ? "DEG" : "RAD")) b.id = "degBtn";
+      b.textContent = label;
+      b.onclick = action;
+      pad.appendChild(b);
+    });
+  }
+
+  const btnMap = {};
+  stdKeys.forEach(([label, cls, action]) => {
+    const b = document.createElement("button");
+    b.className = "k " + cls;
+    b.textContent = label;
+    b.onclick = action;
+    btnMap[label] = b;
+    $("stdPad").appendChild(b);
+  });
+
+  renderSciPad();
+
+  // --- UNIT CONVERTER ENGINE ---
+  const unitData = {
+    length: {
+      name: "Length",
+      units: {
+        m: { label: "Meters (m)", factor: 1 },
+        km: { label: "Kilometers (km)", factor: 1000 },
+        cm: { label: "Centimeters (cm)", factor: 0.01 },
+        mm: { label: "Millimeters (mm)", factor: 0.001 },
+        mi: { label: "Miles (mi)", factor: 1609.344 },
+        yd: { label: "Yards (yd)", factor: 0.9144 },
+        ft: { label: "Feet (ft)", factor: 0.3048 },
+        in: { label: "Inches (in)", factor: 0.0254 }
+      },
+      defaultFrom: "m",
+      defaultTo: "ft"
+    },
+    mass: {
+      name: "Mass / Weight",
+      units: {
+        kg: { label: "Kilograms (kg)", factor: 1 },
+        g: { label: "Grams (g)", factor: 0.001 },
+        mg: { label: "Milligrams (mg)", factor: 0.000001 },
+        lb: { label: "Pounds (lb)", factor: 0.45359237 },
+        oz: { label: "Ounces (oz)", factor: 0.028349523125 },
+        t: { label: "Metric Tons (t)", factor: 1000 }
+      },
+      defaultFrom: "kg",
+      defaultTo: "lb"
+    },
+    temp: {
+      name: "Temperature",
+      units: {
+        c: { label: "Celsius (°C)" },
+        f: { label: "Fahrenheit (°F)" },
+        k: { label: "Kelvin (K)" }
+      },
+      defaultFrom: "c",
+      defaultTo: "f"
+    },
+    data: {
+      name: "Digital Storage",
+      units: {
+        b: { label: "Bytes (B)", factor: 1 },
+        kb: { label: "Kilobytes (KB)", factor: 1024 },
+        mb: { label: "Megabytes (MB)", factor: 1024 ** 2 },
+        gb: { label: "Gigabytes (GB)", factor: 1024 ** 3 },
+        tb: { label: "Terabytes (TB)", factor: 1024 ** 4 }
+      },
+      defaultFrom: "gb",
+      defaultTo: "mb"
+    },
+    speed: {
+      name: "Speed",
+      units: {
+        "m/s": { label: "m/s", factor: 1 },
+        "km/h": { label: "km/h", factor: 1 / 3.6 },
+        mph: { label: "mph", factor: 0.44704 },
+        knot: { label: "Knots", factor: 0.514444 }
+      },
+      defaultFrom: "km/h",
+      defaultTo: "mph"
+    },
+    time: {
+      name: "Time",
+      units: {
+        s: { label: "Seconds (s)", factor: 1 },
+        min: { label: "Minutes (min)", factor: 60 },
+        h: { label: "Hours (h)", factor: 3600 },
+        d: { label: "Days (d)", factor: 86400 },
+        wk: { label: "Weeks (wk)", factor: 604800 },
+        yr: { label: "Years (yr)", factor: 31536000 }
+      },
+      defaultFrom: "h",
+      defaultTo: "min"
+    },
+    area: {
+      name: "Area",
+      units: {
+        sqm: { label: "Sq. Meters (m²)", factor: 1 },
+        sqkm: { label: "Sq. Kilometers (km²)", factor: 1e6 },
+        sqft: { label: "Sq. Feet (ft²)", factor: 0.092903 },
+        ac: { label: "Acres (ac)", factor: 4046.8564224 },
+        ha: { label: "Hectares (ha)", factor: 10000 }
+      },
+      defaultFrom: "sqm",
+      defaultTo: "sqft"
+    },
+    volume: {
+      name: "Volume",
+      units: {
+        l: { label: "Liters (L)", factor: 1 },
+        ml: { label: "Milliliters (mL)", factor: 0.001 },
+        m3: { label: "Cubic Meters (m³)", factor: 1000 },
+        gal: { label: "US Gallons (gal)", factor: 3.78541 },
+        qt: { label: "US Quarts (qt)", factor: 0.946353 },
+        cup: { label: "US Cups", factor: 0.236588 }
+      },
+      defaultFrom: "l",
+      defaultTo: "gal"
+    }
+  };
+
+  function convertTemp(val, from, to) {
+    let c = val;
+    if (from === "f") c = (val - 32) * 5 / 9;
+    else if (from === "k") c = val - 273.15;
+    
+    if (to === "c") return c;
+    if (to === "f") return (c * 9 / 5) + 32;
+    if (to === "k") return c + 273.15;
+    return c;
+  }
+
+  function runConversion(isForward = true) {
+    const cat = $("convCategory").value;
+    const catData = unitData[cat];
+    const u1 = $("convFromUnit").value;
+    const u2 = $("convToUnit").value;
+    
+    $("fromUnitName").textContent = catData.units[u1].label;
+    $("toUnitName").textContent = catData.units[u2].label;
+
+    if (isForward) {
+      const v1 = parseFloat($("convFromVal").value);
+      if (isNaN(v1)) { $("convToVal").value = ""; return; }
+      if (cat === "temp") {
+        $("convToVal").value = parseFloat(convertTemp(v1, u1, u2).toFixed(6));
+      } else {
+        const base = v1 * catData.units[u1].factor;
+        const res = base / catData.units[u2].factor;
+        $("convToVal").value = parseFloat(res.toPrecision(8));
+      }
+    } else {
+      const v2 = parseFloat($("convToVal").value);
+      if (isNaN(v2)) { $("convFromVal").value = ""; return; }
+      if (cat === "temp") {
+        $("convFromVal").value = parseFloat(convertTemp(v2, u2, u1).toFixed(6));
+      } else {
+        const base = v2 * catData.units[u2].factor;
+        const res = base / catData.units[u1].factor;
+        $("convFromVal").value = parseFloat(res.toPrecision(8));
+      }
+    }
+  }
+
+  function populateConvUnits() {
+    const cat = $("convCategory").value;
+    const catData = unitData[cat];
+    const s1 = $("convFromUnit");
+    const s2 = $("convToUnit");
+    s1.innerHTML = "";
+    s2.innerHTML = "";
+
+    Object.keys(catData.units).forEach(key => {
+      const o1 = document.createElement("option");
+      o1.value = key;
+      o1.textContent = catData.units[key].label;
+      s1.appendChild(o1);
+
+      const o2 = document.createElement("option");
+      o2.value = key;
+      o2.textContent = catData.units[key].label;
+      s2.appendChild(o2);
+    });
+
+    s1.value = catData.defaultFrom;
+    s2.value = catData.defaultTo;
+    runConversion(true);
+  }
+
+  $("convCategory").onchange = populateConvUnits;
+  $("convFromUnit").onchange = () => runConversion(true);
+  $("convToUnit").onchange = () => runConversion(true);
+  $("convFromVal").oninput = () => runConversion(true);
+  $("convToVal").oninput = () => runConversion(false);
+
+  $("convSwapBtn").onclick = () => {
+    const u1 = $("convFromUnit").value;
+    const u2 = $("convToUnit").value;
+    $("convFromUnit").value = u2;
+    $("convToUnit").value = u1;
+    runConversion(true);
+    playClick(600);
+  };
+
+  $("convCopyBtn").onclick = async () => {
+    try {
+      await navigator.clipboard.writeText($("convToVal").value);
+      showToast("Converted result copied ✓");
+    } catch {}
+  };
+
+  $("convSendBtn").onclick = () => {
+    const val = $("convToVal").value;
+    if (val) {
+      expr = val;
+      done = true;
+      setMode("std");
+      render();
+      showToast("Sent to Calculator →");
+    }
+  };
+
+  populateConvUnits();
+
+  // --- NAVIGATION / MODE HANDLING ---
+  function setMode(mode) {
+    W.classList.remove("sci", "conv");
+    $("tabStd").classList.remove("active");
+    $("tabSci").classList.remove("active");
+    $("tabConv").classList.remove("active");
+    $("tabStd").setAttribute("aria-selected", "false");
+    $("tabSci").setAttribute("aria-selected", "false");
+    $("tabConv").setAttribute("aria-selected", "false");
+
+    if (mode === "std") {
+      $("tabStd").classList.add("active");
+      $("tabStd").setAttribute("aria-selected", "true");
+    } else if (mode === "sci") {
+      W.classList.add("sci");
+      $("tabSci").classList.add("active");
+      $("tabSci").setAttribute("aria-selected", "true");
+    } else if (mode === "conv") {
+      W.classList.add("conv");
+      $("tabConv").classList.add("active");
+      $("tabConv").setAttribute("aria-selected", "true");
+    }
+    playClick(650);
+  }
+
+  $("tabStd").onclick = () => setMode("std");
+  $("tabSci").onclick = () => setMode("sci");
+  $("tabConv").onclick = () => setMode("conv");
+
+  // History Toggle & Mobile Drawer
+  function toggleHistory(open) {
+    const shouldOpen = open !== undefined ? open : !W.classList.contains("hist-open");
+    W.classList.toggle("hist-open", shouldOpen);
+    $("histToggleBtn").classList.toggle("active", shouldOpen);
+    $("histBackdrop").classList.toggle("active", shouldOpen);
+    playClick(600);
+  }
+
+  $("histToggleBtn").onclick = () => toggleHistory();
+  $("histBackdrop").onclick = () => toggleHistory(false);
+  $("histDragHandle").onclick = () => toggleHistory(false);
+
+  $("histClearBtn").onclick = () => {
+    if (confirm("Clear all calculation history?")) {
+      hist = [];
+      localStorage.setItem("f0_calc_history", "[]");
+      render();
+      showToast("History cleared");
+    }
+  };
+
+  $("histExportBtn").onclick = () => {
+    if (!hist.length) return alert("No calculations to export.");
+    const csvContent = "data:text/csv;charset=utf-8," + ["Expression,Result,Timestamp", ...hist.map(h => `"${h.e}","${h.r}","${h.t || ''}"`)].join("\n");
+    const link = document.createElement("a");
+    link.setAttribute("href", encodeURI(csvContent));
+    link.setAttribute("download", `f0_calculator_history_${Date.now()}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast("Exported CSV file");
+  };
+
+  $("histList").onclick = e => {
+    const li = e.target.closest("li");
+    if (!li) return;
+    const item = hist[li.dataset.i];
+    if (item) {
+      expr = item.r;
+      prev = item.e + " =";
+      done = true;
+      err = "";
+      render();
+      playClick(800);
+      showToast("Loaded calculation");
+      if (window.innerWidth <= 768) toggleHistory(false);
+    }
+  };
+
+  // Sound Toggle
+  $("soundBtn").onclick = () => {
+    soundEnabled = !soundEnabled;
+    $("soundBtn").textContent = soundEnabled ? "🔊" : "🔇";
+    localStorage.setItem("f0_sound", soundEnabled);
+    showToast(soundEnabled ? "Sound enabled 🔊" : "Sound muted 🔇");
+  };
+  $("soundBtn").textContent = soundEnabled ? "🔊" : "🔇";
+
+  // Theme Management
+  function applyTheme(isLight) {
+    document.documentElement.classList.toggle("light", isLight);
+    $("themeBtn").textContent = isLight ? "☾" : "☀";
+    localStorage.setItem("f0_theme", isLight ? "light" : "dark");
+  }
+  $("themeBtn").onclick = () => {
+    const isLight = !document.documentElement.classList.contains("light");
+    applyTheme(isLight);
+    playClick(700);
+    showToast(isLight ? "Light theme" : "Dark theme");
+  };
+  const savedTheme = localStorage.getItem("f0_theme");
+  if (savedTheme) applyTheme(savedTheme === "light");
+  else applyTheme(window.matchMedia("(prefers-color-scheme: light)").matches);
+
+  // Copy Display
+  async function copyCurrentResult() {
+    const val = done ? expr : ($("pv").textContent.slice(2).replace(/,/g, "") || expr || "0");
+    try {
+      await navigator.clipboard.writeText(val);
+      $("copyBtn").classList.add("success");
+      $("copyText").textContent = "Copied ✓";
+      showToast("Copied " + val + " to clipboard");
+      setTimeout(() => {
+        $("copyBtn").classList.remove("success");
+        $("copyText").textContent = "Copy";
+      }, 1400);
+    } catch {}
+  }
+  $("copyBtn").onclick = copyCurrentResult;
+
+  $("degBadge").onclick = () => {
+    deg = !deg;
+    render();
+    playClick(600);
+    showToast(deg ? "Mode: Degrees (DEG)" : "Mode: Radians (RAD)");
+  };
+
+  // Shortcuts Modal
+  $("shortcutsLink").onclick = () => $("shortcutsModal").classList.add("open");
+  $("closeModalBtn").onclick = () => $("shortcutsModal").classList.remove("open");
+  $("shortcutsModal").onclick = e => { if (e.target === $("shortcutsModal")) $("shortcutsModal").classList.remove("open"); };
+
+  // Download Modal & PWA
+  $("downloadModalBtn").onclick = () => { $("downloadModal").classList.add("open"); playClick(650); };
+  $("closeDownloadBtn").onclick = () => $("downloadModal").classList.remove("open");
+  $("downloadModal").onclick = e => { if (e.target === $("downloadModal")) $("downloadModal").classList.remove("open"); };
+
+  let deferredPrompt = null;
+  window.addEventListener("beforeinstallprompt", e => {
+    e.preventDefault();
+    deferredPrompt = e;
+  });
+
+  $("pwaInstallCard").onclick = async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === "accepted") {
+        showToast("App installed successfully! 🎉");
+      }
+      deferredPrompt = null;
+    } else {
+      showToast("Use browser menu: 'Add to Home Screen' / 'Install App'");
+    }
+  };
+
+  // --- CLIPBOARD PASTE SUPPORT (PC & Mobile) ---
+  window.addEventListener("paste", ev => {
+    if (document.activeElement && document.activeElement.tagName === "INPUT") return;
+    const text = (ev.clipboardData || window.clipboardData).getData("text");
+    if (text) {
+      const sanitized = text.trim().replace(/[*]/g, "×").replace(/[\/]/g, "÷");
+      if (sanitized) {
+        input(sanitized);
+        showToast("Pasted expression");
+      }
+    }
+  });
+
+  // --- KEYBOARD LISTENERS (PC & Desktop NumPad) ---
+  window.addEventListener("keydown", ev => {
+    // Check for Copy shortcut
+    if ((ev.metaKey || ev.ctrlKey) && (ev.key === "c" || ev.key === "C")) {
+      const sel = window.getSelection().toString();
+      if (!sel) {
+        copyCurrentResult();
+      }
+      return;
+    }
+
+    if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    if (document.activeElement && document.activeElement.tagName === "INPUT") return;
+
+    const k = ev.key;
+    const code = ev.code;
+
+    // NumPad Mapping
+    if (code.startsWith("Numpad")) {
+      const numMap = {
+        "Numpad0": "0", "Numpad1": "1", "Numpad2": "2", "Numpad3": "3", "Numpad4": "4",
+        "Numpad5": "5", "Numpad6": "6", "Numpad7": "7", "Numpad8": "8", "Numpad9": "9",
+        "NumpadAdd": "+", "NumpadSubtract": "-", "NumpadMultiply": "×", "NumpadDivide": "÷",
+        "NumpadDecimal": ".", "NumpadEnter": "="
+      };
+      if (numMap[code]) {
+        ev.preventDefault();
+        if (numMap[code] === "=") { equals(); animateKey("="); }
+        else { input(numMap[code]); animateKey(numMap[code]); }
+        return;
+      }
+    }
+
+    const opMap = {
+      "*": "×", "x": "×", "/": "÷", "+": "+", "-": "-", "^": "^", "%": "%",
+      "(": "(", ")": ")", ".": ".", ",": "."
+    };
+
+    let targetKey = null;
+
+    if (/^[0-9]$/.test(k)) {
+      input(k);
+      targetKey = k;
+    } else if (opMap[k]) {
+      input(opMap[k]);
+      targetKey = opMap[k];
+    } else if (k === "Enter" || k === "=") {
+      ev.preventDefault();
+      equals();
+      targetKey = "=";
+    } else if (k === "Backspace") {
+      backspace();
+      targetKey = "DEL";
+    } else if (k === "Escape" || k === "Delete") {
+      clearAll();
+      targetKey = "AC";
+    } else if (k === "!") {
+      input("!");
+    } else if (k === "s" || k === "S") {
+      input("sin(");
+    } else if (k === "c" || k === "C") {
+      input("cos(");
+    } else if (k === "t" || k === "T") {
+      input("tan(");
+    } else if (k === "l" || k === "L") {
+      input("log(");
+    } else if (k === "p" || k === "P") {
+      input("π");
+    } else if (k === "e" || k === "E") {
+      input("e");
+    } else if (k === "h" || k === "H") {
+      toggleHistory();
+    } else if (k === "d" || k === "D") {
+      deg = !deg;
+      render();
+      showToast(deg ? "DEG mode" : "RAD mode");
+    }
+
+    if (targetKey) animateKey(targetKey);
+  });
+
+  function animateKey(id) {
+    if (btnMap[id]) {
+      btnMap[id].classList.add("p");
+      setTimeout(() => btnMap[id].classList.remove("p"), 140);
+    }
+  }
+
+  // Initial render & state sync
+  updateMemUI();
+  render();
+})();
+</script>
+</body>
+</html>

@@ -87,7 +87,7 @@ export function App() {
 
   const [tools, setTools] = useState<CuratedTool[]>(() => {
     try {
-      const saved = localStorage.getItem('f0undr_tools_editorial_v3');
+      const saved = localStorage.getItem('f0undr_tools_editorial_v4');
       if (saved) {
         const parsed: CuratedTool[] = JSON.parse(saved);
         const missing = INITIAL_CURATED_TOOLS.filter((it) => !parsed.some((t) => t.id === it.id));
@@ -126,7 +126,7 @@ export function App() {
   }, [books]);
 
   useEffect(() => {
-    localStorage.setItem('f0undr_tools_editorial_v3', JSON.stringify(tools));
+    localStorage.setItem('f0undr_tools_editorial_v4', JSON.stringify(tools));
   }, [tools]);
 
   useEffect(() => {
