@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import type { Book, CuratedTool, TeamMember, Thing, BookCategory, ReadingStatus, ToolCategory, ThingCategory } from '../types';
 import { BookOpen, Wrench, Users, Package, X } from 'lucide-react';
+import { PRESET_RANKS } from '../utils/ranks';
 
 interface AddModalProps {
   isOpen: boolean;
@@ -49,6 +50,7 @@ export const AddModal: React.FC<AddModalProps> = ({
 
   const [teamName, setTeamName] = useState('');
   const [teamRole, setTeamRole] = useState('');
+  const [teamRank, setTeamRank] = useState('Core Fellow');
   const [teamHandle, setTeamHandle] = useState('');
   const [teamBio, setTeamBio] = useState('');
   const [teamStatus, setTeamStatus] = useState<TeamMember['status']>('Building');
@@ -112,10 +114,14 @@ export const AddModal: React.FC<AddModalProps> = ({
     e.preventDefault();
     if (!teamName.trim()) return;
 
+    const isFounder = teamRank === 'Founder' || teamRank === 'Co-Founder';
     const newMember: TeamMember = {
       id: `team-${Date.now()}`,
       name: teamName.trim(),
       role: teamRole.trim() || 'Core Researcher & Fellow',
+      rank: teamRank,
+      verifiedFounder: isFounder,
+      department: isFounder ? 'Core Leadership' : 'Fellowship Core',
       handle: teamHandle.trim().startsWith('@') ? teamHandle.trim() : `@${teamHandle.trim() || 'fellow'}`,
       avatarUrl: `https://ui-avatars.com/api/?name=${encodeURIComponent(
         teamName
@@ -449,7 +455,7 @@ export const AddModal: React.FC<AddModalProps> = ({
               />
             </div>
 
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               <div>
                 <label className="text-xs font-mono text-[#78716c] uppercase block mb-1">Role</label>
                 <input
@@ -459,6 +465,20 @@ export const AddModal: React.FC<AddModalProps> = ({
                   placeholder="Principal Systems"
                   className="w-full px-3 py-2 bg-white border border-[#e7e5e4] rounded-xl text-xs text-[#1c1917] focus:outline-none focus:border-[#1c1917]"
                 />
+              </div>
+              <div>
+                <label className="text-xs font-mono text-[#78716c] uppercase block mb-1">Rank</label>
+                <select
+                  value={teamRank}
+                  onChange={(e) => setTeamRank(e.target.value)}
+                  className="w-full px-3 py-2 bg-white border border-[#e7e5e4] rounded-xl text-xs text-[#1c1917] focus:outline-none focus:border-[#1c1917]"
+                >
+                  {PRESET_RANKS.map((r) => (
+                    <option key={r.value} value={r.value}>
+                      {r.icon} {r.label}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div>
                 <label className="text-xs font-mono text-[#78716c] uppercase block mb-1">Handle</label>

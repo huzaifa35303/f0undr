@@ -15,7 +15,7 @@ export interface Book {
   year?: string;
   coverGradient?: string;
   status: ReadingStatus;
-  rating: number; // 1 to 5
+  rating: number;
   category: BookCategory;
   keyTakeaways: string[];
   notes: string;
@@ -64,6 +64,17 @@ export interface Thing {
   iconName?: string;
 }
 
+export type MemberRank =
+  | 'Founder'
+  | 'Co-Founder'
+  | 'Principal Fellow'
+  | 'Senior Fellow'
+  | 'Core Fellow'
+  | 'Research Fellow'
+  | 'Junior Fellow'
+  | 'Apprentice'
+  | string;
+
 export interface TeamMember {
   id: string;
   name: string;
@@ -84,6 +95,7 @@ export interface TeamMember {
   highlightProject?: string;
   verifiedFounder?: boolean;
   department?: string;
+  rank?: MemberRank;
 }
 
 

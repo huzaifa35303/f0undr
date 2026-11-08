@@ -21,7 +21,8 @@ import { AddModal } from './components/AddModal';
 import { LoginModal } from './components/LoginModal';
 import { AdminPanel } from './components/AdminPanel';
 import { Footer } from './components/Footer';
-import { ArrowUpRight, Award, BookOpen, GraduationCap, Maximize2, Brain, ExternalLink, ArrowUp } from 'lucide-react';
+import { getRankBadgeInfo } from './utils/ranks';
+import { ArrowUpRight, BookOpen, GraduationCap, Maximize2, Brain, ExternalLink, ArrowUp } from 'lucide-react';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<string>('overview');
@@ -647,12 +648,18 @@ export function App() {
                           )}&background=1c1917&color=faf8f5`;
                         }}
                       />
-                      <div className="overflow-hidden">
+                      <div className="overflow-hidden min-w-0">
                         <div className="flex items-center gap-1.5">
                           <h4 className="text-sm font-serif font-bold text-[#1c1917] truncate">{member.name}</h4>
-                          {member.verifiedFounder && (
-                            <Award className="w-3.5 h-3.5 text-[#c2410c] shrink-0" />
-                          )}
+                          {(() => {
+                            const rb = getRankBadgeInfo(member.rank, member.verifiedFounder);
+                            return (
+                              <span className={`inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[9px] font-mono border font-medium shrink-0 ${rb.bg}`}>
+                                <span>{rb.icon}</span>
+                                <span className="truncate max-w-[80px]">{rb.label}</span>
+                              </span>
+                            );
+                          })()}
                         </div>
                         <p className="text-xs text-[#57534e] truncate">{member.role}</p>
                         <span className="text-[10px] font-mono text-[#2b5346] flex items-center gap-1 mt-0.5 font-medium">

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { TeamMember } from '../types';
+import { getRankBadgeInfo } from '../utils/ranks';
 import { Mail, CheckCircle2, Search, Award, ArrowUpRight, X } from 'lucide-react';
 
 interface TeamSectionProps {
@@ -123,6 +124,7 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredTeam.map((member) => {
             const badge = getStatusBadge(member.status);
+            const rankBadge = getRankBadgeInfo(member.rank, member.verifiedFounder);
             return (
               <div
                 key={member.id}
@@ -159,11 +161,10 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
                         {member.status}
                       </span>
 
-                      {member.verifiedFounder && (
-                        <span className="editorial-stamp editorial-stamp-terracotta text-[10px]">
-                          Co-Founder
-                        </span>
-                      )}
+                      <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[10px] font-mono font-semibold border shadow-2xs ${rankBadge.bg}`}>
+                        <span>{rankBadge.icon}</span>
+                        <span>{rankBadge.label}</span>
+                      </span>
                     </div>
                   </div>
 
@@ -294,11 +295,16 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
                   <h3 className="text-2xl font-serif font-bold text-[#1c1917]">
                     {selectedMember.name}
                   </h3>
-                  {selectedMember.verifiedFounder && (
-                    <span className="editorial-stamp editorial-stamp-terracotta text-xs">
-                      Co-Founder
-                    </span>
-                  )}
+                  {(() => {
+                    const modalRank = getRankBadgeInfo(selectedMember.rank, selectedMember.verifiedFounder);
+                    return (
+                      <span className={`inline-flex items-center gap-1.5 px-3 py-0.5 rounded-lg text-xs font-mono font-bold border shadow-2xs ${modalRank.bg}`}>
+                        <span>{modalRank.icon}</span>
+                        <span>{modalRank.label}</span>
+                        <span className="text-[10px] opacity-75 font-normal ml-0.5">· {modalRank.tier}</span>
+                      </span>
+                    );
+                  })()}
                 </div>
                 <div className="text-xs font-mono text-[#c2410c] mb-1">
                   {selectedMember.handle} · {selectedMember.role}

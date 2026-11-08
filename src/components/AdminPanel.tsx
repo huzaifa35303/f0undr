@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import {
   Shield,
+  Crown,
   BookOpen,
   Users,
   Wrench,
@@ -32,6 +33,7 @@ import type {
   AuditLogItem,
   ReadingStatus,
 } from '../types';
+import { PRESET_RANKS, getRankBadgeInfo } from '../utils/ranks';
 
 interface AdminPanelProps {
   isOpen: boolean;
@@ -93,6 +95,8 @@ export const AdminPanel = ({
   const [seoSavedSuccess, setSeoSavedSuccess] = useState(false);
   const [serpViewMode, setSerpViewMode] = useState<'desktop' | 'mobile'>('desktop');
   const [contentFilter, setContentFilter] = useState('');
+  const [editingRankMemberId, setEditingRankMemberId] = useState<string | null>(null);
+  const [customRankInput, setCustomRankInput] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -797,7 +801,7 @@ export const AdminPanel = ({
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <h2 className="font-serif text-2xl font-bold text-[#1c1917]">Core Team &amp; Fellows Roster</h2>
-                <p className="text-xs text-[#57534e]">Manage founder status, roles, availability, and dossiers.</p>
+                <p className="text-xs text-[#57534e]">Manage member ranks, founder status, roles, availability, and dossiers.</p>
               </div>
               <button
                 onClick={() => onOpenAddModal('team')}
@@ -808,68 +812,150 @@ export const AdminPanel = ({
               </button>
             </div>
 
+            <div className="p-4 rounded-xl bg-white border border-[#e7e5e4] shadow-2xs">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <Crown className="w-4 h-4 text-[#c2410c]" />
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#1c1917]">Fellowship Rank Distribution</span>
+                </div>
+                <span className="text-xs font-mono text-[#78716c]">{team.length} Total Fellows</span>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2">
+                {PRESET_RANKS.map((rk) => {
+                  const count = team.filter((m) => (m.rank || (m.verifiedFounder ? 'Co-Founder' : 'Core Fellow')) === rk.value).length;
+                  return (
+                    <div key={rk.value} className="p-2 rounded-lg bg-[#faf8f5] border border-[#e7e5e4] text-center">
+                      <div className="text-base">{rk.icon}</div>
+                      <div className="text-[10px] font-mono text-[#78716c] truncate mt-0.5">{rk.label}</div>
+                      <div className="text-xs font-mono font-bold text-[#1c1917] mt-0.5">{count}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
             <div className="editorial-card rounded-2xl bg-white border border-[#e7e5e4] overflow-hidden divide-y divide-[#e7e5e4]">
-              {team.map((member) => (
-                <div key={member.id} className="p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-[#faf8f5] transition-colors">
-                  <div className="flex items-center gap-3.5">
-                    <img
-                      src={member.avatarUrl}
-                      alt={member.name}
-                      className="w-12 h-12 rounded-xl object-cover border border-[#e7e5e4] shrink-0"
-                    />
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-serif font-bold text-base text-[#1c1917]">{member.name}</span>
-                        {member.verifiedFounder && (
-                          <span className="editorial-stamp editorial-stamp-terracotta text-[10px]">
-                            Co-Founder
+              {team.map((member) => {
+                const rankInfo = getRankBadgeInfo(member.rank, member.verifiedFounder);
+                const currentRank = member.rank || (member.verifiedFounder ? 'Co-Founder' : 'Core Fellow');
+                const isCustomRank = !PRESET_RANKS.some((r) => r.value === currentRank);
+
+                return (
+                  <div key={member.id} className="p-4 sm:p-5 flex flex-col lg:flex-row lg:items-center justify-between gap-4 hover:bg-[#faf8f5] transition-colors">
+                    <div className="flex items-center gap-3.5 min-w-0">
+                      <img
+                        src={member.avatarUrl}
+                        alt={member.name}
+                        className="w-12 h-12 rounded-xl object-cover border border-[#e7e5e4] shrink-0"
+                      />
+                      <div className="min-w-0">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="font-serif font-bold text-base text-[#1c1917]">{member.name}</span>
+                          <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[10px] font-mono font-semibold border ${rankInfo.bg}`}>
+                            <span>{rankInfo.icon}</span>
+                            <span>{rankInfo.label}</span>
                           </span>
-                        )}
-                        <span className="text-[10px] font-mono text-[#78716c]">{member.handle}</span>
+                          <span className="text-[10px] font-mono text-[#78716c]">{member.handle}</span>
+                        </div>
+                        <p className="text-xs text-[#57534e] mt-0.5">{member.role} · <span className="font-mono">{member.department}</span></p>
+                        <p className="text-[11px] text-[#78716c] line-clamp-1 mt-0.5">{member.bio}</p>
                       </div>
-                      <p className="text-xs text-[#57534e] mt-0.5">{member.role} · <span className="font-mono">{member.department}</span></p>
-                      <p className="text-[11px] text-[#78716c] line-clamp-1 mt-0.5">{member.bio}</p>
+                    </div>
+
+                    <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+                      <div className="flex items-center gap-1.5">
+                        <label className="text-[10px] font-mono uppercase text-[#78716c] font-semibold">Rank:</label>
+                        <select
+                          value={isCustomRank ? 'CUSTOM' : currentRank}
+                          onChange={(e) => {
+                            const val = e.target.value;
+                            if (val === 'CUSTOM') {
+                              setEditingRankMemberId(member.id);
+                              setCustomRankInput(member.rank || '');
+                            } else {
+                              const isFounder = val === 'Founder' || val === 'Co-Founder';
+                              onUpdateTeamMember({
+                                ...member,
+                                rank: val,
+                                verifiedFounder: isFounder
+                              });
+                            }
+                          }}
+                          className="px-2.5 py-1.5 rounded-lg border border-[#d6d3d1] text-xs bg-white font-mono text-[#1c1917] font-medium shadow-2xs focus:outline-none focus:border-[#c2410c]"
+                        >
+                          {PRESET_RANKS.map((r) => (
+                            <option key={r.value} value={r.value}>
+                              {r.icon} {r.label}
+                            </option>
+                          ))}
+                          <option value="CUSTOM">✍️ Custom Rank...</option>
+                        </select>
+                      </div>
+
+                      {editingRankMemberId === member.id && (
+                        <div className="flex items-center gap-1.5 bg-[#fff7ed] p-1.5 rounded-lg border border-[#ffedd5]">
+                          <input
+                            type="text"
+                            value={customRankInput}
+                            onChange={(e) => setCustomRankInput(e.target.value)}
+                            placeholder="e.g. Lead Architect"
+                            className="px-2 py-1 text-xs font-mono border border-[#fdba74] rounded bg-white text-[#1c1917] w-36 focus:outline-none"
+                            autoFocus
+                          />
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const trimmed = customRankInput.trim();
+                              if (trimmed) {
+                                const isFounder = trimmed.toLowerCase().includes('founder');
+                                onUpdateTeamMember({
+                                  ...member,
+                                  rank: trimmed,
+                                  verifiedFounder: isFounder
+                                });
+                              }
+                              setEditingRankMemberId(null);
+                            }}
+                            className="px-2 py-1 bg-[#c2410c] text-white rounded text-xs font-mono font-medium hover:bg-[#9a3412] transition-colors"
+                          >
+                            Apply
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setEditingRankMemberId(null)}
+                            className="p-1 text-[#78716c] hover:text-[#1c1917]"
+                          >
+                            <X className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      )}
+
+                      <select
+                        value={member.status}
+                        onChange={(e) => onUpdateTeamMember({ ...member, status: e.target.value as 'Building' | 'Deep Work' | 'Available' | 'Offline' })}
+                        className="px-2.5 py-1.5 rounded-lg border border-[#d6d3d1] text-xs bg-white font-mono text-[#1c1917]"
+                      >
+                        <option value="Building">Building</option>
+                        <option value="Deep Work">Deep Work</option>
+                        <option value="Available">Available</option>
+                        <option value="Offline">Offline</option>
+                      </select>
+
+                      <button
+                        onClick={() => {
+                          if (window.confirm(`Remove fellow "${member.name}" from active roster?`)) {
+                            onDeleteTeamMember(member.id);
+                          }
+                        }}
+                        className="p-1.5 rounded-lg text-[#78716c] hover:text-red-600 hover:bg-red-50 transition-colors"
+                        title="Delete Fellow"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
                     </div>
                   </div>
-
-                  <div className="flex items-center gap-3 shrink-0">
-                    <select
-                      value={member.status}
-                      onChange={(e) => onUpdateTeamMember({ ...member, status: e.target.value as 'Building' | 'Deep Work' | 'Available' | 'Offline' })}
-                      className="px-2.5 py-1.5 rounded-lg border border-[#d6d3d1] text-xs bg-white font-mono text-[#1c1917]"
-                    >
-                      <option value="Building">Building</option>
-                      <option value="Deep Work">Deep Work</option>
-                      <option value="Available">Available</option>
-                      <option value="Offline">Offline</option>
-                    </select>
-
-                    <button
-                      onClick={() => onUpdateTeamMember({ ...member, verifiedFounder: !member.verifiedFounder })}
-                      className={`px-2.5 py-1 rounded-lg text-xs font-mono font-medium border transition-colors ${
-                        member.verifiedFounder
-                          ? 'bg-[#fff7ed] border-[#ffedd5] text-[#c2410c]'
-                          : 'bg-[#f5f2eb] border-[#e7e5e4] text-[#78716c]'
-                      }`}
-                      title="Toggle Co-Founder status"
-                    >
-                      {member.verifiedFounder ? 'Founder ★' : 'Fellow'}
-                    </button>
-
-                    <button
-                      onClick={() => {
-                        if (window.confirm(`Remove fellow "${member.name}" from active roster?`)) {
-                          onDeleteTeamMember(member.id);
-                        }
-                      }}
-                      className="p-1.5 rounded-lg text-[#78716c] hover:text-red-600 hover:bg-red-50 transition-colors"
-                      title="Delete Fellow"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         )}
