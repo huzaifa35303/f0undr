@@ -51,7 +51,7 @@ export const PortfolioStorySection = ({
               The Story of <em className="italic text-[#c2410c] font-normal">f0undr</em>
             </h2>
             <p className="text-[#57534e] text-sm sm:text-base mt-3 max-w-2xl leading-relaxed font-normal">
-              We are an interdisciplinary collective founded by <strong className="text-[#1c1917]">Abdull Rehman Khizar</strong>, <strong className="text-[#1c1917]">f0undr</strong>, and <strong className="text-[#1c1917]">M.Huzaifa</strong>.
+              We are an interdisciplinary collective led by <strong className="text-[#1c1917]">Muhammad Huzaifa Zahid (f0undr)</strong>, <strong className="text-[#1c1917]">Rai Abdul Rehman Khizar</strong>, <strong className="text-[#1c1917]">Rana Ayyan Saleem</strong>, and <strong className="text-[#1c1917]">Rao Muhammad Ammar Asim</strong>.
               We believe that small, highly leveraged teams armed with first-principles reasoning and clear judgment build the future.
             </p>
           </div>
@@ -111,7 +111,7 @@ export const PortfolioStorySection = ({
                 f0undr Book: Computing &amp; Technology
               </h4>
               <p className="text-xs text-[#57534e] leading-relaxed mb-6 font-normal">
-                Written by <strong className="text-[#1c1917]">f0undr</strong> &amp; <strong className="text-[#1c1917]">Abdull Rehman Khizar</strong>. Complete curriculum covering hardware architectures, algorithmic logic, Scratch programming, cybersecurity, and digital venture creation.
+                Authored by <strong className="text-[#1c1917]">Muhammad Huzaifa Zahid (f0undr)</strong> &amp; <strong className="text-[#1c1917]">Rai Abdul Rehman Khizar</strong> with the f0undr Leadership. Complete curriculum covering hardware architectures, algorithmic logic, Scratch programming, cybersecurity, and digital venture creation.
               </p>
 
               <div className="space-y-3 font-mono text-xs">

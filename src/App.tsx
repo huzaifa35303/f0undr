@@ -46,8 +46,16 @@ export function App() {
 
   const [seoSettings, setSeoSettings] = useState<SeoSettings>(() => {
     try {
-      const saved = localStorage.getItem('f0undr_seo_settings_v2');
-      if (saved) return JSON.parse(saved);
+      const saved = localStorage.getItem('f0undr_seo_settings_v3');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed.authorName && parsed.authorName.includes('Saleem')) {
+          return parsed;
+        }
+      }
+      localStorage.removeItem('f0undr_seo_settings_v3');
+      localStorage.removeItem('f0undr_seo_settings_v2');
+      localStorage.removeItem('f0undr_seo_settings');
       const currentOrigin =
         typeof window !== 'undefined' && window.location.origin.includes('vercel.app')
           ? window.location.origin
@@ -103,13 +111,24 @@ export function App() {
 
   const [team, setTeam] = useState<TeamMember[]>(() => {
     try {
-      const saved = localStorage.getItem('f0undr_team_editorial_v3');
+      const saved = localStorage.getItem('f0undr_team_editorial_v6');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.some((m: TeamMember) => m.name.includes('Zahid'))) {
+        if (
+          Array.isArray(parsed) &&
+          parsed.some((m: TeamMember) => m.name.includes('Zahid')) &&
+          parsed.some((m: TeamMember) => m.name.includes('Khizar')) &&
+          parsed.some((m: TeamMember) => m.name.includes('Saleem')) &&
+          parsed.some((m: TeamMember) => m.name.includes('Ammar'))
+        ) {
           return parsed;
         }
       }
+      ['f0undr_team_editorial_v5', 'f0undr_team_editorial_v4', 'f0undr_team_editorial_v3', 'f0undr_team_editorial_v2', 'f0undr_team'].forEach((k) => {
+        try {
+          localStorage.removeItem(k);
+        } catch {}
+      });
       return INITIAL_TEAM;
     } catch {
       return INITIAL_TEAM;
@@ -134,7 +153,7 @@ export function App() {
   }, [tools]);
 
   useEffect(() => {
-    localStorage.setItem('f0undr_team_editorial_v3', JSON.stringify(team));
+    localStorage.setItem('f0undr_team_editorial_v6', JSON.stringify(team));
   }, [team]);
 
   useEffect(() => {
@@ -142,7 +161,7 @@ export function App() {
   }, [things]);
 
   useEffect(() => {
-    localStorage.setItem('f0undr_seo_settings', JSON.stringify(seoSettings));
+    localStorage.setItem('f0undr_seo_settings_v3', JSON.stringify(seoSettings));
     document.title = seoSettings.siteTitle;
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', seoSettings.siteDescription);
@@ -352,6 +371,9 @@ export function App() {
       localStorage.removeItem('f0undr_tools_editorial_v5');
       localStorage.removeItem('f0undr_tools_editorial_v4');
       localStorage.removeItem('f0undr_tools_editorial_v3');
+      localStorage.removeItem('f0undr_team_editorial_v6');
+      localStorage.removeItem('f0undr_team_editorial_v5');
+      localStorage.removeItem('f0undr_team_editorial_v4');
       localStorage.removeItem('f0undr_team_editorial_v3');
       localStorage.removeItem('f0undr_team_editorial_v2');
       localStorage.removeItem('f0undr_things_editorial_v2');
@@ -429,7 +451,7 @@ export function App() {
                       f0undr Book: Computing &amp; Technology
                     </h3>
                     <p className="text-xs text-[#c2410c] font-mono font-medium">
-                      Authors: <strong className="text-[#1c1917]">Muhammad Huzaifa Zahid (f0undr)</strong> &amp; <strong className="text-[#1c1917]">Rai Abdul Rehman Khizar</strong> (with <strong className="text-[#1c1917]">M.Huzaifa</strong>)
+                      Authors: <strong className="text-[#1c1917]">Muhammad Huzaifa Zahid (f0undr)</strong> &amp; <strong className="text-[#1c1917]">Rai Abdul Rehman Khizar</strong>
                     </p>
                     <p className="text-xs sm:text-sm text-[#57534e] leading-relaxed">
                       Complete modern computing textbook covering hardware IPO cycle, digital productivity, algorithmic thinking, Scratch visual coding, cybersecurity, and entrepreneurship.
@@ -792,7 +814,7 @@ export function App() {
                         f0undr Book: <em className="italic text-[#c2410c] font-normal">Computing &amp; Technology</em>
                       </h2>
                       <p className="text-[#57534e] text-xs sm:text-sm mt-2 max-w-3xl leading-relaxed">
-                        Authored by <strong className="text-[#1c1917]">Muhammad Huzaifa Zahid (f0undr)</strong> &amp; the <strong className="text-[#1c1917]">f0undr Team</strong> (with <strong className="text-[#1c1917]">f0undr</strong> &amp; <strong className="text-[#1c1917]">Abdull Rehman Khizar</strong>). Complete computing curriculum with interactive diagrams, quizzes, flashcards, and student lab workbooks.
+                        Authored by <strong className="text-[#1c1917]">Muhammad Huzaifa Zahid (f0undr)</strong> &amp; <strong className="text-[#1c1917]">Rai Abdul Rehman Khizar</strong> with the <strong className="text-[#1c1917]">f0undr Leadership</strong>. Complete computing curriculum with interactive diagrams, quizzes, flashcards, and student lab workbooks.
                       </p>
                     </div>
 

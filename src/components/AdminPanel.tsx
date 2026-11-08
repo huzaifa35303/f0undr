@@ -315,7 +315,7 @@ export const AdminPanel = ({
                   <Users className="w-4 h-4 text-[#2b5346]" />
                 </div>
                 <div className="font-serif text-3xl font-bold text-[#1c1917]">{team.length}</div>
-                <p className="text-[11px] text-[#78716c] mt-1 font-mono">f0undr, Khizar, Huzaifa + 5 leads</p>
+                <p className="text-[11px] text-[#78716c] mt-1 font-mono">f0undr, Khizar, Saleem, Ammar + Fellows</p>
               </div>
 
               <div className="editorial-card rounded-2xl p-5 bg-white border border-[#e7e5e4]">
