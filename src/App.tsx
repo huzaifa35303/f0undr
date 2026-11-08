@@ -103,7 +103,7 @@ export function App() {
 
   const [team, setTeam] = useState<TeamMember[]>(() => {
     try {
-      const saved = localStorage.getItem('f0undr_team_editorial_v2');
+      const saved = localStorage.getItem('f0undr_team_editorial_v3');
       return saved ? JSON.parse(saved) : INITIAL_TEAM;
     } catch {
       return INITIAL_TEAM;
@@ -128,7 +128,7 @@ export function App() {
   }, [tools]);
 
   useEffect(() => {
-    localStorage.setItem('f0undr_team_editorial_v2', JSON.stringify(team));
+    localStorage.setItem('f0undr_team_editorial_v3', JSON.stringify(team));
   }, [team]);
 
   useEffect(() => {
@@ -346,6 +346,7 @@ export function App() {
       localStorage.removeItem('f0undr_tools_editorial_v5');
       localStorage.removeItem('f0undr_tools_editorial_v4');
       localStorage.removeItem('f0undr_tools_editorial_v3');
+      localStorage.removeItem('f0undr_team_editorial_v3');
       localStorage.removeItem('f0undr_team_editorial_v2');
       localStorage.removeItem('f0undr_things_editorial_v2');
       localStorage.removeItem('f0undr_seo_settings');
@@ -422,7 +423,7 @@ export function App() {
                       f0undr Book: Computing &amp; Technology
                     </h3>
                     <p className="text-xs text-[#c2410c] font-mono font-medium">
-                      Authors: <strong className="text-[#1c1917]">f0undr</strong> &amp; <strong className="text-[#1c1917]">Abdull Rehman Khizar</strong> (with <strong className="text-[#1c1917]">M.Huzaifa</strong>)
+                      Authors: <strong className="text-[#1c1917]">Muhammad Huzaifa Zahid (f0undr)</strong> &amp; <strong className="text-[#1c1917]">Rai Abdul Rehman Khizar</strong> (with <strong className="text-[#1c1917]">M.Huzaifa</strong>)
                     </p>
                     <p className="text-xs sm:text-sm text-[#57534e] leading-relaxed">
                       Complete modern computing textbook covering hardware IPO cycle, digital productivity, algorithmic thinking, Scratch visual coding, cybersecurity, and entrepreneurship.
@@ -604,11 +605,11 @@ export function App() {
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
                   <div>
                     <span className="text-xs font-mono text-[#c2410c] uppercase tracking-wider block mb-1 font-semibold">
-                      Core Collective · 08 Active Fellows
+                      Core Collective · {team.length.toString().padStart(2, '0')} Active Fellows
                     </span>
                     <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1c1917]">The f0undr Team</h3>
                     <p className="text-xs sm:text-sm text-[#57534e] mt-1 font-normal">
-                      Led by <strong className="text-[#1c1917]">Abdull Rehman Khizar</strong>, <strong className="text-[#1c1917]">f0undr</strong>, <strong className="text-[#1c1917]">M.Huzaifa</strong>, and our principal research leads.
+                      Led by <strong className="text-[#1c1917]">Muhammad Huzaifa Zahid (f0undr)</strong>, <strong className="text-[#1c1917]">Rai Abdul Rehman Khizar</strong>, <strong className="text-[#1c1917]">Rana Ayyan Saleem</strong>, and <strong className="text-[#1c1917]">Rao Muhammad Ammar Asim</strong>.
                     </p>
                   </div>
                   <button
@@ -785,7 +786,7 @@ export function App() {
                         f0undr Book: <em className="italic text-[#c2410c] font-normal">Computing &amp; Technology</em>
                       </h2>
                       <p className="text-[#57534e] text-xs sm:text-sm mt-2 max-w-3xl leading-relaxed">
-                        Authored by <strong className="text-[#1c1917]">Huzaifa</strong> &amp; the <strong className="text-[#1c1917]">f0undr Team</strong> (with <strong className="text-[#1c1917]">f0undr</strong> &amp; <strong className="text-[#1c1917]">Abdull Rehman Khizar</strong>). Complete computing curriculum with interactive diagrams, quizzes, flashcards, and student lab workbooks.
+                        Authored by <strong className="text-[#1c1917]">Muhammad Huzaifa Zahid (f0undr)</strong> &amp; the <strong className="text-[#1c1917]">f0undr Team</strong> (with <strong className="text-[#1c1917]">f0undr</strong> &amp; <strong className="text-[#1c1917]">Abdull Rehman Khizar</strong>). Complete computing curriculum with interactive diagrams, quizzes, flashcards, and student lab workbooks.
                       </p>
                     </div>
 

@@ -37,9 +37,10 @@ export const HeroSection = ({ onNavigate, stats }: HeroSectionProps) => {
 
         <p className="text-base sm:text-lg lg:text-xl text-[#57534e] max-w-3xl mx-auto mb-10 leading-relaxed font-normal animate-slide-up [animation-delay:120ms]">
           An independent intellectual atelier and operational headquarters for relentless founders.
-          Co-founded by <strong className="text-[#1c1917] font-semibold">Abdull Rehman Khizar</strong>,{' '}
-          <strong className="text-[#1c1917] font-semibold">f0undr</strong>, and{' '}
-          <strong className="text-[#1c1917] font-semibold">M.Huzaifa</strong>. Explore our flagship computing curriculum,
+          Led by <strong className="text-[#1c1917] font-semibold">Muhammad Huzaifa Zahid (f0undr)</strong>,{' '}
+          <strong className="text-[#1c1917] font-semibold">Rai Abdul Rehman Khizar</strong>,{' '}
+          <strong className="text-[#1c1917] font-semibold">Rana Ayyan Saleem</strong>, and{' '}
+          <strong className="text-[#1c1917] font-semibold">Rao Muhammad Ammar Asim</strong>. Explore our flagship computing curriculum,
           curated library digests, battle-tested utilities, and collective ventures.
         </p>
 

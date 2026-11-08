@@ -30,7 +30,7 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
   const [selectedDepartment, setSelectedDepartment] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  const departments = ['All', 'Core Leadership', 'Product & Pedagogy', 'Artificial Intelligence', 'Cloud Infrastructure', 'Product Design', 'Security & Privacy', 'Growth & Ventures'];
+  const departments = ['All', 'Core Leadership & AI Systems', 'Executive Leadership & Pedagogy', 'Executive Leadership & Operations', 'Executive Office & Strategy', 'Research & Pedagogy', 'Cloud Infrastructure', 'Product Design', 'Security & Privacy', 'Growth & Ventures'];
 
   const filteredTeam = team.filter((member) => {
     const matchesDept = selectedDepartment === 'All' || member.department === selectedDepartment;
@@ -73,7 +73,7 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
           <div>
             <div className="flex items-center gap-2 mb-3">
               <span className="editorial-stamp">
-                Core Collective · 08 Members
+                Core Collective · {team.length.toString().padStart(2, '0')} Members
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-serif font-bold tracking-tight text-[#1c1917]">
@@ -81,7 +81,7 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
             </h2>
             <p className="text-[#57534e] text-sm sm:text-base mt-3 max-w-2xl leading-relaxed font-normal">
               Pioneering curriculum architectures, neural frameworks, and distributed software systems.
-              Led by <strong className="text-[#1c1917]">Abdull Rehman Khizar</strong>, <strong className="text-[#1c1917]">f0undr</strong>, and <strong className="text-[#1c1917]">M.Huzaifa</strong>.
+              Led by <strong className="text-[#1c1917]">Muhammad Huzaifa Zahid (f0undr)</strong>, <strong className="text-[#1c1917]">Rai Abdul Rehman Khizar</strong>, <strong className="text-[#1c1917]">Rana Ayyan Saleem</strong>, and <strong className="text-[#1c1917]">Rao Muhammad Ammar Asim</strong>.
             </p>
           </div>
         </div>

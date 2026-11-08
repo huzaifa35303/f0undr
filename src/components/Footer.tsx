@@ -65,7 +65,7 @@ export const Footer: React.FC<FooterProps> = ({
                     }}
                     className="hover:text-[#1c1917] transition-colors"
                   >
-                    The f0undr Team (8 Fellows)
+                    The f0undr Team & Fellowship
                   </button>
                 </li>
                 <li>
@@ -134,7 +134,7 @@ export const Footer: React.FC<FooterProps> = ({
               <span>f0undr Book: Computing Curriculum</span>
             </a>
             <span>•</span>
-            <span>Khizar · f0undr · Huzaifa</span>
+            <span>Huzaifa · Khizar · Ayyan · Ammar</span>
           </div>
         </div>
       </div>
