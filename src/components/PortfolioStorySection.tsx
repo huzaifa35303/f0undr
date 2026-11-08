@@ -151,14 +151,14 @@ export const PortfolioStorySection = ({
             return (
               <div
                 key={pillar.roman}
-                className="editorial-card editorial-card-hover rounded-2xl p-6 relative flex flex-col justify-between"
+                className="editorial-card editorial-card-hover card-shine rounded-2xl p-6 relative flex flex-col justify-between group hover:border-[#c2410c]/30 hover:shadow-xl transition-all duration-300"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-xs font-serif font-bold text-[#c2410c]">
                       § {pillar.roman}
                     </span>
-                    <div className="w-9 h-9 rounded-xl bg-[#f5f2eb] border border-[#e7e5e4] flex items-center justify-center text-[#2b5346]">
+                    <div className="w-9 h-9 rounded-xl bg-[#f5f2eb] border border-[#e7e5e4] flex items-center justify-center text-[#2b5346] group-hover:scale-115 group-hover:rotate-6 transition-all duration-300">
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>
@@ -191,7 +191,7 @@ export const PortfolioStorySection = ({
             {ventures.map((venture) => (
               <div
                 key={venture.id}
-                className="editorial-card editorial-card-hover rounded-2xl p-6 sm:p-8 flex flex-col justify-between group"
+                className="editorial-card editorial-card-hover card-shine rounded-2xl p-6 sm:p-8 flex flex-col justify-between group hover:border-[#c2410c]/30 hover:shadow-xl transition-all duration-300"
               >
                 <div>
                   <div className="flex items-center justify-between gap-3 mb-4">

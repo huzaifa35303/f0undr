@@ -21,7 +21,7 @@ import { AddModal } from './components/AddModal';
 import { LoginModal } from './components/LoginModal';
 import { AdminPanel } from './components/AdminPanel';
 import { Footer } from './components/Footer';
-import { ArrowUpRight, Award, BookOpen, GraduationCap, Maximize2, Brain, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, Award, BookOpen, GraduationCap, Maximize2, Brain, ExternalLink, ArrowUp } from 'lucide-react';
 
 export function App() {
   const [activeTab, setActiveTab] = useState<string>('overview');
@@ -31,6 +31,8 @@ export function App() {
   const [isAdminOpen, setIsAdminOpen] = useState<boolean>(false);
   const [addModalDefaultTab, setAddModalDefaultTab] = useState<'book' | 'tool' | 'team' | 'thing'>('book');
   const [selectedCurriculum, setSelectedCurriculum] = useState<'computer' | 'urdu' | 'mind'>('computer');
+  const [scrollProgress, setScrollProgress] = useState<number>(0);
+  const [showBackToTop, setShowBackToTop] = useState<boolean>(false);
 
   const [currentUser, setCurrentUser] = useState<AuthUser | null>(() => {
     try {
@@ -164,6 +166,18 @@ export function App() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll > 0) {
+        setScrollProgress(Math.min(100, Math.max(0, (window.scrollY / totalScroll) * 100)));
+      }
+      setShowBackToTop(window.scrollY > 350);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -347,7 +361,11 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] text-[#1c1917] flex flex-col selection:bg-[#c2410c]/15 selection:text-[#9a3412]">
+    <div className="min-h-screen bg-[#faf8f5] text-[#1c1917] flex flex-col selection:bg-[#c2410c]/15 selection:text-[#9a3412] relative">
+      <div
+        className="fixed top-0 left-0 h-[2.5px] bg-gradient-to-r from-[#c2410c] via-[#d97706] to-[#2b5346] z-50 transition-all duration-75"
+        style={{ width: `${scrollProgress}%` }}
+      />
       <Navbar
         activeTab={activeTab}
         setActiveTab={(tab) => {
@@ -384,11 +402,14 @@ export function App() {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div className="editorial-card rounded-2xl p-6 sm:p-8 relative overflow-hidden group flex flex-col justify-between">
+                <div className="editorial-card editorial-card-hover card-shine rounded-2xl p-6 sm:p-8 relative overflow-hidden group flex flex-col justify-between hover:border-[#c2410c]/40 hover:shadow-xl transition-all duration-300">
                   <div className="space-y-3.5">
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="editorial-stamp editorial-stamp-terracotta inline-flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-[#c2410c] animate-pulse" />
+                        <span className="relative flex h-2 w-2 mr-0.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#c2410c] opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#c2410c]"></span>
+                        </span>
                         FLAGSHIP PRODUCT · LIVE
                       </span>
                       <span className="text-xs font-mono text-[#78716c] bg-[#f5f2eb] px-2.5 py-0.5 rounded-md border border-[#e7e5e4]">
@@ -439,11 +460,14 @@ export function App() {
                   </div>
                 </div>
 
-                <div className="editorial-card rounded-2xl p-6 sm:p-8 relative overflow-hidden group flex flex-col justify-between">
+                <div className="editorial-card editorial-card-hover card-shine rounded-2xl p-6 sm:p-8 relative overflow-hidden group flex flex-col justify-between hover:border-[#2b5346]/40 hover:shadow-xl transition-all duration-300">
                   <div className="space-y-3.5">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="editorial-stamp editorial-stamp-terracotta inline-flex items-center gap-1.5">
-                        <GraduationCap className="w-3.5 h-3.5 text-[#c2410c]" />
+                      <span className="editorial-stamp editorial-stamp-olive inline-flex items-center gap-1.5 shadow-2xs">
+                        <span className="relative flex h-2 w-2 mr-0.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#166534] opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#166534]"></span>
+                        </span>
                         وفاقی تعلیمی بورڈ (FBISE) · 20 ابواب
                       </span>
                       <span className="text-xs font-mono text-[#78716c] bg-[#f5f2eb] px-2.5 py-0.5 rounded-md border border-[#e7e5e4]">
@@ -494,11 +518,14 @@ export function App() {
                   </div>
                 </div>
 
-                <div className="editorial-card rounded-2xl p-6 sm:p-8 relative overflow-hidden group flex flex-col justify-between">
+                <div className="editorial-card editorial-card-hover card-shine rounded-2xl p-6 sm:p-8 relative overflow-hidden group flex flex-col justify-between hover:border-[#d97706]/40 hover:shadow-xl transition-all duration-300">
                   <div className="space-y-3.5">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="editorial-stamp editorial-stamp-terracotta inline-flex items-center gap-1.5">
-                        <Brain className="w-3.5 h-3.5 text-[#c2410c]" />
+                      <span className="editorial-stamp inline-flex items-center gap-1.5 shadow-2xs bg-[#fef3c7] text-[#92400e] border-[#fde68a]">
+                        <span className="relative flex h-2 w-2 mr-0.5">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#d97706] opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-[#d97706]"></span>
+                        </span>
                         ACCELERATED LEARNING · LIVE
                       </span>
                       <span className="text-xs font-mono text-[#78716c] bg-[#f5f2eb] px-2.5 py-0.5 rounded-md border border-[#e7e5e4]">
@@ -1035,6 +1062,16 @@ export function App() {
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
       />
+
+      {showBackToTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-[#1c1917] text-[#faf8f5] shadow-xl hover:bg-[#292524] hover:-translate-y-1 active:scale-90 transition-all duration-300 border border-[#44403c] flex items-center justify-center group animate-fade-in cursor-pointer"
+          title="Back to Top"
+        >
+          <ArrowUp className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" />
+        </button>
+      )}
     </div>
   );
 }

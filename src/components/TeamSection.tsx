@@ -127,7 +127,7 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
               <div
                 key={member.id}
                 onClick={() => setSelectedMember(member)}
-                className="editorial-card editorial-card-hover rounded-2xl p-6 relative flex flex-col justify-between group cursor-pointer"
+                className="editorial-card editorial-card-hover card-shine rounded-2xl p-6 relative flex flex-col justify-between group cursor-pointer hover:border-[#c2410c]/30 hover:shadow-xl transition-all duration-300"
               >
                 <div>
                   <div className="flex items-start justify-between gap-3 mb-5">
@@ -135,7 +135,7 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
                       <img
                         src={member.avatarUrl}
                         alt={member.name}
-                        className={`w-16 h-16 rounded-2xl object-cover border-2 shadow-xs transition-transform group-hover:scale-102 ${
+                        className={`w-16 h-16 rounded-2xl object-cover border-2 shadow-xs transition-transform group-hover:scale-105 duration-300 ${
                           member.verifiedFounder
                             ? 'border-[#c2410c]'
                             : 'border-[#e7e5e4]'

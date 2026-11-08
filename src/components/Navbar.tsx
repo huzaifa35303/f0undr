@@ -49,7 +49,7 @@ export const Navbar = ({
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#faf8f5]/95 backdrop-blur-md border-b border-[#e7e5e4] shadow-xs py-3.5'
+          ? 'bg-[#faf8f5]/90 backdrop-blur-lg border-b border-[#e7e5e4] shadow-[0_4px_20px_-4px_rgba(28,25,23,0.06)] py-3'
           : 'bg-[#faf8f5] border-b border-[#e7e5e4]/80 py-4 sm:py-5'
       }`}
     >
@@ -59,12 +59,12 @@ export const Navbar = ({
             onClick={() => setActiveTab('overview')}
             className="flex items-center gap-3 cursor-pointer group shrink-0"
           >
-            <div className="w-8 h-8 rounded-lg bg-[#1c1917] flex items-center justify-center text-[#faf8f5] font-serif font-bold text-base shadow-xs group-hover:bg-[#292524] transition-colors">
+            <div className="w-8 h-8 rounded-lg bg-[#1c1917] flex items-center justify-center text-[#faf8f5] font-serif font-bold text-base shadow-xs group-hover:bg-[#292524] group-hover:scale-105 transition-all duration-200">
               f0
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-serif font-bold text-xl sm:text-2xl text-[#1c1917] tracking-tight">
+                <span className="font-serif font-bold text-xl sm:text-2xl text-[#1c1917] tracking-tight group-hover:text-[#c2410c] transition-colors">
                   f0undr<span className="text-[#c2410c]">.</span>
                 </span>
                 <span className="editorial-stamp hidden sm:inline-block">
@@ -77,7 +77,7 @@ export const Navbar = ({
             </div>
           </div>
 
-          <nav className="hidden md:flex items-center gap-1 bg-[#f5f2eb] p-1 rounded-xl border border-[#e7e5e4]">
+          <nav className="hidden md:flex items-center gap-1 bg-[#f5f2eb] p-1 rounded-xl border border-[#e7e5e4] shadow-2xs">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
@@ -85,13 +85,13 @@ export const Navbar = ({
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
-                  className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${
+                  className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 active:scale-95 ${
                     isActive
                       ? 'bg-[#1c1917] text-[#faf8f5] shadow-xs font-semibold'
                       : 'text-[#57534e] hover:text-[#1c1917] hover:bg-[#faf8f5]'
                   }`}
                 >
-                  <Icon className="w-3.5 h-3.5" />
+                  <Icon className={`w-3.5 h-3.5 transition-transform ${isActive ? 'scale-110' : ''}`} />
                   {item.label}
                 </button>
               );
@@ -101,10 +101,10 @@ export const Navbar = ({
           <div className="flex items-center gap-2 sm:gap-2.5">
             <button
               onClick={onOpenSearch}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white hover:bg-[#f5f2eb] text-[#78716c] hover:text-[#1c1917] border border-[#e7e5e4] text-xs transition-colors shadow-2xs"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white hover:bg-[#f5f2eb] text-[#78716c] hover:text-[#1c1917] border border-[#e7e5e4] text-xs transition-all hover:scale-102 active:scale-95 shadow-2xs cursor-pointer"
             >
-              <Search className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Search...</span>
+              <Search className="w-3.5 h-3.5 text-[#c2410c]" />
+              <span className="hidden sm:inline font-mono">Search...</span>
               <kbd className="hidden lg:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono bg-[#f5f2eb] border border-[#e7e5e4] rounded text-[#78716c]">
                 ⌘K
               </kbd>
@@ -114,20 +114,20 @@ export const Navbar = ({
               href="/book/"
               target="_blank"
               rel="noreferrer"
-              className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#fff7ed] hover:bg-[#ffedd5] text-[#c2410c] border border-[#ffedd5] text-xs font-semibold transition-all hover:-translate-y-0.5 shadow-2xs"
+              className="group hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#fff7ed] hover:bg-[#ffedd5] text-[#c2410c] border border-[#ffedd5] text-xs font-semibold transition-all hover:-translate-y-0.5 active:scale-95 shadow-2xs"
             >
-              <BookOpen className="w-3.5 h-3.5 text-[#c2410c]" />
+              <BookOpen className="w-3.5 h-3.5 text-[#c2410c] transition-transform group-hover:scale-110" />
               <span>f0undr Book</span>
-              <ArrowUpRight className="w-3 h-3 text-[#c2410c]" />
+              <ArrowUpRight className="w-3 h-3 text-[#c2410c] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
 
             {currentUser ? (
               <button
                 onClick={onOpenAdmin}
-                className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#1c1917] hover:bg-[#292524] text-[#faf8f5] text-xs font-semibold transition-all shadow-xs hover:-translate-y-0.5 group cursor-pointer"
+                className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#1c1917] hover:bg-[#292524] text-[#faf8f5] text-xs font-semibold transition-all shadow-xs hover:-translate-y-0.5 active:scale-95 group cursor-pointer"
                 title="Launch Admin Studio Cockpit"
               >
-                <Shield className="w-3.5 h-3.5 text-[#c2410c] group-hover:rotate-12 transition-transform" />
+                <Shield className="w-3.5 h-3.5 text-[#c2410c] group-hover:rotate-12 transition-transform duration-300" />
                 <span className="font-semibold">Admin Panel</span>
                 <span className="hidden sm:inline-block font-mono text-[10px] text-[#a8a29e] border-l border-[#44403c] pl-1.5 ml-0.5">
                   {currentUser.name.split(' ')[0]}
@@ -136,7 +136,7 @@ export const Navbar = ({
             ) : (
               <button
                 onClick={onOpenLogin}
-                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl btn-editorial-primary text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5 cursor-pointer"
+                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl btn-editorial-primary text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5 active:scale-95 cursor-pointer"
                 title="Open Admin Login"
               >
                 <Lock className="w-3.5 h-3.5 text-[#c2410c]" />

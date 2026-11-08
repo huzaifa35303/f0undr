@@ -116,11 +116,11 @@ export const ThingsSection: React.FC<ThingsSectionProps> = ({
               return (
                 <div
                   key={thing.id}
-                  className="editorial-card editorial-card-hover rounded-2xl p-6 flex flex-col justify-between group relative"
+                  className="editorial-card editorial-card-hover card-shine rounded-2xl p-6 flex flex-col justify-between group relative hover:border-[#c2410c]/30 hover:shadow-xl transition-all duration-300"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <div className="w-10 h-10 rounded-xl bg-[#f5f2eb] border border-[#e7e5e4] flex items-center justify-center text-[#2b5346] group-hover:scale-105 transition-transform">
+                      <div className="w-10 h-10 rounded-xl bg-[#f5f2eb] border border-[#e7e5e4] flex items-center justify-center text-[#2b5346] group-hover:scale-115 group-hover:rotate-6 transition-all duration-300">
                         <Icon className="w-5 h-5" />
                       </div>
                       <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#f5f2eb] text-[#78716c] border border-[#e7e5e4]">

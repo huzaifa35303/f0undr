@@ -85,7 +85,7 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
           </div>
         </div>
 
-        <div className="mb-14 editorial-card rounded-2xl p-6 sm:p-10 relative overflow-hidden group">
+        <div className="mb-14 editorial-card editorial-card-hover card-shine rounded-2xl p-6 sm:p-10 relative overflow-hidden group hover:border-[#c2410c]/30 hover:shadow-xl transition-all duration-300">
           <div className="flex flex-wrap items-center gap-2 mb-6 pb-4 border-b border-[#e7e5e4]">
             <button
               onClick={() => setSpotlightCurriculum('computer')}
@@ -406,7 +406,7 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
               <div
                 key={book.id}
                 onClick={() => setActiveBook(book)}
-                className="editorial-card editorial-card-hover rounded-2xl p-6 relative flex flex-col justify-between group cursor-pointer"
+                className="editorial-card editorial-card-hover card-shine rounded-2xl p-6 relative flex flex-col justify-between group cursor-pointer hover:border-[#c2410c]/30 hover:shadow-xl transition-all duration-300"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-4">

@@ -181,7 +181,7 @@ export const ToolsSection: React.FC<ToolsSectionProps> = ({
               {filteredTools.map((tool) => (
                 <div
                   key={tool.id}
-                  className="editorial-card editorial-card-hover rounded-2xl p-6 relative flex flex-col justify-between group"
+                  className="editorial-card editorial-card-hover card-shine rounded-2xl p-6 relative flex flex-col justify-between group hover:border-[#c2410c]/30 hover:shadow-xl transition-all duration-300"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-2 mb-3">
