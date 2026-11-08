@@ -14,23 +14,20 @@ export const HeroSection = ({ onNavigate, stats }: HeroSectionProps) => {
   return (
     <div className="relative pt-24 sm:pt-36 pb-16 overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
-        {/* Eyebrow Stamp */}
         <div className="inline-flex items-center gap-2 mb-6">
           <span className="editorial-stamp">
             Issue 01 · f0undr Editorial Magazine &amp; Atelier
           </span>
           <span className="text-xs font-mono text-[#78716c] hidden sm:inline">
-            // Digital Edition 2026
+            Digital Edition 2026
           </span>
         </div>
 
-        {/* Editorial Literary Headline */}
         <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif font-bold tracking-tight text-[#1c1917] mb-6 leading-[1.12]">
           The Architecture of Systems &amp; The Literature of{' '}
           <em className="text-[#c2410c] font-serif italic font-normal">Creation.</em>
         </h1>
 
-        {/* Editorial Deck / Narrative */}
         <p className="text-base sm:text-lg lg:text-xl text-[#57534e] max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
           An independent intellectual atelier and operational headquarters for relentless founders.
           Co-founded by <strong className="text-[#1c1917] font-semibold">Abdull Rehman Khizar</strong>,{' '}
@@ -39,7 +36,6 @@ export const HeroSection = ({ onNavigate, stats }: HeroSectionProps) => {
           curated library digests, battle-tested utilities, and collective ventures.
         </p>
 
-        {/* Action Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-16">
           <a
             href="/book/"
@@ -69,7 +65,6 @@ export const HeroSection = ({ onNavigate, stats }: HeroSectionProps) => {
           </button>
         </div>
 
-        {/* Editorial Metric Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
           <div
             onClick={() => onNavigate('books')}

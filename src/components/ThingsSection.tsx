@@ -56,7 +56,6 @@ export const ThingsSection: React.FC<ThingsSectionProps> = ({
   return (
     <section className="py-20 border-t border-[#e7e5e4] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-3">
@@ -73,7 +72,6 @@ export const ThingsSection: React.FC<ThingsSectionProps> = ({
           </div>
         </div>
 
-        {/* Filter & Search Bar */}
         <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-10">
           <div className="relative flex-1 max-w-md">
             <Search className="w-4 h-4 text-[#78716c] absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -103,7 +101,6 @@ export const ThingsSection: React.FC<ThingsSectionProps> = ({
           </div>
         </div>
 
-        {/* Grid of Things */}
         {filteredThings.length === 0 ? (
           <div className="editorial-card rounded-2xl p-12 text-center">
             <Package className="w-10 h-10 text-[#a8a29e] mx-auto mb-3" />
@@ -122,7 +119,6 @@ export const ThingsSection: React.FC<ThingsSectionProps> = ({
                   className="editorial-card editorial-card-hover rounded-2xl p-6 flex flex-col justify-between group relative"
                 >
                   <div>
-                    {/* Top Icon & Category */}
                     <div className="flex items-center justify-between mb-4">
                       <div className="w-10 h-10 rounded-xl bg-[#f5f2eb] border border-[#e7e5e4] flex items-center justify-center text-[#2b5346] group-hover:scale-105 transition-transform">
                         <Icon className="w-5 h-5" />

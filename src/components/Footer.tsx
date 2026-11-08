@@ -19,7 +19,6 @@ export const Footer: React.FC<FooterProps> = ({
     <footer className="border-t border-[#e7e5e4] bg-[#faf8f5] text-[#1c1917] mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
-          {/* Brand & Manifesto */}
           <div className="md:col-span-7 space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-lg bg-[#1c1917] flex items-center justify-center text-[#faf8f5] font-serif font-bold text-base shadow-xs">
@@ -41,7 +40,6 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
           </div>
 
-          {/* Navigation Links */}
           <div className="md:col-span-5 md:flex md:justify-end">
             <div className="space-y-3">
               <h5 className="text-xs font-mono uppercase text-[#1c1917] font-semibold tracking-wider">
@@ -123,7 +121,6 @@ export const Footer: React.FC<FooterProps> = ({
           </div>
         </div>
 
-        {/* Bottom Credits */}
         <div className="pt-8 mt-12 border-t border-[#e7e5e4] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#78716c]">
           <p>© {new Date().getFullYear()} f0undr. Crafted with editorial rigor for founders and engineers.</p>
           <div className="flex items-center gap-4">

@@ -68,7 +68,6 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
   return (
     <section className="py-20 border-t border-[#e7e5e4] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-3">
@@ -86,7 +85,6 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
           </div>
         </div>
 
-        {/* Filter & Department Tabs Row */}
         <div className="space-y-4 mb-10">
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
             <div className="relative flex-1 max-w-md">
@@ -105,7 +103,6 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
             </div>
           </div>
 
-          {/* Department Pills */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none text-xs">
             {departments.map((dept) => (
               <button
@@ -123,7 +120,6 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
           </div>
         </div>
 
-        {/* Team Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {filteredTeam.map((member) => {
             const badge = getStatusBadge(member.status);
@@ -134,7 +130,6 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
                 className="editorial-card editorial-card-hover rounded-2xl p-6 relative flex flex-col justify-between group cursor-pointer"
               >
                 <div>
-                  {/* Top Avatar & Status */}
                   <div className="flex items-start justify-between gap-3 mb-5">
                     <div className="relative">
                       <img
@@ -172,7 +167,6 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
                     </div>
                   </div>
 
-                  {/* Name & Role */}
                   <div className="flex items-center gap-1.5 mb-0.5">
                     <h3 className="text-lg font-serif font-bold text-[#1c1917] group-hover:text-[#c2410c] transition-colors">
                       {member.name}
@@ -185,19 +179,16 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
                   <div className="text-xs font-mono text-[#78716c] mb-1">{member.handle}</div>
                   <div className="text-xs font-medium text-[#1c1917] mb-3">{member.role}</div>
 
-                  {/* Department pill */}
                   {member.department && (
                     <span className="inline-block text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#f5f2eb] text-[#57534e] border border-[#e7e5e4] mb-3">
                       {member.department}
                     </span>
                   )}
 
-                  {/* Bio */}
                   <p className="text-xs text-[#57534e] leading-relaxed line-clamp-3 mb-4">
                     {member.bio}
                   </p>
 
-                  {/* Highlight Project */}
                   {member.highlightProject && (
                     <div className="mb-4 p-2.5 rounded-xl bg-[#f5f2eb] border border-[#e7e5e4] text-[11px]">
                       <span className="text-[#78716c] text-[10px] uppercase font-mono block">Signature Project</span>
@@ -208,7 +199,6 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
                     </div>
                   )}
 
-                  {/* Skills Tags */}
                   <div className="flex flex-wrap gap-1.5 mb-6">
                     {member.skills.slice(0, 3).map((skill) => (
                       <span
@@ -221,7 +211,6 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
                   </div>
                 </div>
 
-                {/* Footer Social Icons & Dossier Trigger */}
                 <div
                   className="pt-4 border-t border-[#e7e5e4] flex items-center justify-between"
                   onClick={(e) => e.stopPropagation()}
@@ -281,7 +270,6 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
         </div>
       </div>
 
-      {/* Member Full Dossier Modal */}
       {selectedMember && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-xs animate-fade-in">
           <div
@@ -321,12 +309,10 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
               </div>
             </div>
 
-            {/* Quote */}
             <div className="p-4 rounded-xl bg-[#f5f2eb] border border-[#e7e5e4] text-xs italic text-[#57534e] mb-6">
               "{selectedMember.quote}"
             </div>
 
-            {/* Bio */}
             <div className="space-y-4 mb-6">
               <h4 className="text-xs font-mono uppercase text-[#1c1917] font-bold tracking-wider">
                 Biography &amp; Architecture Focus
@@ -336,7 +322,6 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
               </p>
             </div>
 
-            {/* Highlight */}
             {selectedMember.highlightProject && (
               <div className="mb-6 p-4 rounded-xl bg-[#f5f2eb] border border-[#e7e5e4]">
                 <span className="text-xs font-mono text-[#78716c] uppercase block mb-1">Signature Project</span>
@@ -347,7 +332,6 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
               </div>
             )}
 
-            {/* Skills */}
             <div className="mb-8">
               <h4 className="text-xs font-mono uppercase text-[#1c1917] font-bold tracking-wider mb-2.5">
                 Technical Mastery &amp; Systems Competencies
@@ -364,7 +348,6 @@ export const TeamSection = ({ team }: TeamSectionProps) => {
               </div>
             </div>
 
-            {/* Action / Contact */}
             <div className="pt-6 border-t border-[#e7e5e4] flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 {selectedMember.social.website && (

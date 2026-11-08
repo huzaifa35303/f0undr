@@ -33,7 +33,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
 
   const [spotlightCurriculum, setSpotlightCurriculum] = useState<'computer' | 'urdu' | 'mind'>('computer');
 
-  // Filtered books
   const filteredBooks = books.filter((book) => {
     const matchesCategory = selectedCategory === 'All' || book.category === selectedCategory;
     const matchesStatus = selectedStatus === 'all' || book.status === selectedStatus;
@@ -70,7 +69,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
   return (
     <section className="py-20 border-t border-[#e7e5e4] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-3">
@@ -87,9 +85,7 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
           </div>
         </div>
 
-        {/* FLAGSHIP SPOTLIGHT: Dual Flagship E-Books Showcase */}
         <div className="mb-14 editorial-card rounded-2xl p-6 sm:p-10 relative overflow-hidden group">
-          {/* Top Curriculum Switcher Tabs */}
           <div className="flex flex-wrap items-center gap-2 mb-6 pb-4 border-b border-[#e7e5e4]">
             <button
               onClick={() => setSpotlightCurriculum('computer')}
@@ -151,7 +147,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
                   A complete modern computer science textbook covering hardware foundations, digital productivity, algorithmic thinking, Scratch programming, cybersecurity, and digital entrepreneurship. Featuring real-world case studies, IPO cycle architectures, and autosaving student lab workbooks.
                 </p>
 
-                {/* 6 Unit Badges */}
                 <div className="flex flex-wrap gap-2 pt-1">
                   {[
                     'Unit 1: ICT & Hardware',
@@ -231,7 +226,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
                   وفاقی تعلیمی بورڈ (FBISE) کے نصاب پر مبنی مستند اور جدید ترین ادبی و لسانی کتب خانہ۔ اس میں شائستہ ذوقِ ادب، فکری بالیدگی، کلامِ اقبال، فصیح تشریحات، فرہنگ و لغت، اور معروضی امتحانی سوالات شامل ہیں۔ نیز مکمل درسی کتاب (PDF) بھی دستیاب ہے۔
                 </p>
 
-                {/* Urdu Unit Badges */}
                 <div className="flex flex-wrap gap-2 pt-1">
                   {[
                     'حمد باری تعالیٰ',
@@ -300,7 +294,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
                   A comprehensive masterclass on synaptic plasticity, memory palaces (Method of Loci), decoding limbic body language, behavioral deception detection, persuasion vectors, and rapid mental models. Complete with interactive quizzes and 3D flashcards.
                 </p>
 
-                {/* Mind Mastery Unit Badges */}
                 <div className="flex flex-wrap gap-2 pt-1">
                   {[
                     'Unit 1: Accelerated Learning',
@@ -358,7 +351,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
           )}
         </div>
 
-        {/* Filter and Search Bar */}
         <div className="space-y-4 mb-10">
           <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
             <div className="relative flex-1 max-w-md">
@@ -372,7 +364,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
               />
             </div>
 
-            {/* Status Filter */}
             <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
               {STATUS_FILTERS.map((filter) => (
                 <button
@@ -390,7 +381,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
             </div>
           </div>
 
-          {/* Category Pills */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none text-xs">
             {CATEGORIES.map((cat) => (
               <button
@@ -408,7 +398,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
           </div>
         </div>
 
-        {/* Books Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredBooks.map((book) => {
             const badge = getStatusBadge(book.status);
@@ -420,7 +409,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
                 className="editorial-card editorial-card-hover rounded-2xl p-6 relative flex flex-col justify-between group cursor-pointer"
               >
                 <div>
-                  {/* Top Bar: Category & Status */}
                   <div className="flex items-center justify-between gap-2 mb-4">
                     <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-md bg-[#f5f2eb] text-[#78716c] border border-[#e7e5e4]">
                       {book.category}
@@ -433,7 +421,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
                     </span>
                   </div>
 
-                  {/* Title & Author */}
                   <h3 className="text-xl font-serif font-bold text-[#1c1917] group-hover:text-[#c2410c] transition-colors mb-1 line-clamp-2">
                     {book.title}
                   </h3>
@@ -441,7 +428,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
                     {book.author} {book.year ? `(${book.year})` : ''}
                   </p>
 
-                  {/* Rating Stars */}
                   <div className="flex items-center gap-1 mb-4">
                     {[1, 2, 3, 4, 5].map((s) => (
                       <Star
@@ -458,12 +444,10 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
                     </span>
                   </div>
 
-                  {/* Notes / Preview */}
                   <p className="text-xs text-[#57534e] leading-relaxed line-clamp-3 mb-5">
                     {book.notes}
                   </p>
 
-                  {/* Key Takeaways Chips */}
                   {book.keyTakeaways && book.keyTakeaways.length > 0 && (
                     <div className="space-y-1.5 mb-4">
                       {book.keyTakeaways.slice(0, 2).map((takeaway, idx) => (
@@ -479,7 +463,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
                   )}
                 </div>
 
-                {/* Footer Drawer Action */}
                 <div
                   className="pt-4 border-t border-[#e7e5e4] flex items-center justify-between"
                   onClick={(e) => e.stopPropagation()}
@@ -502,7 +485,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
         </div>
       </div>
 
-      {/* Book Detailed Reader Modal */}
       {activeBook && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-xs animate-fade-in">
           <div
@@ -528,14 +510,12 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
               </p>
             </div>
 
-            {/* Favorite Quote */}
             {activeBook.favoriteQuote && (
               <div className="p-4 rounded-xl bg-[#f5f2eb] border border-[#e7e5e4] text-xs italic text-[#57534e] mb-6">
                 "{activeBook.favoriteQuote}"
               </div>
             )}
 
-            {/* Comprehensive Notes */}
             <div className="space-y-4 mb-6">
               <h4 className="text-xs font-mono uppercase text-[#1c1917] font-bold tracking-wider">
                 Distilled Field Notes &amp; Synthesis
@@ -545,7 +525,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
               </p>
             </div>
 
-            {/* Key Takeaways */}
             {activeBook.keyTakeaways && activeBook.keyTakeaways.length > 0 && (
               <div className="mb-6">
                 <h4 className="text-xs font-mono uppercase text-[#1c1917] font-bold tracking-wider mb-3">
@@ -567,7 +546,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
               </div>
             )}
 
-            {/* Units if curriculum */}
             {activeBook.units && activeBook.units.length > 0 && (
               <div className="mb-8">
                 <h4 className="text-xs font-mono uppercase text-[#1c1917] font-bold tracking-wider mb-3">
@@ -587,7 +565,6 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
               </div>
             )}
 
-            {/* Modal Actions */}
             <div className="pt-6 border-t border-[#e7e5e4] flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-2">
                 {activeBook.externalUrl && (

@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#faf6ee">
-    
-    <!-- Primary SEO & Scholarly Meta Tags -->
     <title>صحیفۂ اردو — نصاب و ادب (جماعت ہفتم) | f0undr Academy</title>
     <meta name="description" content="وفاقی تعلیمی بورڈ کے نصاب پر مبنی جدید ترین ڈیجیٹل کتب خانہ: منتخب ادبی شاہکار، کلامِ اقبال، فصیح و سلیس تشریحات، فرہنگ و لغت، اور معروضی امتحانی مشقیں۔">
     <meta name="keywords" content="اردو نصاب جماعت ہفتم, FBISE Grade 7 Urdu, وفاقی بورڈ اردو, کلام اقبال, علامہ اقبال, حمد و نعت, اردو فرہنگ, اردو لغت, فلیش کارڈز">
@@ -16,25 +14,20 @@
     <meta name="google-site-verification" content="oPgfrng_8nMQM7I8VnJ9HcOEZmGPs2sWjFHSjjYxKeM" />
     <meta name="google-site-verification" content="googlefc9762157f1d6265" />
 
-    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="book">
     <meta property="og:url" content="https://f0undr.vercel.app/urdu-book/">
     <meta property="og:title" content="صحیفۂ اردو — نصاب و ادب (جماعت ہفتم)">
     <meta property="og:description" content="شائستہ ذوقِ ادب، فکری بالیدگی اور لسانی مہارت کے لیے تیار کردہ مستند ڈیجیٹل درسی کتب خانہ۔">
     <meta property="og:site_name" content="f0undr Educational Framework">
 
-    <!-- Favicon & Styles -->
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <!-- Accessibility Skip Link -->
     <a href="#main-content" class="skip-link">براہِ راست متن کے مطالعے پر جائیں</a>
 
-    <!-- Sticky Navigation Header -->
     <header class="site-header" role="banner">
       <div class="header-container">
-        <!-- Brand Identity -->
         <a href="#top" class="brand-wrapper" title="صفحۂ اول">
           <div class="brand-emblem" aria-hidden="true">
             <svg viewBox="0 0 32 32" fill="none">
@@ -51,32 +44,26 @@
           </div>
         </a>
 
-        <!-- Header Actions & Controls -->
         <div class="header-actions">
-          <!-- Chapter Drawer Trigger -->
           <button type="button" class="btn-action" id="drawer-trigger" aria-label="فہرستِ ابواب کھولیں">
             <span>📚</span>
             <span>فہرستِ ابواب</span>
           </button>
 
-          <!-- Dual-Mode Toggle -->
           <button type="button" class="btn-action" id="view-mode-toggle" title="مطالعہ کا انداز تبدیل کریں">
             <span>📖</span>
             <span>مسلسل مطالعہ (Continuous)</span>
           </button>
 
-          <!-- Audio Speech Synthesizer -->
           <button type="button" class="btn-action" id="global-audio-toggle" title="اردو قرأت سنیں">
             <span>🎧</span>
             <span>صوتی قرأت و تلفظ</span>
           </button>
 
-          <!-- Search Trigger (Ctrl+K) -->
           <button type="button" class="btn-icon" id="global-search-trigger" title="فوری فکری تلاش (Ctrl + K)">
             🔍
           </button>
 
-          <!-- Font Size Adjusters -->
           <button type="button" class="btn-icon" id="font-decrease" title="فونٹ سائز چھوٹا کریں">
             A-
           </button>
@@ -84,7 +71,6 @@
             A+
           </button>
 
-          <!-- Theme Toggle -->
           <button type="button" class="btn-action" id="theme-toggle" title="مطالعہ کی تھیم تبدیل کریں">
             <span id="theme-icon">📜</span>
             <span id="theme-label">روایتی ورق</span>
@@ -92,12 +78,10 @@
         </div>
       </div>
 
-      <!-- Top Reading Progress Bar -->
       <div class="progress-strip" role="progressbar" aria-valuemin="0" aria-valuemax="100">
         <div class="progress-fill" id="reading-progress-fill"></div>
       </div>
 
-      <!-- Substrip with Active Unit & Stats -->
       <div class="reading-substrip">
         <div class="substrip-unit">
           <span class="substrip-dot"></span>
@@ -107,7 +91,6 @@
       </div>
     </header>
 
-    <!-- Quick Horizontal Unit Selector Pills -->
     <nav class="quick-unit-bar" aria-label="فوری یونٹ انتخاب">
       <button type="button" class="unit-pill active" data-unit-id="dua">مناجات</button>
       <button type="button" class="unit-pill" data-unit-id="unit-1">۱. حمد</button>
@@ -132,7 +115,6 @@
       <button type="button" class="unit-pill" data-unit-id="unit-20">۲۰. شہری شعور</button>
     </nav>
 
-    <!-- Hero Showcase Section -->
     <section class="hero-section" id="top">
       <div class="hero-ornament">﷽</div>
       <h1 class="hero-title">
@@ -142,7 +124,6 @@
         شائستہ ذوقِ ادب کی آبیاری، فکری بالیدگی اور لسانی مہارت کے لیے تیار کردہ مستند ادبی انتخاب: کلامِ اقبال، پرشکوہ منظومات، تاریخی و معلوماتی نگارشات، سلیس و فصیح مفاہیم، فرہنگِ الفاظ اور خودکار تشخیصی آزمائشوں پر مشتمل جدید ترین ڈیجیٹل کتب خانہ۔
       </p>
 
-      <!-- Stats Pills -->
       <div class="hero-stats">
         <div class="stat-pill">
           <strong>۲۰ منتخب ابواب</strong>
@@ -175,12 +156,8 @@
       </div>
     </section>
 
-    <!-- Main Content Stream -->
     <main class="app-container" id="main-content" role="main">
 
-      <!-- ====================================================================
-           افتتاحیہ: مناجاتِ سحر (Dua)
-           ==================================================================== -->
       <article class="unit-article" id="dua">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -220,7 +197,6 @@
           </div>
         </section>
 
-        <!-- Student Notebook -->
         <section class="student-notebook">
           <div class="notebook-header">
             <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
@@ -230,9 +206,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۱: حمدِ باری تعالیٰ (Hamd)
-           ==================================================================== -->
       <article class="unit-article" id="unit-1">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -277,7 +250,6 @@
           </div>
         </section>
 
-        <!-- Tashreeh & Central Idea Accordion -->
         <div class="tashreeh-accordion">
           <div class="accordion-item">
             <button type="button" class="accordion-header">
@@ -300,7 +272,6 @@
           </div>
         </div>
 
-        <!-- Farhang Table -->
         <div class="farhang-table-wrapper">
           <table class="farhang-table">
             <thead>
@@ -330,7 +301,6 @@
           </table>
         </div>
 
-        <!-- Interactive Quiz -->
         <div class="quiz-wrapper" data-quiz-unit="unit-1">
           <div class="quiz-header">
             <h3 class="quiz-title"><span>🎯</span> فہم و ادراک — خود احتسابی آزمائش</h3>
@@ -362,7 +332,6 @@
           <button type="button" class="btn-action quiz-reset-btn">امتحانی آزمائش کی تجدید کریں</button>
         </div>
 
-        <!-- Student Notebook -->
         <section class="student-notebook">
           <div class="notebook-header">
             <h3 class="notebook-title"><span>✍️</span> فکری ڈائری — طالب علم کے ذاتی نوٹس</h3>
@@ -372,9 +341,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۲: نعتِ رسولِ مقبولﷺ (Naat)
-           ==================================================================== -->
       <article class="unit-article" id="unit-2">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -467,9 +433,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۳: طبِ نبویﷺ اور ہماری صحت (Tib-e-Nabwi)
-           ==================================================================== -->
       <article class="unit-article" id="unit-3">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -520,9 +483,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۴: بابائے اردو مولوی عبدالحق (Baba-e-Urdu)
-           ==================================================================== -->
       <article class="unit-article" id="unit-4">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -560,9 +520,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۵: برسات (Barsat)
-           ==================================================================== -->
       <article class="unit-article" id="unit-5">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -611,9 +568,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۶: پاکستان کی سیر (Pakistan Ki Sair)
-           ==================================================================== -->
       <article class="unit-article" id="unit-6">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -651,9 +605,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۷: نشانِ حیدر (Nishan-e-Haider)
-           ==================================================================== -->
       <article class="unit-article" id="unit-7">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -691,9 +642,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۸: ملی نغمہ (Milli Naghma)
-           ==================================================================== -->
       <article class="unit-article" id="unit-8">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -737,9 +685,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۹: سلطان صلاح الدین ایوبی (Sultan Salahuddin)
-           ==================================================================== -->
       <article class="unit-article" id="unit-9">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -777,9 +722,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۱۰: قدرتی آفات اور ان سے بچاؤ (Qudrati Aafat)
-           ==================================================================== -->
       <article class="unit-article" id="unit-10">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -817,9 +759,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۱۱: حضرت ابراہیم علیہ السلام (Hazrat Ibrahim A.S)
-           ==================================================================== -->
       <article class="unit-article" id="unit-11">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -857,9 +796,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۱۲: انفارمیشن ٹیکنالوجی اور ہمارا مستقبل (Information Technology)
-           ==================================================================== -->
       <article class="unit-article" id="unit-12">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -897,9 +833,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۱۳: ہلالِ احمر (Hilal-e-Ahmar)
-           ==================================================================== -->
       <article class="unit-article" id="unit-13">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -937,9 +870,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۱۴: ایک بادشاہ کی انوکھی خواہش (Badshah Ki Khwahish)
-           ==================================================================== -->
       <article class="unit-article" id="unit-14">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -977,9 +907,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۱۵: علامہ اقبال اور نوجوان (Iqbal Aur Naujawan)
-           ==================================================================== -->
       <article class="unit-article" id="unit-15">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -1027,9 +954,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۱۶: مردِ مسلمان (Marde Musalman)
-           ==================================================================== -->
       <article class="unit-article" id="unit-16">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -1073,9 +997,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۱۷: گلشن دو روز (Gulshan-e-Do Roz)
-           ==================================================================== -->
       <article class="unit-article" id="unit-17">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -1113,9 +1034,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۱۸: رکشے والا (Rikshewala)
-           ==================================================================== -->
       <article class="unit-article" id="unit-18">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -1153,9 +1071,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۱۹: پرانی موٹر (Purani Motor)
-           ==================================================================== -->
       <article class="unit-article" id="unit-19">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -1199,9 +1114,6 @@
         </section>
       </article>
 
-      <!-- ====================================================================
-           سبق ۲۰: ٹریفک کے قوانین اور ہماری ذمہ داریاں (Traffic Rules)
-           ==================================================================== -->
       <article class="unit-article" id="unit-20">
         <header class="unit-header">
           <div class="unit-artwork-container">
@@ -1239,7 +1151,6 @@
         </section>
       </article>
 
-      <!-- Bottom Navigation Pager between units -->
       <div class="unit-pager">
         <button type="button" class="pager-btn" id="global-prev-unit">
           <span>➔</span>
@@ -1251,9 +1162,6 @@
         </button>
       </div>
 
-      <!-- ====================================================================
-           فلیش کارڈز سیکشن (Interactive 3D Flashcards)
-           ==================================================================== -->
       <section class="flashcards-section" id="flashcards">
         <span class="badge-gold">ادبی و فکری نگارخانہ</span>
         <h2 style="font-size:2.2rem; color:var(--emerald-deep); margin:0.5rem 0 1rem;">
@@ -1263,7 +1171,6 @@
           کارڈ کو جنبش دیں اور اردو زبان کی باریکیوں، نایاب تراکیب اور قواعد کے مفاہیم کو ذہن نشین کر کے اپنی فکری صلاحیت جانچیں۔
         </p>
 
-        <!-- Category Filter -->
         <div style="margin-bottom: 1.5rem;">
           <select id="flashcard-filter" class="btn-action" style="padding:0.5rem 1rem; font-family:var(--font-nastaliq); font-size:1.1rem;">
             <option value="all">تمام ادبی و لسانی زمرہ جات (All Categories)</option>
@@ -1275,7 +1182,6 @@
           </select>
         </div>
 
-        <!-- 3D Card Stage -->
         <div class="flashcard-stage" id="flashcard-stage" title="کارڈ کو پلٹنے کے لیے کلک کریں">
           <div class="flashcard-inner">
             <div class="flashcard-front">
@@ -1290,7 +1196,6 @@
           </div>
         </div>
 
-        <!-- Flashcard Counter & Status -->
         <div style="font-family:var(--font-ui); font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;" id="flashcard-counter">
           کارڈ ۱ از ۱۶
         </div>
@@ -1300,7 +1205,6 @@
           <span style="color:var(--gold-main);" id="review-count">0 دہرائی درکار</span>
         </div>
 
-        <!-- Controls -->
         <div class="flashcard-controls">
           <button type="button" class="btn-action" id="card-prev"><span>➔</span> پچھلا کارڈ</button>
           <button type="button" class="btn-action" id="card-shuffle"><span>🔀</span> بے ترتیب آزمائش</button>
@@ -1310,9 +1214,6 @@
         </div>
       </section>
 
-      <!-- ====================================================================
-           اردو قواعد و انشاء گائیڈ (Grammar Guide)
-           ==================================================================== -->
       <section class="unit-article" id="grammar-guide" style="margin-top: 4rem;">
         <header class="unit-header">
           <span class="unit-badge">امتحانی رہنما کلید</span>
@@ -1349,7 +1250,6 @@
 
     </main>
 
-    <!-- Chapter Navigation Drawer Modal -->
     <div class="chapter-drawer-overlay" id="chapter-drawer-overlay">
       <aside class="chapter-drawer" role="dialog" aria-label="فہرستِ ابواب و کتب">
         <div class="drawer-header">
@@ -1385,7 +1285,6 @@
       </aside>
     </div>
 
-    <!-- Original Textbook Page Lightbox Modal -->
     <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true">
       <div class="lightbox-content">
         <div class="lightbox-header">
@@ -1398,7 +1297,6 @@
       </div>
     </div>
 
-    <!-- Global Search Modal (Ctrl+K) -->
     <div class="search-modal" id="search-modal" role="dialog" aria-modal="true">
       <div class="search-dialog">
         <div class="search-input-wrapper">
@@ -1410,13 +1308,11 @@
       </div>
     </div>
 
-    <!-- Floating Vocabulary Popover -->
     <div class="vocab-popover" id="vocab-popover" role="tooltip">
       <div class="popover-term" id="popover-term">لفظ</div>
       <div class="popover-def" id="popover-def">معنی و مفہوم</div>
     </div>
 
-    <!-- Footer -->
     <footer class="site-footer">
       <div class="footer-container">
         <div class="footer-logo">صحیفۂ اردو — f0undr Academy</div>
@@ -1440,7 +1336,6 @@
       </div>
     </footer>
 
-    <!-- App Engine Script -->
     <script src="app.js"></script>
   </body>
 </html>

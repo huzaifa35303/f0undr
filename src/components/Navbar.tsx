@@ -55,7 +55,6 @@ export const Navbar = ({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-4">
-          {/* Brand Logo & Edition Tag */}
           <div
             onClick={() => setActiveTab('overview')}
             className="flex items-center gap-3 cursor-pointer group shrink-0"
@@ -78,7 +77,6 @@ export const Navbar = ({
             </div>
           </div>
 
-          {/* Desktop Navigation Tabs */}
           <nav className="hidden md:flex items-center gap-1 bg-[#f5f2eb] p-1 rounded-xl border border-[#e7e5e4]">
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -100,9 +98,7 @@ export const Navbar = ({
             })}
           </nav>
 
-          {/* Actions: Search, Direct Book Link, Add Item, Login / Admin */}
           <div className="flex items-center gap-2 sm:gap-2.5">
-            {/* Search Trigger */}
             <button
               onClick={onOpenSearch}
               className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white hover:bg-[#f5f2eb] text-[#78716c] hover:text-[#1c1917] border border-[#e7e5e4] text-xs transition-colors shadow-2xs"
@@ -114,7 +110,6 @@ export const Navbar = ({
               </kbd>
             </button>
 
-            {/* Direct f0undr Book Link */}
             <a
               href="/book/"
               target="_blank"
@@ -126,7 +121,6 @@ export const Navbar = ({
               <ArrowUpRight className="w-3 h-3 text-[#c2410c]" />
             </a>
 
-            {/* Auth / Admin Control */}
             {currentUser ? (
               <button
                 onClick={onOpenAdmin}
@@ -152,7 +146,6 @@ export const Navbar = ({
           </div>
         </div>
 
-        {/* Mobile Navigation Row */}
         <div className="flex md:hidden items-center justify-between gap-1 overflow-x-auto py-2.5 mt-2 border-t border-[#e7e5e4] scrollbar-none text-xs">
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -172,7 +165,6 @@ export const Navbar = ({
               </button>
             );
           })}
-          {/* Mobile Admin Quick Access */}
           <button
             onClick={currentUser ? onOpenAdmin : onOpenLogin}
             className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg shrink-0 bg-[#fff7ed] text-[#c2410c] font-semibold border border-[#ffedd5] cursor-pointer"

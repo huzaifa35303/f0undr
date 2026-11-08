@@ -22,7 +22,6 @@ export const PomodoroTimer = () => {
 
   const timerRef = useRef<number | null>(null);
 
-  // Web Audio Synth Chime
   const playChime = () => {
     if (!soundEnabled) return;
     try {
@@ -31,8 +30,8 @@ export const PomodoroTimer = () => {
       const gain = audioCtx.createGain();
 
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
-      osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.3); // A5
+      osc.frequency.setValueAtTime(587.33, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.3);
 
       gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.2);
@@ -43,7 +42,6 @@ export const PomodoroTimer = () => {
       osc.start();
       osc.stop(audioCtx.currentTime + 1.2);
     } catch {
-      // AudioContext fallback
     }
   };
 
@@ -99,7 +97,6 @@ export const PomodoroTimer = () => {
 
   return (
     <div className="flex flex-col items-center relative overflow-hidden">
-      {/* Mode Selector Tabs */}
       <div className="flex items-center gap-1.5 bg-[#f5f2eb] p-1.5 rounded-xl border border-[#e7e5e4] mb-8 z-10">
         <button
           onClick={() => switchMode('work')}
@@ -133,7 +130,6 @@ export const PomodoroTimer = () => {
         </button>
       </div>
 
-      {/* Task in focus input */}
       <div className="w-full max-w-sm mb-6 z-10">
         <input
           type="text"
@@ -144,7 +140,6 @@ export const PomodoroTimer = () => {
         />
       </div>
 
-      {/* Main Timer Display */}
       <div className="relative flex flex-col items-center justify-center my-6 z-10">
         <div className="text-6xl sm:text-8xl font-serif font-bold tracking-tight text-[#1c1917] mb-3 tabular-nums">
           {formattedTime}
@@ -159,7 +154,6 @@ export const PomodoroTimer = () => {
         </div>
       </div>
 
-      {/* Control Buttons */}
       <div className="flex items-center gap-4 mt-8 z-10">
         <button
           onClick={() => setIsRunning(!isRunning)}
@@ -201,7 +195,6 @@ export const PomodoroTimer = () => {
         </button>
       </div>
 
-      {/* Bottom Session Stats */}
       <div className="flex items-center gap-6 mt-10 pt-6 border-t border-[#e7e5e4] text-xs text-[#57534e] z-10">
         <div className="flex items-center gap-1.5">
           <CheckCircle2 className="w-3.5 h-3.5 text-[#2b5346]" />

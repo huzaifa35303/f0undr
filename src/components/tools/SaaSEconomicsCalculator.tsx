@@ -3,11 +3,10 @@ import { DollarSign, Users, RefreshCw, TrendingUp } from 'lucide-react';
 
 export const SaaSEconomicsCalculator = () => {
   const [customers, setCustomers] = useState<number>(180);
-  const [arpu, setArpu] = useState<number>(79); // Average Revenue Per User ($/mo)
-  const [churnRate, setChurnRate] = useState<number>(3.5); // Monthly churn %
-  const [cac, setCac] = useState<number>(240); // Customer Acquisition Cost ($)
+  const [arpu, setArpu] = useState<number>(79);
+  const [churnRate, setChurnRate] = useState<number>(3.5);
+  const [cac, setCac] = useState<number>(240);
 
-  // Calculations
   const mrr = customers * arpu;
   const arr = mrr * 12;
   const churnDecimal = Math.max(0.005, churnRate / 100);
@@ -41,7 +40,6 @@ export const SaaSEconomicsCalculator = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
-        {/* Sliders Input */}
         <div className="space-y-5">
           <div>
             <div className="flex justify-between text-xs mb-1">
@@ -119,7 +117,6 @@ export const SaaSEconomicsCalculator = () => {
           </div>
         </div>
 
-        {/* Live Output Cards */}
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-[#f5f2eb] border border-[#e7e5e4] rounded-xl p-4 flex flex-col justify-between">
             <span className="text-xs text-[#78716c] font-mono font-medium">Monthly Recurring (MRR)</span>

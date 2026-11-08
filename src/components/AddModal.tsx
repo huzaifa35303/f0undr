@@ -29,7 +29,6 @@ export const AddModal: React.FC<AddModalProps> = ({
     }
   }, [defaultTab, isOpen]);
 
-  // Book Form State
   const [bookTitle, setBookTitle] = useState('');
   const [bookAuthor, setBookAuthor] = useState('');
   const [bookYear, setBookYear] = useState('');
@@ -40,7 +39,6 @@ export const AddModal: React.FC<AddModalProps> = ({
   const [bookNotes, setBookNotes] = useState('');
   const [bookQuote, setBookQuote] = useState('');
 
-  // Tool Form State
   const [toolName, setToolName] = useState('');
   const [toolTagline, setToolTagline] = useState('');
   const [toolDescription, setToolDescription] = useState('');
@@ -49,7 +47,6 @@ export const AddModal: React.FC<AddModalProps> = ({
   const [toolPricing, setToolPricing] = useState<'Free' | 'Freemium' | 'Paid' | 'Open Source'>('Freemium');
   const [toolTags, setToolTags] = useState('');
 
-  // Team Form State
   const [teamName, setTeamName] = useState('');
   const [teamRole, setTeamRole] = useState('');
   const [teamHandle, setTeamHandle] = useState('');
@@ -60,7 +57,6 @@ export const AddModal: React.FC<AddModalProps> = ({
   const [teamGithub, setTeamGithub] = useState('');
   const [teamEmail, setTeamEmail] = useState('');
 
-  // Thing Form State
   const [thingTitle, setThingTitle] = useState('');
   const [thingCategory, setThingCategory] = useState<ThingCategory>('Hardware & Desk');
   const [thingSpecs, setThingSpecs] = useState('');
@@ -178,7 +174,6 @@ export const AddModal: React.FC<AddModalProps> = ({
           Contribute a new book, tool, team fellow, or hardware artifact.
         </p>
 
-        {/* Tab Selector */}
         <div className="flex items-center gap-1.5 p-1 bg-[#f5f2eb] border border-[#e7e5e4] rounded-xl mb-6">
           <button
             onClick={() => setActiveTab('book')}
@@ -222,7 +217,6 @@ export const AddModal: React.FC<AddModalProps> = ({
           </button>
         </div>
 
-        {/* BOOK FORM */}
         {activeTab === 'book' && (
           <form onSubmit={handleBookSubmit} className="space-y-4">
             <div>
@@ -343,7 +337,6 @@ export const AddModal: React.FC<AddModalProps> = ({
           </form>
         )}
 
-        {/* TOOL FORM */}
         {activeTab === 'tool' && (
           <form onSubmit={handleToolSubmit} className="space-y-4">
             <div>
@@ -442,7 +435,6 @@ export const AddModal: React.FC<AddModalProps> = ({
           </form>
         )}
 
-        {/* TEAM MEMBER FORM */}
         {activeTab === 'team' && (
           <form onSubmit={handleTeamSubmit} className="space-y-4">
             <div>
@@ -557,7 +549,6 @@ export const AddModal: React.FC<AddModalProps> = ({
           </form>
         )}
 
-        {/* THING FORM */}
         {activeTab === 'thing' && (
           <form onSubmit={handleThingSubmit} className="space-y-4">
             <div>

@@ -9,7 +9,6 @@ export const StartupIdeaValidator = () => {
   const [distributionFeasibility, setDistributionFeasibility] = useState<number>(8);
   const [moatDefensibility, setMoatDefensibility] = useState<number>(6);
 
-  // Overall score out of 100
   const totalScore = Math.round(
     ((urgency + marketWillingness + unfairAdvantage + distributionFeasibility + moatDefensibility) / 50) * 100
   );
@@ -65,7 +64,6 @@ Generated via f0undr Studio`;
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-6">
-        {/* Sliders Input Column */}
         <div className="lg:col-span-2 space-y-5">
           <div>
             <label className="text-xs font-medium text-[#1c1917] block mb-1.5">Venture / Product Hypothesis</label>
@@ -158,7 +156,6 @@ Generated via f0undr Studio`;
           </div>
         </div>
 
-        {/* Score & Evaluation Card */}
         <div className="bg-[#f5f2eb] border border-[#e7e5e4] rounded-xl p-6 flex flex-col justify-between">
           <div>
             <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#78716c]">Viability Score</span>

@@ -38,14 +38,12 @@ interface AdminPanelProps {
   onClose: () => void;
   currentUser: AuthUser;
   onLogout: () => void;
-  // Content states
   books: Book[];
   tools: CuratedTool[];
   team: TeamMember[];
   things: Thing[];
   seoSettings: SeoSettings;
   auditLogs: AuditLogItem[];
-  // Handlers
   onUpdateBook: (book: Book) => void;
   onDeleteBook: (id: string) => void;
   onAddBook: (book: Book) => void;
@@ -137,7 +135,6 @@ export const AdminPanel = ({
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-[#faf8f5] flex flex-col text-[#1c1917] selection:bg-[#c2410c]/15 selection:text-[#9a3412]">
-      {/* Top Admin Bar */}
       <header className="sticky top-0 z-20 bg-[#ffffff] border-b border-[#e7e5e4] px-4 sm:px-8 py-3.5 shadow-xs">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <div className="flex items-center gap-3">
@@ -160,7 +157,6 @@ export const AdminPanel = ({
           </div>
 
           <div className="flex items-center gap-3">
-            {/* Current User Pill */}
             <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-[#f5f2eb] border border-[#e7e5e4]">
               <img
                 src={currentUser.avatarUrl}
@@ -195,7 +191,6 @@ export const AdminPanel = ({
         </div>
       </header>
 
-      {/* Admin Navigation Pills */}
       <div className="bg-[#ffffff] border-b border-[#e7e5e4] px-4 sm:px-8 py-2.5 sticky top-[65px] z-10 shadow-2xs">
         <div className="max-w-7xl mx-auto flex items-center justify-between overflow-x-auto gap-2 scrollbar-none">
           <nav className="flex items-center gap-1.5">
@@ -295,14 +290,9 @@ export const AdminPanel = ({
         </div>
       </div>
 
-      {/* Body Content */}
       <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-8">
-        {/* ========================================================= */}
-        {/* TAB 1: OVERVIEW & TELEMETRY */}
-        {/* ========================================================= */}
         {activeTab === 'overview' && (
           <div className="space-y-8 animate-fade-in">
-            {/* Top Stat Cards */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               <div className="editorial-card rounded-2xl p-5 bg-white border border-[#e7e5e4]">
                 <div className="flex items-center justify-between mb-3">
@@ -341,7 +331,6 @@ export const AdminPanel = ({
               </div>
             </div>
 
-            {/* Quick Action Strip */}
             <div className="editorial-card rounded-2xl p-6 bg-[#ffffff] border border-[#e7e5e4]">
               <h3 className="font-serif text-lg font-bold text-[#1c1917] mb-2">
                 Executive Studio Quick Actions
@@ -381,7 +370,6 @@ export const AdminPanel = ({
               </div>
             </div>
 
-            {/* Recent System Audit Logs */}
             <div className="editorial-card rounded-2xl p-6 bg-[#ffffff] border border-[#e7e5e4]">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
@@ -414,12 +402,8 @@ export const AdminPanel = ({
           </div>
         )}
 
-        {/* ========================================================= */}
-        {/* TAB 2: GOOGLE RANK #1 ENGINE & SEO SUITE */}
-        {/* ========================================================= */}
         {activeTab === 'seo' && (
           <div className="space-y-8 animate-fade-in">
-            {/* Header Banner */}
             <div className="editorial-card rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-white to-[#fff7ed] border border-[#ffedd5]">
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                 <div className="space-y-2">
@@ -459,7 +443,6 @@ export const AdminPanel = ({
               </div>
             </div>
 
-            {/* Google SERP Snippet Preview */}
             <div className="editorial-card rounded-2xl p-6 bg-white border border-[#e7e5e4]">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
@@ -488,7 +471,6 @@ export const AdminPanel = ({
                 </div>
               </div>
 
-              {/* SERP Card rendering */}
               <div className={`p-4 sm:p-5 rounded-xl bg-white border border-[#d6d3d1] shadow-xs font-sans ${
                 serpViewMode === 'mobile' ? 'max-w-md mx-auto' : 'max-w-3xl'
               }`}>
@@ -512,7 +494,6 @@ export const AdminPanel = ({
                   {editableSeo.siteDescription}
                 </p>
 
-                {/* Rich Snippet Sitelinks */}
                 <div className="mt-3 pt-3 border-t border-[#f1f3f4] grid grid-cols-2 gap-2 text-xs">
                   <div>
                     <span className="text-[#1a0dab] font-medium hover:underline cursor-pointer block">
@@ -534,7 +515,6 @@ export const AdminPanel = ({
               </div>
             </div>
 
-            {/* Editable SEO Meta Settings Form */}
             <form onSubmit={handleSaveSeo} className="editorial-card rounded-2xl p-6 bg-white border border-[#e7e5e4] space-y-5">
               <div className="flex items-center justify-between border-b border-[#e7e5e4] pb-4">
                 <div>
@@ -652,7 +632,6 @@ export const AdminPanel = ({
               </div>
             </form>
 
-            {/* Actionable Blueprint to Reach #1 on Google */}
             <div className="editorial-card rounded-2xl p-6 bg-white border border-[#e7e5e4] space-y-4">
               <div className="flex items-center gap-2">
                 <Award className="w-5 h-5 text-[#c2410c]" />
@@ -709,9 +688,6 @@ export const AdminPanel = ({
           </div>
         )}
 
-        {/* ========================================================= */}
-        {/* TAB 3: BOOKSHELF MANAGER */}
-        {/* ========================================================= */}
         {activeTab === 'books' && (
           <div className="space-y-6 animate-fade-in">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -771,7 +747,6 @@ export const AdminPanel = ({
                     </div>
 
                     <div className="flex items-center gap-3 shrink-0">
-                      {/* Status Selector */}
                       <select
                         value={book.status}
                         onChange={(e) => onUpdateBook({ ...book, status: e.target.value as ReadingStatus })}
@@ -782,7 +757,6 @@ export const AdminPanel = ({
                         <option value="wishlist">Wishlist</option>
                       </select>
 
-                      {/* Rating Buttons */}
                       <div className="flex items-center gap-0.5 text-[#c2410c]">
                         {[1, 2, 3, 4, 5].map((star) => (
                           <button
@@ -800,7 +774,6 @@ export const AdminPanel = ({
                         ))}
                       </div>
 
-                      {/* Delete Button */}
                       <button
                         onClick={() => {
                           if (window.confirm(`Delete "${book.title}" from vault?`)) {
@@ -819,9 +792,6 @@ export const AdminPanel = ({
           </div>
         )}
 
-        {/* ========================================================= */}
-        {/* TAB 4: TEAM FELLOWS MANAGER */}
-        {/* ========================================================= */}
         {activeTab === 'team' && (
           <div className="space-y-6 animate-fade-in">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -863,7 +833,6 @@ export const AdminPanel = ({
                   </div>
 
                   <div className="flex items-center gap-3 shrink-0">
-                    {/* Status Changer */}
                     <select
                       value={member.status}
                       onChange={(e) => onUpdateTeamMember({ ...member, status: e.target.value as 'Building' | 'Deep Work' | 'Available' | 'Offline' })}
@@ -875,7 +844,6 @@ export const AdminPanel = ({
                       <option value="Offline">Offline</option>
                     </select>
 
-                    {/* Verified Founder Toggle */}
                     <button
                       onClick={() => onUpdateTeamMember({ ...member, verifiedFounder: !member.verifiedFounder })}
                       className={`px-2.5 py-1 rounded-lg text-xs font-mono font-medium border transition-colors ${
@@ -888,7 +856,6 @@ export const AdminPanel = ({
                       {member.verifiedFounder ? 'Founder ★' : 'Fellow'}
                     </button>
 
-                    {/* Delete Fellow */}
                     <button
                       onClick={() => {
                         if (window.confirm(`Remove fellow "${member.name}" from active roster?`)) {
@@ -907,9 +874,6 @@ export const AdminPanel = ({
           </div>
         )}
 
-        {/* ========================================================= */}
-        {/* TAB 5: TOOLS MANAGER */}
-        {/* ========================================================= */}
         {activeTab === 'tools' && (
           <div className="space-y-6 animate-fade-in">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -983,9 +947,6 @@ export const AdminPanel = ({
           </div>
         )}
 
-        {/* ========================================================= */}
-        {/* TAB 6: ARTIFACTS / THINGS */}
-        {/* ========================================================= */}
         {activeTab === 'things' && (
           <div className="space-y-6 animate-fade-in">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -1047,9 +1008,6 @@ export const AdminPanel = ({
           </div>
         )}
 
-        {/* ========================================================= */}
-        {/* TAB 7: VAULT & TELEMETRY */}
-        {/* ========================================================= */}
         {activeTab === 'system' && (
           <div className="space-y-6 animate-fade-in">
             <div className="editorial-card rounded-2xl p-6 bg-white border border-[#e7e5e4] space-y-4">

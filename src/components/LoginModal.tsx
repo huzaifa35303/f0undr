@@ -60,7 +60,6 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }: LoginModalProps)
         className="w-full max-w-lg bg-[#ffffff] rounded-2xl border border-[#e7e5e4] shadow-2xl overflow-hidden animate-scale-up"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
         <div className="p-6 sm:p-7 border-b border-[#e7e5e4] bg-[#faf8f5]/80 flex items-start justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[#1c1917] flex items-center justify-center text-[#faf8f5] shadow-xs">
@@ -88,7 +87,6 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }: LoginModalProps)
           </button>
         </div>
 
-        {/* Form Body */}
         <div className="p-6 sm:p-7 space-y-6">
           {error && (
             <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-800 flex items-start gap-2.5">
@@ -158,7 +156,6 @@ export const LoginModal = ({ isOpen, onClose, onLoginSuccess }: LoginModalProps)
           </form>
         </div>
 
-        {/* Footer info */}
         <div className="p-4 bg-[#faf8f5] border-t border-[#e7e5e4] text-center">
           <p className="text-[11px] font-mono text-[#78716c] flex items-center justify-center gap-1.5">
             <Check className="w-3.5 h-3.5 text-[#2b5346]" />

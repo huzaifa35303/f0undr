@@ -43,7 +43,6 @@ export const ToolsSection: React.FC<ToolsSectionProps> = ({
   return (
     <section className="py-20 border-t border-[#e7e5e4] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-3">
@@ -60,7 +59,6 @@ export const ToolsSection: React.FC<ToolsSectionProps> = ({
           </div>
         </div>
 
-        {/* Master Subtabs Switcher */}
         <div className="flex items-center gap-1.5 p-1 bg-[#f5f2eb] border border-[#e7e5e4] rounded-xl w-fit mb-10">
           <button
             onClick={() => setActiveMode('interactive')}
@@ -87,10 +85,8 @@ export const ToolsSection: React.FC<ToolsSectionProps> = ({
           </button>
         </div>
 
-        {/* MODE 1: Interactive Utilities */}
         {activeMode === 'interactive' && (
           <div className="space-y-8 animate-fade-in">
-            {/* Utility Selector Pills */}
             <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
               <button
                 onClick={() => setActiveUtility('pomodoro')}
@@ -141,7 +137,6 @@ export const ToolsSection: React.FC<ToolsSectionProps> = ({
               </button>
             </div>
 
-            {/* Active Utility Card Body */}
             <div className="editorial-card rounded-2xl p-6 sm:p-10 border border-[#e7e5e4] relative">
               {activeUtility === 'pomodoro' && <PomodoroTimer />}
               {activeUtility === 'scratchpad' && <MarkdownScratchpad />}
@@ -151,10 +146,8 @@ export const ToolsSection: React.FC<ToolsSectionProps> = ({
           </div>
         )}
 
-        {/* MODE 2: Curated Tools Directory */}
         {activeMode === 'directory' && (
           <div className="space-y-8 animate-fade-in">
-            {/* Filter and Search Bar */}
             <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
               <div className="relative flex-1 max-w-md">
                 <Search className="w-4 h-4 text-[#78716c] absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -167,7 +160,6 @@ export const ToolsSection: React.FC<ToolsSectionProps> = ({
                 />
               </div>
 
-              {/* Category Pills */}
               <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none text-xs">
                 {CATEGORIES.map((cat) => (
                   <button
@@ -185,7 +177,6 @@ export const ToolsSection: React.FC<ToolsSectionProps> = ({
               </div>
             </div>
 
-            {/* Tools Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredTools.map((tool) => (
                 <div

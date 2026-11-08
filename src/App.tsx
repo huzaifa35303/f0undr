@@ -32,7 +32,6 @@ export function App() {
   const [addModalDefaultTab, setAddModalDefaultTab] = useState<'book' | 'tool' | 'team' | 'thing'>('book');
   const [selectedCurriculum, setSelectedCurriculum] = useState<'computer' | 'urdu' | 'mind'>('computer');
 
-  // Authentication State
   const [currentUser, setCurrentUser] = useState<AuthUser | null>(() => {
     try {
       const saved = localStorage.getItem('f0undr_auth_user');
@@ -42,7 +41,6 @@ export function App() {
     }
   });
 
-  // SEO Settings State
   const [seoSettings, setSeoSettings] = useState<SeoSettings>(() => {
     try {
       const saved = localStorage.getItem('f0undr_seo_settings_v2');
@@ -57,7 +55,6 @@ export function App() {
     }
   });
 
-  // Audit Logs State
   const [auditLogs, setAuditLogs] = useState<AuditLogItem[]>(() => {
     try {
       const saved = localStorage.getItem('f0undr_audit_logs');
@@ -67,7 +64,6 @@ export function App() {
     }
   });
 
-  // Persistent Content States (v3 cache bust ensures fresh updates)
   const [books, setBooks] = useState<Book[]>(() => {
     try {
       const saved = localStorage.getItem('f0undr_books_editorial_v3');
@@ -120,7 +116,6 @@ export function App() {
     }
   });
 
-  // Save to localStorage on changes
   useEffect(() => {
     localStorage.setItem('f0undr_books_editorial_v3', JSON.stringify(books));
   }, [books]);
@@ -139,7 +134,6 @@ export function App() {
 
   useEffect(() => {
     localStorage.setItem('f0undr_seo_settings', JSON.stringify(seoSettings));
-    // Dynamically apply to active document head
     document.title = seoSettings.siteTitle;
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', seoSettings.siteDescription);
@@ -161,7 +155,6 @@ export function App() {
     }
   }, [currentUser]);
 
-  // Global keyboard shortcut for search (⌘K / Ctrl+K)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
@@ -173,7 +166,6 @@ export function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Guard access to Admin: support /admin, #admin, and #login
   useEffect(() => {
     const handleRoute = () => {
       const isPathAdmin = window.location.pathname === '/admin' || window.location.pathname === '/admin/';
@@ -195,7 +187,6 @@ export function App() {
     };
   }, [currentUser]);
 
-  // Audit Logger
   const addAuditLog = (action: string, target: string) => {
     const newLog: AuditLogItem = {
       id: `log-${Date.now()}`,
@@ -208,7 +199,6 @@ export function App() {
     setAuditLogs((prev) => [newLog, ...prev.slice(0, 30)]);
   };
 
-  // Auth Handlers
   const handleLoginSuccess = (user: AuthUser) => {
     setCurrentUser(user);
     addAuditLog('Authorized Access Granted', `Session established for ${user.name}`);
@@ -223,7 +213,6 @@ export function App() {
     setIsAdminOpen(false);
   };
 
-  // Handlers for Books
   const handleAddBook = (book: Book) => {
     setBooks([book, ...books]);
     addAuditLog('Book Created', book.title);
@@ -240,7 +229,6 @@ export function App() {
     if (target) addAuditLog('Book Removed', target.title);
   };
 
-  // Handlers for Tools
   const handleAddTool = (tool: CuratedTool) => {
     setTools([tool, ...tools]);
     addAuditLog('Tool Created', tool.name);
@@ -257,7 +245,6 @@ export function App() {
     if (target) addAuditLog('Tool Removed', target.name);
   };
 
-  // Handlers for Team
   const handleAddTeamMember = (member: TeamMember) => {
     setTeam([...team, member]);
     addAuditLog('Fellow Enrolled', member.name);
@@ -274,7 +261,6 @@ export function App() {
     if (target) addAuditLog('Fellow Removed', target.name);
   };
 
-  // Handlers for Things
   const handleAddThing = (thing: Thing) => {
     setThings([thing, ...things]);
     addAuditLog('Artifact Added', thing.title);
@@ -291,13 +277,11 @@ export function App() {
     if (target) addAuditLog('Artifact Removed', target.title);
   };
 
-  // SEO Update Handler
   const handleUpdateSeoSettings = (newSettings: SeoSettings) => {
     setSeoSettings(newSettings);
     addAuditLog('SEO Meta Updated', 'Google Rank #1 Parameters Recalibrated');
   };
 
-  // Export / Backup JSON
   const handleExportData = () => {
     const vault = {
       edition: 'f0undr Warm Editorial Magazine 2026',
@@ -319,7 +303,6 @@ export function App() {
     addAuditLog('Database Exported', 'Full JSON Vault Backup Created');
   };
 
-  // Import / Restore JSON
   const handleImportData = (data: unknown) => {
     const typed = data as {
       books?: Book[];
@@ -337,7 +320,6 @@ export function App() {
     alert('f0undr Vault successfully restored!');
   };
 
-  // Reset to Defaults
   const handleResetData = () => {
     if (window.confirm('Reset all vault data back to initial defaults?')) {
       setBooks(INITIAL_BOOKS);
@@ -366,7 +348,6 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-[#faf8f5] text-[#1c1917] flex flex-col selection:bg-[#c2410c]/15 selection:text-[#9a3412]">
-      {/* Top Fixed Navbar */}
       <Navbar
         activeTab={activeTab}
         setActiveTab={(tab) => {
@@ -385,9 +366,7 @@ export function App() {
         }}
       />
 
-      {/* Main Content Area */}
       <main className="flex-1">
-        {/* OVERVIEW / PORTFOLIO & STORY */}
         {activeTab === 'overview' && (
           <div>
             <HeroSection
@@ -403,10 +382,8 @@ export function App() {
               }}
             />
 
-            {/* TRIPLE FLAGSHIP CURRICULUM SPOTLIGHT */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                {/* Flagship 1: Computer Science */}
                 <div className="editorial-card rounded-2xl p-6 sm:p-8 relative overflow-hidden group flex flex-col justify-between">
                   <div className="space-y-3.5">
                     <div className="flex flex-wrap items-center gap-2">
@@ -462,7 +439,6 @@ export function App() {
                   </div>
                 </div>
 
-                {/* Flagship 2: Urdu Literature */}
                 <div className="editorial-card rounded-2xl p-6 sm:p-8 relative overflow-hidden group flex flex-col justify-between">
                   <div className="space-y-3.5">
                     <div className="flex flex-wrap items-center gap-2">
@@ -518,7 +494,6 @@ export function App() {
                   </div>
                 </div>
 
-                {/* Flagship 3: Mental Mastery */}
                 <div className="editorial-card rounded-2xl p-6 sm:p-8 relative overflow-hidden group flex flex-col justify-between">
                   <div className="space-y-3.5">
                     <div className="flex flex-wrap items-center gap-2">
@@ -596,7 +571,6 @@ export function App() {
               }}
             />
 
-            {/* Quick Teaser: f0undr Team Preview */}
             <div className="border-t border-[#e7e5e4] bg-[#f5f2eb]/40 py-16">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
@@ -665,11 +639,9 @@ export function App() {
               </div>
             </div>
 
-            {/* Quick Teaser: Featured Books & Tools Banner */}
             <div className="border-t border-[#e7e5e4] py-16">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* Bookshelf Teaser Card */}
                   <div
                     onClick={() => {
                       setActiveTab('books');
@@ -693,7 +665,6 @@ export function App() {
                     </span>
                   </div>
 
-                  {/* Tools Teaser Card */}
                   <div
                     onClick={() => {
                       setActiveTab('tools');
@@ -722,11 +693,9 @@ export function App() {
           </div>
         )}
 
-        {/* CURRICULUM TAB */}
         {activeTab === 'curriculum' && (
           <div className="pt-24 pb-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              {/* Dual Curriculum Switcher */}
               <div className="flex flex-wrap items-center gap-2 p-1.5 bg-[#f5f2eb] rounded-xl border border-[#e7e5e4] w-fit mb-6">
                 <button
                   onClick={() => setSelectedCurriculum('computer')}
@@ -767,7 +736,6 @@ export function App() {
 
               {selectedCurriculum === 'computer' && (
                 <>
-                  {/* Header Bar */}
                   <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
                     <div>
                       <div className="flex items-center gap-2 mb-2">
@@ -801,7 +769,6 @@ export function App() {
                     </div>
                   </div>
 
-                  {/* Quick Jump Unit Strip */}
                   <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-6 scrollbar-none text-xs font-mono">
                     {[
                       { label: 'Unit 1: Hardware', hash: 'unit-one' },
@@ -828,7 +795,6 @@ export function App() {
                     ))}
                   </div>
 
-                  {/* Embedded Interactive Reader */}
                   <div className="editorial-card rounded-2xl overflow-hidden border border-[#e7e5e4] shadow-md bg-white">
                     <iframe
                       id="curriculum-frame"
@@ -842,7 +808,6 @@ export function App() {
 
               {selectedCurriculum === 'urdu' && (
                 <>
-                  {/* Urdu Header Bar */}
                   <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
                     <div>
                       <div className="flex items-center gap-2 mb-2">
@@ -876,7 +841,6 @@ export function App() {
                     </div>
                   </div>
 
-                  {/* Embedded Urdu Interactive Reader */}
                   <div className="editorial-card rounded-2xl overflow-hidden border border-[#e7e5e4] shadow-md bg-white">
                     <iframe
                       id="urdu-curriculum-frame"
@@ -890,7 +854,6 @@ export function App() {
 
               {selectedCurriculum === 'mind' && (
                 <>
-                  {/* Mental Mastery Header Bar */}
                   <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
                     <div>
                       <div className="flex items-center gap-2 mb-2">
@@ -934,7 +897,6 @@ export function App() {
                     </div>
                   </div>
 
-                  {/* Quick Jump Unit Strip */}
                   <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-6 scrollbar-none text-xs font-mono">
                     {[
                       { label: 'Unit 1: Fast Learning', hash: 'unit-one' },
@@ -961,7 +923,6 @@ export function App() {
                     ))}
                   </div>
 
-                  {/* Embedded Interactive Reader */}
                   <div className="editorial-card rounded-2xl overflow-hidden border border-[#e7e5e4] shadow-md bg-white">
                     <iframe
                       id="mind-curriculum-frame"
@@ -976,28 +937,24 @@ export function App() {
           </div>
         )}
 
-        {/* TEAM TAB */}
         {activeTab === 'team' && (
           <div className="pt-20">
             <TeamSection team={team} />
           </div>
         )}
 
-        {/* BOOKS TAB */}
         {activeTab === 'books' && (
           <div className="pt-20">
             <BooksSection books={books} />
           </div>
         )}
 
-        {/* TOOLS TAB */}
         {activeTab === 'tools' && (
           <div className="pt-20">
             <ToolsSection tools={tools} />
           </div>
         )}
 
-        {/* THINGS TAB */}
         {activeTab === 'things' && (
           <div className="pt-20">
             <ThingsSection things={things} />
@@ -1005,7 +962,6 @@ export function App() {
         )}
       </main>
 
-      {/* Global Search Modal */}
       <SearchModal
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
@@ -1019,14 +975,12 @@ export function App() {
         }}
       />
 
-      {/* Founder / Admin Login Modal */}
       <LoginModal
         isOpen={isLoginOpen}
         onClose={() => setIsLoginOpen(false)}
         onLoginSuccess={handleLoginSuccess}
       />
 
-      {/* Comprehensive Admin Panel & SEO Engine */}
       {currentUser && (
         <AdminPanel
           isOpen={isAdminOpen}
@@ -1059,7 +1013,6 @@ export function App() {
         />
       )}
 
-      {/* Add Item Modal (Rendered on top of Cockpit with z-[100]) */}
       {currentUser && (
         <AddModal
           isOpen={isAddOpen}
@@ -1072,7 +1025,6 @@ export function App() {
         />
       )}
 
-      {/* Clean Public Colophon Footer */}
       <Footer
         currentUser={currentUser}
         onOpenAdmin={() => setIsAdminOpen(true)}

@@ -73,7 +73,6 @@ export const MarkdownScratchpad: React.FC = () => {
 
   return (
     <div className="flex flex-col relative">
-      {/* Header Toolbar */}
       <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 border-b border-[#e7e5e4]">
         <div className="flex items-center gap-1 bg-[#f5f2eb] p-1 rounded-xl border border-[#e7e5e4]">
           <button
@@ -153,7 +152,6 @@ export const MarkdownScratchpad: React.FC = () => {
         </div>
       </div>
 
-      {/* Editor Textarea with clean linen paper aesthetic */}
       <div className="relative">
         <textarea
           id="scratchpad-textarea"
@@ -165,7 +163,6 @@ export const MarkdownScratchpad: React.FC = () => {
         />
       </div>
 
-      {/* Footer Word & Time Metrics */}
       <div className="flex items-center justify-between text-xs text-[#78716c] mt-3 pt-3 border-t border-[#e7e5e4]">
         <div className="flex items-center gap-4 font-mono text-[11px]">
           <span>{wordCount} words</span>

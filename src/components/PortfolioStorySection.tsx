@@ -40,7 +40,6 @@ export const PortfolioStorySection = ({
   return (
     <section className="py-20 border-t border-[#e7e5e4] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
             <div className="flex items-center gap-2 mb-3">
@@ -67,7 +66,6 @@ export const PortfolioStorySection = ({
           </div>
         </div>
 
-        {/* Narrative / About Block */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20">
           <div className="lg:col-span-7 editorial-card rounded-2xl p-8 sm:p-10 relative">
             <span className="editorial-stamp mb-4 inline-block">
@@ -102,7 +100,6 @@ export const PortfolioStorySection = ({
             </div>
           </div>
 
-          {/* Curriculum Spotlight Card */}
           <div className="lg:col-span-5 flex flex-col justify-between gap-6">
             <div className="editorial-card rounded-2xl p-8 flex-1 relative overflow-hidden">
               <div className="flex items-center gap-2 mb-3">
@@ -148,7 +145,6 @@ export const PortfolioStorySection = ({
           </div>
         </div>
 
-        {/* Pillars Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {pillars.map((pillar) => {
             const Icon = pillar.icon;
@@ -178,7 +174,6 @@ export const PortfolioStorySection = ({
           })}
         </div>
 
-        {/* Active Ventures & Systems */}
         <div>
           <div className="flex items-center justify-between mb-8">
             <div>

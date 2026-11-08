@@ -41,7 +41,6 @@ export const SearchModal: React.FC<SearchModalProps> = ({
 
   const q = query.toLowerCase().trim();
 
-  // Matched results
   const matchedBooks = q
     ? books.filter(
         (b) =>
@@ -92,7 +91,6 @@ export const SearchModal: React.FC<SearchModalProps> = ({
         className="editorial-card w-full max-w-2xl max-h-[80vh] flex flex-col rounded-2xl border border-[#d6d3d1] shadow-2xl overflow-hidden animate-scale-up"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Search Input Bar */}
         <div className="flex items-center gap-3 px-5 py-4 border-b border-[#e7e5e4] bg-[#f5f2eb]">
           <Search className="w-5 h-5 text-[#c2410c] shrink-0" />
           <input
@@ -111,7 +109,6 @@ export const SearchModal: React.FC<SearchModalProps> = ({
           </kbd>
         </div>
 
-        {/* Results List */}
         <div className="overflow-y-auto p-4 space-y-6">
           {!hasResults ? (
             <div className="text-center py-12 text-[#a8a29e] text-xs font-mono">
@@ -119,7 +116,6 @@ export const SearchModal: React.FC<SearchModalProps> = ({
             </div>
           ) : (
             <>
-              {/* Books */}
               {matchedBooks.length > 0 && (
                 <div>
                   <span className="text-[11px] font-mono uppercase text-[#c2410c] font-semibold px-2 mb-2 block flex items-center gap-1.5">
@@ -146,7 +142,6 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                 </div>
               )}
 
-              {/* Team */}
               {matchedTeam.length > 0 && (
                 <div>
                   <span className="text-[11px] font-mono uppercase text-[#2b5346] font-semibold px-2 mb-2 block flex items-center gap-1.5">
@@ -180,7 +175,6 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                 </div>
               )}
 
-              {/* Tools */}
               {matchedTools.length > 0 && (
                 <div>
                   <span className="text-[11px] font-mono uppercase text-[#c2410c] font-semibold px-2 mb-2 block flex items-center gap-1.5">
@@ -207,7 +201,6 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                 </div>
               )}
 
-              {/* Things */}
               {matchedThings.length > 0 && (
                 <div>
                   <span className="text-[11px] font-mono uppercase text-[#78716c] font-semibold px-2 mb-2 block flex items-center gap-1.5">
