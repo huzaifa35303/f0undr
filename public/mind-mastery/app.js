@@ -1,7 +1,5 @@
 (() => {
-  // =========================================================================
-  // 1. BESPOKE THEME SWITCHER (Editorial Light -> Warm Sand -> Nordic Midnight -> Obsidian Dark)
-  // =========================================================================
+
   const THEMES = ["light", "sepia", "midnight", "dark"];
   const THEME_LABELS = {
     light: { name: "Editorial Light", icon: "☀️", color: "#fafafc" },
@@ -52,9 +50,6 @@
     });
   });
 
-  // =========================================================================
-  // 2. READING PROGRESS & DYNAMIC CHAPTER SCROLL-SPY
-  // =========================================================================
   const progress = document.querySelector("#chapter-progress");
   const progressCopy = document.querySelector("#progress-copy");
   const readingLabel = document.querySelector(".reading-label");
@@ -98,9 +93,6 @@
   window.addEventListener("scroll", updateProgress, { passive: true });
   updateProgress();
 
-  // =========================================================================
-  // 3. TOAST NOTIFICATION UTILITY
-  // =========================================================================
   function showToast(message, icon = "✓") {
     const toast = document.getElementById("toast");
     if (!toast) return;
@@ -112,9 +104,6 @@
     }, 2800);
   }
 
-  // =========================================================================
-  // 4. READER CONTROLS: FONT SIZING (A- / A+)
-  // =========================================================================
   const fontDecreaseBtn = document.getElementById("font-decrease");
   const fontIncreaseBtn = document.getElementById("font-increase");
   let currentFontScale = parseFloat(localStorage.getItem("f0undr-mind-font-scale")) || 1.0;
@@ -143,9 +132,6 @@
     });
   }
 
-  // =========================================================================
-  // 5. ACCESSIBLE AUDIO NARRATION (Web Speech API)
-  // =========================================================================
   let activeAudioBtn = null;
 
   function stopCurrentAudio() {
@@ -217,15 +203,12 @@
     if (window.speechSynthesis) window.speechSynthesis.cancel();
   });
 
-  // =========================================================================
-  // 6. UNIT COMPLETION TRACKER
-  // =========================================================================
   const COMPLETED_UNITS_KEY = "f0undr-mind-completed-units";
   let completedUnits = [];
   try {
     const raw = localStorage.getItem(COMPLETED_UNITS_KEY);
     if (raw) completedUnits = JSON.parse(raw);
-  } catch (err) {
+  } catch {
     completedUnits = [];
   }
 
@@ -262,9 +245,6 @@
     });
   });
 
-  // =========================================================================
-  // 7. COPY TACTICAL DRILLS & FRAMEWORKS
-  // =========================================================================
   document.querySelectorAll(".copy-framework-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       const card = btn.closest(".try-card");
@@ -286,9 +266,6 @@
     });
   });
 
-  // =========================================================================
-  // 8. INTERACTIVE STUDENT LAB WORKBOOK (Auto-saving, Copy & Export)
-  // =========================================================================
   const WORKBOOK_KEY = "f0undr-mind-mastery-workbook";
   const workbookTextareas = document.querySelectorAll(".prompt-row textarea");
   const saveStatusEl = document.querySelector(".save-status");
@@ -302,14 +279,12 @@
     console.warn("Could not parse workbook data", err);
   }
 
-  // Populate saved data
   workbookTextareas.forEach(textarea => {
     const name = textarea.getAttribute("name");
     if (name && workbookData[name]) {
       textarea.value = workbookData[name];
     }
 
-    // Auto-save on input
     textarea.addEventListener("input", () => {
       workbookData[name] = textarea.value;
       localStorage.setItem(WORKBOOK_KEY, JSON.stringify(workbookData));
@@ -320,7 +295,6 @@
     });
   });
 
-  // Individual Unit Save Buttons
   document.querySelectorAll(".workbook-save-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       localStorage.setItem(WORKBOOK_KEY, JSON.stringify(workbookData));
@@ -330,7 +304,6 @@
     });
   });
 
-  // Individual Unit Copy Notes Buttons
   document.querySelectorAll(".workbook-copy-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       const section = btn.closest(".workbook-section");
@@ -358,7 +331,6 @@
     });
   });
 
-  // Individual Unit Reset Buttons
   document.querySelectorAll(".workbook-reset-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       const section = btn.closest(".workbook-section");
@@ -376,7 +348,6 @@
     });
   });
 
-  // Global Export All Notes
   if (exportBtn) {
     exportBtn.addEventListener("click", () => {
       let content = "# The Art of Mental Mastery — Complete Student Workbook\n";
@@ -399,9 +370,8 @@
       URL.revokeObjectURL(url);
       showToast("Exported all workbook notes (.md)", "📥");
     });
-  });
+  }
 
-  // Floating Back to Top Button
   const floatingTopBtn = document.getElementById("floating-top-btn");
   if (floatingTopBtn) {
     window.addEventListener("scroll", () => {
@@ -413,15 +383,11 @@
     }, { passive: true });
   }
 
-  // =========================================================================
-  // 5. INTERACTIVE SELF-ASSESSMENT QUIZZES (Units 1 to 6)
-  // =========================================================================
   document.querySelectorAll(".quiz-section").forEach(section => {
     const scoreBadge = section.querySelector(".quiz-score-badge");
     const cards = section.querySelectorAll(".quiz-card");
     const resetBtn = section.querySelector(".quiz-reset-btn");
     let correctCount = 0;
-    let answeredCount = 0;
 
     function updateScore() {
       if (scoreBadge) {
@@ -439,7 +405,6 @@
         btn.addEventListener("click", () => {
           if (card.classList.contains("answered")) return;
           card.classList.add("answered");
-          answeredCount++;
 
           optionBtns.forEach(b => (b.disabled = true));
 
@@ -468,7 +433,6 @@
     if (resetBtn) {
       resetBtn.addEventListener("click", () => {
         correctCount = 0;
-        answeredCount = 0;
         cards.forEach(card => {
           card.classList.remove("answered", "answered-correct", "answered-wrong");
           card.querySelectorAll(".quiz-option-btn").forEach(btn => {
@@ -485,11 +449,8 @@
     }
   });
 
-  // =========================================================================
-  // 6. 3D INTERACTIVE FLASHCARDS ENGINE
-  // =========================================================================
   const FLASHCARDS = [
-    // Unit 1: Accelerated Learning
+
     {
       unit: "unit1",
       category: "Accelerated Learning",
@@ -521,7 +482,6 @@
       desc: "Mixing distinct but related topics or problem types during study sessions instead of block practicing one skill repeatedly, dramatically boosting transfer to novel exams and real situations."
     },
 
-    // Unit 2: Memory Architecture & Loci
     {
       unit: "unit2",
       category: "Memory Palace",
@@ -553,7 +513,6 @@
       desc: "Making memory anchors Bizarre, Animated, Kinetic, Emotional, and Ridiculous. The brain prioritizes novelty and threat/humor over sterile, dull facts."
     },
 
-    // Unit 3: Non-Verbal Mind Reading
     {
       unit: "unit3",
       category: "Body Language",
@@ -591,7 +550,6 @@
       desc: "The only universally recognized one-sided facial microexpression (AU R12/L14). Indicates feelings of moral superiority, condescension, or disrespect. High predictor of relationship divorce."
     },
 
-    // Unit 4: Deception Detection & Profiling
     {
       unit: "unit4",
       category: "Deception Detection",
@@ -623,7 +581,6 @@
       desc: "A cold reading technique that simultaneously credits a person with a personality trait and its exact opposite ('You are generally warm and patient, but when pushed too far, you can be fiercely decisive')."
     },
 
-    // Unit 5: Persuasion & Influence
     {
       unit: "unit5",
       category: "Persuasion",
@@ -655,7 +612,6 @@
       desc: "A psychological self-defense tactic against manipulative, toxic, or narcissistic personalities: becoming unreactive, bland, and emotionally unresponsive like an ordinary gray rock, starving them of drama."
     },
 
-    // Unit 6: Mental Models & Decisions
     {
       unit: "unit6",
       category: "Mental Models",
@@ -784,9 +740,6 @@
   saveFlashcardStats();
   renderCard();
 
-  // =========================================================================
-  // 7. IN-BOOK LIVE SEARCH ENGINE (Ctrl + K)
-  // =========================================================================
   const SEARCH_INDEX = [
     {
       unit: "Unit 1",
@@ -1001,7 +954,6 @@
     });
   });
 
-  // Hotkey listener (Ctrl + K or Cmd + K)
   window.addEventListener("keydown", e => {
     if ((e.ctrlKey || e.metaKey) && (e.key === "k" || e.key === "K")) {
       e.preventDefault();
@@ -1012,7 +964,6 @@
     }
   });
 
-  // Print button
   document.querySelectorAll("[data-print-book]").forEach(btn => {
     btn.addEventListener("click", () => window.print());
   });

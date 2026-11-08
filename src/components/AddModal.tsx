@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import type { Book, CuratedTool, TeamMember, Thing, BookCategory, ReadingStatus, ToolCategory, ThingCategory } from '../types';
 import { BookOpen, Wrench, Users, Package, X } from 'lucide-react';
 import { PRESET_RANKS } from '../utils/ranks';
@@ -24,11 +24,16 @@ export const AddModal: React.FC<AddModalProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<'book' | 'tool' | 'team' | 'thing'>(defaultTab);
 
-  useEffect(() => {
+  const [prevDefaultTab, setPrevDefaultTab] = useState(defaultTab);
+  const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
+
+  if (isOpen !== prevIsOpen || defaultTab !== prevDefaultTab) {
+    setPrevIsOpen(isOpen);
+    setPrevDefaultTab(defaultTab);
     if (defaultTab) {
       setActiveTab(defaultTab);
     }
-  }, [defaultTab, isOpen]);
+  }
 
   const [bookTitle, setBookTitle] = useState('');
   const [bookAuthor, setBookAuthor] = useState('');

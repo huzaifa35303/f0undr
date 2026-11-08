@@ -1,14 +1,11 @@
-/* ==========================================================================
-   f0undr Urdu e-Book — Professional Nastaliq Literary & Educational Stylesheet
-   Designed for FBISE Grade 7 Urdu Curriculum
-   ========================================================================== */
+
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Gulzar&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap');
 
 :root {
   color-scheme: light;
   
-  /* Primary Theme: ورقِ قدیم (Antique Parchment) */
+  
   --bg-page: #faf6ee;
   --bg-surface: #fffdf9;
   --bg-elevated: #f3ece0;
@@ -54,7 +51,6 @@
   --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Theme: شبستان (Midnight Emerald / Dark Mode) */
 [data-theme="dark"] {
   color-scheme: dark;
   --bg-page: #06130e;
@@ -86,7 +82,6 @@
   --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.6);
 }
 
-/* Theme: اجلا سفید (Clean Modernist) */
 [data-theme="clean"] {
   color-scheme: light;
   --bg-page: #ffffff;
@@ -114,7 +109,6 @@
   --ruby-pale: #fff1f2;
 }
 
-/* Base & Reset */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -140,18 +134,15 @@ body {
   transition: background-color var(--transition-smooth), color var(--transition-smooth);
 }
 
-/* Nastaliq text should never have unnatural letter spacing */
 p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   letter-spacing: 0 !important;
 }
 
-/* Selection */
 ::selection {
   background-color: var(--emerald-pale);
   color: var(--emerald-deep);
 }
 
-/* Skip link for accessibility */
 .skip-link {
   position: fixed;
   top: 1rem;
@@ -171,9 +162,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   transform: translateY(0);
 }
 
-/* ==========================================================================
-   Header & Navigation Strip
-   ========================================================================== */
 .site-header {
   position: sticky;
   top: 0;
@@ -200,7 +188,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   gap: 1rem;
 }
 
-/* Brand Identity */
 .brand-wrapper {
   display: flex;
   align-items: center;
@@ -257,7 +244,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   border-radius: var(--radius-full);
 }
 
-/* Header Controls & Actions */
 .header-actions {
   display: flex;
   align-items: center;
@@ -303,7 +289,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   box-shadow: 0 4px 12px rgba(6, 78, 59, 0.3);
 }
 
-/* Reading Progress Strip */
 .progress-strip {
   width: 100%;
   height: 4px;
@@ -350,9 +335,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   50% { opacity: 0.4; transform: scale(0.85); }
 }
 
-/* ==========================================================================
-   Hero Section
-   ========================================================================== */
 .hero-section {
   position: relative;
   padding: 3.5rem 1.5rem 2.5rem;
@@ -397,7 +379,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   color: var(--text-secondary);
 }
 
-/* Hero Stats Row */
 .hero-stats {
   display: flex;
   align-items: center;
@@ -437,9 +418,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   gap: 1rem;
 }
 
-/* ==========================================================================
-   Unit Navigation Drawer & Quick Switcher
-   ========================================================================== */
 .chapter-drawer-overlay {
   position: fixed;
   inset: 0;
@@ -561,7 +539,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   color: var(--text-muted);
 }
 
-/* Quick Unit Pills Bar */
 .quick-unit-bar {
   background-color: var(--bg-surface);
   border-bottom: 1px solid var(--border-color);
@@ -600,16 +577,12 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   color: #06130e;
 }
 
-/* ==========================================================================
-   Main Content Layout
-   ========================================================================== */
 .app-container {
   max-width: var(--content-max-width);
   margin: 0 auto;
   padding: 2.5rem 1.5rem 5rem;
 }
 
-/* Unit Card Article */
 .unit-article {
   background-color: var(--bg-surface);
   border: 1px solid var(--border-color);
@@ -626,7 +599,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   }
 }
 
-/* Unit Header */
 .unit-header {
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 1.8rem;
@@ -709,7 +681,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   color: var(--gold-main);
 }
 
-/* Unit Action Bar */
 .unit-actions-bar {
   display: flex;
   align-items: center;
@@ -719,9 +690,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   margin-top: 1rem;
 }
 
-/* ==========================================================================
-   Poetry & Verses Presentation (شاعری اور اشعار)
-   ========================================================================== */
 .poetry-container {
   margin: 2.5rem auto;
   max-width: 680px;
@@ -762,9 +730,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   opacity: 0.8;
 }
 
-/* ==========================================================================
-   Prose / Chapters Content (نثر و اسباق)
-   ========================================================================== */
 .prose-content {
   font-size: var(--reading-font-size);
   line-height: var(--reading-line-height);
@@ -790,7 +755,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   color: var(--emerald-light);
 }
 
-/* Interactive Vocabulary Highlight */
 .vocab-word {
   color: var(--emerald-deep);
   font-weight: 700;
@@ -809,7 +773,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   color: var(--gold-main);
 }
 
-/* Floating Vocab Popover */
 .vocab-popover {
   position: absolute;
   z-index: 50;
@@ -846,9 +809,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   color: var(--text-secondary);
 }
 
-/* ==========================================================================
-   Central Idea, Tashreeh & Collapsibles
-   ========================================================================== */
 .tashreeh-accordion {
   margin: 2rem 0;
   border: 1px solid var(--border-color);
@@ -899,7 +859,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   display: block;
 }
 
-/* Farhang Table (الفاظ و معانی) */
 .farhang-table-wrapper {
   overflow-x: auto;
   margin: 1.8rem 0;
@@ -939,9 +898,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   color: var(--emerald-light);
 }
 
-/* ==========================================================================
-   Interactive Quizzes (معروضی سوالات و امتحانات)
-   ========================================================================== */
 .quiz-wrapper {
   margin: 2.5rem 0;
   background-color: var(--bg-elevated);
@@ -1068,9 +1024,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   color: var(--ruby-main);
 }
 
-/* ==========================================================================
-   Student Notebook & Notes (طالب علم کی ڈائری)
-   ========================================================================== */
 .student-notebook {
   margin: 2.5rem 0;
   border: 1px solid var(--border-color);
@@ -1119,9 +1072,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   box-shadow: 0 0 0 3px rgba(4, 120, 87, 0.15);
 }
 
-/* ==========================================================================
-   Bottom Unit Pager (اگلا اور پچھلا سبق)
-   ========================================================================== */
 .unit-pager {
   display: flex;
   align-items: center;
@@ -1157,9 +1107,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   color: #06130e;
 }
 
-/* ==========================================================================
-   3D Flashcards Section (الفاظ و معانی کے فلیش کارڈز)
-   ========================================================================== */
 .flashcards-section {
   margin: 4.5rem 0;
   padding: 2.5rem;
@@ -1252,9 +1199,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   margin-top: 1.5rem;
 }
 
-/* ==========================================================================
-   Original Page Lightbox Modal (اصل درسی صفحہ لائٹ باکس)
-   ========================================================================== */
 .lightbox-modal {
   position: fixed;
   inset: 0;
@@ -1310,9 +1254,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   box-shadow: var(--shadow-md);
 }
 
-/* ==========================================================================
-   Global Search Modal (فوری تلاش - Ctrl+K)
-   ========================================================================== */
 .search-modal {
   position: fixed;
   inset: 0;
@@ -1388,9 +1329,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   color: var(--text-secondary);
 }
 
-/* ==========================================================================
-   Footer
-   ========================================================================== */
 .site-footer {
   background-color: var(--bg-surface);
   border-top: 1px solid var(--border-color);
@@ -1435,9 +1373,6 @@ p, h1, h2, h3, h4, h5, h6, span, blockquote, .verse-text {
   color: var(--text-muted);
 }
 
-/* ==========================================================================
-   Print Stylesheet (طبع و پی ڈی ایف برائے امتحانات)
-   ========================================================================== */
 @media print {
   .site-header, .quick-unit-bar, .unit-pager, .header-actions, .unit-actions-bar,
   .flashcards-section, .chapter-drawer-overlay, .search-modal, .lightbox-modal,

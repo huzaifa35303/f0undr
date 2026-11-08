@@ -1,6 +1,8 @@
 import { Sparkles, Shield } from 'lucide-react';
 import type { AuthUser } from '../types';
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 interface FooterProps {
   onExportData?: () => void;
   onNavigateTab: (tab: string) => void;
@@ -122,7 +124,7 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         <div className="pt-8 mt-12 border-t border-[#e7e5e4] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#78716c]">
-          <p>© {new Date().getFullYear()} f0undr. Crafted with editorial rigor for founders and engineers.</p>
+          <p>© {CURRENT_YEAR} f0undr. Crafted with editorial rigor for founders and engineers.</p>
           <div className="flex items-center gap-4">
             <a
               href="/book/"

@@ -1,14 +1,8 @@
-/**
- * f0undr Urdu e-Book — Interactive Pedagogical & Literary Engine
- * Comprehensive JavaScript for FBISE Grade 7 Urdu Curriculum
- */
+
 
 (() => {
   'use strict';
 
-  // =========================================================================
-  // 1. THEME SWITCHER (ورقِ قدیم -> شبستان -> اجلا سفید)
-  // =========================================================================
   const THEMES = ['parchment', 'dark', 'clean'];
   const THEME_LABELS = {
     parchment: { name: 'ورقِ قدیم', icon: '📜' },
@@ -42,9 +36,6 @@
     });
   });
 
-  // =========================================================================
-  // 2. TEXT SIZE CONTROLLER (چھوٹا / معیاری / بڑا)
-  // =========================================================================
   const FONT_SIZES = ['1.15rem', '1.28rem', '1.45rem'];
   let currentSizeIdx = parseInt(localStorage.getItem('f0undr-urdu-fontsize') || '1', 10);
 
@@ -67,9 +58,6 @@
     fontDecreaseBtn.addEventListener('click', () => applyFontSize(currentSizeIdx - 1));
   }
 
-  // =========================================================================
-  // 3. UNIT NAVIGATION & DUAL-MODE (Single Unit vs Full Book)
-  // =========================================================================
   const units = [
     { id: 'dua', num: 'افتتاحیہ', title: 'مناجاتِ سحر', genre: 'مناجات و بندگی', pageImg: 'assets/book_images/dua_page.png' },
     { id: 'unit-1', num: '۱', title: 'حمدِ باری تعالیٰ', genre: 'عرفانِ الٰہی', pageImg: 'assets/book_images/unit1_hamd_page.png' },
@@ -119,7 +107,6 @@
       });
     }
 
-    // Update Pills and Drawer Links
     unitPills.forEach(pill => {
       if (pill.getAttribute('data-unit-id') === currentUnit.id) {
         pill.classList.add('active');
@@ -137,12 +124,10 @@
       }
     });
 
-    // Update Substrip Label
     if (substripUnitEl) {
       substripUnitEl.textContent = `سبق نمبر ${currentUnit.num}: ${currentUnit.title} (${currentUnit.genre})`;
     }
 
-    // Update bottom pager buttons
     const prevBtn = document.getElementById('global-prev-unit');
     const nextBtn = document.getElementById('global-next-unit');
     if (prevBtn) {
@@ -164,7 +149,6 @@
     history.replaceState(null, '', `#${currentUnit.id}`);
   }
 
-  // Handle URL hash on load
   const initialHash = window.location.hash.replace('#', '');
   const foundIdx = units.findIndex(u => u.id === initialHash);
   if (foundIdx !== -1) {
@@ -173,7 +157,6 @@
     showUnit(0, false);
   }
 
-  // Toggle Continuous vs Single-Unit Mode
   if (viewModeToggleBtn) {
     viewModeToggleBtn.addEventListener('click', () => {
       isContinuousMode = !isContinuousMode;
@@ -189,7 +172,6 @@
     });
   }
 
-  // Bottom Pagers
   const prevBtn = document.getElementById('global-prev-unit');
   const nextBtn = document.getElementById('global-next-unit');
   if (prevBtn) {
@@ -199,7 +181,6 @@
     nextBtn.addEventListener('click', () => showUnit(activeUnitIndex + 1, true));
   }
 
-  // Unit Pills Click
   unitPills.forEach(pill => {
     pill.addEventListener('click', (e) => {
       e.preventDefault();
@@ -209,7 +190,6 @@
     });
   });
 
-  // Drawer Open/Close & Selection
   const drawerOverlay = document.getElementById('chapter-drawer-overlay');
   const drawerTrigger = document.getElementById('drawer-trigger');
   const drawerCloseBtn = document.getElementById('drawer-close');
@@ -241,7 +221,6 @@
     });
   });
 
-  // Filter Drawer Items
   const drawerSearchInput = document.getElementById('drawer-search-input');
   if (drawerSearchInput) {
     drawerSearchInput.addEventListener('input', (e) => {
@@ -253,9 +232,6 @@
     });
   }
 
-  // =========================================================================
-  // 4. READING PROGRESS & SCROLL SPY
-  // =========================================================================
   const progressFill = document.getElementById('reading-progress-fill');
   const progressPercentText = document.getElementById('progress-percent-text');
 
@@ -281,18 +257,14 @@
 
   window.addEventListener('scroll', updateReadingProgress, { passive: true });
 
-  // =========================================================================
-  // 5. URDU SPEECH AUDIO SYNTHESIZER (صوتی قرأت)
-  // =========================================================================
   let synth = window.speechSynthesis;
-  let activeUtterance = null;
   let isSpeaking = false;
   const audioToggleBtn = document.getElementById('global-audio-toggle');
 
   function getUrduVoice() {
     if (!synth) return null;
     const voices = synth.getVoices();
-    // Search for urdu voices first
+
     let voice = voices.find(v => v.lang.startsWith('ur'));
     if (!voice) voice = voices.find(v => v.lang.startsWith('ar')); // Arabic fallback
     return voice;
@@ -326,7 +298,6 @@
       }
     };
 
-    activeUtterance = utterance;
     synth.speak(utterance);
     isSpeaking = true;
     if (audioToggleBtn) {
@@ -354,7 +325,7 @@
         const curUnit = units[activeUnitIndex];
         const unitEl = document.getElementById(curUnit.id);
         if (unitEl) {
-          // Extract text from poetry or prose
+
           const verseTexts = Array.from(unitEl.querySelectorAll('.verse-line, .prose-content p'))
             .map(p => p.textContent.trim())
             .join('۔ ');
@@ -364,14 +335,10 @@
     });
   }
 
-  // Pre-fetch voices
   if (synth && synth.onvoiceschanged !== undefined) {
     synth.onvoiceschanged = () => getUrduVoice();
   }
 
-  // =========================================================================
-  // 6. ORIGINAL TEXTBOOK PAGE LIGHTBOX
-  // =========================================================================
   const lightboxModal = document.getElementById('lightbox-modal');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxTitle = document.getElementById('lightbox-title');
@@ -408,9 +375,6 @@
     });
   });
 
-  // =========================================================================
-  // 7. INTERACTIVE VOCABULARY TOOLTIP (فرہنگ و معانی پاپ اوور)
-  // =========================================================================
   const vocabPopover = document.getElementById('vocab-popover');
   const popoverTerm = document.getElementById('popover-term');
   const popoverDef = document.getElementById('popover-def');
@@ -442,9 +406,6 @@
     }
   });
 
-  // =========================================================================
-  // 8. TASHREEH & CENTRAL IDEA ACCORDION
-  // =========================================================================
   document.querySelectorAll('.accordion-header').forEach(header => {
     header.addEventListener('click', () => {
       const item = header.closest('.accordion-item');
@@ -454,15 +415,11 @@
     });
   });
 
-  // =========================================================================
-  // 9. INTERACTIVE QUIZZES ENGINE (معروضی سوالات و امتحانات)
-  // =========================================================================
   document.querySelectorAll('.quiz-wrapper').forEach(wrapper => {
     const scoreBadge = wrapper.querySelector('.quiz-score-badge');
     const cards = wrapper.querySelectorAll('.quiz-card');
     const resetBtn = wrapper.querySelector('.quiz-reset-btn');
     let correctCount = 0;
-    let answeredCount = 0;
 
     function updateScore() {
       if (scoreBadge) {
@@ -479,7 +436,6 @@
       buttons.forEach((btn, idx) => {
         btn.addEventListener('click', () => {
           buttons.forEach(b => b.disabled = true);
-          answeredCount++;
 
           if (idx === correctIdx) {
             btn.classList.add('selected-correct');
@@ -504,7 +460,6 @@
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
         correctCount = 0;
-        answeredCount = 0;
         cards.forEach(card => {
           const buttons = card.querySelectorAll('.quiz-option-btn');
           buttons.forEach(b => {
@@ -522,9 +477,6 @@
     }
   });
 
-  // =========================================================================
-  // 10. 3D FLASHCARDS ENGINE (فلیش کارڈز)
-  // =========================================================================
   const FLASHCARDS_DATA = [
     { cat: 'حمد و نعت', term: 'حمد', def: 'وہ کلام یا نظم جس میں اللہ تعالیٰ کی تعریف، صفات اور حمد و ثنا بیان کی جائے۔' },
     { cat: 'حمد و نعت', term: 'نعت', def: 'وہ کلام یا منظوم نذرانہ عقیدت جس میں حضور اکرم نبی کریم صلی اللہ علیہ و آلہ وسلم کی تعریف و توصیف بیان ہو۔' },
@@ -646,9 +598,6 @@
   updateCardStats();
   renderCard();
 
-  // =========================================================================
-  // 11. STUDENT NOTEBOOK AUTO-SAVING (طالب علم کے نوٹس)
-  // =========================================================================
   document.querySelectorAll('.notebook-textarea').forEach(textarea => {
     const key = `f0undr-urdu-note-${textarea.getAttribute('data-note-unit')}`;
     textarea.value = localStorage.getItem(key) || '';
@@ -666,9 +615,6 @@
     });
   });
 
-  // =========================================================================
-  // 12. GLOBAL SEARCH MODAL (Ctrl + K تلاش)
-  // =========================================================================
   const searchModal = document.getElementById('search-modal');
   const searchInput = document.getElementById('global-search-input');
   const searchResultsList = document.getElementById('search-results-list');
@@ -700,7 +646,6 @@
     });
   }
 
-  // Keyboard shortcut Ctrl+K
   window.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
@@ -717,7 +662,6 @@
     }
   });
 
-  // Search index built from all units and vocabulary
   function renderSearchResults(query) {
     if (!searchResultsList) return;
     searchResultsList.innerHTML = '';
@@ -730,7 +674,6 @@
 
     const matches = [];
 
-    // Search Units
     units.forEach((u, idx) => {
       if (u.title.toLowerCase().includes(q) || u.genre.toLowerCase().includes(q)) {
         matches.push({
@@ -742,7 +685,6 @@
       }
     });
 
-    // Search Flashcards & Vocabulary
     FLASHCARDS_DATA.forEach(card => {
       if (card.term.toLowerCase().includes(q) || card.def.toLowerCase().includes(q)) {
         matches.push({

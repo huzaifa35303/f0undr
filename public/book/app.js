@@ -1,7 +1,5 @@
 (() => {
-  // =========================================================================
-  // 1. THEME SWITCHER (Parchment -> Dark -> Clean)
-  // =========================================================================
+
   const THEMES = ["parchment", "dark", "clean"];
   const THEME_LABELS = {
     parchment: { name: "Parchment", icon: "📜" },
@@ -35,9 +33,6 @@
     });
   });
 
-  // =========================================================================
-  // 2. READING PROGRESS & DYNAMIC CHAPTER SCROLL-SPY
-  // =========================================================================
   const progress = document.querySelector("#chapter-progress");
   const progressCopy = document.querySelector("#progress-copy");
   const readingLabel = document.querySelector(".reading-label");
@@ -80,16 +75,11 @@
     }
   }
 
-  // =========================================================================
-  // 3. INTERACTIVE SELF-ASSESSMENT QUIZZES (Units 1 to 6)
-  // =========================================================================
   document.querySelectorAll(".quiz-section").forEach(section => {
-    const unit = section.getAttribute("data-quiz-unit");
     const scoreBadge = section.querySelector(".quiz-score-badge");
     const cards = section.querySelectorAll(".quiz-card");
     const resetBtn = section.querySelector(".quiz-reset-btn");
     let correctCount = 0;
-    let answeredCount = 0;
 
     function updateScore() {
       if (scoreBadge) {
@@ -105,9 +95,8 @@
 
       buttons.forEach((btn, idx) => {
         btn.addEventListener("click", () => {
-          // Disable all buttons in this question
+
           buttons.forEach(b => b.disabled = true);
-          answeredCount++;
 
           if (idx === correctIdx) {
             btn.classList.add("selected-correct");
@@ -120,7 +109,7 @@
           } else {
             btn.classList.add("selected-wrong");
             card.classList.add("answered-wrong");
-            // Highlight the correct one
+
             if (buttons[correctIdx]) buttons[correctIdx].classList.add("is-answer");
             if (explanation) {
               explanation.className = "quiz-explanation show wrong";
@@ -135,7 +124,6 @@
     if (resetBtn) {
       resetBtn.addEventListener("click", () => {
         correctCount = 0;
-        answeredCount = 0;
         cards.forEach(card => {
           card.classList.remove("answered-correct", "answered-wrong");
           const buttons = card.querySelectorAll(".quiz-option-btn");
@@ -154,9 +142,6 @@
     }
   });
 
-  // =========================================================================
-  // 4. INTERACTIVE 3D FLASHCARDS ENGINE
-  // =========================================================================
   const FLASHCARDS_DATA = [
     { cat: "Unit 1", term: "ICT", def: "Information & Communication Technology: the broad ecosystem of computing devices, telecommunication networks, and software used to create, process, store, and communicate information." },
     { cat: "Unit 1", term: "Data vs. Information", def: "Data refers to raw, unorganized facts and symbols (e.g. 98, 86). Information is data processed, structured, and presented in context to be meaningful and actionable." },
@@ -298,9 +283,6 @@
   updateCardStats();
   renderCard();
 
-  // =========================================================================
-  // 5. LIVE SEARCH ENGINE (Ctrl + K)
-  // =========================================================================
   const searchDialog = document.getElementById("search-dialog");
   const searchTrigger = document.getElementById("search-trigger");
   const searchClose = document.getElementById("search-close");
@@ -308,11 +290,10 @@
   const searchResults = document.getElementById("search-results");
   const searchChips = document.querySelectorAll(".search-chip-btn");
 
-  // Search Index Builder
   const SEARCH_INDEX = [];
 
   function buildSearchIndex() {
-    // 1. Units & Sub-sections
+
     chapters.forEach(c => {
       const sec = document.getElementById(c.id);
       if (sec) {
@@ -331,7 +312,6 @@
       }
     });
 
-    // 2. Glossary Terms
     document.querySelectorAll(".ref-grid .ref-card").forEach((card, idx) => {
       const term = card.querySelector("dt")?.textContent || "";
       const def = card.querySelector("dd")?.textContent || "";
@@ -345,7 +325,6 @@
       });
     });
 
-    // 3. Abbreviations
     document.querySelectorAll(".abbrev-grid .abbrev-card").forEach((card, idx) => {
       const short = card.querySelector(".abbrev-short")?.textContent || "";
       const full = card.querySelector(".abbrev-full")?.textContent || "";
@@ -360,7 +339,6 @@
       });
     });
 
-    // 4. Keyboard Shortcuts
     document.querySelectorAll(".data-table tbody tr").forEach((row, idx) => {
       const shortcut = row.querySelector("td:first-child")?.textContent?.trim() || "";
       const desc = row.querySelector("td:last-child")?.textContent?.trim() || "";
@@ -412,7 +390,6 @@
       </a>
     `).join("");
 
-    // Hook click to smooth scroll and pulse target
     searchResults.querySelectorAll(".search-item").forEach(link => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
@@ -455,7 +432,6 @@
     });
   });
 
-  // Global Keyboard Shortcuts (Ctrl+K to Search, Escape to Close)
   window.addEventListener("keydown", (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
       e.preventDefault();
@@ -471,9 +447,6 @@
     }
   });
 
-  // =========================================================================
-  // 6. MULTI-UNIT STUDENT LAB WORKBOOKS AUTO-SAVER
-  // =========================================================================
   const formConfigs = [
     { id: "reflection-form-1", key: "f0undr-book-unit-1-notes", status: "save-status-1" },
     { id: "reflection-form-2", key: "f0undr-book-unit-2-notes", status: "save-status-2" },
@@ -499,7 +472,7 @@
       try {
         localStorage.setItem(key, JSON.stringify(getNotes()));
         if (announce && statusEl) statusEl.textContent = "Lab notes saved in this browser.";
-      } catch (err) {
+      } catch {
         if (statusEl) statusEl.textContent = "Browser could not save notes. You can still print or save as PDF.";
       }
     }
@@ -513,7 +486,7 @@
       if (Object.values(saved).some(v => v) && statusEl) {
         statusEl.textContent = "Your saved lab notes are ready.";
       }
-    } catch (e) {
+    } catch {
       if (statusEl) statusEl.textContent = "Your lab notes are ready.";
     }
 
@@ -534,18 +507,16 @@
       try {
         localStorage.removeItem(key);
         if (statusEl) statusEl.textContent = "Saved notes cleared.";
-      } catch (err) {
+      } catch {
         if (statusEl) statusEl.textContent = "Could not clear saved notes.";
       }
     });
   });
 
-  // Print buttons
   document.querySelectorAll("[data-print-page]").forEach(btn => {
     btn.addEventListener("click", () => window.print());
   });
 
-  // Table of Contents Dialog
   document.querySelectorAll("[data-open-contents]").forEach(btn => {
     btn.addEventListener("click", () => {
       if (contentsDialog?.showModal) contentsDialog.showModal();
@@ -560,7 +531,6 @@
     if (evt.target === contentsDialog) contentsDialog.close();
   });
 
-  // Smart "Go Back" handler
   document.querySelectorAll("[data-go-back]").forEach(btn => {
     btn.addEventListener("click", () => {
       if (window.history.length > 1 && document.referrer) {

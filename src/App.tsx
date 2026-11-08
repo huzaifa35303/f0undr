@@ -104,7 +104,13 @@ export function App() {
   const [team, setTeam] = useState<TeamMember[]>(() => {
     try {
       const saved = localStorage.getItem('f0undr_team_editorial_v3');
-      return saved ? JSON.parse(saved) : INITIAL_TEAM;
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.some((m: TeamMember) => m.name.includes('Zahid'))) {
+          return parsed;
+        }
+      }
+      return INITIAL_TEAM;
     } catch {
       return INITIAL_TEAM;
     }

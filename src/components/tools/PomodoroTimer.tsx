@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Play, Pause, RotateCcw, Volume2, VolumeX, Sparkles, CheckCircle2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -22,10 +22,12 @@ export const PomodoroTimer = () => {
 
   const timerRef = useRef<number | null>(null);
 
-  const playChime = () => {
+  const playChime = useCallback(() => {
     if (!soundEnabled) return;
     try {
-      const audioCtx = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
+      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      if (!AudioCtx) return;
+      const audioCtx = new AudioCtx();
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
 
@@ -43,7 +45,7 @@ export const PomodoroTimer = () => {
       osc.stop(audioCtx.currentTime + 1.2);
     } catch {
     }
-  };
+  }, [soundEnabled]);
 
   useEffect(() => {
     if (isRunning) {
@@ -76,7 +78,7 @@ export const PomodoroTimer = () => {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isRunning, mode, completedSessions, soundEnabled]);
+  }, [isRunning, mode, completedSessions, playChime]);
 
   const switchMode = (newMode: TimerMode) => {
     setIsRunning(false);

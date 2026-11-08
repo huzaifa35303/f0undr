@@ -99,9 +99,11 @@ export const AdminPanel = ({
   const [customRankInput, setCustomRankInput] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
+  const [prevSeo, setPrevSeo] = useState(seoSettings);
+  if (seoSettings !== prevSeo) {
+    setPrevSeo(seoSettings);
     setEditableSeo(seoSettings);
-  }, [seoSettings]);
+  }
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
