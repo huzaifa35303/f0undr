@@ -1,3 +1,23 @@
+export interface Project {
+  id: string;
+  title: string;
+  tagline: string;
+  description: string;
+  fullOverview?: string;
+  category: 'ai' | 'tools' | 'mobile' | 'education' | 'systems';
+  tags: string[];
+  metrics: string;
+  liveUrl?: string;
+  githubUrl?: string;
+  featured: boolean;
+  status: 'Live on Vercel' | 'Shipped APK' | 'Production Ready' | 'Active R&D';
+  gradient: string;
+  accentColor: string;
+  iconName: string;
+  highlights: string[];
+  techStack: string[];
+}
+
 export type ReadingStatus = 'reading' | 'completed' | 'wishlist';
 
 export type BookCategory = 
@@ -26,7 +46,6 @@ export interface Book {
   featured?: boolean;
   units?: string[];
 }
-
 
 export type ToolCategory = 
   | 'AI & LLMs'
@@ -66,7 +85,10 @@ export interface Thing {
 
 export type MemberRank =
   | 'Founder'
+  | 'Head of Founder Team'
   | 'Co-Founder'
+  | 'Chief of Staff'
+  | 'Deputy Head'
   | 'Principal Fellow'
   | 'Senior Fellow'
   | 'Core Fellow'
@@ -83,6 +105,7 @@ export interface TeamMember {
   avatarUrl: string;
   bio: string;
   status: 'Building' | 'Deep Work' | 'Available' | 'Offline';
+  isFounder?: boolean;
   skills: string[];
   quote: string;
   social: {
@@ -97,7 +120,6 @@ export interface TeamMember {
   department?: string;
   rank?: MemberRank;
 }
-
 
 export interface Venture {
   id: string;
@@ -150,3 +172,16 @@ export interface AuditLogItem {
   role: string;
 }
 
+export interface SkillCategory {
+  title: string;
+  icon: string;
+  description: string;
+  skills: { name: string; level: number; tag: string }[];
+}
+
+export interface StatMetric {
+  label: string;
+  value: string;
+  subtext: string;
+  change?: string;
+}

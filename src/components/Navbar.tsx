@@ -1,180 +1,176 @@
 import { useState, useEffect } from 'react';
-import { Search, BookOpen, Users, Wrench, Package, ArrowUpRight, Compass, Shield, Lock, GraduationCap } from 'lucide-react';
-import type { AuthUser } from '../types';
+import { Menu, X, ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { playClickSound, playHoverSound } from '../utils/audio';
 
 interface NavbarProps {
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
-  onOpenSearch: () => void;
-  currentUser: AuthUser | null;
-  onOpenLogin: () => void;
-  onOpenAdmin: () => void;
-  counts: {
-    books: number;
-    tools: number;
-    team: number;
-    things: number;
-  };
+  activeSection: string;
+  onOpenLogin?: () => void;
+  currentUser?: { name: string; role: string } | null;
 }
 
-export const Navbar = ({
-  activeTab,
-  setActiveTab,
-  onOpenSearch,
-  currentUser,
-  onOpenLogin,
-  onOpenAdmin,
-  counts,
-}: NavbarProps) => {
+export const Navbar = ({ activeSection, onOpenLogin, currentUser }: NavbarProps) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { id: 'overview', label: 'Overview', icon: Compass },
-    { id: 'curriculum', label: 'f0undr Book', icon: GraduationCap },
-    { id: 'books', label: `Bookshelf (${counts.books})`, icon: BookOpen },
-    { id: 'team', label: `Team (${counts.team})`, icon: Users },
-    { id: 'tools', label: `Tools (${counts.tools})`, icon: Wrench },
-    { id: 'things', label: `Artifacts (${counts.things})`, icon: Package },
+  const navLinks = [
+    { id: 'hero', label: 'Overview' },
+    { id: 'founder', label: 'Founder' },
+    { id: 'projects', label: 'Systems' },
+    { id: 'team', label: 'Leadership' },
+    { id: 'curriculum', label: 'Curricula' },
+    { id: 'skills', label: 'Architecture' },
+    { id: 'order', label: 'Commission' },
   ];
+
+  const scrollTo = (id: string) => {
+    playClickSound();
+    setMobileMenuOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#faf8f5]/90 backdrop-blur-lg border-b border-[#e7e5e4] shadow-[0_4px_20px_-4px_rgba(28,25,23,0.06)] py-3'
-          : 'bg-[#faf8f5] border-b border-[#e7e5e4]/80 py-4 sm:py-5'
+          ? 'py-3 bg-[#030712]/80 backdrop-blur-2xl border-b border-white/[0.08]'
+          : 'py-5 bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-4">
-          <div
-            onClick={() => setActiveTab('overview')}
-            className="flex items-center gap-3 cursor-pointer group shrink-0"
+        <div className="flex items-center justify-between">
+          <a
+            href="#hero"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo('hero');
+            }}
+            onMouseEnter={playHoverSound}
+            className="flex items-center gap-3 group cursor-pointer"
           >
-            <div className="w-8 h-8 rounded-lg bg-[#1c1917] flex items-center justify-center text-[#faf8f5] font-serif font-bold text-base shadow-xs group-hover:bg-[#292524] group-hover:scale-105 transition-all duration-200">
+            <div className="w-8 h-8 rounded-lg bg-white/[0.08] border border-white/15 flex items-center justify-center font-mono font-bold text-white text-xs group-hover:bg-white group-hover:text-black transition-all shadow-sm">
               f0
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="font-serif font-bold text-xl sm:text-2xl text-[#1c1917] tracking-tight group-hover:text-[#c2410c] transition-colors">
-                  f0undr<span className="text-[#c2410c]">.</span>
-                </span>
-                <span className="editorial-stamp hidden sm:inline-block">
-                  Magazine &amp; Studio
-                </span>
-              </div>
-              <p className="text-[10px] font-mono text-[#78716c] hidden md:block tracking-wide">
-                Computing · Literature · Headquarters
-              </p>
+            <div className="flex items-center gap-2">
+              <span className="font-heading font-bold text-sm tracking-tight text-white group-hover:text-slate-200 transition-colors">
+                f0undr
+              </span>
+              <span className="text-[10px] font-mono text-slate-400 border-l border-white/10 pl-2">
+                Team
+              </span>
             </div>
-          </div>
+          </a>
 
-          <nav className="hidden md:flex items-center gap-1 bg-[#f5f2eb] p-1 rounded-xl border border-[#e7e5e4] shadow-2xs">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = activeTab === item.id;
+          <nav className="hidden md:flex items-center gap-1 bg-white/[0.03] p-1 rounded-full border border-white/[0.08] backdrop-blur-md">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.id;
               return (
                 <button
-                  key={item.id}
-                  onClick={() => setActiveTab(item.id)}
-                  className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all duration-200 active:scale-95 ${
+                  key={link.id}
+                  onClick={() => scrollTo(link.id)}
+                  onMouseEnter={playHoverSound}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium tracking-normal transition-all cursor-pointer ${
                     isActive
-                      ? 'bg-[#1c1917] text-[#faf8f5] shadow-xs font-semibold'
-                      : 'text-[#57534e] hover:text-[#1c1917] hover:bg-[#faf8f5]'
+                      ? 'bg-white/10 text-white shadow-xs'
+                      : 'text-slate-400 hover:text-white hover:bg-white/[0.04]'
                   }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 transition-transform ${isActive ? 'scale-110' : ''}`} />
-                  {item.label}
+                  {link.label}
                 </button>
               );
             })}
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-2.5">
-            <button
-              onClick={onOpenSearch}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white hover:bg-[#f5f2eb] text-[#78716c] hover:text-[#1c1917] border border-[#e7e5e4] text-xs transition-all hover:scale-102 active:scale-95 shadow-2xs cursor-pointer"
-            >
-              <Search className="w-3.5 h-3.5 text-[#c2410c]" />
-              <span className="hidden sm:inline font-mono">Search...</span>
-              <kbd className="hidden lg:inline-flex items-center px-1.5 py-0.5 text-[10px] font-mono bg-[#f5f2eb] border border-[#e7e5e4] rounded text-[#78716c]">
-                ⌘K
-              </kbd>
-            </button>
-
-            <a
-              href="/book/"
-              target="_blank"
-              rel="noreferrer"
-              className="group hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#fff7ed] hover:bg-[#ffedd5] text-[#c2410c] border border-[#ffedd5] text-xs font-semibold transition-all hover:-translate-y-0.5 active:scale-95 shadow-2xs"
-            >
-              <BookOpen className="w-3.5 h-3.5 text-[#c2410c] transition-transform group-hover:scale-110" />
-              <span>f0undr Book</span>
-              <ArrowUpRight className="w-3 h-3 text-[#c2410c] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-
-            {currentUser ? (
+          <div className="flex items-center gap-2.5">
+            {onOpenLogin && (
               <button
-                onClick={onOpenAdmin}
-                className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-[#1c1917] hover:bg-[#292524] text-[#faf8f5] text-xs font-semibold transition-all shadow-xs hover:-translate-y-0.5 active:scale-95 group cursor-pointer"
-                title="Launch Admin Studio Cockpit"
+                onClick={() => {
+                  playClickSound();
+                  onOpenLogin();
+                }}
+                onMouseEnter={playHoverSound}
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/[0.05] hover:bg-white/10 border border-white/10 text-xs font-mono text-slate-300 hover:text-white transition-all cursor-pointer"
+                title={currentUser ? `Logged in as ${currentUser.name}` : 'Open Admin Portal'}
               >
-                <Shield className="w-3.5 h-3.5 text-[#c2410c] group-hover:rotate-12 transition-transform duration-300" />
-                <span className="font-semibold">Admin Panel</span>
-                <span className="hidden sm:inline-block font-mono text-[10px] text-[#a8a29e] border-l border-[#44403c] pl-1.5 ml-0.5">
-                  {currentUser.name.split(' ')[0]}
-                </span>
-              </button>
-            ) : (
-              <button
-                onClick={onOpenLogin}
-                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl btn-editorial-primary text-xs font-semibold shadow-xs transition-all hover:-translate-y-0.5 active:scale-95 cursor-pointer"
-                title="Open Admin Login"
-              >
-                <Lock className="w-3.5 h-3.5 text-[#c2410c]" />
-                <span>Admin Login</span>
+                <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
+                <span className="hidden sm:inline">{currentUser ? 'Admin Panel' : 'Portal'}</span>
               </button>
             )}
+
+            <a
+              href="https://f0undr-order.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              onMouseEnter={playHoverSound}
+              onClick={playClickSound}
+              className="flex items-center gap-1.5 px-4 py-2 rounded-xl btn-primary-white text-xs tracking-tight transition-all cursor-pointer group"
+            >
+              <span>Commission Order</span>
+              <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+
+            <button
+              onClick={() => {
+                playClickSound();
+                setMobileMenuOpen(!mobileMenuOpen);
+              }}
+              className="md:hidden p-2 rounded-xl bg-white/[0.04] border border-white/10 text-slate-300 hover:text-white"
+            >
+              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            </button>
           </div>
         </div>
-
-        <div className="flex md:hidden items-center justify-between gap-1 overflow-x-auto py-2.5 mt-2 border-t border-[#e7e5e4] scrollbar-none text-xs">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = activeTab === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => setActiveTab(item.id)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg shrink-0 transition-colors ${
-                  isActive
-                    ? 'bg-[#1c1917] text-white font-medium'
-                    : 'text-[#57534e] hover:text-[#1c1917]'
-                }`}
-              >
-                <Icon className="w-3.5 h-3.5" />
-                <span>{item.label.split(' ')[0]}</span>
-              </button>
-            );
-          })}
-          <button
-            onClick={currentUser ? onOpenAdmin : onOpenLogin}
-            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg shrink-0 bg-[#fff7ed] text-[#c2410c] font-semibold border border-[#ffedd5] cursor-pointer"
-            title="Admin Cockpit"
-          >
-            <Shield className="w-3.5 h-3.5" />
-            <span>Admin</span>
-          </button>
-        </div>
       </div>
+
+      {mobileMenuOpen && (
+        <div className="md:hidden px-4 pt-3 pb-5 bg-[#030712]/95 border-b border-white/[0.08] backdrop-blur-2xl">
+          <div className="flex flex-col gap-1">
+            {navLinks.map((link) => (
+              <button
+                key={link.id}
+                onClick={() => scrollTo(link.id)}
+                className="w-full text-left px-3.5 py-2.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/[0.05] transition-colors"
+              >
+                {link.label}
+              </button>
+            ))}
+            <div className="pt-3 mt-1 border-t border-white/[0.08] flex flex-col gap-2">
+              {onOpenLogin && (
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenLogin();
+                  }}
+                  className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-white/[0.06] border border-white/10 text-xs font-mono text-cyan-300"
+                >
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  <span>{currentUser ? 'Open Admin Control' : 'Founder Login Portal'}</span>
+                </button>
+              )}
+              <a
+                href="https://f0undr-order.vercel.app/"
+                target="_blank"
+                rel="noreferrer"
+                className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl btn-primary-white text-xs"
+              >
+                <span>Launch f0undr-order.vercel.app</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
