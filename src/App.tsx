@@ -17,8 +17,6 @@ import {
   DEFAULT_SEO_SETTINGS,
   INITIAL_AUDIT_LOGS,
 } from './data/initialData';
-import { ParticleBackground } from './components/ParticleBackground';
-import { CustomCursor } from './components/CustomCursor';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { FounderSection } from './components/FounderSection';
@@ -282,13 +280,11 @@ export function App() {
 
   return (
     <div className="relative min-h-screen bg-[var(--bg)] text-[var(--fg)] selection:bg-[var(--accent-soft)] selection:text-[var(--accent)] overflow-x-hidden">
-      <CustomCursor />
       <div className="blobs" aria-hidden="true">
         <div className="blob b1" />
         <div className="blob b2" />
         <div className="blob b3" />
       </div>
-      <ParticleBackground />
       <div className="fixed inset-0 subtle-grid pointer-events-none z-0 opacity-40" />
       
       <Navbar
