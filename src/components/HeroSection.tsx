@@ -93,19 +93,19 @@ export const HeroSection = ({
   ];
 
   return (
-    <section id="hero" className="relative pt-36 pb-24 flex flex-col justify-center text-center overflow-hidden">
+    <section id="hero" className="relative pt-44 pb-28 flex flex-col justify-center text-center overflow-hidden">
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-cyan-500/12 via-indigo-600/10 to-purple-600/10 blur-[130px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-pill text-xs font-mono mb-8 hover:border-cyan-400/40 transition-all cursor-default">
+        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-pill text-xs font-mono mb-12 hover:border-cyan-400/40 transition-all cursor-default">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span className="text-white font-semibold tracking-wide">FOUNDER &amp; FOUNDER TEAM</span>
           <span className="text-slate-600">•</span>
           <span className="text-cyan-400 font-medium">TECHNOLOGY CORPORATION</span>
         </div>
 
-        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-black text-white tracking-tight leading-[1.06] mb-6 max-w-5xl mx-auto">
-          Building the next generation of <br className="hidden sm:inline" />
+        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-heading font-black text-white tracking-tight leading-[1.08] mb-8 max-w-6xl mx-auto flex flex-col gap-2">
+          <span>Building the next generation of</span>
           <span className="text-gradient-cyan">
             Autonomous AI &amp; Native Systems.
           </span>
