@@ -23,7 +23,9 @@ import { HeroSection } from './components/HeroSection';
 import { FounderSection } from './components/FounderSection';
 import { ProjectsSection } from './components/ProjectsSection';
 import { TeamSection } from './components/TeamSection';
+import { TemplatesSection } from './components/TemplatesSection';
 import { CurriculumSection } from './components/CurriculumSection';
+import { ToolsSection } from './components/ToolsSection';
 import { SkillsSection } from './components/SkillsSection';
 import { OrderSection } from './components/OrderSection';
 import { Footer } from './components/Footer';
@@ -118,7 +120,7 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    const sections = ['hero', 'founder', 'projects', 'team', 'curriculum', 'skills', 'order'];
+    const sections = ['hero', 'founder', 'projects', 'team', 'templates', 'curriculum', 'tools', 'skills', 'order'];
 
     const handleScroll = () => {
       const scrollPos = window.scrollY + 200;
@@ -302,7 +304,9 @@ export function App() {
         <FounderSection />
         <ProjectsSection onSelectProject={(p) => setSelectedProject(p)} />
         <TeamSection />
+        <TemplatesSection />
         <CurriculumSection />
+        <ToolsSection tools={tools} />
         <SkillsSection />
         <OrderSection />
       </main>

@@ -25,12 +25,12 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   const categories = [
-    { id: 'all', label: 'All Systems' },
-    { id: 'mobile', label: 'Native Android' },
+    { id: 'all', label: 'All Work' },
+    { id: 'mobile', label: 'Native Android APK' },
     { id: 'systems', label: 'Desktop & OS' },
     { id: 'ai', label: 'Autonomous AI' },
-    { id: 'tools', label: 'Sovereign Tools' },
-    { id: 'education', label: 'Books & Curricula' },
+    { id: 'tools', label: 'Cloud Vaults & Tools' },
+    { id: 'education', label: 'Curricula & Books' },
   ];
 
   const filteredProjects = useMemo(() => {
@@ -79,34 +79,32 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-slate-300">
-                <Layers className="w-3.5 h-3.5 text-cyan-400" />
-                SOVEREIGN SOFTWARE ECOSYSTEM
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-pill text-xs font-mono text-cyan-400">
+                <Layers className="w-3.5 h-3.5" />
+                SOVEREIGN SOFTWARE PORTFOLIO
               </span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-white tracking-tight">
-              Systems &amp; <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">Digital Inventions</span>
+            <h2 className="text-3xl sm:text-5xl font-heading font-black text-white tracking-tight">
+              Featured <span className="text-gradient-cyan">Work &amp; Systems</span>
             </h2>
-            <p className="text-slate-400 text-sm sm:text-base mt-3 max-w-2xl font-light leading-relaxed">
-              Native Android apps, desktop utilities, sovereign encrypted vaults, autonomous AI agents, and interactive curricula engineered by the Founder Team.
+            <p className="text-slate-300 text-sm sm:text-base mt-3 max-w-2xl font-light leading-relaxed">
+              Flagship engineering deployments developed across the Founder Team: native Android architectures, sovereign cryptographic file vaults, autonomous AI engines, and computing literature.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3">
-            <div className="relative">
-              <Search className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search systems, APKs, stacks..."
-                className="w-full sm:w-64 pl-10 pr-4 py-2 rounded-xl bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-white placeholder-slate-500 focus:outline-hidden focus:border-cyan-500/50 transition-colors"
-              />
-            </div>
+          <div className="relative w-full md:w-80">
+            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <input
+              type="text"
+              placeholder="Search work, tech, keywords..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 rounded-2xl glass-card text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400/50 transition-all font-mono"
+            />
           </div>
         </div>
 
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-4 mb-8 no-scrollbar">
+        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar">
           {categories.map((cat) => {
             const isActive = activeCategory === cat.id;
             return (
@@ -117,10 +115,10 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
                   setActiveCategory(cat.id);
                 }}
                 onMouseEnter={playHoverSound}
-                className={`px-4 py-2 rounded-xl text-xs font-mono whitespace-nowrap transition-all cursor-pointer ${
+                className={`px-4 py-2 rounded-xl text-xs font-medium whitespace-nowrap transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? 'bg-white text-black font-semibold shadow-md shadow-white/10'
-                    : 'bg-white/[0.03] text-slate-400 hover:text-white hover:bg-white/[0.08] border border-white/[0.06]'
+                    ? 'bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-white border border-cyan-400/40 shadow-[0_0_20px_-4px_rgba(56,189,248,0.3)]'
+                    : 'glass-pill text-slate-300 hover:text-white'
                 }`}
               >
                 {cat.label}
@@ -134,99 +132,77 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
             <div
               key={project.id}
               onMouseEnter={playHoverSound}
-              className="pro-card rounded-2xl p-6 flex flex-col justify-between group relative overflow-hidden"
+              className="glass-card rounded-2xl p-6 flex flex-col justify-between group hover:border-cyan-400/40 transition-all duration-300 relative overflow-hidden"
             >
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{
-                  background: `radial-gradient(400px circle at 50% 0%, ${project.accentColor}15, transparent 70%)`,
-                }}
-              />
-
-              <div className="relative z-10">
+              <div>
                 <div className="flex items-start justify-between gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
+                  <div className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center group-hover:border-cyan-400/40 group-hover:bg-cyan-500/10 transition-all">
                     {getProjectIcon(project.iconName)}
                   </div>
-
-                  <div className="text-right">
-                    <span className="inline-block px-2.5 py-0.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-[10px] font-mono text-slate-300">
-                      {project.status}
-                    </span>
-                    <div className="text-[10px] font-mono text-slate-500 mt-1">
-                      {project.metrics}
-                    </div>
-                  </div>
+                  <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-white/[0.04] text-slate-300 border border-white/10">
+                    {project.metrics}
+                  </span>
                 </div>
 
-                <h3 className="text-lg font-heading font-bold text-white group-hover:text-cyan-300 transition-colors mb-1.5 flex items-center gap-1.5">
+                <h3 className="text-lg font-heading font-bold text-white group-hover:text-cyan-300 transition-colors mb-2">
                   {project.title}
                 </h3>
-
-                <p className="text-xs text-slate-300 font-medium mb-3 line-clamp-1">
-                  {project.tagline}
-                </p>
-
-                <p className="text-xs text-slate-400 leading-relaxed font-light mb-5 line-clamp-3">
+                <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed mb-4 line-clamp-3">
                   {project.description}
                 </p>
 
-                <div className="flex flex-wrap gap-1.5 mb-6">
-                  {project.tags.slice(0, 3).map((tag, tIdx) => (
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {project.techStack.slice(0, 4).map((tech, idx) => (
                     <span
-                      key={tIdx}
-                      className="px-2 py-0.5 rounded-md bg-white/[0.04] border border-white/[0.04] text-[10px] font-mono text-slate-400"
+                      key={idx}
+                      className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/[0.04] text-slate-300 border border-white/05"
                     >
-                      {tag}
+                      {tech}
                     </span>
                   ))}
-                  {project.tags.length > 3 && (
-                    <span className="px-1.5 py-0.5 text-[10px] font-mono text-slate-600">
-                      +{project.tags.length - 3}
+                  {project.techStack.length > 4 && (
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/[0.02] text-slate-500">
+                      +{project.techStack.length - 4}
                     </span>
                   )}
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between gap-2 relative z-10">
+              <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
                 <button
                   onClick={() => {
                     playModalOpenSound();
                     onSelectProject(project);
                   }}
-                  onMouseEnter={playHoverSound}
-                  className="text-xs font-mono text-slate-300 hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
+                  className="text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1 cursor-pointer"
                 >
-                  <span>Blueprint</span>
-                  <ArrowUpRight className="w-3 h-3 text-slate-500" />
+                  <span>Architecture Spec</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
                 </button>
 
                 <div className="flex items-center gap-2">
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      onMouseEnter={playHoverSound}
-                      onClick={playClickSound}
-                      className="p-2 rounded-lg bg-white/[0.04] hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
-                      title="View Source on GitHub"
-                    >
-                      <GithubIcon className="w-3.5 h-3.5" />
-                    </a>
-                  )}
-
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noreferrer"
-                      onMouseEnter={playHoverSound}
-                      onClick={playClickSound}
-                      className="px-3 py-1.5 rounded-lg bg-white/[0.06] hover:bg-white/12 border border-white/10 text-white text-xs font-medium flex items-center gap-1 transition-colors"
+                      onClick={(e) => e.stopPropagation()}
+                      className="p-1.5 rounded-lg bg-white/[0.04] hover:bg-white/10 text-slate-300 hover:text-white transition-all border border-white/10"
+                      title="Launch Live Application"
                     >
-                      <span>Launch</span>
-                      <ArrowUpRight className="w-3 h-3 text-slate-400" />
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="p-1.5 rounded-lg bg-white/[0.04] hover:bg-white/10 text-slate-300 hover:text-white transition-all border border-white/10"
+                      title="GitHub Source"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" />
                     </a>
                   )}
                 </div>

@@ -7,6 +7,7 @@ interface DustPoint {
   vy: number;
   radius: number;
   alpha: number;
+  color: string;
 }
 
 export const ParticleBackground = () => {
@@ -33,17 +34,20 @@ export const ParticleBackground = () => {
 
     let dust: DustPoint[] = [];
 
+    const colors = ['rgba(56, 189, 248, ', 'rgba(99, 102, 241, ', 'rgba(52, 211, 153, ', 'rgba(255, 255, 255, '];
+
     const initDust = () => {
       dust = [];
-      const count = Math.min(Math.floor(width / 35), 45);
+      const count = Math.min(Math.floor(width / 30), 55);
       for (let i = 0; i < count; i++) {
         dust.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.15,
-          vy: -Math.random() * 0.2 - 0.05,
-          radius: Math.random() * 1.2 + 0.6,
-          alpha: Math.random() * 0.25 + 0.05,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: -Math.random() * 0.3 - 0.08,
+          radius: Math.random() * 1.4 + 0.6,
+          alpha: Math.random() * 0.3 + 0.1,
+          color: colors[Math.floor(Math.random() * colors.length)],
         });
       }
     };
@@ -53,8 +57,9 @@ export const ParticleBackground = () => {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      const topGlow = ctx.createRadialGradient(width / 2, 0, 10, width / 2, 0, width * 0.65);
-      topGlow.addColorStop(0, 'rgba(30, 41, 59, 0.25)');
+      const topGlow = ctx.createRadialGradient(width / 2, 0, 10, width / 2, 0, width * 0.7);
+      topGlow.addColorStop(0, 'rgba(15, 23, 42, 0.45)');
+      topGlow.addColorStop(0.5, 'rgba(8, 12, 24, 0.2)');
       topGlow.addColorStop(1, 'rgba(3, 7, 18, 0)');
       ctx.fillStyle = topGlow;
       ctx.fillRect(0, 0, width, height);
@@ -73,8 +78,23 @@ export const ParticleBackground = () => {
 
         ctx.beginPath();
         ctx.arc(d.x, d.y, d.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${d.alpha})`;
+        ctx.fillStyle = `${d.color}${d.alpha})`;
         ctx.fill();
+
+        for (let j = i + 1; j < dust.length; j++) {
+          const d2 = dust[j];
+          const dx = d.x - d2.x;
+          const dy = d.y - d2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 90) {
+            ctx.beginPath();
+            ctx.moveTo(d.x, d.y);
+            ctx.lineTo(d2.x, d2.y);
+            ctx.strokeStyle = `rgba(56, 189, 248, ${(1 - dist / 90) * 0.08})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
       }
 
       animationFrameId = requestAnimationFrame(render);

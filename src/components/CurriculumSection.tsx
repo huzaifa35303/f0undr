@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BookOpen, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { BookOpen, ArrowUpRight, CheckCircle2, GraduationCap } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../utils/audio';
 
 export const CurriculumSection = () => {
@@ -8,7 +8,7 @@ export const CurriculumSection = () => {
   const curricula = {
     computing: {
       title: 'f0undr Book: Computing & Technology',
-      subtitle: 'Official Units 1–6 Interactive Master Curriculum',
+      subtitle: 'Official Units 1–6 Interactive Master Curriculum Series',
       authors: 'f0undr (Muhammad Huzaifa Zahid) & Rai Abdur Rehman',
       url: 'https://f-e-book.vercel.app/',
       badge: 'FLAGSHIP CURRICULUM',
@@ -28,8 +28,8 @@ export const CurriculumSection = () => {
     },
     mental: {
       title: 'The Art of Mental Mastery',
-      subtitle: 'Accelerated Learning, Memory Palaces & Mind Reading',
-      authors: 'Muhammad Huzaifa Zahid (f0undr)',
+      subtitle: 'Accelerated Learning, Memory Palaces & Cognitive Diagnostics',
+      authors: 'Muhammad Huzaifa Zahid (Founder)',
       url: 'https://fmm-e-book.vercel.app/',
       badge: 'COGNITIVE SCIENCE HANDBOOK',
       units: [
@@ -49,7 +49,7 @@ export const CurriculumSection = () => {
     urdu: {
       title: 'صحیفۂ اردو: نصاب و ادب (جماعت ہفتم)',
       subtitle: 'وفاقی تعلیمی بورڈ (FBISE) کے نصاب پر مبنی مستند ادبی پلیٹ فارم',
-      authors: 'Muhammad Huzaifa Zahid & f0undr Team',
+      authors: 'Muhammad Huzaifa Zahid & Founder Team',
       url: 'https://f0undr.vercel.app/urdu-book/',
       badge: 'FBISE GRADE 7 OFFICIAL',
       units: [
@@ -71,35 +71,36 @@ export const CurriculumSection = () => {
   const curr = curricula[selectedCurriculum];
 
   return (
-    <section id="curriculum" className="py-24 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="curriculum" className="py-24 relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/4 w-[700px] h-[350px] bg-cyan-600/10 blur-[130px] rounded-full pointer-events-none -z-10" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-slate-300">
-                <BookOpen className="w-3.5 h-3.5 text-slate-400" />
-                COMPUTATIONAL LITERATURE &amp; PEDAGOGY
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-pill text-xs font-mono text-cyan-400">
+                <GraduationCap className="w-3.5 h-3.5" />
+                COMPUTATIONAL LITERATURE &bull; PEDAGOGICAL VAULT
               </span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-white tracking-tight">
-              Interactive Curricula by <span className="text-white">f0undr</span>
+            <h2 className="text-3xl sm:text-5xl font-heading font-black text-white tracking-tight">
+              Interactive <span className="text-gradient-cyan">Curricula &amp; Books</span>
             </h2>
-            <p className="text-slate-400 text-sm sm:text-base mt-3 max-w-2xl font-light leading-relaxed">
-              Living, interactive web curricula engineered with instant auto-grading,
-              architectural diagrams, and browser-autosaving lab workbooks.
+            <p className="text-slate-300 text-sm sm:text-base mt-3 max-w-2xl font-light leading-relaxed">
+              Living web textbooks authored by Founder leadership featuring algorithmic trace diagrams, interactive testing batteries, and browser-autosaving lab workbooks.
             </p>
           </div>
 
-          <div className="flex items-center gap-1 p-1 rounded-2xl bg-white/[0.03] border border-white/[0.08]">
+          <div className="flex items-center gap-1.5 p-1 rounded-2xl glass-card">
             <button
               onClick={() => {
                 playClickSound();
                 setSelectedCurriculum('computing');
               }}
               onMouseEnter={playHoverSound}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-medium tracking-normal transition-all cursor-pointer ${
+              className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-normal transition-all cursor-pointer ${
                 selectedCurriculum === 'computing'
-                  ? 'bg-white text-black font-semibold shadow-xs'
+                  ? 'bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-white border border-cyan-400/40 shadow-sm'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -111,9 +112,9 @@ export const CurriculumSection = () => {
                 setSelectedCurriculum('mental');
               }}
               onMouseEnter={playHoverSound}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-medium tracking-normal transition-all cursor-pointer ${
+              className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-normal transition-all cursor-pointer ${
                 selectedCurriculum === 'mental'
-                  ? 'bg-white text-black font-semibold shadow-xs'
+                  ? 'bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-white border border-cyan-400/40 shadow-sm'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -125,9 +126,9 @@ export const CurriculumSection = () => {
                 setSelectedCurriculum('urdu');
               }}
               onMouseEnter={playHoverSound}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-medium tracking-normal transition-all cursor-pointer ${
+              className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-normal transition-all cursor-pointer ${
                 selectedCurriculum === 'urdu'
-                  ? 'bg-white text-black font-semibold shadow-xs'
+                  ? 'bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-white border border-cyan-400/40 shadow-sm'
                   : 'text-slate-400 hover:text-white'
               }`}
             >
@@ -136,21 +137,21 @@ export const CurriculumSection = () => {
           </div>
         </div>
 
-        <div className="pro-panel rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+        <div className="glass-card-interactive rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-white/[0.08] mb-8">
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <span className="px-2.5 py-0.5 rounded-full bg-white/[0.04] text-[10px] font-mono text-slate-300 border border-white/[0.08]">
+                <span className="px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 text-[10px] font-mono border border-cyan-500/20 font-bold">
                   {curr.badge}
                 </span>
                 <span className="text-xs font-mono text-slate-400">
                   By {curr.authors}
                 </span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-heading font-bold text-white mb-2">
+              <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-white mb-2">
                 {curr.title}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-400 font-light">
+              <p className="text-xs sm:text-sm text-slate-300 font-light">
                 {curr.subtitle}
               </p>
             </div>
@@ -161,10 +162,10 @@ export const CurriculumSection = () => {
               rel="noreferrer"
               onMouseEnter={playHoverSound}
               onClick={playClickSound}
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl btn-primary-white text-xs tracking-tight transition-all cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl btn-primary-white text-xs font-bold tracking-tight transition-all cursor-pointer group shadow-lg"
             >
               <span>Launch Live Reader</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
           </div>
 
@@ -173,30 +174,30 @@ export const CurriculumSection = () => {
               <div
                 key={uIdx}
                 onMouseEnter={playHoverSound}
-                className="pro-card rounded-2xl p-5"
+                className="glass-card rounded-2xl p-5 hover:border-cyan-400/30"
               >
-                <div className="text-[10px] font-mono text-slate-400 uppercase tracking-widest mb-1.5">
+                <div className="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-widest mb-1.5">
                   {unit.num}
                 </div>
                 <h4 className="text-sm font-heading font-bold text-white mb-2">
                   {unit.title}
                 </h4>
-                <p className="text-xs text-slate-400 font-light leading-relaxed">
+                <p className="text-xs text-slate-300 font-light leading-relaxed">
                   {unit.desc}
                 </p>
               </div>
             ))}
           </div>
 
-          <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06]">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-slate-300 mb-3 flex items-center gap-2">
+          <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-slate-300 mb-3 flex items-center gap-2 font-bold">
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
               Pedagogical Standards &amp; Architecture
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {curr.takeaways.map((takeaway, tIdx) => (
-                <div key={tIdx} className="flex items-start gap-2 text-xs text-slate-400 leading-relaxed font-light">
-                  <span className="text-slate-500">•</span>
+                <div key={tIdx} className="flex items-start gap-2 text-xs text-slate-300 leading-relaxed font-light">
+                  <span className="text-cyan-400 font-bold">•</span>
                   <span>{takeaway}</span>
                 </div>
               ))}
@@ -204,8 +205,6 @@ export const CurriculumSection = () => {
           </div>
         </div>
       </div>
-
-      <div className="hairline-divider mt-24" />
     </section>
   );
 };

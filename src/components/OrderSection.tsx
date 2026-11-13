@@ -7,72 +7,74 @@ export const OrderSection = () => {
 
   const disciplines = [
     {
-      title: 'Websites & Web Platforms',
-      desc: 'High-converting SaaS MVPs, editorial portfolios, and web platforms built with React 19, Next.js, and Supabase.',
+      title: 'Web Platforms & Architectures',
+      desc: 'High-converting SaaS MVPs, glassmorphic portfolios, and web platforms built with React 19, Next.js, and serverless edge databases.',
       icon: Globe,
     },
     {
       title: 'Autonomous AI & Neural Systems',
-      desc: 'Private RAG pipelines, multi-agent swarms with tool execution, local LLMs, and conversational AI engines.',
+      desc: 'Private RAG pipelines, multi-agent swarms with tool execution, local LLMs, and conversational AI automation engines.',
       icon: Bot,
     },
     {
-      title: 'Mobile & Native Applications',
-      desc: 'Native iOS & Android architectures, offline-first SQLite synchronization, and high-performance apps.',
+      title: 'Native Android & Mobile Apps',
+      desc: 'Native Android architectures (SDK 35), offline-first SQLite synchronization, and high-performance cross-platform mobile apps.',
       icon: Smartphone,
     },
     {
-      title: 'Native Android & Custom Tools',
-      desc: 'Native Android applications, bespoke automation bots, sovereign utilities, and high-speed data tools.',
+      title: 'Desktop Systems & Custom Tools',
+      desc: 'Native desktop applications, bespoke automation bots, sovereign cloud utilities, and high-speed data tools.',
       icon: Cpu,
     },
   ];
 
   return (
-    <section id="order" className="py-24 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="order" className="py-24 relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-cyan-600/10 via-indigo-600/10 to-emerald-600/10 blur-[130px] rounded-full pointer-events-none -z-10" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono mb-4 text-slate-300">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-            <span>OFFICIAL COMMISSION ATELIER</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-xs font-mono mb-4 text-cyan-400">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>OFFICIAL COMMISSION ATELIER &bull; TECHNOLOGY CORPORATION</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-heading font-extrabold text-white tracking-tight mb-4">
-            Commission a Project with <span className="text-white">f0undr</span>
+          <h2 className="text-3xl sm:text-5xl font-heading font-black text-white tracking-tight mb-4">
+            Commission a Project with <span className="text-gradient-cyan">Founder Leadership</span>
           </h2>
 
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed font-light">
+          <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
             We operate with zero bureaucratic latency. All client projects, engineering commissions,
-            and software production orders are processed exclusively through our official portal at{' '}
+            and software production orders are processed through our official portal at{' '}
             <a
               href={ORDER_URL}
               target="_blank"
               rel="noreferrer"
-              className="text-white underline underline-offset-4 hover:text-slate-200 transition-colors font-medium"
+              className="text-white underline underline-offset-4 hover:text-cyan-300 transition-colors font-medium font-mono"
             >
               f0undr-order.vercel.app
             </a>.
           </p>
         </div>
 
-        <div className="pro-panel rounded-3xl p-8 sm:p-12 relative overflow-hidden mb-12">
+        <div className="glass-card-interactive rounded-3xl p-8 sm:p-12 relative overflow-hidden mb-12 shadow-2xl">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div className="space-y-4 max-w-2xl">
-              <div className="flex items-center gap-2 text-xs font-mono text-slate-300">
+              <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>DIRECT LEADERSHIP BY MUHAMMAD HUIZAIFA ZAHID &amp; f0undr TEAM</span>
+                <span>DIRECT EXECUTIVE DIRECTION &bull; MUHAMMAD HUZAIFA ZAHID &amp; FOUNDER TEAM</span>
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-white leading-snug">
                 Bespoke Engineering &amp; Autonomous Software Studio
               </h3>
 
-              <p className="text-sm text-slate-400 leading-relaxed font-light">
+              <p className="text-sm text-slate-300 leading-relaxed font-light">
                 Whether you need a full-scale web platform, native mobile app, custom AI agent system,
                 or bespoke native software suite, submit your brief directly via our ordering studio.
               </p>
 
-              <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-slate-300">
+              <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-slate-300 font-mono">
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                   <span>48-Hour Prototyping</span>
@@ -95,7 +97,7 @@ export const OrderSection = () => {
                 rel="noreferrer"
                 onMouseEnter={playHoverSound}
                 onClick={playClickSound}
-                className="flex items-center justify-center gap-2 px-6 py-4 rounded-xl btn-primary-white text-xs sm:text-sm tracking-tight cursor-pointer text-center group"
+                className="flex items-center justify-center gap-2 px-6 py-4 rounded-2xl btn-primary-white text-xs sm:text-sm font-bold tracking-tight cursor-pointer text-center group shadow-xl"
               >
                 <span>Launch f0undr Order Studio</span>
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -107,47 +109,33 @@ export const OrderSection = () => {
                 rel="noreferrer"
                 onMouseEnter={playHoverSound}
                 onClick={playClickSound}
-                className="flex items-center justify-center gap-2 px-5 py-3 rounded-xl btn-secondary-dark text-xs font-medium text-center cursor-pointer"
+                className="flex items-center justify-center gap-2 px-6 py-3 rounded-2xl glass-pill text-xs font-semibold text-slate-300 hover:text-white transition-all text-center"
               >
-                <span>Direct WhatsApp Consultation</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-slate-400" />
+                <span>Direct WhatsApp Inquiries</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {disciplines.map((d, idx) => {
-            const Icon = d.icon;
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {disciplines.map((item, idx) => {
+            const IconComp = item.icon;
             return (
               <div
                 key={idx}
                 onMouseEnter={playHoverSound}
-                className="pro-card rounded-2xl p-6 flex flex-col justify-between"
+                className="glass-card rounded-2xl p-6 hover:border-cyan-400/40"
               >
-                <div>
-                  <div className="w-10 h-10 rounded-xl bg-white/[0.06] border border-white/10 flex items-center justify-center mb-4 text-white">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <h4 className="text-sm font-heading font-bold text-white mb-2">
-                    {d.title}
-                  </h4>
-                  <p className="text-xs text-slate-400 leading-relaxed font-light">
-                    {d.desc}
-                  </p>
+                <div className="w-12 h-12 rounded-2xl bg-white/[0.05] border border-white/10 flex items-center justify-center mb-4 text-cyan-400">
+                  <IconComp className="w-6 h-6" />
                 </div>
-
-                <div className="mt-5 pt-3 border-t border-white/[0.06]">
-                  <a
-                    href={ORDER_URL}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-[11px] font-mono text-slate-300 hover:text-white transition-colors"
-                  >
-                    <span>Order Discipline</span>
-                    <ArrowUpRight className="w-3 h-3 text-slate-500" />
-                  </a>
-                </div>
+                <h4 className="text-base font-heading font-bold text-white mb-2">
+                  {item.title}
+                </h4>
+                <p className="text-xs text-slate-300 font-light leading-relaxed">
+                  {item.desc}
+                </p>
               </div>
             );
           })}
