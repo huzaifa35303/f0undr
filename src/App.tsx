@@ -285,7 +285,6 @@ export function App() {
         <div className="blob b2" />
         <div className="blob b3" />
       </div>
-      <div className="fixed inset-0 subtle-grid pointer-events-none z-0 opacity-40" />
       
       <Navbar
         activeSection={activeSection}
