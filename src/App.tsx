@@ -18,7 +18,6 @@ import {
   INITIAL_AUDIT_LOGS,
 } from './data/initialData';
 import { ParticleBackground } from './components/ParticleBackground';
-import { CustomCursor } from './components/CustomCursor';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { FounderSection } from './components/FounderSection';
@@ -281,8 +280,7 @@ export function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#050508] text-[#f8fafc] selection:bg-cyan-500/20 selection:text-white overflow-x-hidden">
-      <CustomCursor />
+    <div className="relative min-h-screen bg-[#08090d] text-[#f8fafc] selection:bg-sky-500/25 selection:text-white overflow-x-hidden">
       <ParticleBackground />
       <div className="fixed inset-0 subtle-grid pointer-events-none z-0 opacity-40" />
       
