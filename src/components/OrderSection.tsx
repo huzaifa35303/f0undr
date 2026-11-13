@@ -40,7 +40,7 @@ export const OrderSection = () => {
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-heading font-black text-white tracking-tight mb-4">
-            Commission a Project with <span className="text-gradient-cyan">Founder Leadership</span>
+            Commission a Project with <span className="text-gradient-cyan">f0undr Leadership</span>
           </h2>
 
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
@@ -62,7 +62,7 @@ export const OrderSection = () => {
             <div className="space-y-4 max-w-2xl">
               <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-bold">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>DIRECT EXECUTIVE DIRECTION &bull; MUHAMMAD HUZAIFA ZAHID &amp; FOUNDER TEAM</span>
+                <span>DIRECT EXECUTIVE DIRECTION &bull; MUHAMMAD HUZAIFA ZAHID (FOUNDER) &amp; f0undr TEAM</span>
               </div>
 
               <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-white leading-snug">

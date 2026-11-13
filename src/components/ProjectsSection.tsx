@@ -88,7 +88,7 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
               Featured <span className="text-gradient-cyan">Work &amp; Systems</span>
             </h2>
             <p className="text-slate-300 text-sm sm:text-base mt-3 max-w-2xl font-light leading-relaxed">
-              Flagship engineering deployments developed across the Founder Team: native Android architectures, sovereign cryptographic file vaults, autonomous AI engines, and computing literature.
+              Flagship engineering deployments developed across the f0undr Team: native Android architectures, sovereign cryptographic file vaults, autonomous AI engines, and computing literature.
             </p>
           </div>
 

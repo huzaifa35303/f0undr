@@ -93,15 +93,15 @@ export const HeroSection = ({
   ];
 
   return (
-    <section id="hero" className="relative pt-44 pb-28 flex flex-col justify-center text-center overflow-hidden">
+    <section id="hero" className="relative pt-32 sm:pt-40 md:pt-44 pb-20 sm:pb-28 flex flex-col justify-center text-center overflow-hidden">
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-cyan-500/12 via-indigo-600/10 to-purple-600/10 blur-[130px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-pill text-xs font-mono mb-12 hover:border-cyan-400/40 transition-all cursor-default">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span className="text-white font-semibold tracking-wide">FOUNDER &amp; FOUNDER TEAM</span>
-          <span className="text-slate-600">•</span>
-          <span className="text-cyan-400 font-medium">TECHNOLOGY CORPORATION</span>
+        <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass-pill text-[11px] sm:text-xs font-mono mb-8 sm:mb-12 hover:border-cyan-400/40 transition-all cursor-default max-w-full overflow-hidden">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
+          <span className="text-white font-semibold tracking-wide truncate">f0undr &amp; f0undr TEAM</span>
+          <span className="text-slate-600 shrink-0">•</span>
+          <span className="text-cyan-400 font-medium shrink-0">TECHNOLOGY CORPORATION</span>
         </div>
 
         <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-heading font-black text-white tracking-tight leading-[1.08] mb-8 max-w-6xl mx-auto flex flex-col gap-2">
@@ -118,7 +118,7 @@ export const HeroSection = ({
           </strong>{' '}
           and the{' '}
           <strong className="text-white font-medium font-mono px-2 py-0.5 rounded-lg bg-white/[0.08] border border-white/10">
-            Founder Team
+            f0undr Team
           </strong>
           . We architect high-speed encrypted file vaults, native Android mobile software (SDK 35), AI agents, computing literature, and corporate digital goods.
         </p>

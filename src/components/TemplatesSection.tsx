@@ -83,7 +83,7 @@ Commission link: ${ORDER_URL}`;
           </div>
         </div>
 
-        <div className="glass-card rounded-3xl p-6 sm:p-10 border border-white/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-10 border border-white/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-5 flex flex-col justify-between h-full">
             <div>
               <div className="flex items-center justify-between gap-4 mb-5">
@@ -153,7 +153,7 @@ Commission link: ${ORDER_URL}`;
             </div>
           </div>
 
-          <div className="lg:col-span-7 flex flex-col items-center justify-center p-4 sm:p-8 rounded-3xl bg-black/50 border border-white/[0.08] backdrop-blur-md min-h-[420px]">
+          <div className="lg:col-span-7 flex flex-col items-center justify-center p-3 sm:p-6 lg:p-8 rounded-2xl sm:rounded-3xl bg-black/50 border border-white/[0.08] backdrop-blur-md min-h-[340px] sm:min-h-[400px] w-full overflow-hidden">
             <OtpVerificationLive />
           </div>
         </div>

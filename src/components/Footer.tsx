@@ -72,7 +72,7 @@ export const Footer = ({ currentUser, onOpenLogin, onOpenAdmin }: FooterProps = 
               </li>
               <li>
                 <a href="#team" className="hover:text-cyan-300 transition-colors">
-                  Founder Team
+                  f0undr Team
                 </a>
               </li>
               <li>
@@ -87,7 +87,7 @@ export const Footer = ({ currentUser, onOpenLogin, onOpenAdmin }: FooterProps = 
               </li>
               <li>
                 <a href="#tools" className="hover:text-cyan-300 transition-colors">
-                  Founder Tools
+                  f0undr Tools
                 </a>
               </li>
               <li>
@@ -166,7 +166,7 @@ export const Footer = ({ currentUser, onOpenLogin, onOpenAdmin }: FooterProps = 
           <div className="flex items-center gap-2 flex-wrap">
             <span>© 2026 Technology Corporation.</span>
             <span>•</span>
-            <span className="text-white">Muhammad Huzaifa Zahid &amp; Founder Team</span>
+            <span className="text-white">Muhammad Huzaifa Zahid (Founder) &amp; f0undr Team</span>
             <span>•</span>
             <button
               onClick={() => {

@@ -23,7 +23,7 @@ export const FounderSection = () => {
             </h2>
             <p className="text-slate-300 text-sm sm:text-base mt-3 max-w-2xl font-light leading-relaxed">
               Founder &amp; Chief Systems Architect of the <strong className="text-white font-medium">f0undr</strong> ecosystem and the{' '}
-              <strong className="text-white font-medium">Founder Team</strong>. Directing autonomous AI orchestration,
+              <strong className="text-white font-medium">f0undr Team</strong>. Directing autonomous AI orchestration,
               f0undr Themes APK native architectures, sovereign encrypted cloud storage, and computational literature.
             </p>
           </div>

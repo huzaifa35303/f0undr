@@ -320,7 +320,7 @@ export const AdminPanel = ({
 
               <div className="editorial-card rounded-2xl p-5 bg-white border border-[#e7e5e4]">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-mono text-[#57534e] uppercase">Founder Tools</span>
+                  <span className="text-xs font-mono text-[#57534e] uppercase">f0undr Tools</span>
                   <Wrench className="w-4 h-4 text-[#c2410c]" />
                 </div>
                 <div className="font-serif text-3xl font-bold text-[#1c1917]">{tools.length + 4}</div>
@@ -966,7 +966,7 @@ export const AdminPanel = ({
           <div className="space-y-6 animate-fade-in">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h2 className="font-serif text-2xl font-bold text-[#1c1917]">Founder Tools Directory</h2>
+                <h2 className="font-serif text-2xl font-bold text-[#1c1917]">f0undr Tools Directory</h2>
                 <p className="text-xs text-[#57534e]">Manage external curated tools and software stack recommendations.</p>
               </div>
               <button

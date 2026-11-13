@@ -55,7 +55,7 @@ export const ToolsSection: React.FC<ToolsSectionProps> = ({
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-heading font-black text-white tracking-tight">
-              Founder <span className="text-gradient-cyan">Arsenal &amp; Tools</span>
+              f0undr <span className="text-gradient-cyan">Arsenal &amp; Tools</span>
             </h2>
             <p className="text-slate-300 text-sm sm:text-base mt-3 max-w-2xl leading-relaxed font-light">
               Real-time in-browser productivity engines, financial modeling tools, and curated software leverage for venture builders.
@@ -129,7 +129,7 @@ export const ToolsSection: React.FC<ToolsSectionProps> = ({
                 }`}
               >
                 <Edit3 className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Founder Markdown Scratchpad</span>
+                <span>f0undr Markdown Scratchpad</span>
               </button>
 
               <button

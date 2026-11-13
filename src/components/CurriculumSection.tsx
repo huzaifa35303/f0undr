@@ -49,7 +49,7 @@ export const CurriculumSection = () => {
     urdu: {
       title: 'صحیفۂ اردو: نصاب و ادب (جماعت ہفتم)',
       subtitle: 'وفاقی تعلیمی بورڈ (FBISE) کے نصاب پر مبنی مستند ادبی پلیٹ فارم',
-      authors: 'Muhammad Huzaifa Zahid & Founder Team',
+      authors: 'Muhammad Huzaifa Zahid (Founder) & f0undr Team',
       url: 'https://f0undr.vercel.app/urdu-book/',
       badge: 'FBISE GRADE 7 OFFICIAL',
       units: [
@@ -87,7 +87,7 @@ export const CurriculumSection = () => {
               Interactive <span className="text-gradient-cyan">Curricula &amp; Books</span>
             </h2>
             <p className="text-slate-300 text-sm sm:text-base mt-3 max-w-2xl font-light leading-relaxed">
-              Living web textbooks authored by Founder leadership featuring algorithmic trace diagrams, interactive testing batteries, and browser-autosaving lab workbooks.
+              Living web textbooks authored by f0undr leadership featuring algorithmic trace diagrams, interactive testing batteries, and browser-autosaving lab workbooks.
             </p>
           </div>
 

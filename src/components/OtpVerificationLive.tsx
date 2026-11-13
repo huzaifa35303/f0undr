@@ -365,41 +365,41 @@ export const OtpVerificationLive = () => {
   }, [clearAllTimers]);
 
   return (
-    <div className="w-full flex flex-col items-center select-none py-2">
-      <div className="w-full max-w-[420px] flex flex-wrap items-center justify-between gap-3 mb-4 px-2">
+    <div className="w-full flex flex-col items-center select-none py-1 sm:py-2">
+      <div className="w-full max-w-[420px] flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3 px-1">
         <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-          <span className="text-xs font-mono font-bold text-white tracking-wider uppercase">Live Interactive Test</span>
-          <span className="text-xs font-mono px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-slate-200">
-            Code: <span className="text-emerald-400 font-bold">5683</span>
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span className="text-[11px] sm:text-xs font-mono font-bold text-white tracking-wider uppercase">Live Interactive Test</span>
+          <span className="text-[10px] sm:text-xs font-mono px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-slate-200">
+            Demo Code: <span className="text-emerald-400 font-bold">5683</span>
           </span>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 flex-wrap">
           <button
             onClick={playDemoSuccess}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 text-xs font-mono transition-all cursor-pointer font-medium"
+            className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 text-[10px] sm:text-xs font-mono transition-all cursor-pointer font-medium"
             title="Auto-play correct OTP (5683)"
           >
-            <Play className="w-3 h-3 fill-current" />
-            <span>Test Correct (5683)</span>
+            <Play className="w-2.5 h-2.5 fill-current" />
+            <span>Test 5683</span>
           </button>
 
           <button
             onClick={playDemoWrong}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 border border-rose-500/30 text-xs font-mono transition-all cursor-pointer font-medium"
+            className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 border border-rose-500/30 text-[10px] sm:text-xs font-mono transition-all cursor-pointer font-medium"
             title="Test wrong code shake & error state"
           >
-            <AlertCircle className="w-3 h-3" />
-            <span>Test Wrong OTP</span>
+            <AlertCircle className="w-2.5 h-2.5" />
+            <span>Test Wrong</span>
           </button>
 
           <button
             onClick={handleReset}
-            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 text-xs font-mono transition-all cursor-pointer"
+            className="flex items-center gap-1 px-2 py-1 rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 text-[10px] sm:text-xs font-mono transition-all cursor-pointer"
             title="Reset"
           >
-            <RotateCcw className="w-3 h-3" />
+            <RotateCcw className="w-2.5 h-2.5" />
             <span>Reset</span>
           </button>
         </div>
