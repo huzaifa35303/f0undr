@@ -1,22 +1,22 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 export const CustomCursor = () => {
-  const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
   const pos = useRef({ x: -100, y: -100 });
-  const target = useRef({ x: -100, y: -100 });
-  const [isHovering, setIsHovering] = useState<boolean>(false);
-  const [isClicking, setIsClicking] = useState<boolean>(false);
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const ringPos = useRef({ x: -100, y: -100 });
 
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
-      target.current = { x: e.clientX, y: e.clientY };
-      if (!isVisible) setIsVisible(true);
+      pos.current = { x: e.clientX, y: e.clientY };
+      if (dotRef.current) {
+        dotRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        dotRef.current.style.opacity = '1';
+      }
+      if (ringRef.current) {
+        ringRef.current.style.opacity = '1';
+      }
     };
-
-    const onMouseDown = () => setIsClicking(true);
-    const onMouseUp = () => setIsClicking(false);
 
     const onOver = (e: MouseEvent) => {
       const el = e.target as HTMLElement;
@@ -25,79 +25,64 @@ export const CustomCursor = () => {
         el.closest('button') ||
         el.closest('input') ||
         el.closest('textarea') ||
-        el.closest('[role="button"]') ||
         el.closest('.glass-card') ||
-        el.closest('.glass-pill')
+        el.closest('.project') ||
+        el.closest('.btn')
       ) {
-        setIsHovering(true);
+        if (ringRef.current) {
+          ringRef.current.classList.add('scale-150', 'bg-[var(--accent-soft)]');
+        }
       }
     };
 
-    const onOut = () => setIsHovering(false);
-    const onMouseLeave = () => setIsVisible(false);
-    const onMouseEnter = () => setIsVisible(true);
+    const onOut = () => {
+      if (ringRef.current) {
+        ringRef.current.classList.remove('scale-150', 'bg-[var(--accent-soft)]');
+      }
+    };
+
+    const onLeave = () => {
+      if (dotRef.current) dotRef.current.style.opacity = '0';
+      if (ringRef.current) ringRef.current.style.opacity = '0';
+    };
 
     let raf: number;
     const animate = () => {
-      pos.current.x += (target.current.x - pos.current.x) * 0.16;
-      pos.current.y += (target.current.y - pos.current.y) * 0.16;
-
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${target.current.x - 3}px, ${target.current.y - 3}px, 0)`;
-      }
+      ringPos.current.x += (pos.current.x - ringPos.current.x) * 0.18;
+      ringPos.current.y += (pos.current.y - ringPos.current.y) * 0.18;
 
       if (ringRef.current) {
-        const size = isHovering ? 44 : 24;
-        ringRef.current.style.transform = `translate3d(${pos.current.x - size / 2}px, ${pos.current.y - size / 2}px, 0)`;
+        ringRef.current.style.transform = `translate(${ringPos.current.x}px, ${ringPos.current.y}px)`;
       }
 
       raf = requestAnimationFrame(animate);
     };
 
-    window.addEventListener('mousemove', onMove);
-    window.addEventListener('mousedown', onMouseDown);
-    window.addEventListener('mouseup', onMouseUp);
-    window.addEventListener('mouseover', onOver);
-    window.addEventListener('mouseout', onOut);
-    document.addEventListener('mouseleave', onMouseLeave);
-    document.addEventListener('mouseenter', onMouseEnter);
-
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerover', onOver);
+    window.addEventListener('pointerout', onOut);
+    document.documentElement.addEventListener('pointerleave', onLeave);
     raf = requestAnimationFrame(animate);
 
     return () => {
-      window.removeEventListener('mousemove', onMove);
-      window.removeEventListener('mousedown', onMouseDown);
-      window.removeEventListener('mouseup', onMouseUp);
-      window.removeEventListener('mouseover', onOver);
-      window.removeEventListener('mouseout', onOut);
-      document.removeEventListener('mouseleave', onMouseLeave);
-      document.removeEventListener('mouseenter', onMouseEnter);
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerover', onOver);
+      window.removeEventListener('pointerout', onOut);
+      document.documentElement.removeEventListener('pointerleave', onLeave);
       cancelAnimationFrame(raf);
     };
-  }, [isVisible, isHovering]);
-
-  if (!isVisible) return null;
+  }, []);
 
   return (
-    <div className="hidden lg:block pointer-events-none fixed inset-0 z-50 overflow-hidden">
+    <>
       <div
         ref={ringRef}
-        style={{
-          width: isHovering ? 44 : 24,
-          height: isHovering ? 44 : 24,
-        }}
-        className={`fixed top-0 left-0 rounded-full border transition-all duration-200 ease-out pointer-events-none ${
-          isHovering
-            ? 'border-sky-400/60 bg-sky-400/10 backdrop-blur-[2px] shadow-[0_0_20px_rgba(56,189,248,0.35)]'
-            : 'border-white/40 bg-white/[0.03] backdrop-blur-[1px]'
-        } ${isClicking ? 'scale-75 border-sky-300 bg-sky-400/20' : 'scale-100'}`}
+        className="pointer-events-none fixed top-0 left-0 w-9 h-9 -ml-[18px] -mt-[18px] rounded-full border border-[var(--accent)] z-[120] opacity-0 transition-[opacity,transform,background] duration-200 hidden lg:block"
       />
       <div
         ref={dotRef}
-        className={`fixed top-0 left-0 w-1.5 h-1.5 rounded-full pointer-events-none transition-transform duration-75 ${
-          isHovering ? 'bg-sky-300 shadow-[0_0_8px_#38bdf8]' : 'bg-white shadow-[0_0_6px_rgba(255,255,255,0.8)]'
-        }`}
+        className="pointer-events-none fixed top-0 left-0 w-1.5 h-1.5 -ml-[3px] -mt-[3px] rounded-full bg-[var(--accent)] z-[121] opacity-0 transition-opacity duration-200 hidden lg:block"
       />
-    </div>
+    </>
   );
 };

@@ -4,105 +4,108 @@ export const ParticleBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const cv = canvasRef.current;
+    if (!cv) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = cv.getContext('2d');
     if (!ctx) return;
 
-    let w = (canvas.width = window.innerWidth);
-    let h = (canvas.height = window.innerHeight);
+    let w = 0;
+    let h = 0;
+    let pts: { x: number; y: number; vx: number; vy: number }[] = [];
     let raf: number;
-    let mouse = { x: w / 2, y: h / 2 };
+    let mx = -999;
+    let my = -999;
 
-    const particles: {
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      r: number;
-      alpha: number;
-    }[] = [];
+    const size = () => {
+      const r = cv.getBoundingClientRect();
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      w = r.width;
+      h = r.height;
+      cv.width = w * dpr;
+      cv.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    const count = Math.min(80, Math.floor((w * h) / 18000));
-
-    for (let i = 0; i < count; i++) {
-      particles.push({
+      const n = Math.round(Math.min(70, (w * h) / 16000));
+      pts = Array.from({ length: n }, () => ({
         x: Math.random() * w,
         y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        r: Math.random() * 1.2 + 0.3,
-        alpha: Math.random() * 0.3 + 0.08,
-      });
-    }
-
-    const resize = () => {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    };
-
-    const onMouse = (e: MouseEvent) => {
-      mouse = { x: e.clientX, y: e.clientY };
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+      }));
     };
 
     const draw = () => {
-      ctx.clearRect(0, 0, w, h);
+      const color =
+        getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#7877c6';
 
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = color;
+      ctx.strokeStyle = color;
+
+      for (const p of pts) {
         p.x += p.vx;
         p.y += p.vy;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
 
-        if (p.x < 0) p.x = w;
-        if (p.x > w) p.x = 0;
-        if (p.y < 0) p.y = h;
-        if (p.y > h) p.y = 0;
-
+        ctx.globalAlpha = 0.55;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
+        ctx.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
         ctx.fill();
+      }
 
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
-          const dx = p.x - p2.x;
-          const dy = p.y - p2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+      for (let i = 0; i < pts.length; i++) {
+        for (let j = i + 1; j < pts.length; j++) {
+          const dx = pts[i].x - pts[j].x;
+          const dy = pts[i].y - pts[j].y;
+          const d = Math.hypot(dx, dy);
 
-          if (dist < 150) {
+          if (d < 120) {
+            ctx.globalAlpha = (1 - d / 120) * 0.22;
             ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(255, 255, 255, ${0.03 * (1 - dist / 150)})`;
-            ctx.lineWidth = 0.5;
+            ctx.moveTo(pts[i].x, pts[i].y);
+            ctx.lineTo(pts[j].x, pts[j].y);
             ctx.stroke();
           }
         }
 
-        const mdx = p.x - mouse.x;
-        const mdy = p.y - mouse.y;
-        const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
-        if (mDist < 200) {
+        const d2 = Math.hypot(pts[i].x - mx, pts[i].y - my);
+        if (d2 < 160) {
+          ctx.globalAlpha = (1 - d2 / 160) * 0.5;
           ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(0, 229, 255, ${0.08 * (1 - mDist / 200)})`;
-          ctx.lineWidth = 0.5;
+          ctx.moveTo(pts[i].x, pts[i].y);
+          ctx.lineTo(mx, my);
           ctx.stroke();
         }
       }
 
+      ctx.globalAlpha = 1;
       raf = requestAnimationFrame(draw);
     };
 
-    window.addEventListener('resize', resize);
-    window.addEventListener('mousemove', onMouse);
-    raf = requestAnimationFrame(draw);
+    size();
+    draw();
+
+    const onResize = () => size();
+    const onMove = (e: MouseEvent) => {
+      const r = cv.getBoundingClientRect();
+      mx = e.clientX - r.left;
+      my = e.clientY - r.top;
+    };
+    const onLeave = () => {
+      mx = -999;
+      my = -999;
+    };
+
+    window.addEventListener('resize', onResize);
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerleave', onLeave);
 
     return () => {
-      window.removeEventListener('resize', resize);
-      window.removeEventListener('mousemove', onMouse);
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerleave', onLeave);
       cancelAnimationFrame(raf);
     };
   }, []);
@@ -110,8 +113,7 @@ export const ParticleBackground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 z-0 pointer-events-none"
-      style={{ opacity: 0.6 }}
+      className="fixed inset-0 w-full h-full pointer-events-none z-0"
     />
   );
 };

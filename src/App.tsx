@@ -281,9 +281,13 @@ export function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#070913] text-[#f8fafc] selection:bg-indigo-500/30 selection:text-white overflow-x-hidden">
+    <div className="relative min-h-screen bg-[var(--bg)] text-[var(--fg)] selection:bg-[var(--accent-soft)] selection:text-[var(--accent)] overflow-x-hidden">
       <CustomCursor />
-      <div className="aurora-mesh" />
+      <div className="blobs" aria-hidden="true">
+        <div className="blob b1" />
+        <div className="blob b2" />
+        <div className="blob b3" />
+      </div>
       <ParticleBackground />
       <div className="fixed inset-0 subtle-grid pointer-events-none z-0 opacity-40" />
       
