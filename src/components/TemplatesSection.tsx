@@ -1,17 +1,25 @@
 import { useState } from 'react';
-import { KeyRound, ArrowUpRight, Download, Check, Copy, Sparkles, ShieldCheck } from 'lucide-react';
+import { KeyRound, ArrowUpRight, Download, Check, Copy, Sparkles, ShieldCheck, AtSign, Radio, Layers, Sun, Eye } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../utils/audio';
 import { OtpVerificationLive } from './OtpVerificationLive';
+import {
+  BlackSocialHandlePreview,
+  WhiteSocialHandlePreview,
+  ProfileLivePreview,
+  ProfileStoryRingPreview,
+  MorphIconPreview,
+  MorphWeatherPreview,
+  TemplateId,
+} from './AnimatedIconShowcase';
 
 interface TemplateItem {
-  id: string;
+  id: TemplateId;
   title: string;
   tagline: string;
-  category: 'ui' | 'security';
   badge: string;
   techStack: string[];
   features: string[];
-  icon: typeof KeyRound;
+  icon: typeof KeyRound | typeof AtSign | typeof Radio | typeof Layers | typeof Sun | typeof Eye | typeof Sparkles;
   orderUrl?: string;
 }
 
@@ -20,8 +28,7 @@ const TEMPLATES: TemplateItem[] = [
     id: 'tmpl-otp',
     title: 'Tactile 4-Digit OTP Verification Suite',
     tagline: 'High-precision micro-interaction component with auto-focus, wrong-code shake, 2x2 morphing sequence, WebAudio frequencies, and celebratory confetti engine.',
-    category: 'ui',
-    badge: 'Micro-Interaction • Security Engine',
+    badge: 'Security • Micro-Interaction',
     techStack: ['React 19', 'TypeScript', 'Tailwind CSS v4', 'Web Audio API', 'HTML5 Canvas'],
     features: [
       'Auto-focus input jumping with seamless backspace handling',
@@ -33,10 +40,105 @@ const TEMPLATES: TemplateItem[] = [
     icon: KeyRound,
     orderUrl: 'https://f0undr-order.vercel.app/',
   },
+  {
+    id: 'tmpl-black-handle',
+    title: 'f0undr Black Social Handle Lower-Third',
+    tagline: 'Dark-themed lower-third badge adapted from Jitter for displaying the @f0undr social handle with smooth spring-physics entrance and collapse.',
+    badge: 'Jitter Rebuild • Social Media',
+    techStack: ['CSS Transitions', 'Tailwind v4', 'SVG Vector', 'TypeScript'],
+    features: [
+      'Instagram gradient badge with dynamic handle expansion',
+      'Pulsing status beacon for verified authenticity',
+      'Spring cubic-bezier transitions for organic movement',
+      'Optimized for broadcast video overlays and web hero headers',
+    ],
+    icon: AtSign,
+    orderUrl: 'https://f0undr-order.vercel.app/',
+  },
+  {
+    id: 'tmpl-white-handle',
+    title: 'f0undr White Social Handle Pill',
+    tagline: 'High-contrast monochrome lower-third pill engineered for dark video footage, featuring the f0undr monogram with crisp typography.',
+    badge: 'Jitter Rebuild • Light Edition',
+    techStack: ['Pure CSS', 'SVG Icons', 'Tailwind v4', 'React 19'],
+    features: [
+      'Pure white surface with high-contrast obsidian typography',
+      'Instant toggle reveal and conceal choreography',
+      'Subtle drop-shadow glow tuned for dark mode UI',
+      'Fully customizable handle and brand typography',
+    ],
+    icon: Eye,
+    orderUrl: 'https://f0undr-order.vercel.app/',
+  },
+  {
+    id: 'tmpl-profile-live',
+    title: 'f0undr Profile: Live Pulse Stream',
+    tagline: 'Broadcast-ready animated avatar with expanding live ripple rings, glowing crimson status beacon, and real-time telemetry badge.',
+    badge: 'Jitter Rebuild • Live Broadcast',
+    techStack: ['CSS Keyframes', 'SVG Filters', 'React 19', 'Tailwind v4'],
+    features: [
+      'Concentric pulsing radar wave animations',
+      'Vibrant LIVE indicator pill with synchronized blinker',
+      'Simulated viewer audience telemetry stream',
+      'Pixel-perfect avatar squircle container with drop-shadow',
+    ],
+    icon: Radio,
+    orderUrl: 'https://f0undr-order.vercel.app/',
+  },
+  {
+    id: 'tmpl-profile-story',
+    title: 'f0undr Profile: Kinetic Story Ring',
+    tagline: 'Social-grade animated gradient ring that draws and orbits the f0undr monogram with interactive unread/viewed state switching.',
+    badge: 'Jitter Rebuild • Story System',
+    techStack: ['SVG Stroke Animation', 'Gradient Conics', 'React 19', 'Tailwind'],
+    features: [
+      'Continuous kinetic gradient rotation around avatar boundary',
+      'Interactive click-to-view toggle clearing story ring state',
+      'Multicolor sunset gradient stop array (Amber, Rose, Violet)',
+      'Touch-friendly micro-interaction for mobile & desktop apps',
+    ],
+    icon: Sparkles,
+    orderUrl: 'https://f0undr-order.vercel.app/',
+  },
+  {
+    id: 'tmpl-morph-icon',
+    title: 'f0undr Morph: Animated Vector Icon',
+    tagline: 'Fluid vector geometry interpolation cycling between Quantum Core, Diamond Node, Sovereign Squircle, and Prism Hexagon.',
+    badge: 'Jitter Rebuild • Fluid Morph',
+    techStack: ['CSS Morphing', 'SVG Math', 'React 19', 'Tailwind v4'],
+    features: [
+      'Continuous 4-phase geometric shape morphing',
+      'Synchronized gradient rotation and border-radius blending',
+      'Dynamic state counter and phase announcement HUD',
+      'Ultra-lightweight vector rendering without external dependencies',
+    ],
+    icon: Layers,
+    orderUrl: 'https://f0undr-order.vercel.app/',
+  },
+  {
+    id: 'tmpl-morph-weather',
+    title: 'f0undr Morph: Weather Sensor Icons',
+    tagline: 'State-morphing meteorological icon engine transitioning smoothly between Sunny Day, Thunderstorm, and Rain Shower with telemetry.',
+    badge: 'Jitter Rebuild • State Engine',
+    techStack: ['React 19', 'Vector Icons', 'Tailwind v4', 'TypeScript'],
+    features: [
+      'Seamless multi-state icon switching with bounce easing',
+      'Dynamic thermal temperature readout and atmospheric sensors',
+      'Curated atmospheric color gradients matching condition states',
+      'Designed for dashboard widgets and ambient smartwatch faces',
+    ],
+    icon: Sun,
+    orderUrl: 'https://f0undr-order.vercel.app/',
+  },
 ];
 
 export const TemplatesSection = () => {
+  const [activeTemplateId, setActiveTemplateId] = useState<TemplateId>('tmpl-otp');
   const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const currentTemplate = TEMPLATES.find((t) => t.id === activeTemplateId) || TEMPLATES[0];
+  const IconComp = currentTemplate.icon;
+  const isCopied = copiedId === currentTemplate.id;
 
   const handleCopySpec = (tmpl: TemplateItem) => {
     playClickSound();
@@ -52,9 +154,26 @@ Commission link: https://f0undr-order.vercel.app/`;
     setTimeout(() => setCopiedId(null), 2000);
   };
 
-  const currentTemplate = TEMPLATES[0];
-  const IconComp = currentTemplate.icon;
-  const isCopied = copiedId === currentTemplate.id;
+  const renderActivePreview = () => {
+    switch (activeTemplateId) {
+      case 'tmpl-otp':
+        return <OtpVerificationLive />;
+      case 'tmpl-black-handle':
+        return <BlackSocialHandlePreview />;
+      case 'tmpl-white-handle':
+        return <WhiteSocialHandlePreview />;
+      case 'tmpl-profile-live':
+        return <ProfileLivePreview />;
+      case 'tmpl-profile-story':
+        return <ProfileStoryRingPreview />;
+      case 'tmpl-morph-icon':
+        return <MorphIconPreview />;
+      case 'tmpl-morph-weather':
+        return <MorphWeatherPreview />;
+      default:
+        return <OtpVerificationLive />;
+    }
+  };
 
   return (
     <section id="templates" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
@@ -64,23 +183,48 @@ Commission link: https://f0undr-order.vercel.app/`;
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill mb-3">
               <span className="text-[11px] font-mono tracking-widest text-cyan-300 uppercase flex items-center gap-1.5">
                 <Download className="w-3.5 h-3.5" />
-                STANDALONE TEMPLATE &bull; LIVE INTERACTIVE PREVIEW
+                ANIMATED ICON TEMPLATES &bull; JITTER REBUILDS
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-heading font-black text-white tracking-tight">
-              Production <span className="text-gradient-cyan">Template Suite</span>
+              Interactive <span className="text-gradient-cyan">Template Gallery</span>
             </h2>
             <p className="text-slate-300 text-sm sm:text-base mt-3 max-w-2xl font-light leading-relaxed">
-              Industrial-grade micro-interaction starter built for instant integration into enterprise authentication flows, banking portals, and autonomous systems.
+              Industrial micro-interactions, animated social handles, live streaming badges, and fluid vector morphs adapted from Jitter templates, branded for f0undr.
             </p>
           </div>
 
           <div className="flex items-center gap-3">
             <div className="px-3 py-1.5 rounded-xl glass-pill flex items-center gap-2 text-xs font-mono text-emerald-400">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>1 Live Template Active</span>
+              <span>{TEMPLATES.length} Live Templates Active</span>
             </div>
           </div>
+        </div>
+
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+          {TEMPLATES.map((tmpl) => {
+            const isActive = activeTemplateId === tmpl.id;
+            const TabIcon = tmpl.icon;
+            return (
+              <button
+                key={tmpl.id}
+                onClick={() => {
+                  playClickSound();
+                  setActiveTemplateId(tmpl.id);
+                }}
+                onMouseEnter={playHoverSound}
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                  isActive
+                    ? 'bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-white border border-cyan-400/40 shadow-[0_0_20px_-4px_rgba(56,189,248,0.3)]'
+                    : 'glass-pill text-slate-300 hover:text-white'
+                }`}
+              >
+                <TabIcon className="w-3.5 h-3.5" />
+                <span>{tmpl.title.split('—')[0].replace('f0undr ', '')}</span>
+              </button>
+            );
+          })}
         </div>
 
         <div className="glass-card rounded-3xl p-6 sm:p-10 border border-white/10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -105,7 +249,7 @@ Commission link: https://f0undr-order.vercel.app/`;
               <div className="space-y-2.5 mb-6 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
                 <div className="text-[11px] font-mono uppercase tracking-widest text-slate-400 flex items-center gap-1.5 mb-1">
                   <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
-                  Engine Capabilities
+                  Animation &amp; System Capabilities
                 </div>
                 {currentTemplate.features.map((feat, idx) => (
                   <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-200 font-mono">
@@ -135,7 +279,7 @@ Commission link: https://f0undr-order.vercel.app/`;
                 title="Copy full architecture specification"
               >
                 {isCopied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-cyan-400" />}
-                <span>{isCopied ? 'Spec Copied to Clipboard' : 'Copy Architecture Spec'}</span>
+                <span>{isCopied ? 'Spec Copied' : 'Copy Spec'}</span>
               </button>
 
               <a
@@ -147,14 +291,14 @@ Commission link: https://f0undr-order.vercel.app/`;
                 className="flex items-center gap-2 px-5 py-2.5 rounded-xl btn-primary-white text-xs font-semibold tracking-tight cursor-pointer group"
               >
                 <Sparkles className="w-4 h-4 text-emerald-400" />
-                <span>Commission Custom Variant</span>
+                <span>Commission Template</span>
                 <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
             </div>
           </div>
 
-          <div className="lg:col-span-6 flex flex-col items-center justify-center p-4 sm:p-6 rounded-2xl bg-black/40 border border-white/[0.08] backdrop-blur-sm">
-            <OtpVerificationLive />
+          <div className="lg:col-span-6 flex flex-col items-center justify-center p-4 sm:p-6 rounded-2xl bg-black/40 border border-white/[0.08] backdrop-blur-sm min-h-[360px]">
+            {renderActivePreview()}
           </div>
         </div>
       </div>
