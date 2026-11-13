@@ -18,6 +18,7 @@ import {
   INITIAL_AUDIT_LOGS,
 } from './data/initialData';
 import { ParticleBackground } from './components/ParticleBackground';
+import { CustomCursor } from './components/CustomCursor';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { FounderSection } from './components/FounderSection';
@@ -281,6 +282,7 @@ export function App() {
 
   return (
     <div className="relative min-h-screen bg-[#070913] text-[#f8fafc] selection:bg-indigo-500/30 selection:text-white overflow-x-hidden">
+      <CustomCursor />
       <div className="aurora-mesh" />
       <ParticleBackground />
       <div className="fixed inset-0 subtle-grid pointer-events-none z-0 opacity-40" />
