@@ -50,7 +50,7 @@ export const CurriculumSection = () => {
       title: 'صحیفۂ اردو: نصاب و ادب (جماعت ہفتم)',
       subtitle: 'وفاقی تعلیمی بورڈ (FBISE) کے نصاب پر مبنی مستند ادبی پلیٹ فارم',
       authors: 'Muhammad Huzaifa Zahid (Founder) & f0undr Team',
-      url: 'https://f0undr.vercel.app/urdu-book/',
+      url: 'https://f0undrteam.site/urdu-book/',
       badge: 'FBISE GRADE 7 OFFICIAL',
       units: [
         { num: 'باب 1', title: 'حمد باری تعالیٰ (حمد و ثنا)', desc: 'خالقِ کائنات کی عظمت اور معرفت کا شعری اور ادبی مطالعہ۔' },

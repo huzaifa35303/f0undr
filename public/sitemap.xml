@@ -2,44 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://f0undrteam.site/</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://f0undrteam.site/#founder</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://f0undrteam.site/#team</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://f0undrteam.site/#projects</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://f0undrteam.site/#tools</loc>
-    <lastmod>2026-11-12</lastmod>
+    <loc>https://f0undrteam.site/urdu-book/</loc>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://f0undrteam.site/#books</loc>
-    <lastmod>2026-11-12</lastmod>
+    <loc>https://f0undrteam.site/book/</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://f0undrteam.site/calculator/</loc>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://f0undrteam.site/#order</loc>
-    <lastmod>2026-11-12</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://f0undrteam.site/mind-mastery/</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

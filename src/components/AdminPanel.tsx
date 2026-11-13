@@ -149,9 +149,9 @@ export const AdminPanel = ({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="font-serif text-lg sm:text-xl font-bold text-[#1c1917] tracking-tight">
+                <h2 className="font-serif text-lg sm:text-xl font-bold text-[#1c1917] tracking-tight">
                   f0undr Studio Cockpit
-                </h1>
+                </h2>
                 <span className="editorial-stamp editorial-stamp-terracotta">
                   Admin Console
                 </span>

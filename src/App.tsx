@@ -140,6 +140,28 @@ export function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const titles: Record<string, string> = {
+      hero: 'f0undr — Autonomous AI & Native Systems | Technology Corporation',
+      founder: 'Muhammad Huzaifa Zahid (Founder) — Leadership Dossier | f0undr',
+      projects: 'Sovereign Software & Systems Architecture | f0undr',
+      team: 'Executive Leadership Collective — The f0undr Team',
+      templates: 'Interactive OTP & Micro-Interaction Templates | f0undr',
+      curriculum: 'Computational Literature & Living Web Curricula | f0undr',
+      tools: 'Utility Engines & Interactive Software Arsenal | f0undr',
+      skills: 'Autonomous AI & Native Engineering Capabilities | f0undr',
+      order: 'Direct Executive Commission Atelier | f0undr',
+    };
+
+    const newTitle = titles[activeSection] || titles.hero;
+    document.title = newTitle;
+
+    const canonicalEl = document.querySelector("link[rel='canonical']");
+    if (canonicalEl) {
+      canonicalEl.setAttribute('href', activeSection === 'hero' ? 'https://f0undrteam.site/' : `https://f0undrteam.site/#${activeSection}`);
+    }
+  }, [activeSection]);
+
   const scrollTo = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
