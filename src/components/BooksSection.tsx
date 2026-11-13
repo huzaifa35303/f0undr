@@ -141,7 +141,7 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
                   f0undr Book: Computing &amp; Technology Curriculum
                 </h3>
                 <p className="text-xs text-[#c2410c] font-mono font-medium">
-                  Authored by <strong className="text-[#1c1917]">f0undr</strong> &amp; <strong className="text-[#1c1917]">Abdull Rehman Khizar</strong> (with <strong className="text-[#1c1917]">M.Huzaifa</strong>)
+                  Authored by <strong className="text-[#1c1917]">f0undr</strong> &amp; <strong className="text-[#1c1917]">Rai Abdur Rehman</strong> (with <strong className="text-[#1c1917]">M.Huzaifa</strong>)
                 </p>
                 <p className="text-xs sm:text-sm text-[#57534e] leading-relaxed font-normal">
                   A complete modern computer science textbook covering hardware foundations, digital productivity, algorithmic thinking, Scratch programming, cybersecurity, and digital entrepreneurship. Featuring real-world case studies, IPO cycle architectures, and autosaving student lab workbooks.

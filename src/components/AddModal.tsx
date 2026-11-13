@@ -128,7 +128,7 @@ export const AddModal: React.FC<AddModalProps> = ({
       verifiedFounder: isFounder,
       department: isFounder ? 'Core Leadership' : 'Fellowship Core',
       handle: teamHandle.trim().startsWith('@') ? teamHandle.trim() : `@${teamHandle.trim() || 'fellow'}`,
-      avatarUrl: `https://ui-avatars.com/api/?name=${encodeURIComponent(
+      avatarUrl: `https:
         teamName
       )}&background=1c1917&color=faf8f5&bold=true`,
       bio: teamBio.trim() || 'Builder driving high-leverage systems at f0undr.',

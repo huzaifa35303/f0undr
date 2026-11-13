@@ -26,11 +26,9 @@ export const HeroSection = ({
 
   return (
     <section id="hero" className="relative pt-36 pb-20 flex flex-col justify-center text-center overflow-hidden">
-      {/* Dynamic Radial Glow Background */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[380px] bg-gradient-to-b from-cyan-500/10 via-indigo-500/05 to-transparent blur-3xl pointer-events-none -z-10" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Technology Corporation Sovereign Pill */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono mb-8 backdrop-blur-md hover:border-cyan-500/30 transition-all cursor-default">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span className="text-slate-200 font-semibold tracking-wide">FOUNDER &amp; FOUNDER TEAM</span>
@@ -59,7 +57,6 @@ export const HeroSection = ({
           . Building high-throughput systems, native Android architectures (f0undr Themes APK), desktop &amp; Mac tools, small books, and corporate technology infrastructure.
         </div>
 
-        {/* Action CTAs */}
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-16">
           <a
             href={ORDER_URL}
@@ -99,7 +96,6 @@ export const HeroSection = ({
           </button>
         </div>
 
-        {/* Mage UI Marquee Ticker */}
         <div className="relative w-full overflow-hidden py-3 mb-16 border-y border-white/[0.06] bg-white/[0.01] backdrop-blur-xs">
           <div className="flex w-max gap-8 animate-marquee">
             {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, idx) => {
@@ -115,7 +111,6 @@ export const HeroSection = ({
           </div>
         </div>
 
-        {/* Stats Bento */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto text-left">
           {STATS.map((stat, idx) => (
             <div

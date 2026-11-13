@@ -106,7 +106,6 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
           </div>
         </div>
 
-        {/* Mage UI Category Filter Bar */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-4 mb-8 no-scrollbar">
           {categories.map((cat) => {
             const isActive = activeCategory === cat.id;
@@ -130,7 +129,6 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
           })}
         </div>
 
-        {/* Mage UI Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project) => (
             <div
@@ -138,7 +136,6 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
               onMouseEnter={playHoverSound}
               className="pro-card rounded-2xl p-6 flex flex-col justify-between group relative overflow-hidden"
             >
-              {/* Subtle Ambient Hover Glow */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 style={{

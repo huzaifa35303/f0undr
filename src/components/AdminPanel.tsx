@@ -315,7 +315,7 @@ export const AdminPanel = ({
                   <Users className="w-4 h-4 text-[#2b5346]" />
                 </div>
                 <div className="font-serif text-3xl font-bold text-[#1c1917]">{team.length}</div>
-                <p className="text-[11px] text-[#78716c] mt-1 font-mono">f0undr, Khizar, Saleem, Ammar + Fellows</p>
+                <p className="text-[11px] text-[#78716c] mt-1 font-mono">f0undr, Rai Abdur Rehman, Saleem, Ammar + Fellows</p>
               </div>
 
               <div className="editorial-card rounded-2xl p-5 bg-white border border-[#e7e5e4]">
@@ -506,7 +506,7 @@ export const AdminPanel = ({
                       f0undr Book: Computing Curriculum
                     </span>
                     <span className="text-[11px] text-[#70757a] line-clamp-1">
-                      Units 1–6 authored by f0undr &amp; Abdull Rehman Khizar.
+                      Units 1–6 authored by f0undr &amp; Rai Abdur Rehman.
                     </span>
                   </div>
                   <div>
@@ -514,7 +514,7 @@ export const AdminPanel = ({
                       f0undr Team Roster
                     </span>
                     <span className="text-[11px] text-[#70757a] line-clamp-1">
-                      Abdull Rehman Khizar, f0undr, M.Huzaifa, and 5 fellows.
+                      Rai Abdur Rehman, f0undr, M.Huzaifa, and 5 fellows.
                     </span>
                   </div>
                 </div>
@@ -646,7 +646,7 @@ export const AdminPanel = ({
                 </h3>
               </div>
               <p className="text-xs text-[#57534e]">
-                Follow these exact steps once deployed to rank #1 for <strong>f0undr</strong>, <strong>f0undr Book</strong>, <strong>Abdull Rehman Khizar</strong>, and <strong>M.Huzaifa</strong>:
+                Follow these exact steps once deployed to rank #1 for <strong>f0undr</strong>, <strong>f0undr Book</strong>, <strong>Rai Abdur Rehman</strong>, and <strong>M.Huzaifa</strong>:
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
@@ -686,7 +686,7 @@ export const AdminPanel = ({
                     <h4 className="text-xs font-bold text-[#1c1917]">Establish Author Knowledge Panels</h4>
                   </div>
                   <p className="text-xs text-[#57534e] leading-relaxed">
-                    Link social profiles (GitHub, X/Twitter, LinkedIn) for Abdull Rehman Khizar, f0undr, and M.Huzaifa. Google builds entity graphs connecting the authors to the book curriculum automatically.
+                    Link social profiles (GitHub, X/Twitter, LinkedIn) for Rai Abdur Rehman, f0undr, and M.Huzaifa. Google builds entity graphs connecting the authors to the book curriculum automatically.
                   </p>
                 </div>
               </div>

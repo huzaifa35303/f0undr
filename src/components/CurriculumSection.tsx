@@ -9,7 +9,7 @@ export const CurriculumSection = () => {
     computing: {
       title: 'f0undr Book: Computing & Technology',
       subtitle: 'Official Units 1–6 Interactive Master Curriculum',
-      authors: 'f0undr (Muhammad Huzaifa Zahid) & Rai Abdul Rehman Khizar',
+      authors: 'f0undr (Muhammad Huzaifa Zahid) & Rai Abdur Rehman',
       url: 'https://f-e-book.vercel.app/',
       badge: 'FLAGSHIP CURRICULUM',
       units: [
