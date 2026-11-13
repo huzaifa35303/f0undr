@@ -100,38 +100,38 @@ export const OtpVerificationLive = () => {
   const spawnConfetti = useCallback(() => {
     const colors = ['#38bdf8', '#34d399', '#f59e0b', '#ec4899', '#a855f7', '#ffffff', '#22d3ee'];
     const p: typeof particlesRef.current = [];
-    for (let i = 0; i < 28; i++) {
+    for (let i = 0; i < 35; i++) {
       const angle = (Math.random() * 2.4 - 1.85) * Math.PI;
-      const radius = 16 + Math.random() * 20;
-      const speed = 220 + Math.random() * 380;
+      const radius = 20 + Math.random() * 25;
+      const speed = 250 + Math.random() * 420;
       p.push({
-        x: 168 + Math.cos(Math.PI - angle) * radius,
-        y: 199 + Math.sin(Math.PI - angle) * radius,
+        x: 210 + Math.cos(Math.PI - angle) * radius,
+        y: 220 + Math.sin(Math.PI - angle) * radius,
         vx: Math.cos(Math.PI - angle) * speed,
         vy: Math.sin(Math.PI - angle) * speed,
-        w: 5 + Math.random() * 4,
-        h: 2 + Math.random() * 2.5,
+        w: 6 + Math.random() * 5,
+        h: 2.5 + Math.random() * 3,
         color: colors[Math.floor(Math.random() * colors.length)],
         rot: (Math.random() - 0.5) * 12,
         rv: (Math.random() - 0.5) * 12,
-        life: 1.4 + Math.random() * 0.8,
-        g: 220,
+        life: 1.5 + Math.random() * 0.9,
+        g: 230,
         burst: true,
       });
     }
-    for (let i = 0; i < 35; i++) {
+    for (let i = 0; i < 45; i++) {
       p.push({
-        x: 10 + Math.random() * 318,
-        y: -16 - Math.random() * 30,
-        vx: (Math.random() - 0.5) * 60,
-        vy: 80 + Math.random() * 150,
-        w: 5 + Math.random() * 4,
-        h: 2 + Math.random() * 2.5,
+        x: 10 + Math.random() * 400,
+        y: -20 - Math.random() * 30,
+        vx: (Math.random() - 0.5) * 70,
+        vy: 90 + Math.random() * 170,
+        w: 6 + Math.random() * 5,
+        h: 2.5 + Math.random() * 3,
         color: colors[Math.floor(Math.random() * colors.length)],
         rot: (Math.random() - 0.5) * 12,
         rv: (Math.random() - 0.5) * 20,
-        life: 2.2 + Math.random() * 1.4,
-        g: 65 + Math.random() * 50,
+        life: 2.4 + Math.random() * 1.5,
+        g: 70 + Math.random() * 60,
         burst: false,
       });
     }
@@ -158,8 +158,8 @@ export const OtpVerificationLive = () => {
         pt.x += pt.vx * dt;
         pt.y += pt.vy * dt;
         pt.rot += pt.rv * dt;
-        if (pt.y > 295) {
-          pt.y = 295;
+        if (pt.y > 350) {
+          pt.y = 350;
           pt.vy = 0;
           pt.vx *= 0.7;
           pt.rv *= 0.5;
@@ -213,10 +213,10 @@ export const OtpVerificationLive = () => {
   const triggerSuccessSequence = useCallback(() => {
     setStatus('pattern');
     setBoxStyles({
-      t0: 'translate(41px, -33px)',
-      t1: 'translate(41px, -33px)',
-      t2: 'translate(-47px, 11px)',
-      t3: 'translate(-47px, 11px)',
+      t0: 'translate(51px, -40px)',
+      t1: 'translate(51px, -40px)',
+      t2: 'translate(-57px, 14px)',
+      t3: 'translate(-57px, 14px)',
     });
 
     addTimer(() => {
@@ -228,10 +228,10 @@ export const OtpVerificationLive = () => {
       setStatus('collapse');
       setSegmentsOn(false);
       setBoxStyles({
-        t0: 'translate(65px, -4px)',
-        t1: 'translate(21px, -4px)',
-        t2: 'translate(-23px, -4px)',
-        t3: 'translate(-67px, -4px)',
+        t0: 'translate(78px, -5px)',
+        t1: 'translate(26px, -5px)',
+        t2: 'translate(-28px, -5px)',
+        t3: 'translate(-80px, -5px)',
         op1: '0',
         op2: '0',
         op3: '0',
@@ -365,20 +365,20 @@ export const OtpVerificationLive = () => {
   }, [clearAllTimers]);
 
   return (
-    <div className="w-full flex flex-col items-center select-none">
-      <div className="w-full flex flex-wrap items-center justify-between gap-3 mb-4 px-2">
+    <div className="w-full flex flex-col items-center select-none py-2">
+      <div className="w-full max-w-[420px] flex flex-wrap items-center justify-between gap-3 mb-4 px-2">
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-          <span className="text-xs font-mono font-semibold text-white tracking-wider uppercase">Live Interactive Test</span>
-          <span className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-white/5 border border-white/10 text-slate-300">
-            Demo Code: <span className="text-emerald-400 font-bold">5683</span>
+          <span className="text-xs font-mono font-bold text-white tracking-wider uppercase">Live Interactive Test</span>
+          <span className="text-xs font-mono px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-slate-200">
+            Code: <span className="text-emerald-400 font-bold">5683</span>
           </span>
         </div>
 
         <div className="flex items-center gap-2">
           <button
             onClick={playDemoSuccess}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/20 text-xs font-mono transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 text-xs font-mono transition-all cursor-pointer font-medium"
             title="Auto-play correct OTP (5683)"
           >
             <Play className="w-3 h-3 fill-current" />
@@ -387,7 +387,7 @@ export const OtpVerificationLive = () => {
 
           <button
             onClick={playDemoWrong}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/20 text-xs font-mono transition-all cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 border border-rose-500/30 text-xs font-mono transition-all cursor-pointer font-medium"
             title="Test wrong code shake & error state"
           >
             <AlertCircle className="w-3 h-3" />
@@ -407,15 +407,15 @@ export const OtpVerificationLive = () => {
 
       <div
         onClick={() => kbdRef.current?.focus()}
-        className="relative w-[340px] h-[310px] rounded-3xl bg-[#100f14] border border-white/10 shadow-[0_24px_60px_-15px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col items-center justify-start pt-6 cursor-text transition-all duration-300 hover:border-cyan-400/40"
+        className="relative w-full max-w-[420px] h-[360px] rounded-3xl bg-[#100f14] border border-white/15 shadow-[0_30px_80px_-15px_rgba(0,0,0,0.85)] overflow-hidden flex flex-col items-center justify-start pt-7 cursor-text transition-all duration-300 hover:border-cyan-400/50"
       >
-        <div className="w-8 h-1 rounded-full bg-[#4a494e] mb-5"></div>
+        <div className="w-10 h-1.5 rounded-full bg-[#4a494e] mb-6"></div>
 
-        <div className="text-center px-4 mb-2">
-          <h4 className="text-white text-base font-bold tracking-tight">
+        <div className="text-center px-6 mb-4">
+          <h4 className="text-white text-lg font-bold tracking-tight">
             {status === 'success' ? (
-              <span className="text-emerald-400 flex items-center justify-center gap-1.5">
-                <Sparkles className="w-4 h-4" /> Phone Verified!
+              <span className="text-emerald-400 flex items-center justify-center gap-2">
+                <Sparkles className="w-5 h-5" /> Phone Verified!
               </span>
             ) : status === 'error' ? (
               <span className="text-rose-400">Verification Failed</span>
@@ -423,7 +423,7 @@ export const OtpVerificationLive = () => {
               "Let's verify your number"
             )}
           </h4>
-          <p className="text-[11px] text-slate-400 leading-relaxed mt-1">
+          <p className="text-xs text-slate-300 leading-relaxed mt-1.5 max-w-xs">
             {status === 'success'
               ? 'Access token granted. Ready for production deployment.'
               : status === 'error'
@@ -433,14 +433,14 @@ export const OtpVerificationLive = () => {
         </div>
 
         <div
-          className={`relative w-[166px] h-[34px] mt-7 ${
+          className={`relative w-[208px] h-[44px] mt-8 ${
             status === 'error' ? 'animate-[shake_0.45s_ease-in-out]' : ''
           }`}
         >
           <div
-            className={`absolute top-0 left-0 w-[34px] h-[34px] rounded-[10px] bg-[#131217] border flex items-center justify-center font-bold text-sm text-white transition-all duration-300 ${
+            className={`absolute top-0 left-0 w-[44px] h-[44px] rounded-xl bg-[#131217] border flex items-center justify-center font-bold text-base text-white transition-all duration-300 ${
               status === 'error'
-                ? 'border-rose-500 shadow-[0_0_15px_rgba(244,63,94,0.4)]'
+                ? 'border-rose-500 shadow-[0_0_20px_rgba(244,63,94,0.45)]'
                 : 'border-[#2b2a30]'
             }`}
             style={{
@@ -451,14 +451,14 @@ export const OtpVerificationLive = () => {
           >
             {digits[0]}
             {status !== 'success' && status !== 'collapse' && caretIndex === 0 && (
-              <div className="absolute left-[15px] top-[6px] w-[2px] h-[22px] rounded-full bg-gradient-to-b from-teal-400 to-rose-500 animate-pulse"></div>
+              <div className="absolute left-[20px] top-[8px] w-[2.5px] h-[26px] rounded-full bg-gradient-to-b from-teal-400 to-rose-500 animate-pulse"></div>
             )}
           </div>
 
           <div
-            className={`absolute top-0 left-[44px] w-[34px] h-[34px] rounded-[10px] bg-[#131217] border flex items-center justify-center font-bold text-sm text-white transition-all duration-300 ${
+            className={`absolute top-0 left-[55px] w-[44px] h-[44px] rounded-xl bg-[#131217] border flex items-center justify-center font-bold text-base text-white transition-all duration-300 ${
               status === 'error'
-                ? 'border-rose-500 shadow-[0_0_15px_rgba(244,63,94,0.4)]'
+                ? 'border-rose-500 shadow-[0_0_20px_rgba(244,63,94,0.45)]'
                 : 'border-[#2b2a30]'
             }`}
             style={{
@@ -468,14 +468,14 @@ export const OtpVerificationLive = () => {
           >
             {digits[1]}
             {status !== 'success' && status !== 'collapse' && caretIndex === 1 && (
-              <div className="absolute left-[15px] top-[6px] w-[2px] h-[22px] rounded-full bg-gradient-to-b from-teal-400 to-rose-500 animate-pulse"></div>
+              <div className="absolute left-[20px] top-[8px] w-[2.5px] h-[26px] rounded-full bg-gradient-to-b from-teal-400 to-rose-500 animate-pulse"></div>
             )}
           </div>
 
           <div
-            className={`absolute top-0 left-[88px] w-[34px] h-[34px] rounded-[10px] bg-[#131217] border flex items-center justify-center font-bold text-sm text-white transition-all duration-300 ${
+            className={`absolute top-0 left-[110px] w-[44px] h-[44px] rounded-xl bg-[#131217] border flex items-center justify-center font-bold text-base text-white transition-all duration-300 ${
               status === 'error'
-                ? 'border-rose-500 shadow-[0_0_15px_rgba(244,63,94,0.4)]'
+                ? 'border-rose-500 shadow-[0_0_20px_rgba(244,63,94,0.45)]'
                 : 'border-[#2b2a30]'
             }`}
             style={{
@@ -485,14 +485,14 @@ export const OtpVerificationLive = () => {
           >
             {digits[2]}
             {status !== 'success' && status !== 'collapse' && caretIndex === 2 && (
-              <div className="absolute left-[15px] top-[6px] w-[2px] h-[22px] rounded-full bg-gradient-to-b from-teal-400 to-rose-500 animate-pulse"></div>
+              <div className="absolute left-[20px] top-[8px] w-[2.5px] h-[26px] rounded-full bg-gradient-to-b from-teal-400 to-rose-500 animate-pulse"></div>
             )}
           </div>
 
           <div
-            className={`absolute top-0 left-[132px] w-[34px] h-[34px] rounded-[10px] bg-[#131217] border flex items-center justify-center font-bold text-sm text-white transition-all duration-300 ${
+            className={`absolute top-0 left-[164px] w-[44px] h-[44px] rounded-xl bg-[#131217] border flex items-center justify-center font-bold text-base text-white transition-all duration-300 ${
               status === 'error'
-                ? 'border-rose-500 shadow-[0_0_15px_rgba(244,63,94,0.4)]'
+                ? 'border-rose-500 shadow-[0_0_20px_rgba(244,63,94,0.45)]'
                 : 'border-[#2b2a30]'
             }`}
             style={{
@@ -502,53 +502,53 @@ export const OtpVerificationLive = () => {
           >
             {digits[3]}
             {status !== 'success' && status !== 'collapse' && caretIndex === 3 && (
-              <div className="absolute left-[15px] top-[6px] w-[2px] h-[22px] rounded-full bg-gradient-to-b from-teal-400 to-rose-500 animate-pulse"></div>
+              <div className="absolute left-[20px] top-[8px] w-[2.5px] h-[26px] rounded-full bg-gradient-to-b from-teal-400 to-rose-500 animate-pulse"></div>
             )}
           </div>
 
           <div
-            className={`absolute left-[75px] -top-[17px] w-[16px] h-[2px] bg-white/90 rounded-full transition-transform duration-150 origin-left ${
+            className={`absolute left-[94px] -top-[20px] w-[20px] h-[2.5px] bg-white/90 rounded-full transition-transform duration-150 origin-left ${
               segmentsOn ? 'scale-x-100' : 'scale-x-0'
             }`}
           ></div>
           <div
-            className={`absolute left-[101px] top-[2px] w-[2px] h-[16px] bg-white/90 rounded-full transition-transform duration-150 origin-top ${
+            className={`absolute left-[126px] top-[3px] w-[2.5px] h-[20px] bg-white/90 rounded-full transition-transform duration-150 origin-top ${
               segmentsOn ? 'scale-y-100' : 'scale-y-0'
             }`}
           ></div>
           <div
-            className={`absolute left-[75px] top-[27px] w-[16px] h-[2px] bg-white/90 rounded-full transition-transform duration-150 origin-right ${
+            className={`absolute left-[94px] top-[35px] w-[20px] h-[2.5px] bg-white/90 rounded-full transition-transform duration-150 origin-right ${
               segmentsOn ? 'scale-x-100' : 'scale-x-0'
             }`}
           ></div>
           <div
-            className={`absolute left-[57px] top-[2px] w-[2px] h-[16px] bg-white/90 rounded-full transition-transform duration-150 origin-bottom ${
+            className={`absolute left-[70px] top-[3px] w-[2.5px] h-[20px] bg-white/90 rounded-full transition-transform duration-150 origin-bottom ${
               segmentsOn ? 'scale-y-100' : 'scale-y-0'
             }`}
           ></div>
         </div>
 
         {status === 'success' && (
-          <div className="absolute top-[138px] left-1/2 -translate-x-1/2 w-[50px] h-[50px] rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-[0_8px_20px_rgba(34,197,94,0.45)] flex items-center justify-center animate-[gainPulse_0.6s_ease-out_2]">
-            <Check className="w-7 h-7 text-white stroke-[3.5]" />
+          <div className="absolute top-[162px] left-1/2 -translate-x-1/2 w-[60px] h-[60px] rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-[0_10px_25px_rgba(34,197,94,0.5)] flex items-center justify-center animate-[gainPulse_0.6s_ease-out_2]">
+            <Check className="w-8 h-8 text-white stroke-[3.5]" />
           </div>
         )}
 
         <canvas
           ref={canvasRef}
-          width={340}
-          height={310}
+          width={420}
+          height={360}
           className="absolute inset-0 pointer-events-none"
         ></canvas>
 
-        <div className="absolute bottom-5 text-center">
+        <div className="absolute bottom-6 text-center">
           <p
             onClick={handleReset}
-            className="text-[10px] text-slate-400 hover:text-white transition-colors cursor-pointer"
+            className="text-xs text-slate-300 hover:text-white transition-colors cursor-pointer"
           >
             Didn&apos;t receive the code? <span className="text-white font-bold underline">Resend</span>
           </p>
-          <div className="text-[7.5px] font-mono tracking-[0.24em] text-white/20 mt-1 uppercase">
+          <div className="text-[8.5px] font-mono tracking-[0.25em] text-white/30 mt-1.5 uppercase font-semibold">
             OTP VERIFICATION &bull; F0UNDR LABS
           </div>
         </div>

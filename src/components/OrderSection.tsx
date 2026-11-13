@@ -2,7 +2,7 @@ import { ArrowUpRight, CheckCircle2, ShieldCheck, Smartphone, Globe, Bot, Cpu } 
 import { playClickSound, playHoverSound } from '../utils/audio';
 
 export const OrderSection = () => {
-  const ORDER_URL = 'https://f0undr-order.vercel.app/';
+  const ORDER_URL = 'https://order.f0undrteam.site/#';
   const WHATSAPP_URL = 'https://wa.me/923446789261';
 
   const disciplines = [
@@ -52,7 +52,7 @@ export const OrderSection = () => {
               rel="noreferrer"
               className="text-white underline underline-offset-4 hover:text-cyan-300 transition-colors font-medium font-mono"
             >
-              f0undr-order.vercel.app
+              order.f0undrteam.site
             </a>.
           </p>
         </div>

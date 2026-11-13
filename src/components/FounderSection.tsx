@@ -3,7 +3,7 @@ import { CheckCircle2, ArrowUpRight, Award, ShieldCheck, Terminal, Cpu } from 'l
 import { playClickSound, playHoverSound } from '../utils/audio';
 
 export const FounderSection = () => {
-  const ORDER_URL = 'https://f0undr-order.vercel.app/';
+  const ORDER_URL = 'https://order.f0undrteam.site/#';
 
   return (
     <section id="founder" className="py-24 relative overflow-hidden">
@@ -118,7 +118,7 @@ export const FounderSection = () => {
               onClick={playClickSound}
               className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl btn-primary-white text-xs font-bold tracking-tight transition-all"
             >
-              <span>Submit Project via f0undr-order</span>
+              <span>Submit Project via order.f0undrteam.site</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>

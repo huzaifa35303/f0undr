@@ -106,7 +106,7 @@ export const Navbar = ({ activeSection, onOpenLogin, currentUser }: NavbarProps)
             )}
 
             <a
-              href="https://f0undr-order.vercel.app/"
+              href="https://order.f0undrteam.site/#"
               target="_blank"
               rel="noreferrer"
               onMouseEnter={playHoverSound}
@@ -153,7 +153,7 @@ export const Navbar = ({ activeSection, onOpenLogin, currentUser }: NavbarProps)
                 </button>
               )}
               <a
-                href="https://f0undr-order.vercel.app/"
+                href="https://order.f0undrteam.site/#"
                 target="_blank"
                 rel="noreferrer"
                 className="text-xs font-bold text-white px-4 py-1.5 rounded-full bg-sky-500 hover:bg-sky-400"

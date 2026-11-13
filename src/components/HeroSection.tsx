@@ -44,7 +44,7 @@ const SHOWCASE_TABS: ShowcaseTab[] = [
     stat: 'SDK 35',
     statLabel: 'Target Android 15',
     specs: ['Jetpack Compose UI', 'Dynamic wallpaper theme engine', 'Background worker daemon', 'ProGuard byte-level hardening'],
-    url: 'https://f0undr-order.vercel.app/',
+    url: 'https://order.f0undrteam.site/#',
   },
   {
     id: 'ai',
@@ -76,7 +76,7 @@ export const HeroSection = ({
   onExploreProjects,
   onMeetTeam,
 }: HeroSectionProps) => {
-  const ORDER_URL = 'https://f0undr-order.vercel.app/';
+  const ORDER_URL = 'https://order.f0undrteam.site/#';
   const [activeTabId, setActiveTabId] = useState<string>('vault');
 
   const activeTab = SHOWCASE_TABS.find((t) => t.id === activeTabId) || SHOWCASE_TABS[0];
@@ -132,7 +132,7 @@ export const HeroSection = ({
             onClick={playClickSound}
             className="flex items-center gap-2 px-7 py-3.5 rounded-2xl btn-primary-white text-xs sm:text-sm font-bold tracking-tight cursor-pointer group shadow-xl"
           >
-            <span>Commission Order (f0undr-order)</span>
+            <span>Commission Order (order.f0undrteam.site)</span>
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
 

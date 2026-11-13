@@ -9,7 +9,7 @@ interface FooterProps {
 }
 
 export const Footer = ({ currentUser, onOpenLogin, onOpenAdmin }: FooterProps = {}) => {
-  const ORDER_URL = 'https://f0undr-order.vercel.app/';
+  const ORDER_URL = 'https://order.f0undrteam.site/#';
 
   const scrollToTop = () => {
     playClickSound();
@@ -49,7 +49,7 @@ export const Footer = ({ currentUser, onOpenLogin, onOpenAdmin }: FooterProps = 
                 onClick={playClickSound}
                 className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl glass-pill text-white text-xs font-semibold hover:border-cyan-400/40 transition-colors"
               >
-                <span>Commission Studio (f0undr-order)</span>
+                <span>Commission Studio (order.f0undrteam.site)</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-cyan-400" />
               </a>
             </div>
