@@ -279,11 +279,20 @@ export function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[var(--bg)] text-[var(--fg)] selection:bg-[var(--accent-soft)] selection:text-[var(--accent)] overflow-x-hidden">
-      <div className="blobs" aria-hidden="true">
-        <div className="blob b1" />
-        <div className="blob b2" />
-        <div className="blob b3" />
+    <div className="relative min-h-screen bg-[var(--bg)] text-[var(--fg)] selection:bg-[var(--hl)] selection:text-[var(--on-hl)] overflow-x-hidden">
+      <div className="flowing-bg-track" aria-hidden="true">
+        <div className="flow-stream flow-stream-left">
+          <span>f0undr &bull; f0undr team &bull; technology corporation &bull; autonomous systems &bull; f0undr &bull; f0undr team &bull; technology corporation &bull; autonomous systems &bull;&nbsp;</span>
+          <span>f0undr &bull; f0undr team &bull; technology corporation &bull; autonomous systems &bull; f0undr &bull; f0undr team &bull; technology corporation &bull; autonomous systems &bull;&nbsp;</span>
+        </div>
+        <div className="flow-stream flow-stream-right">
+          <span>sovereign software &bull; f0undr team &bull; founder &bull; native android apk &bull; sovereign software &bull; f0undr team &bull; founder &bull; native android apk &bull;&nbsp;</span>
+          <span>sovereign software &bull; f0undr team &bull; founder &bull; native android apk &bull; sovereign software &bull; f0undr team &bull; founder &bull; native android apk &bull;&nbsp;</span>
+        </div>
+        <div className="flow-stream flow-stream-left">
+          <span>computing literature &bull; f0undr &bull; f0undr team &bull; executive collective &bull; computing literature &bull; f0undr &bull; f0undr team &bull; executive collective &bull;&nbsp;</span>
+          <span>computing literature &bull; f0undr &bull; f0undr team &bull; executive collective &bull; computing literature &bull; f0undr &bull; f0undr team &bull; executive collective &bull;&nbsp;</span>
+        </div>
       </div>
       
       <Navbar
