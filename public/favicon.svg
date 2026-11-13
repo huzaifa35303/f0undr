@@ -1,26 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
   <defs>
-    <linearGradient id="favBg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0a0e17" />
-      <stop offset="100%" stop-color="#020408" />
+    <linearGradient id="bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0e131f"/>
+      <stop offset="100%" stop-color="#05070c"/>
     </linearGradient>
-    <linearGradient id="favStroke" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38bdf8" />
-      <stop offset="50%" stop-color="#6366f1" />
-      <stop offset="100%" stop-color="#10b981" />
+    <linearGradient id="accent" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
     </linearGradient>
-    <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.3" />
-      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
-    </radialGradient>
+    <linearGradient id="strokeGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.2"/>
+    </linearGradient>
   </defs>
 
-  <rect width="64" height="64" rx="16" fill="url(#favBg)" />
-  <rect x="1.5" y="1.5" width="61" height="61" rx="14.5" fill="none" stroke="url(#favStroke)" stroke-width="1.8" />
+  <!-- Squircle Base -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#bg)" stroke="url(#strokeGrad)" stroke-width="2"/>
   
-  <circle cx="32" cy="32" r="22" fill="url(#centerGlow)" />
-
-  <path d="M22 20 H38 M22 20 V44 M22 31 H34" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
-  <circle cx="43" cy="38" r="4.5" fill="none" stroke="#38bdf8" stroke-width="3" />
-  <circle cx="43" cy="38" r="1.5" fill="#38bdf8" />
+  <!-- Subtle ambient inner glow -->
+  <circle cx="24" cy="22" r="18" fill="#38bdf8" fill-opacity="0.12" filter="blur(8px)"/>
+  
+  <!-- Sleek f0 Monogram -->
+  <g transform="translate(14, 18)">
+    <!-- 'f' stem and crossbar -->
+    <path d="M 12 0 C 8 0 5 3 5 7 L 5 28" stroke="url(#accent)" stroke-width="4.5" stroke-linecap="round"/>
+    <path d="M 1 9 L 11 9" stroke="url(#accent)" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- '0' symbol -->
+    <rect x="18" y="5" width="16" height="23" rx="8" stroke="url(#accent)" stroke-width="4" fill="none"/>
+    
+    <!-- Power/Cyber dot inside 0 -->
+    <circle cx="26" cy="16.5" r="2" fill="#38bdf8"/>
+  </g>
 </svg>
