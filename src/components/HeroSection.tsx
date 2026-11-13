@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { ArrowUpRight, ArrowDown, Users, Layers, ShieldCheck, Sparkles, Cpu, Smartphone, Monitor, Globe, BookOpen, Film, Terminal, Play, CheckCircle2, Lock } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowUpRight, ArrowDown, Users, Layers, ShieldCheck, Sparkles, Smartphone, Globe, BookOpen, Lock, Terminal, CheckCircle2, ChevronRight, Zap } from 'lucide-react';
 import { STATS } from '../data/portfolioData';
 import { playClickSound, playHoverSound } from '../utils/audio';
 
@@ -8,21 +8,68 @@ interface HeroSectionProps {
   onMeetTeam: () => void;
 }
 
-const TERMINAL_LOGS = [
-  { time: '01:14:02', msg: 'CORE RUNTIME: Sovereign engine v4.2 synchronized', status: 'ok' },
-  { time: '01:14:03', msg: 'ANDROID SDK 35: Native dex optimizations applied (f0undr Themes APK)', status: 'ok' },
-  { time: '01:14:04', msg: 'SOVEREIGN VAULT: AES-256 client encryption matrix active (f0-Share)', status: 'ok' },
-  { time: '01:14:05', msg: 'AI AGENTS: Autonomous search & memory pipeline online (Latency: 14ms)', status: 'ok' },
-  { time: '01:14:06', msg: 'AUTH GATEWAY: Google OAuth 2.0 & passkey telemetry verified', status: 'ok' },
-  { time: '01:14:07', msg: 'CURRICULUM: Computing textbook Units 1–6 index updated on Vercel Edge', status: 'ok' },
-  { time: '01:14:08', msg: 'SYSTEM INTEGRITY: 100% autonomous consensus achieved', status: 'ok' },
-];
+interface ShowcaseTab {
+  id: string;
+  label: string;
+  tag: string;
+  tagColor: string;
+  title: string;
+  description: string;
+  stat: string;
+  statLabel: string;
+  specs: string[];
+  url: string;
+}
 
-const ROTATING_TITLES = [
-  'Autonomous Intelligence.',
-  'Sovereign Architecture.',
-  'Native Android Systems.',
-  'Executive Technology.',
+const SHOWCASE_TABS: ShowcaseTab[] = [
+  {
+    id: 'vault',
+    label: 'f0-Share Vault',
+    tag: 'AES-256 Sovereign Vault',
+    tagColor: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
+    title: 'Zero-Knowledge Encrypted Cloud Storage',
+    description: 'High-speed client-side encryption matrix where files are chunked, salted with PBKDF2, and encrypted before leaving the browser. Plaintext never touches servers.',
+    stat: '256-Bit',
+    statLabel: 'AES-GCM WebCrypto',
+    specs: ['Zero plaintext logs', 'Chunked streaming uploads', 'Auto-expiring share links', 'Vercel Blob infrastructure'],
+    url: 'https://f0-share.vercel.app/',
+  },
+  {
+    id: 'android',
+    label: 'f0undr Themes APK',
+    tag: 'Native Android SDK 35',
+    tagColor: 'bg-sky-500/15 text-sky-300 border-sky-500/30',
+    title: 'Native Android System Engine',
+    description: 'Bespoke mobile architecture engineered for Android 15 with dynamic Material You accent synthesis, offline SQLite caching, and zero-latency UI rendering.',
+    stat: 'SDK 35',
+    statLabel: 'Target Android 15',
+    specs: ['Jetpack Compose UI', 'Dynamic wallpaper theme engine', 'Background worker daemon', 'ProGuard byte-level hardening'],
+    url: 'https://f0undr-order.vercel.app/',
+  },
+  {
+    id: 'ai',
+    label: 'f0undr AI (genni 1)',
+    tag: 'Autonomous AI Agent',
+    tagColor: 'bg-purple-500/15 text-purple-300 border-purple-500/30',
+    title: 'Autonomous Multi-Tool Agent Pipeline',
+    description: 'Autonomous reasoning engine powered by genni 1. Integrates vector session memory, real-time web retrieval, and error self-correction loops.',
+    stat: '14ms',
+    statLabel: 'Pipeline Response Time',
+    specs: ['Reactive tool calling', 'Multi-modal processing', 'Memory serialization', 'Private encrypted context'],
+    url: 'https://f0undr-ai.vercel.app/',
+  },
+  {
+    id: 'curriculum',
+    label: 'Computing Curriculum',
+    tag: 'Units 1–6 Living Textbook',
+    tagColor: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+    title: 'Foundational Computing Series',
+    description: 'Authored by f0undr & Rai Abdur Rehman. A complete modern computer science e-book with interactive trace tables, algorithmic flowcharts, and autosaving student labs.',
+    stat: 'Units 1–6',
+    statLabel: 'Full Curriculum Scope',
+    specs: ['Hardware IPO cycle analysis', 'Algorithmic logic & Scratch', 'PECA cyber legislation', 'Instant auto-grading quizzes'],
+    url: 'https://f-e-book.vercel.app/',
+  },
 ];
 
 export const HeroSection = ({
@@ -30,91 +77,50 @@ export const HeroSection = ({
   onMeetTeam,
 }: HeroSectionProps) => {
   const ORDER_URL = 'https://f0undr-order.vercel.app/';
-  const [titleIndex, setTitleIndex] = useState<number>(0);
-  const [currentLogs, setCurrentLogs] = useState<typeof TERMINAL_LOGS>(TERMINAL_LOGS.slice(0, 4));
-  const [activeLogIndex, setActiveLogIndex] = useState<number>(4);
+  const [activeTabId, setActiveTabId] = useState<string>('vault');
 
-  useEffect(() => {
-    const titleInterval = setInterval(() => {
-      setTitleIndex((prev) => (prev + 1) % ROTATING_TITLES.length);
-    }, 3800);
-    return () => clearInterval(titleInterval);
-  }, []);
+  const activeTab = SHOWCASE_TABS.find((t) => t.id === activeTabId) || SHOWCASE_TABS[0];
 
-  useEffect(() => {
-    const logInterval = setInterval(() => {
-      setActiveLogIndex((prevIdx) => {
-        const next = (prevIdx + 1) % TERMINAL_LOGS.length;
-        setCurrentLogs((prev) => {
-          const updated = [...prev, TERMINAL_LOGS[next]];
-          return updated.slice(-4);
-        });
-        return next;
-      });
-    }, 2400);
-    return () => clearInterval(logInterval);
-  }, []);
-
-  const TICKER_TOP = [
-    { label: 'Native Android APK (SDK 35)', icon: Smartphone },
-    { label: 'Technology Corporation Infrastructure', icon: Cpu },
-    { label: 'Google OAuth 2.0 & Identity Gateways', icon: ShieldCheck },
-    { label: 'Cross-Platform Windows & Mac Engines', icon: Monitor },
-    { label: 'Autonomous AI Orchestration (genni 1)', icon: Sparkles },
-    { label: 'Sovereign Encrypted Cloud Vaults', icon: Globe },
-    { label: 'Living Computational Curricula (Units 1–6)', icon: BookOpen },
-    { label: 'Commercial Creative & 4K Motion Ads', icon: Film },
-  ];
-
-  const TICKER_BOTTOM = [
-    { label: 'Client-Side AES-256 Vaults', icon: Lock },
-    { label: 'High-Throughput Reactive APIs', icon: Terminal },
-    { label: 'Zero-Bug Production Audit Protocols', icon: CheckCircle2 },
-    { label: 'Mage UI & Yash Chauhan Aesthetics', icon: Sparkles },
-    { label: 'Dynamic XML Sitemaps & Search Console', icon: Globe },
-    { label: 'Biometric Passkey Authentication', icon: ShieldCheck },
-    { label: 'Modular Boilerplate Market Store', icon: Cpu },
-    { label: 'Executive Atelier Commission Studio', icon: Users },
+  const TICKER_ITEMS = [
+    'Native Android APK (SDK 35)',
+    'Technology Corporation Infrastructure',
+    'Client-Side AES-256 Vaults',
+    'Autonomous AI Pipelines',
+    'Living Computing Curricula (Units 1–6)',
+    'Commercial Motion & 4K Creative Ads',
+    'Google OAuth 2.0 & Identity Gateways',
+    'Cross-Platform Desktop Engines',
   ];
 
   return (
     <section id="hero" className="relative pt-36 pb-24 flex flex-col justify-center text-center overflow-hidden">
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] h-[350px] sm:h-[450px] bg-gradient-to-tr from-cyan-500/15 via-indigo-600/10 to-emerald-500/10 blur-[120px] rounded-full pointer-events-none -z-10 animate-pulse-slow" />
-      <div className="absolute top-1/3 left-10 w-72 h-72 bg-cyan-600/10 blur-[90px] rounded-full pointer-events-none -z-10" />
-      <div className="absolute top-1/2 right-10 w-80 h-80 bg-purple-600/10 blur-[100px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-cyan-500/12 via-indigo-600/10 to-purple-600/10 blur-[130px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-card text-xs font-mono mb-8 hover:border-cyan-400/40 transition-all cursor-default shadow-lg">
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
-          </span>
+        <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-pill text-xs font-mono mb-8 hover:border-cyan-400/40 transition-all cursor-default">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span className="text-white font-semibold tracking-wide">FOUNDER &amp; FOUNDER TEAM</span>
           <span className="text-slate-600">•</span>
-          <span className="text-cyan-400 font-semibold">TECHNOLOGY CORPORATION</span>
-          <span className="text-slate-600 hidden sm:inline">•</span>
-          <span className="text-emerald-400 hidden sm:inline font-bold">ALL SYSTEMS LIVE</span>
+          <span className="text-cyan-400 font-medium">TECHNOLOGY CORPORATION</span>
         </div>
 
-        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-black text-white tracking-tight leading-[1.05] mb-6 max-w-5xl mx-auto min-h-[1.1em] transition-all">
-          <span className="block text-white">
-            {ROTATING_TITLES[titleIndex]}
-          </span>
-          <span className="text-gradient-cyan block mt-1">
-            Engineered at Scale.
+        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-black text-white tracking-tight leading-[1.06] mb-6 max-w-5xl mx-auto">
+          Building the next generation of <br className="hidden sm:inline" />
+          <span className="text-gradient-cyan">
+            Autonomous AI &amp; Native Systems.
           </span>
         </h1>
 
         <p className="text-slate-300 text-base sm:text-xl font-light mb-10 max-w-3xl mx-auto leading-relaxed">
-          The autonomous engineering studio of{' '}
-          <strong className="text-white font-semibold font-mono px-2 py-0.5 rounded-lg bg-white/[0.08] border border-white/15">
+          Directed by{' '}
+          <strong className="text-white font-medium font-mono px-2 py-0.5 rounded-lg bg-white/[0.08] border border-white/10">
             Muhammad Huzaifa Zahid (Founder)
           </strong>{' '}
           and the{' '}
-          <strong className="text-white font-semibold font-mono px-2 py-0.5 rounded-lg bg-white/[0.08] border border-white/15">
+          <strong className="text-white font-medium font-mono px-2 py-0.5 rounded-lg bg-white/[0.08] border border-white/10">
             Founder Team
           </strong>
-          . Designing high-speed sovereign cloud vaults, native Android architectures (SDK 35), AI pipelines, computing textbooks, and modular digital boilerplates.
+          . We architect high-speed encrypted file vaults, native Android mobile software (SDK 35), AI agents, computing literature, and corporate digital goods.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-14">
@@ -156,80 +162,108 @@ export const HeroSection = ({
           </button>
         </div>
 
-        <div className="max-w-4xl mx-auto mb-16 text-left rounded-2xl glass-card-interactive p-4 sm:p-5 border border-white/15 shadow-2xl relative overflow-hidden group">
-          <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10 text-xs font-mono">
+        <div className="max-w-5xl mx-auto mb-16 text-left rounded-3xl glass-card-interactive p-6 sm:p-8 shadow-2xl relative overflow-hidden border border-white/12">
+          <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10">
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
-              <span className="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
-              <span className="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
-              <span className="ml-2 text-slate-400 flex items-center gap-1.5 font-bold">
-                <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-                autonomous-telemetry.f0undr.sh
+              <span className="w-3 h-3 rounded-full bg-cyan-400"></span>
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">
+                Interactive Flagship Showcase
               </span>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-[10px] border border-emerald-500/20 flex items-center gap-1">
-                <Play className="w-2.5 h-2.5 fill-emerald-400" /> STREAMING
-              </span>
-              <span className="text-slate-500 text-[11px] hidden sm:inline">SHA-256: 9XlkMsY</span>
+
+            <div className="flex items-center gap-1.5 p-1 rounded-2xl glass-card overflow-x-auto no-scrollbar">
+              {SHOWCASE_TABS.map((tab) => {
+                const isActive = activeTabId === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => {
+                      playClickSound();
+                      setActiveTabId(tab.id);
+                    }}
+                    onMouseEnter={playHoverSound}
+                    className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+                      isActive
+                        ? 'bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-white border border-cyan-400/40 shadow-sm'
+                        : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          <div className="space-y-2 font-mono text-xs sm:text-[13px] leading-relaxed">
-            {currentLogs.map((log, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-slate-300 animate-in fade-in duration-300">
-                <span className="text-cyan-400 font-semibold select-none">[{log.time}]</span>
-                <span className="text-slate-400 select-none">&gt;</span>
-                <span className="flex-1 font-medium">{log.msg}</span>
-                <span className="text-emerald-400 font-bold text-[11px] px-1.5 py-0.2 rounded bg-emerald-400/10 border border-emerald-400/20 select-none">
-                  OK
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6 items-center">
+            <div className="lg:col-span-7 space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono border font-semibold">
+                <span className={`px-2.5 py-0.5 rounded-full ${activeTab.tagColor} border`}>
+                  {activeTab.tag}
                 </span>
               </div>
-            ))}
-          </div>
 
-          <div className="mt-4 pt-3 border-t border-white/05 flex flex-wrap items-center justify-between gap-3 text-[11px] font-mono text-slate-400">
-            <div className="flex items-center gap-3">
-              <span className="flex items-center gap-1 text-slate-300">
-                <Cpu className="w-3.5 h-3.5 text-cyan-400" />
-                Host: Vercel Edge Serverless
-              </span>
-              <span className="hidden sm:inline text-slate-600">•</span>
-              <span className="hidden sm:inline text-emerald-400">SSL 256-Bit</span>
+              <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-white leading-tight">
+                {activeTab.title}
+              </h3>
+
+              <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
+                {activeTab.description}
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
+                {activeTab.specs.map((spec, idx) => (
+                  <div key={idx} className="flex items-center gap-2 text-xs text-slate-300 font-mono">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+                    <span>{spec}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-3">
+                <a
+                  href={activeTab.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  onMouseEnter={playHoverSound}
+                  onClick={playClickSound}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl btn-primary-white text-xs font-bold transition-all shadow-md group cursor-pointer"
+                >
+                  <span>Launch Live Platform</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+              </div>
             </div>
-            <div className="text-slate-500">
-              Auto-cycling telemetry telemetry feeds
+
+            <div className="lg:col-span-5 rounded-2xl glass-card p-6 border border-white/10 flex flex-col justify-between">
+              <div>
+                <div className="text-[10px] font-mono uppercase text-slate-400 tracking-widest mb-1">
+                  Architecture Metric
+                </div>
+                <div className="text-4xl sm:text-5xl font-heading font-black text-white tracking-tight text-gradient-cyan mb-1">
+                  {activeTab.stat}
+                </div>
+                <div className="text-xs font-mono text-cyan-400 mb-6 font-semibold">
+                  {activeTab.statLabel}
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl bg-white/[0.03] border border-white/06 text-xs text-slate-300 leading-relaxed font-light">
+                <span className="font-semibold text-white">Direct Production Status:</span> Verified active on Vercel Edge with zero security vulnerabilities and continuous delivery pipelines.
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="relative w-full overflow-hidden py-3 mb-3 border-y border-white/[0.08] bg-slate-950/30 backdrop-blur-md">
+        <div className="relative w-full overflow-hidden py-3 mb-16 border-y border-white/[0.08] bg-slate-950/40 backdrop-blur-md">
           <div className="flex w-max gap-8 animate-marquee">
-            {[...TICKER_TOP, ...TICKER_TOP].map((item, idx) => {
-              const IconComp = item.icon;
-              return (
-                <div key={idx} className="flex items-center gap-2.5 text-xs font-mono text-slate-300 whitespace-nowrap">
-                  <IconComp className="w-3.5 h-3.5 text-cyan-400" />
-                  <span className="tracking-wide text-slate-200 font-medium">{item.label}</span>
-                  <span className="text-slate-600 ml-4">•</span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="relative w-full overflow-hidden py-2.5 mb-16 border-b border-white/[0.08] bg-slate-950/20 backdrop-blur-md">
-          <div className="flex w-max gap-8 animate-marquee-reverse">
-            {[...TICKER_BOTTOM, ...TICKER_BOTTOM].map((item, idx) => {
-              const IconComp = item.icon;
-              return (
-                <div key={idx} className="flex items-center gap-2.5 text-xs font-mono text-slate-400 whitespace-nowrap">
-                  <IconComp className="w-3.5 h-3.5 text-indigo-400" />
-                  <span className="tracking-wide text-slate-300 font-medium">{item.label}</span>
-                  <span className="text-slate-700 ml-4">•</span>
-                </div>
-              );
-            })}
+            {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, idx) => (
+              <div key={idx} className="flex items-center gap-2.5 text-xs font-mono text-slate-300 whitespace-nowrap">
+                <Zap className="w-3.5 h-3.5 text-cyan-400" />
+                <span className="tracking-wide text-slate-200 font-medium">{item}</span>
+                <span className="text-slate-600 ml-4">•</span>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -238,7 +272,7 @@ export const HeroSection = ({
             <div
               key={idx}
               onMouseEnter={playHoverSound}
-              className="glass-card rounded-2xl p-6 group hover:border-cyan-400/40 relative overflow-hidden"
+              className="glass-card rounded-3xl p-6 group hover:border-cyan-400/40 relative overflow-hidden transition-all duration-300 shadow-lg"
             >
               <div className="text-[10px] font-mono text-slate-400 uppercase tracking-widest mb-2 flex items-center justify-between">
                 <span>{stat.change}</span>
