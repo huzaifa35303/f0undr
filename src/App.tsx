@@ -280,10 +280,8 @@ export function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#030712] text-[#f8fafc] selection:bg-sky-500/25 selection:text-white overflow-x-hidden">
-      <div className="liquid-orb top-[-100px] left-[-100px] w-[550px] h-[550px] bg-gradient-to-br from-cyan-500/25 via-blue-600/20 to-transparent" />
-      <div className="liquid-orb top-[30%] right-[-150px] w-[600px] h-[600px] bg-gradient-to-bl from-purple-600/20 via-indigo-500/15 to-transparent" />
-      <div className="liquid-orb bottom-[15%] left-[10%] w-[500px] h-[500px] bg-gradient-to-tr from-sky-400/20 via-emerald-500/15 to-transparent" />
+    <div className="relative min-h-screen bg-[#070913] text-[#f8fafc] selection:bg-indigo-500/30 selection:text-white overflow-x-hidden">
+      <div className="aurora-mesh" />
       <ParticleBackground />
       <div className="fixed inset-0 subtle-grid pointer-events-none z-0 opacity-40" />
       
