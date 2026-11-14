@@ -26,8 +26,9 @@ export const Navbar = ({ activeSection, onOpenLogin, currentUser }: NavbarProps)
     { id: 'projects', label: 'Work' },
     { id: 'team', label: 'Team' },
     { id: 'templates', label: 'Templates' },
-    { id: 'curriculum', label: 'Publications' },
+    { id: 'curriculum', label: 'Labs' },
     { id: 'tools', label: 'Tools' },
+    { id: 'others', label: 'Others' },
   ];
 
   const scrollTo = (id: string) => {

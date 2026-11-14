@@ -54,6 +54,12 @@
   .font-mono {
     font-family: var(--f-mono);
   }
+
+  input, textarea, select {
+    background-color: #111114;
+    color: #f4f1ea;
+    border-color: rgba(244, 241, 234, 0.14);
+  }
 }
 
 @keyframes glowPulse {

@@ -21,6 +21,7 @@ import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { FounderSection } from './components/FounderSection';
 import { ProjectsSection } from './components/ProjectsSection';
+import { OthersSection } from './components/OthersSection';
 import { TeamSection } from './components/TeamSection';
 import { TemplatesSection } from './components/TemplatesSection';
 import { CurriculumSection } from './components/CurriculumSection';
@@ -119,7 +120,7 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    const sections = ['hero', 'founder', 'projects', 'team', 'templates', 'curriculum', 'tools', 'skills', 'order'];
+    const sections = ['hero', 'founder', 'projects', 'team', 'templates', 'curriculum', 'tools', 'skills', 'others', 'order'];
 
     const handleScroll = () => {
       const scrollPos = window.scrollY + 200;
@@ -145,6 +146,7 @@ export function App() {
       hero: 'f0undr — Autonomous AI & Native Systems | Technology Corporation',
       founder: 'Muhammad Huzaifa Zahid (Founder) — Leadership Dossier | f0undr',
       projects: 'Sovereign Software & Systems Architecture | f0undr',
+      others: 'Sovereign Web Platforms & Ecosystem Portfolios | f0undr',
       team: 'Executive Leadership Collective — The f0undr Team',
       templates: 'Interactive OTP & Micro-Interaction Templates | f0undr',
       curriculum: 'Systems Architecture & Digital Publications | f0undr',
@@ -332,6 +334,7 @@ export function App() {
         <CurriculumSection />
         <ToolsSection tools={tools} />
         <SkillsSection />
+        <OthersSection />
         <OrderSection />
       </main>
 

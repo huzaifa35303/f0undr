@@ -485,7 +485,7 @@ export function VanteRibbonHero({ onExploreProjects, onMeetTeam }: VanteRibbonHe
           ref={capRef}
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(90vw,26em)] text-center text-[clamp(10px,0.8vw,13px)] font-medium leading-[1.4] tracking-[0.04em] uppercase text-[#f4f1ea] pointer-events-none z-10 will-change-transform"
         >
-          <div>Exploring ideas through daily design practice.</div>
+          <div>Digital craftsmanship in continuous fluid motion.</div>
           <div className="text-[10px] sm:text-[11px] tracking-[0.14em] text-[#8d8b86] mt-2 font-mono font-normal normal-case">
             Autonomous AI &bull; Native Android Systems &bull; Directed by <span className="text-[#f4f1ea] font-medium">Muhammad Huzaifa Zahid (Founder)</span>
           </div>
