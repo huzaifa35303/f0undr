@@ -162,6 +162,16 @@ export const Footer = ({ currentUser, onOpenLogin, onOpenAdmin }: FooterProps = 
           </div>
         </div>
 
+        <div className="mb-8 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08] text-xs text-slate-400 font-mono leading-relaxed">
+          <div className="flex items-center gap-2 text-cyan-300 font-semibold mb-1.5">
+            <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" />
+            <span>Sovereign Identity &amp; Intellectual Property Notice</span>
+          </div>
+          <p>
+            f0undr and f0undr Team is an independent autonomous technology corporation and software engineering studio directed by Founder Muhammad Huzaifa Zahid. f0undr and the f0undr Team is not computing tech, not a school curriculum publisher, and is not affiliated with the National Book Foundation (NBF). All proprietary systems, tactile templates, Android architectures, and digital assets are the exclusive intellectual property of f0undr. All rights reserved.
+          </p>
+        </div>
+
         <div className="pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 font-mono">
           <div className="flex items-center gap-2 flex-wrap">
             <span>© 2026 Technology Corporation.</span>

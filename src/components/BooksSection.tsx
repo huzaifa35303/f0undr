@@ -80,7 +80,7 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
               The Bookshelf &amp; <em className="italic text-[#c2410c] font-normal">Vault</em>
             </h2>
             <p className="text-[#57534e] text-sm sm:text-base mt-3 max-w-2xl leading-relaxed font-normal">
-              Curated master library and original curriculum series for founders, systems thinkers, and engineers. Every entry includes distilled takeaways and operational insights.
+              Curated master library and original literature series for founders, systems thinkers, and engineers. Every entry includes distilled takeaways and operational insights.
             </p>
           </div>
         </div>
@@ -130,7 +130,7 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="editorial-stamp editorial-stamp-terracotta inline-flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-[#c2410c] animate-pulse" />
-                    FLAGSHIP CURRICULUM · LIVE ON VERCEL
+                    PROPRIETARY LITERATURE · LIVE ON VERCEL
                   </span>
                   <span className="text-xs font-mono text-[#78716c] bg-[#f5f2eb] px-2.5 py-1 rounded-md border border-[#e7e5e4]">
                     Units 1 to 6 Complete
@@ -138,7 +138,7 @@ export const BooksSection: React.FC<BooksSectionProps> = ({
                 </div>
 
                 <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#1c1917] tracking-tight">
-                  f0undr Book: Computing &amp; Technology Curriculum
+                  f0undr Book: Computing &amp; Technology Architecture
                 </h3>
                 <p className="text-xs text-[#c2410c] font-mono font-medium">
                   Authored by <strong className="text-[#1c1917]">f0undr</strong> &amp; <strong className="text-[#1c1917]">Rai Abdur Rehman</strong> (with <strong className="text-[#1c1917]">M.Huzaifa</strong>)

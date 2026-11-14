@@ -22,6 +22,7 @@ import {
   X,
   Terminal,
   Upload,
+  Pencil,
 } from 'lucide-react';
 import type {
   AuthUser,
@@ -97,7 +98,78 @@ export const AdminPanel = ({
   const [contentFilter, setContentFilter] = useState('');
   const [editingRankMemberId, setEditingRankMemberId] = useState<string | null>(null);
   const [customRankInput, setCustomRankInput] = useState<string>('');
+  const [editingMember, setEditingMember] = useState<TeamMember | null>(null);
+  const [editName, setEditName] = useState('');
+  const [editRole, setEditRole] = useState('');
+  const [editHandle, setEditHandle] = useState('');
+  const [editDepartment, setEditDepartment] = useState('');
+  const [editRank, setEditRank] = useState('');
+  const [editStatus, setEditStatus] = useState<TeamMember['status']>('Building');
+  const [editAvatarUrl, setEditAvatarUrl] = useState('');
+  const [editBio, setEditBio] = useState('');
+  const [editSkills, setEditSkills] = useState('');
+  const [editQuote, setEditQuote] = useState('');
+  const [editHighlightProject, setEditHighlightProject] = useState('');
+  const [editTwitter, setEditTwitter] = useState('');
+  const [editGithub, setEditGithub] = useState('');
+  const [editEmail, setEditEmail] = useState('');
+  const [editWebsite, setEditWebsite] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const openEditFellowModal = (m: TeamMember) => {
+    setEditingMember(m);
+    setEditName(m.name);
+    setEditRole(m.role);
+    setEditHandle(m.handle);
+    setEditDepartment(m.department || 'Fellowship Core');
+    setEditRank(m.rank || (m.verifiedFounder ? 'Co-Founder' : 'Core Fellow'));
+    setEditStatus(m.status);
+    setEditAvatarUrl(m.avatarUrl);
+    setEditBio(m.bio);
+    setEditSkills(m.skills ? m.skills.join(', ') : '');
+    setEditQuote(m.quote || '');
+    setEditHighlightProject(m.highlightProject || '');
+    setEditTwitter(m.social?.twitter || '');
+    setEditGithub(m.social?.github || '');
+    setEditEmail(m.social?.email || '');
+    setEditWebsite(m.social?.website || '');
+  };
+
+  const handleSaveFellow = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingMember || !editName.trim()) return;
+    const isFounder = editRank.toLowerCase().includes('founder');
+    const updated: TeamMember = {
+      ...editingMember,
+      name: editName.trim(),
+      role: editRole.trim() || 'Core Fellow',
+      handle: editHandle.trim()
+        ? editHandle.trim().startsWith('@')
+          ? editHandle.trim()
+          : `@${editHandle.trim()}`
+        : editingMember.handle,
+      department: editDepartment.trim() || 'Fellowship Core',
+      rank: editRank.trim(),
+      verifiedFounder: isFounder,
+      status: editStatus,
+      avatarUrl: editAvatarUrl.trim() || editingMember.avatarUrl,
+      bio: editBio.trim() || editingMember.bio,
+      skills: editSkills
+        ? editSkills.split(',').map((s) => s.trim()).filter((s) => s.length > 0)
+        : ['Systems'],
+      quote: editQuote.trim() || editingMember.quote,
+      highlightProject: editHighlightProject.trim() || undefined,
+      social: {
+        ...editingMember.social,
+        twitter: editTwitter.trim() || undefined,
+        github: editGithub.trim() || undefined,
+        email: editEmail.trim() || undefined,
+        website: editWebsite.trim() || undefined,
+      },
+    };
+    onUpdateTeamMember(updated);
+    setEditingMember(null);
+  };
 
   const [prevSeo, setPrevSeo] = useState(seoSettings);
   if (seoSettings !== prevSeo) {
@@ -302,7 +374,7 @@ export const AdminPanel = ({
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               <div className="editorial-card rounded-2xl p-5 bg-white border border-[#e7e5e4]">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-mono text-[#57534e] uppercase">Curriculum &amp; Books</span>
+                  <span className="text-xs font-mono text-[#57534e] uppercase">Publications &amp; Books</span>
                   <BookOpen className="w-4 h-4 text-[#c2410c]" />
                 </div>
                 <div className="font-serif text-3xl font-bold text-[#1c1917]">{books.length}</div>
@@ -698,8 +770,8 @@ export const AdminPanel = ({
           <div className="space-y-6 animate-fade-in">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <h2 className="font-serif text-2xl font-bold text-[#1c1917]">Bookshelf &amp; Curriculum Manager</h2>
-                <p className="text-xs text-[#57534e]">Modify titles, authors, ratings, reading status, and live curriculum links.</p>
+                <h2 className="font-serif text-2xl font-bold text-[#1c1917]">Bookshelf &amp; Publications Manager</h2>
+                <p className="text-xs text-[#57534e]">Modify titles, authors, ratings, reading status, and live literature links.</p>
               </div>
               <div className="flex items-center gap-2">
                 <input
@@ -944,6 +1016,15 @@ export const AdminPanel = ({
                       </select>
 
                       <button
+                        onClick={() => openEditFellowModal(member)}
+                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#d6d3d1] bg-[#faf8f5] hover:bg-[#f5f2eb] text-xs font-mono font-medium text-[#1c1917] transition-colors cursor-pointer"
+                        title="Edit Full Fellow Dossier"
+                      >
+                        <Pencil className="w-3.5 h-3.5 text-[#c2410c]" />
+                        <span>Edit</span>
+                      </button>
+
+                      <button
                         onClick={() => {
                           if (window.confirm(`Remove fellow "${member.name}" from active roster?`)) {
                             onDeleteTeamMember(member.id);
@@ -1164,6 +1245,246 @@ export const AdminPanel = ({
           </div>
         )}
       </main>
+
+      {editingMember && (
+        <div
+          className="fixed inset-0 z-[120] flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md animate-fade-in text-white"
+          onClick={() => setEditingMember(null)}
+        >
+          <div
+            className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl p-6 sm:p-8 bg-[#100f14] border border-white/10 shadow-2xl relative animate-scale-up"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setEditingMember(null)}
+              className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="flex items-center gap-3 mb-1">
+              <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+                <Pencil className="w-5 h-5" />
+              </div>
+              <div>
+                <h3 className="font-heading text-xl sm:text-2xl font-bold text-white">Edit Fellow Dossier</h3>
+                <p className="text-xs text-slate-400 font-light">Modify fellowship identity, hierarchy rank, dossier, and credentials.</p>
+              </div>
+            </div>
+
+            <form onSubmit={handleSaveFellow} className="space-y-4 mt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-mono font-medium text-slate-300 uppercase tracking-wider mb-1">
+                    Fellow Name *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={editName}
+                    onChange={(e) => setEditName(e.target.value)}
+                    className="w-full px-3.5 py-2.5 bg-[#16151c] border border-white/10 rounded-xl text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-mono"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-mono font-medium text-slate-300 uppercase tracking-wider mb-1">
+                    Handle
+                  </label>
+                  <input
+                    type="text"
+                    value={editHandle}
+                    onChange={(e) => setEditHandle(e.target.value)}
+                    placeholder="@handle"
+                    className="w-full px-3.5 py-2.5 bg-[#16151c] border border-white/10 rounded-xl text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-mono"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-mono font-medium text-slate-300 uppercase tracking-wider mb-1">
+                    Role Title *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={editRole}
+                    onChange={(e) => setEditRole(e.target.value)}
+                    className="w-full px-3.5 py-2 bg-[#16151c] border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-mono"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-mono font-medium text-slate-300 uppercase tracking-wider mb-1">
+                    Department
+                  </label>
+                  <input
+                    type="text"
+                    value={editDepartment}
+                    onChange={(e) => setEditDepartment(e.target.value)}
+                    className="w-full px-3.5 py-2 bg-[#16151c] border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-mono"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-mono font-medium text-slate-300 uppercase tracking-wider mb-1">
+                    Rank / Hierarchy
+                  </label>
+                  <input
+                    type="text"
+                    value={editRank}
+                    onChange={(e) => setEditRank(e.target.value)}
+                    placeholder="e.g. Core Fellow, Co-Founder"
+                    className="w-full px-3.5 py-2 bg-[#16151c] border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-mono"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-mono font-medium text-slate-300 uppercase tracking-wider mb-1">
+                    Activity Status
+                  </label>
+                  <select
+                    value={editStatus}
+                    onChange={(e) => setEditStatus(e.target.value as TeamMember['status'])}
+                    className="w-full px-3.5 py-2 bg-[#16151c] border border-white/10 rounded-xl text-xs text-white focus:outline-none focus:border-cyan-400 font-mono"
+                  >
+                    <option value="Building">Building</option>
+                    <option value="Deep Work">Deep Work</option>
+                    <option value="Available">Available</option>
+                    <option value="Offline">Offline</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-mono font-medium text-slate-300 uppercase tracking-wider mb-1">
+                  Avatar Image URL
+                </label>
+                <input
+                  type="url"
+                  value={editAvatarUrl}
+                  onChange={(e) => setEditAvatarUrl(e.target.value)}
+                  placeholder="https://..."
+                  className="w-full px-3.5 py-2 bg-[#16151c] border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-mono"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-mono font-medium text-slate-300 uppercase tracking-wider mb-1">
+                  Core Skills (comma-separated)
+                </label>
+                <input
+                  type="text"
+                  value={editSkills}
+                  onChange={(e) => setEditSkills(e.target.value)}
+                  placeholder="React, Next.js, Architecture"
+                  className="w-full px-3.5 py-2 bg-[#16151c] border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-mono"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-mono font-medium text-slate-300 uppercase tracking-wider mb-1">
+                  Executive Dossier / Bio
+                </label>
+                <textarea
+                  rows={3}
+                  value={editBio}
+                  onChange={(e) => setEditBio(e.target.value)}
+                  placeholder="Comprehensive background and engineering contributions..."
+                  className="w-full px-3.5 py-2 bg-[#16151c] border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-mono"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-mono font-medium text-slate-300 uppercase tracking-wider mb-1">
+                    Personal Thesis / Quote
+                  </label>
+                  <input
+                    type="text"
+                    value={editQuote}
+                    onChange={(e) => setEditQuote(e.target.value)}
+                    placeholder="Work with long-term people..."
+                    className="w-full px-3.5 py-2 bg-[#16151c] border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-mono"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-mono font-medium text-slate-300 uppercase tracking-wider mb-1">
+                    Highlight Project
+                  </label>
+                  <input
+                    type="text"
+                    value={editHighlightProject}
+                    onChange={(e) => setEditHighlightProject(e.target.value)}
+                    placeholder="f0undr Core Engine"
+                    className="w-full px-3.5 py-2 bg-[#16151c] border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-mono"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <div>
+                  <label className="block text-[10px] font-mono text-slate-400 uppercase mb-1">Twitter / X</label>
+                  <input
+                    type="text"
+                    value={editTwitter}
+                    onChange={(e) => setEditTwitter(e.target.value)}
+                    placeholder="@handle"
+                    className="w-full px-2.5 py-1.5 bg-[#16151c] border border-white/10 rounded-lg text-xs text-white placeholder-slate-500 font-mono focus:border-cyan-400 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-mono text-slate-400 uppercase mb-1">GitHub</label>
+                  <input
+                    type="text"
+                    value={editGithub}
+                    onChange={(e) => setEditGithub(e.target.value)}
+                    placeholder="username"
+                    className="w-full px-2.5 py-1.5 bg-[#16151c] border border-white/10 rounded-lg text-xs text-white placeholder-slate-500 font-mono focus:border-cyan-400 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-mono text-slate-400 uppercase mb-1">Email</label>
+                  <input
+                    type="email"
+                    value={editEmail}
+                    onChange={(e) => setEditEmail(e.target.value)}
+                    placeholder="user@site.com"
+                    className="w-full px-2.5 py-1.5 bg-[#16151c] border border-white/10 rounded-lg text-xs text-white placeholder-slate-500 font-mono focus:border-cyan-400 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-mono text-slate-400 uppercase mb-1">Website</label>
+                  <input
+                    type="url"
+                    value={editWebsite}
+                    onChange={(e) => setEditWebsite(e.target.value)}
+                    placeholder="https://..."
+                    className="w-full px-2.5 py-1.5 bg-[#16151c] border border-white/10 rounded-lg text-xs text-white placeholder-slate-500 font-mono focus:border-cyan-400 focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center justify-end gap-3 pt-4 border-t border-white/10">
+                <button
+                  type="button"
+                  onClick={() => setEditingMember(null)}
+                  className="px-4 py-2.5 rounded-xl border border-white/10 hover:bg-white/5 text-xs font-mono text-slate-400 hover:text-white transition-colors cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2.5 rounded-xl btn-primary-white text-xs font-semibold shadow-md transition-all cursor-pointer flex items-center gap-1.5"
+                >
+                  <Save className="w-3.5 h-3.5" />
+                  <span>Save Fellow Dossier</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

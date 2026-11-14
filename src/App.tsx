@@ -147,7 +147,7 @@ export function App() {
       projects: 'Sovereign Software & Systems Architecture | f0undr',
       team: 'Executive Leadership Collective — The f0undr Team',
       templates: 'Interactive OTP & Micro-Interaction Templates | f0undr',
-      curriculum: 'Computational Literature & Living Web Curricula | f0undr',
+      curriculum: 'Systems Architecture & Digital Publications | f0undr',
       tools: 'Utility Engines & Interactive Software Arsenal | f0undr',
       skills: 'Autonomous AI & Native Engineering Capabilities | f0undr',
       order: 'Direct Executive Commission Atelier | f0undr',
@@ -312,8 +312,8 @@ export function App() {
           <span>sovereign software &bull; f0undr team &bull; founder &bull; native android apk &bull; sovereign software &bull; f0undr team &bull; founder &bull; native android apk &bull;&nbsp;</span>
         </div>
         <div className="flow-stream flow-stream-left">
-          <span>computing literature &bull; f0undr &bull; f0undr team &bull; executive collective &bull; computing literature &bull; f0undr &bull; f0undr team &bull; executive collective &bull;&nbsp;</span>
-          <span>computing literature &bull; f0undr &bull; f0undr team &bull; executive collective &bull; computing literature &bull; f0undr &bull; f0undr team &bull; executive collective &bull;&nbsp;</span>
+          <span>autonomous systems &bull; f0undr &bull; f0undr team &bull; executive collective &bull; sovereign technology &bull; f0undr &bull; f0undr team &bull; executive collective &bull;&nbsp;</span>
+          <span>autonomous systems &bull; f0undr &bull; f0undr team &bull; executive collective &bull; sovereign technology &bull; f0undr &bull; f0undr team &bull; executive collective &bull;&nbsp;</span>
         </div>
       </div>
       

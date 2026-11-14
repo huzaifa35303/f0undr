@@ -26,7 +26,7 @@ export const Navbar = ({ activeSection, onOpenLogin, currentUser }: NavbarProps)
     { id: 'projects', label: 'Work' },
     { id: 'team', label: 'Team' },
     { id: 'templates', label: 'Templates' },
-    { id: 'curriculum', label: 'Curriculum' },
+    { id: 'curriculum', label: 'Publications' },
     { id: 'tools', label: 'Tools' },
   ];
 

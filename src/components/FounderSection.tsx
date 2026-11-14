@@ -98,7 +98,7 @@ export const FounderSection = () => {
                   'f0undr Themes APK (SDK 35)',
                   'Sovereign Cryptographic Vaults',
                   'First-Principles Systems Design',
-                  'Computing Curricula Units 1–6',
+                  'Systems Literature & Research',
                 ].map((skill, sIdx) => (
                   <span
                     key={sIdx}
@@ -129,7 +129,7 @@ export const FounderSection = () => {
                 The Founder Operating Principles
               </h3>
               <p className="text-xs text-slate-400 font-light leading-relaxed">
-                Rules governing every software system, educational curriculum, and venture engineered at f0undr.
+                Rules governing every software system, interactive template, and venture engineered at f0undr.
               </p>
             </div>
 

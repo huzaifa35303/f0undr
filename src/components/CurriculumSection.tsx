@@ -7,11 +7,11 @@ export const CurriculumSection = () => {
 
   const curricula = {
     computing: {
-      title: 'f0undr Book: Computing & Technology',
-      subtitle: 'Official Units 1–6 Interactive Master Curriculum Series',
+      title: 'f0undr Book: Computing & Technology Architecture',
+      subtitle: 'Independent Units 1–6 Interactive Systems Architecture Series',
       authors: 'f0undr (Muhammad Huzaifa Zahid) & Rai Abdur Rehman',
       url: 'https://f-e-book.vercel.app/',
-      badge: 'FLAGSHIP CURRICULUM',
+      badge: 'PROPRIETARY LITERATURE',
       units: [
         { num: 'Unit 1', title: 'ICT Fundamentals & Hardware IPO Cycle', desc: 'Decomposing computational machines through the unified Input-Process-Output-Storage model.' },
         { num: 'Unit 2', title: 'Digital Skills & Document Publishing', desc: 'Typography hierarchies, automated table of contents, and corporate publishing standards.' },
@@ -47,11 +47,11 @@ export const CurriculumSection = () => {
       ],
     },
     urdu: {
-      title: 'صحیفۂ اردو: نصاب و ادب (جماعت ہفتم)',
-      subtitle: 'وفاقی تعلیمی بورڈ (FBISE) کے نصاب پر مبنی مستند ادبی پلیٹ فارم',
+      title: 'صحیفۂ اردو: ادب و فکریات (جماعت ہفتم)',
+      subtitle: 'f0undr ڈیجیٹل لٹریچر سیریز — مستند اور جامع ادبی پورٹل',
       authors: 'Muhammad Huzaifa Zahid (Founder) & f0undr Team',
       url: 'https://f0undrteam.site/urdu-book/',
-      badge: 'FBISE GRADE 7 OFFICIAL',
+      badge: 'f0undr DIGITAL EDITION',
       units: [
         { num: 'باب 1', title: 'حمد باری تعالیٰ (حمد و ثنا)', desc: 'خالقِ کائنات کی عظمت اور معرفت کا شعری اور ادبی مطالعہ۔' },
         { num: 'باب 2', title: 'نعت رسولِ مقبول ﷺ', desc: 'حضور سرورِ کونین ﷺ کی سیرتِ طیبہ اور بارگاہِ رسالت میں گلہائے عقیدت۔' },
@@ -61,7 +61,7 @@ export const CurriculumSection = () => {
         { num: 'باب 6', title: 'قواعد و انشا، فرہنگ و لغت', desc: 'فصیح اردو قواعد، تذکیر و تانیث، محاورات اور مستند فرہنگ۔' },
       ],
       takeaways: [
-        'وفاقی تعلیمی بورڈ کے نصاب کے مطابق سلیس اور مستند تشریحات۔',
+        'جامع، سلیس اور مستند ادبی تشریحات و فرہنگ۔',
         'خودکار امتحانی جائزہ اور کثیر الانتخابی معروضی سوالات۔',
         'خوبصورت نفیس نستعلیق رسم الخط میں مکمل ڈیجیٹل درسی کتاب۔',
       ],
@@ -80,14 +80,14 @@ export const CurriculumSection = () => {
             <div className="flex items-center gap-2 mb-3">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-pill text-xs font-mono text-cyan-400">
                 <GraduationCap className="w-3.5 h-3.5" />
-                COMPUTATIONAL LITERATURE &bull; PEDAGOGICAL VAULT
+                INDEPENDENT RESEARCH &bull; SYSTEMS LITERATURE
               </span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-heading font-black text-white tracking-tight">
-              Interactive <span className="text-gradient-cyan">Curricula &amp; Books</span>
+              Interactive <span className="text-gradient-cyan">Systems &amp; Literature</span>
             </h2>
             <p className="text-slate-300 text-sm sm:text-base mt-3 max-w-2xl font-light leading-relaxed">
-              Living web textbooks authored by f0undr leadership featuring algorithmic trace diagrams, interactive testing batteries, and browser-autosaving lab workbooks.
+              Proprietary digital publications authored by f0undr leadership featuring algorithmic trace diagrams, interactive testing batteries, and browser-autosaving lab workbooks.
             </p>
           </div>
 
@@ -104,7 +104,7 @@ export const CurriculumSection = () => {
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              Computing Series
+              Systems &amp; Tech
             </button>
             <button
               onClick={() => {

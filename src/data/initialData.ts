@@ -29,13 +29,13 @@ export const INITIAL_TEAM: TeamMember[] = [
     role: 'Head of Founder Team & Lead Systems',
     handle: '@rehman_head',
     avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
-    bio: 'Head of Founder Team. Pioneering interactive pedagogical architectures, system software, digital curriculum standards, and strategic technologies across the ecosystem.',
+    bio: 'Head of Founder Team. Pioneering systems software, technical literature, and strategic architectures across the ecosystem.',
     status: 'Building',
     verifiedFounder: true,
     rank: 'Head of Founder Team',
-    department: 'Executive Leadership & Pedagogy',
-    skills: ['Executive Leadership', 'Product Strategy', 'Educational Technology', 'Systems Architecture', 'Digital Curriculum'],
-    quote: 'True education is empowering human judgment with technological leverage.',
+    department: 'Executive Leadership & Engineering',
+    skills: ['Executive Leadership', 'Product Strategy', 'Systems Architecture', 'Interactive Engineering', 'Full Stack'],
+    quote: 'True engineering is empowering human judgment with technological leverage.',
     social: {
       twitter: 'https://x.com',
       github: 'https://github.com',
@@ -43,7 +43,7 @@ export const INITIAL_TEAM: TeamMember[] = [
       email: 'rehman@f0undrteam.site',
       website: 'https://f-e-book.vercel.app/',
     },
-    highlightProject: 'f0undr Book: Computing Curriculum (Units 1–6)',
+    highlightProject: 'f0undr Systems & Tech Suite',
   },
   {
     id: 'team-ammar',
@@ -96,8 +96,8 @@ export const INITIAL_TEAM: TeamMember[] = [
     bio: 'Cognitive scientist studying computational thinking acquisition, spaced repetition heuristics, and mastery-based evaluation systems.',
     status: 'Available',
     rank: 'Senior Fellow',
-    department: 'Research & Pedagogy',
-    skills: ['Cognitive Modeling', 'Curriculum Design', 'Mastery Rubrics', 'Educational UX', 'Research Publishing'],
+    department: 'Cognitive Science & Research',
+    skills: ['Cognitive Modeling', 'Systems Architecture', 'Technical Research', 'UX Engineering', 'Publishing'],
     quote: 'Learning accelerates when learners build real working prototypes.',
     social: {
       twitter: 'https://x.com',
@@ -187,7 +187,7 @@ export const INITIAL_TEAM: TeamMember[] = [
 export const INITIAL_BOOKS: Book[] = [
   {
     id: 'book-foundr-ebook',
-    title: 'f0undr Book: Computing & Technology Curriculum (Units 1–6)',
+    title: 'f0undr Book: Computing & Technology Architecture (Units 1–6)',
     author: 'f0undr & Rai Abdur Rehman',
     year: '2026 Live Edition',
     coverGradient: 'from-emerald-600 via-teal-700 to-slate-950',
@@ -206,13 +206,13 @@ export const INITIAL_BOOKS: Book[] = [
       'Unit 6: Entrepreneurship in the Digital Age',
     ],
     keyTakeaways: [
-      'Comprehensive complete curriculum mapping hardware foundations, algorithms, and digital entrepreneurship.',
+      'Comprehensive literature series mapping hardware foundations, algorithms, and digital entrepreneurship.',
       'The Input-Process-Output-Storage (IPO) cycle serves as the unified operational mental model of every digital device.',
       'Algorithmic thinking (decomposition, pattern recognition, abstraction, algorithm design) is the foundation of future software creation.',
       'Digital citizenship and cyber hygiene (2FA, malware taxonomy, PECA compliance) are non-negotiable modern life skills.',
       'Entrepreneurship in the digital age requires a Lean Canvas mindset, rapid prototyping, and customer problem empathy.'
     ],
-    notes: 'Flagship interactive online curriculum engineered by f0undr. Features comprehensive diagrams, real-world case studies (e.g. Supermarket barcode IPO cycle), interactive quizzes with live score badges, and autosaving student lab workbooks.',
+    notes: 'Flagship interactive online publication engineered by f0undr. Features comprehensive diagrams, real-world case studies (e.g. Supermarket barcode IPO cycle), interactive quizzes with live score badges, and autosaving student lab workbooks.',
     favoriteQuote: 'Connecting computational foundations, human reasoning, and practical creative skills.',
     dateAdded: '2026-10-13',
   },
@@ -466,13 +466,13 @@ export const INITIAL_CURATED_TOOLS: CuratedTool[] = [
   {
     id: 'tool-foundr-ebook-app',
     name: 'f0undr Book Online Reader',
-    tagline: 'Interactive Computing & Technology curriculum platform',
-    description: 'The live web edition of the f0undr curriculum covering Units 1 to 6. Complete with chapter progress strips, interactive quizzes, flashcards, and student lab workbooks.',
+    tagline: 'Interactive Computing & Technology platform',
+    description: 'The live web edition of the f0undr systems series covering Units 1 to 6. Complete with chapter progress strips, interactive quizzes, flashcards, and student lab workbooks.',
     category: 'Productivity',
     url: '/book/',
     pricing: 'Free',
     featured: true,
-    tags: ['Curriculum', 'Education', 'Interactive', 'f0undr Core'],
+    tags: ['Systems Literature', 'Education', 'Interactive', 'f0undr Core'],
   },
   {
     id: 'tool-f0-share',
@@ -753,11 +753,11 @@ export const INITIAL_VENTURES: Venture[] = [
   {
     id: 'venture-ebook',
     title: 'f0undr Book: Computing & Technology (Units 1–6)',
-    tagline: 'Modern digital curriculum series covering ICT foundations to venture design',
+    tagline: 'Modern digital systems series covering ICT foundations to venture design',
     stage: 'Active',
     description: 'Live interactive e-book platform featuring 6 comprehensive units, IPO cycle architectures, algorithmic trace tables, real-world case studies, and browser-autosaving lab workbooks.',
     metrics: 'Live • 6 Complete Units',
-    tags: ['Curriculum', 'Interactive E-Book', 'Computer Science', 'Live on Vercel'],
+    tags: ['Systems Literature', 'Interactive E-Book', 'Computer Science', 'Live on Vercel'],
     link: 'https://f-e-book.vercel.app/',
   },
   {
@@ -882,7 +882,7 @@ export const DEFAULT_AUTH_USERS: StoredAuthUser[] = [
     role: 'founder',
     title: 'Head of f0undr',
     avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
-    bio: 'Head of f0undr. Lead Author of f0undr Book: Computing & Technology Curriculum. Product and pedagogy strategist.',
+    bio: 'Head of f0undr. Lead Author of f0undr Book: Computing & Technology Architecture. Product and systems strategist.',
     permissions: {
       canEditContent: true,
       canManageTeam: true,
@@ -948,7 +948,7 @@ export const DEFAULT_AUTH_USERS: StoredAuthUser[] = [
     email: 'editor@f0undr.org',
     passwordHash: 'editor2026',
     role: 'editor',
-    title: 'Senior Content & Curriculum Editor',
+    title: 'Senior Content & Systems Editor',
     avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80',
     bio: 'Editorial curation for books, research briefs, and founder essays.',
     permissions: {
@@ -962,11 +962,11 @@ export const DEFAULT_AUTH_USERS: StoredAuthUser[] = [
 ];
 
 export const DEFAULT_SEO_SETTINGS: SeoSettings = {
-  siteTitle: 'f0undr — Official Digital Headquarters & Atelier | f0undr Team',
-  siteDescription: 'The official digital headquarters of f0undr and the f0undr Team. Master vault for systems architecture, founder tools, master bookshelf, and computing curriculum led by Muhammad Huzaifa Zahid (f0undr), Rai Abdur Rehman, Rana Ayan Azeem, and Rao Ammar Asim.',
-  primaryKeywords: 'f0 book, f0undr book, f e books, f0undr, f0undr Team, Muhammad Huzaifa Zahid, Rai Abdur Rehman, Rana Ayan Azeem, Rao Ammar Asim, Systems Architecture, Founder Tools, Computing Curriculum',
+  siteTitle: 'f0undr — Autonomous AI & Native Systems | Technology Corporation',
+  siteDescription: 'The official digital headquarters of f0undr and the f0undr Team. Master vault for systems architecture, autonomous AI agents, native Android SDK 35 mobile engines, interactive tactile templates, and founder tools led by Muhammad Huzaifa Zahid (Founder), Rai Abdur Rehman, Rana Ayan Azeem, and Rao Ammar Asim.',
+  primaryKeywords: 'f0undr, f0undr team, Muhammad Huzaifa Zahid, Founder Muhammad Huzaifa Zahid, f0undr Technology Corporation, f0undr portfolio, f0undr order, order.f0undrteam.site, Rai Abdur Rehman, Rana Ayan Azeem, Rao Ammar Asim, autonomous AI, AI systems, AI agents, native Android SDK 35, Jetpack Compose, Kotlin Multiplatform, client-side encryption, cryptographic vaults, f0-Share, secure file sharing, zero-knowledge storage, tactile micro-interactions, OTP verification component, 4-digit OTP suite, Jitter templates, social handle lower-third, animated icons, interactive web components, Tailwind CSS v4, React 19, TypeScript architecture, dark mode UI, glassmorphism design, systems engineering, software development, full stack engineering, high performance web, web audio synthesis, canvas confetti engine, interactive widgets, responsive design, modern web apps, founder tools, developer tools, executive studio, custom software engineering, digital goods, web engineering studio, technology studio, software agency, UI motion design, hardware accelerated animations, SVG animation, frontend engineering, frontend architecture, web applications, cloud infrastructure, Vercel deployments, production web apps, modern software architecture, deep tech, autonomous workflows, developer productivity, custom web design, SaaS engineering, enterprise software, interactive web experiences, portfolio website, executive portfolio, high-precision engineering, tech collective, engineering collective, software craftsmanship, clean architecture, performance optimization, core web vitals, accessible web design, scalable software, reactive systems, real-time web, state management, modern JavaScript, cutting-edge web development, creative development, 3D web interactions, physics-based UI, design engineering, code and design, digital craftsmanship, software innovation, proprietary software, independent tech corporation, independent software studio, bespoke engineering, venture engineering, technology innovation, modern stack, cyber security tools, interactive prototypes, rapid prototyping, production ready components, headless architecture, web standards, semantic web, digital experiences, bespoke digital solutions, engineering excellence, next-generation software, verified founder, sovereign tech',
   canonicalUrl: 'https://f0undrteam.site/',
-  ogImage: 'https://f-e-book.vercel.app/og-cover.png',
+  ogImage: 'https://f0undrteam.site/favicon.svg',
   googleVerificationId: '9XlkMsYXY4gpsgyewxN6s9tx72WPlff30Lv6k94AFWg',
   googleAnalyticsId: 'G-F0UNDRHQ2026',
   authorName: 'Muhammad Huzaifa Zahid (Founder), Rai Abdur Rehman, Rana Ayan Azeem, Rao Ammar Asim',
@@ -977,7 +977,7 @@ export const INITIAL_AUDIT_LOGS: AuditLogItem[] = [
   {
     id: 'log-1',
     timestamp: '2026-10-14 12:45:00',
-    action: 'Flagship Curriculum Synchronized',
+    action: 'Flagship Systems Literature Synchronized',
     target: 'f0undr Book: Computing & Technology (Units 1–6)',
     performedBy: 'Rai Abdur Rehman',
     role: 'founder',

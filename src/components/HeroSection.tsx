@@ -60,13 +60,13 @@ const SHOWCASE_TABS: ShowcaseTab[] = [
   },
   {
     id: 'curriculum',
-    label: 'Computing Curriculum',
-    tag: 'Units 1–6 Living Textbook',
+    label: 'Systems Publications',
+    tag: 'Units 1–6 Independent Series',
     tagColor: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
-    title: 'Foundational Computing Series',
+    title: 'f0undr Systems Literature',
     description: 'Authored by f0undr & Rai Abdur Rehman. A complete modern computer science e-book with interactive trace tables, algorithmic flowcharts, and autosaving student labs.',
     stat: 'Units 1–6',
-    statLabel: 'Full Curriculum Scope',
+    statLabel: 'Volume Scope',
     specs: ['Hardware IPO cycle analysis', 'Algorithmic logic & Scratch', 'PECA cyber legislation', 'Instant auto-grading quizzes'],
     url: 'https://f-e-book.vercel.app/',
   },
@@ -86,7 +86,7 @@ export const HeroSection = ({
     'Technology Corporation Infrastructure',
     'Client-Side AES-256 Vaults',
     'Autonomous AI Pipelines',
-    'Living Computing Curricula (Units 1–6)',
+    'f0undr Systems & Tech Publications',
     'Commercial Motion & 4K Creative Ads',
     'Google OAuth 2.0 & Identity Gateways',
     'Cross-Platform Desktop Engines',
@@ -120,7 +120,7 @@ export const HeroSection = ({
           <strong className="text-white font-medium font-mono px-2 py-0.5 rounded-lg bg-white/[0.08] border border-white/10">
             f0undr Team
           </strong>
-          . We architect high-speed encrypted file vaults, native Android mobile software (SDK 35), AI agents, computing literature, and corporate digital goods.
+          . We architect high-speed encrypted file vaults, native Android mobile software (SDK 35), AI agents, proprietary software systems, and corporate digital goods.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-14">
