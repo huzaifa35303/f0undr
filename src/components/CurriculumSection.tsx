@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BookOpen, ArrowUpRight, CheckCircle2, GraduationCap } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, GraduationCap, ShieldAlert } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../utils/audio';
 
 export const CurriculumSection = () => {
@@ -7,11 +7,11 @@ export const CurriculumSection = () => {
 
   const curricula = {
     computing: {
-      title: 'f0undr Book: Computing & Technology Architecture',
-      subtitle: 'Independent Units 1–6 Interactive Systems Architecture Series',
-      authors: 'f0undr (Muhammad Huzaifa Zahid) & Rai Abdur Rehman',
+      title: 'Computing & Technology Study Lab',
+      subtitle: 'Independent Units 1–6 Digital Study Companion • All Curriculum Rights Reserved NBF',
+      authors: 'National Book Foundation (Curriculum Owner) • Software by f0undr',
       url: 'https://f-e-book.vercel.app/',
-      badge: 'PROPRIETARY LITERATURE',
+      badge: 'INDEPENDENT STUDY LAB',
       units: [
         { num: 'Unit 1', title: 'ICT Fundamentals & Hardware IPO Cycle', desc: 'Decomposing computational machines through the unified Input-Process-Output-Storage model.' },
         { num: 'Unit 2', title: 'Digital Skills & Document Publishing', desc: 'Typography hierarchies, automated table of contents, and corporate publishing standards.' },
@@ -27,11 +27,11 @@ export const CurriculumSection = () => {
       ],
     },
     mental: {
-      title: 'The Art of Mental Mastery',
+      title: 'The Art of Mental Mastery Lab',
       subtitle: 'Accelerated Learning, Memory Palaces & Cognitive Diagnostics',
       authors: 'Muhammad Huzaifa Zahid (Founder)',
       url: 'https://fmm-e-book.vercel.app/',
-      badge: 'COGNITIVE SCIENCE HANDBOOK',
+      badge: 'COGNITIVE SCIENCE LAB',
       units: [
         { num: 'Unit 1', title: 'Accelerated Learning & Neuroplasticity', desc: 'Synaptic LTP mechanics, Feynman technique, and Ultralearning principles.' },
         { num: 'Unit 2', title: 'Memory Architecture & The Mind Palace', desc: 'Method of Loci spatial journeys and Person-Action-Object (PAO) encoding.' },
@@ -47,11 +47,11 @@ export const CurriculumSection = () => {
       ],
     },
     urdu: {
-      title: 'صحیفۂ اردو: ادب و فکریات (جماعت ہفتم)',
-      subtitle: 'f0undr ڈیجیٹل لٹریچر سیریز — مستند اور جامع ادبی پورٹل',
-      authors: 'Muhammad Huzaifa Zahid (Founder) & f0undr Team',
+      title: 'صحیفۂ اردو: درسی معاون و ادبی پلیٹ فارم',
+      subtitle: 'وفاقی تعلیمی بورڈ (FBISE) / این بی ایف کے نصاب پر مبنی آزاد ڈیجیٹل معاون پورٹل',
+      authors: 'Curriculum Reference (FBISE / NBF) • Platform by f0undr',
       url: 'https://f0undrteam.site/urdu-book/',
-      badge: 'f0undr DIGITAL EDITION',
+      badge: 'INDEPENDENT STUDY AID',
       units: [
         { num: 'باب 1', title: 'حمد باری تعالیٰ (حمد و ثنا)', desc: 'خالقِ کائنات کی عظمت اور معرفت کا شعری اور ادبی مطالعہ۔' },
         { num: 'باب 2', title: 'نعت رسولِ مقبول ﷺ', desc: 'حضور سرورِ کونین ﷺ کی سیرتِ طیبہ اور بارگاہِ رسالت میں گلہائے عقیدت۔' },
@@ -63,7 +63,7 @@ export const CurriculumSection = () => {
       takeaways: [
         'جامع، سلیس اور مستند ادبی تشریحات و فرہنگ۔',
         'خودکار امتحانی جائزہ اور کثیر الانتخابی معروضی سوالات۔',
-        'خوبصورت نفیس نستعلیق رسم الخط میں مکمل ڈیجیٹل درسی کتاب۔',
+        'خوبصورت نفیس نستعلیق رسم الخط میں مکمل ڈیجیٹل معاون۔',
       ],
     },
   };
@@ -71,65 +71,75 @@ export const CurriculumSection = () => {
   const curr = curricula[selectedCurriculum];
 
   return (
-    <section id="curriculum" className="py-24 relative overflow-hidden">
+    <section id="curriculum" className="py-24 relative overflow-hidden bg-[#0a0a0b] text-[#f4f1ea]">
       <div className="absolute top-1/2 left-1/4 w-[700px] h-[350px] bg-cyan-600/10 blur-[130px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="mb-8 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/25 flex items-start sm:items-center gap-3 text-xs text-amber-200">
+          <ShieldAlert className="w-5 h-5 text-amber-400 shrink-0 mt-0.5 sm:mt-0" />
+          <div className="leading-relaxed">
+            <strong className="text-white font-semibold">Sovereign Curriculum Notice:</strong> f0undr is an independent software engineering studio and does not author official curriculum textbooks. All computer science curriculum and textbook rights are strictly reserved to the <strong className="text-white">National Book Foundation (NBF)</strong>. We engineer interactive trace tables, algorithmic flowcharts, and browser-autosaving lab workbooks as an independent digital study aid.
+          </div>
+        </div>
+
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-pill text-xs font-mono text-cyan-400">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[rgba(244,241,234,0.14)] bg-[#111114] text-xs font-mono text-cyan-400">
                 <GraduationCap className="w-3.5 h-3.5" />
-                INDEPENDENT RESEARCH &bull; SYSTEMS LITERATURE
+                DIGITAL STUDY PLATFORMS &bull; NBF REFERENCE
               </span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-heading font-black text-white tracking-tight">
-              Interactive <span className="text-gradient-cyan">Systems &amp; Literature</span>
+            <h2 className="text-3xl sm:text-5xl font-normal text-[#f4f1ea] tracking-[-0.04em]">
+              Interactive <span className="text-cyan-300">Study Labs &amp; Tools</span>
             </h2>
-            <p className="text-slate-300 text-sm sm:text-base mt-3 max-w-2xl font-light leading-relaxed">
-              Proprietary digital publications authored by f0undr leadership featuring algorithmic trace diagrams, interactive testing batteries, and browser-autosaving lab workbooks.
+            <p className="text-[#8d8b86] text-sm sm:text-base mt-3 max-w-2xl font-light leading-relaxed">
+              Independent digital study workbooks engineered by f0undr featuring algorithmic trace diagrams, interactive testing batteries, and browser-autosaving lab workbooks.
             </p>
           </div>
 
-          <div className="flex items-center gap-1.5 p-1 rounded-2xl glass-card">
+          <div className="flex items-center gap-1.5 p-1 rounded-full border border-[rgba(244,241,234,0.12)] bg-[#111114]">
             <button
+              type="button"
               onClick={() => {
                 playClickSound();
                 setSelectedCurriculum('computing');
               }}
               onMouseEnter={playHoverSound}
-              className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-normal transition-all cursor-pointer ${
+              className={`px-4 py-2 rounded-full text-xs font-semibold tracking-normal transition-all cursor-pointer ${
                 selectedCurriculum === 'computing'
-                  ? 'bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-white border border-cyan-400/40 shadow-sm'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-[#f4f1ea] text-[#0a0a0b] shadow-sm'
+                  : 'text-[#8d8b86] hover:text-[#f4f1ea]'
               }`}
             >
-              Systems &amp; Tech
+              Computing Lab
             </button>
             <button
+              type="button"
               onClick={() => {
                 playClickSound();
                 setSelectedCurriculum('mental');
               }}
               onMouseEnter={playHoverSound}
-              className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-normal transition-all cursor-pointer ${
+              className={`px-4 py-2 rounded-full text-xs font-semibold tracking-normal transition-all cursor-pointer ${
                 selectedCurriculum === 'mental'
-                  ? 'bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-white border border-cyan-400/40 shadow-sm'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-[#f4f1ea] text-[#0a0a0b] shadow-sm'
+                  : 'text-[#8d8b86] hover:text-[#f4f1ea]'
               }`}
             >
               Mental Mastery
             </button>
             <button
+              type="button"
               onClick={() => {
                 playClickSound();
                 setSelectedCurriculum('urdu');
               }}
               onMouseEnter={playHoverSound}
-              className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-normal transition-all cursor-pointer ${
+              className={`px-4 py-2 rounded-full text-xs font-semibold tracking-normal transition-all cursor-pointer ${
                 selectedCurriculum === 'urdu'
-                  ? 'bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-white border border-cyan-400/40 shadow-sm'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-[#f4f1ea] text-[#0a0a0b] shadow-sm'
+                  : 'text-[#8d8b86] hover:text-[#f4f1ea]'
               }`}
             >
               صحیفۂ اردو
@@ -137,21 +147,21 @@ export const CurriculumSection = () => {
           </div>
         </div>
 
-        <div className="glass-card-interactive rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-2xl">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-white/[0.08] mb-8">
+        <div className="rounded-3xl p-6 sm:p-10 relative overflow-hidden bg-[#111114] border border-[rgba(244,241,234,0.12)] shadow-2xl">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-[rgba(244,241,234,0.08)] mb-8">
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <span className="px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-300 text-[10px] font-mono border border-cyan-500/20 font-bold">
                   {curr.badge}
                 </span>
-                <span className="text-xs font-mono text-slate-400">
-                  By {curr.authors}
+                <span className="text-xs font-mono text-[#8d8b86]">
+                  {curr.authors}
                 </span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-white mb-2">
+              <h3 className="text-2xl sm:text-3xl font-normal text-[#f4f1ea] mb-2 tracking-[-0.03em]">
                 {curr.title}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 font-light">
+              <p className="text-xs sm:text-sm text-[#8d8b86] font-light">
                 {curr.subtitle}
               </p>
             </div>
@@ -162,9 +172,9 @@ export const CurriculumSection = () => {
               rel="noreferrer"
               onMouseEnter={playHoverSound}
               onClick={playClickSound}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl btn-primary-white text-xs font-bold tracking-tight transition-all cursor-pointer group shadow-lg"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#f4f1ea] text-[#0a0a0b] text-xs font-semibold tracking-tight transition-all cursor-pointer group shadow-lg hover:bg-white"
             >
-              <span>Launch Live Reader</span>
+              <span>Launch Live Lab</span>
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
           </div>
@@ -174,29 +184,29 @@ export const CurriculumSection = () => {
               <div
                 key={uIdx}
                 onMouseEnter={playHoverSound}
-                className="glass-card rounded-2xl p-5 hover:border-cyan-400/30"
+                className="rounded-2xl p-5 bg-[#0a0a0b] border border-[rgba(244,241,234,0.08)] hover:border-cyan-400/40 hover:-translate-y-1 transition-all duration-200"
               >
                 <div className="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-widest mb-1.5">
                   {unit.num}
                 </div>
-                <h4 className="text-sm font-heading font-bold text-white mb-2">
+                <h4 className="text-sm font-semibold text-[#f4f1ea] mb-2">
                   {unit.title}
                 </h4>
-                <p className="text-xs text-slate-300 font-light leading-relaxed">
+                <p className="text-xs text-[#8d8b86] font-light leading-relaxed">
                   {unit.desc}
                 </p>
               </div>
             ))}
           </div>
 
-          <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-slate-300 mb-3 flex items-center gap-2 font-bold">
+          <div className="p-5 rounded-2xl bg-[#0a0a0b] border border-[rgba(244,241,234,0.08)]">
+            <h4 className="text-xs font-mono uppercase tracking-wider text-[#f4f1ea] mb-3 flex items-center gap-2 font-bold">
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
               Pedagogical Standards &amp; Architecture
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {curr.takeaways.map((takeaway, tIdx) => (
-                <div key={tIdx} className="flex items-start gap-2 text-xs text-slate-300 leading-relaxed font-light">
+                <div key={tIdx} className="flex items-start gap-2 text-xs text-[#8d8b86] leading-relaxed font-light">
                   <span className="text-cyan-400 font-bold">•</span>
                   <span>{takeaway}</span>
                 </div>

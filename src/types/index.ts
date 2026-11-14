@@ -4,7 +4,7 @@ export interface Project {
   tagline: string;
   description: string;
   fullOverview?: string;
-  category: 'ai' | 'tools' | 'mobile' | 'education' | 'systems';
+  category: 'ai' | 'tools' | 'mobile' | 'education' | 'systems' | 'others';
   tags: string[];
   metrics: string;
   liveUrl?: string;

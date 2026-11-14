@@ -56,49 +56,27 @@
   }
 }
 
-.flowing-bg-track {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  opacity: 0.022;
-  user-select: none;
-  filter: blur(0.5px);
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(1.08); }
 }
 
-.flow-stream {
-  display: flex;
-  width: max-content;
-  white-space: nowrap;
-  font-family: var(--f-display);
-  font-weight: 800;
-  font-size: clamp(3.5rem, 8vw, 7.5rem);
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  color: var(--fg);
-  line-height: 1;
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
 }
 
-.flow-stream-left {
-  animation: stream-left 45s linear infinite;
+@keyframes shimmerSweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
 }
 
-.flow-stream-right {
-  animation: stream-right 50s linear infinite;
+.animate-glow-pulse {
+  animation: glowPulse 6s ease-in-out infinite;
 }
 
-@keyframes stream-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes stream-right {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+.animate-float-slow {
+  animation: floatSlow 7s ease-in-out infinite;
 }
 
 .hl {

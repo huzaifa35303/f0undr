@@ -33,14 +33,14 @@ interface CardItem {
 const R2 = 'https://pub-86dc5b5484314368ac5436a674b0d919.r2.dev/';
 
 const WORK_ITEMS = [
-  { title: 'Roadster 3D • Native Systems', src: 'designs/roadster-3d-car-landing.mp4', category: 'SYSTEMS' },
-  { title: 'Living Portrait • Autonomous AI', src: 'aaaf/living-portrait-hero.mp4', category: 'AI AGENTS' },
-  { title: 'Particle Cloud • f0-Share Vault', src: 'aaaf/oraciteslArea.mp4', category: 'AES-256 VAULT' },
-  { title: 'Deep Jellyfish • Tactile UI', src: 'aaaf/medusa-jellyfish-hero.mp4', category: 'TACTILE UI' },
-  { title: 'Ink Reveal • Android SDK 35', src: 'designs/ink-reveal-hover.mp4', category: 'NATIVE APK' },
-  { title: 'Space Voyage • Sovereign Infrastructure', src: 'designs/space-voyage-video.mp4', category: 'CLOUD FABRIC' },
-  { title: 'Helion Dispatch • Executive Atelier', src: 'designs/helion-dispatch-landing.mp4', category: 'COMMISSION' },
-  { title: 'Honey Bee • Computational Literature', src: 'designs/honey-bee-melli-landing.mp4', category: 'PUBLICATIONS' },
+  { title: 'f0-Share Vault // Sovereign AES-256 Cloud Engine', src: 'designs/roadster-3d-car-landing.mp4', category: 'AES-256 VAULT' },
+  { title: 'f0undr AI (genni 1) // Multilingual Neural Agent', src: 'aaaf/living-portrait-hero.mp4', category: 'AI AGENTS' },
+  { title: 'f0undr Themes APK // Native Android SDK 35', src: 'aaaf/oraciteslArea.mp4', category: 'NATIVE APK' },
+  { title: 'f0-OTP Suite // Hardware-Grade Tactile Gateway', src: 'aaaf/medusa-jellyfish-hero.mp4', category: 'TACTILE UI' },
+  { title: 'f0-Calculator // Precision Engineering Suite', src: 'designs/ink-reveal-hover.mp4', category: 'PRECISION MATH' },
+  { title: 'f-Forms Platform // 1:1 Precision Form Builder', src: 'designs/space-voyage-video.mp4', category: 'WEB PLATFORM' },
+  { title: 'f0undr Atelier // Executive Direct Commission', src: 'designs/helion-dispatch-landing.mp4', category: 'COMMISSION' },
+  { title: 'f0undr Studio Hub // Corporate Systems Architecture', src: 'designs/honey-bee-melli-landing.mp4', category: 'STUDIO' },
 ];
 
 const clamp = (x: number, a = 0, b = 1) => Math.min(b, Math.max(a, x));
@@ -532,9 +532,9 @@ export function VanteRibbonHero({ onExploreProjects, onMeetTeam }: VanteRibbonHe
 
         <header className="absolute left-4 sm:left-8 right-4 sm:right-8 top-6 flex items-center justify-between pointer-events-none z-20">
           <div className="flex items-center gap-2.5 text-lg sm:text-xl font-semibold tracking-[0.09em] text-[#f4f1ea] pointer-events-auto">
-            <svg viewBox="0 0 22 18" className="w-5 h-4 fill-current">
-              <path d="M11 0l11 18h-6.200L11 9.600 6.200 18H0z" />
-            </svg>
+            <div className="w-7 h-7 rounded-full bg-[#16161a] border border-[rgba(244,241,234,0.25)] flex items-center justify-center font-mono font-bold text-[#f4f1ea] text-xs">
+              f0
+            </div>
             <span>f0undr</span>
           </div>
 

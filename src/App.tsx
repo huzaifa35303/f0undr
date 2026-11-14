@@ -302,19 +302,10 @@ export function App() {
 
   return (
     <div className="relative min-h-screen bg-[var(--bg)] text-[var(--fg)] selection:bg-[var(--hl)] selection:text-[var(--on-hl)] w-full max-w-full">
-      <div className="flowing-bg-track" aria-hidden="true">
-        <div className="flow-stream flow-stream-left">
-          <span>f0undr &bull; f0undr team &bull; technology corporation &bull; autonomous systems &bull; f0undr &bull; f0undr team &bull; technology corporation &bull; autonomous systems &bull;&nbsp;</span>
-          <span>f0undr &bull; f0undr team &bull; technology corporation &bull; autonomous systems &bull; f0undr &bull; f0undr team &bull; technology corporation &bull; autonomous systems &bull;&nbsp;</span>
-        </div>
-        <div className="flow-stream flow-stream-right">
-          <span>sovereign software &bull; f0undr team &bull; founder &bull; native android apk &bull; sovereign software &bull; f0undr team &bull; founder &bull; native android apk &bull;&nbsp;</span>
-          <span>sovereign software &bull; f0undr team &bull; founder &bull; native android apk &bull; sovereign software &bull; f0undr team &bull; founder &bull; native android apk &bull;&nbsp;</span>
-        </div>
-        <div className="flow-stream flow-stream-left">
-          <span>autonomous systems &bull; f0undr &bull; f0undr team &bull; executive collective &bull; sovereign technology &bull; f0undr &bull; f0undr team &bull; executive collective &bull;&nbsp;</span>
-          <span>autonomous systems &bull; f0undr &bull; f0undr team &bull; executive collective &bull; sovereign technology &bull; f0undr &bull; f0undr team &bull; executive collective &bull;&nbsp;</span>
-        </div>
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden" aria-hidden="true">
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-cyan-500/5 blur-[140px] animate-pulse" />
+        <div className="absolute top-2/3 right-1/4 w-[600px] h-[600px] rounded-full bg-emerald-500/5 blur-[160px] animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute bottom-1/4 left-1/3 w-[550px] h-[550px] rounded-full bg-indigo-500/5 blur-[150px] animate-pulse" style={{ animationDuration: '10s' }} />
       </div>
       
       <Navbar

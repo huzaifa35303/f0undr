@@ -26,11 +26,12 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
 
   const categories = [
     { id: 'all', label: 'All Work' },
+    { id: 'others', label: 'Others / Web Portfolios' },
     { id: 'mobile', label: 'Native Android APK' },
-    { id: 'systems', label: 'Desktop & OS' },
     { id: 'ai', label: 'Autonomous AI' },
     { id: 'tools', label: 'Cloud Vaults & Tools' },
-    { id: 'education', label: 'Curricula & Books' },
+    { id: 'systems', label: 'Desktop & OS' },
+    { id: 'education', label: 'Study Labs (NBF Ref)' },
   ];
 
   const filteredProjects = useMemo(() => {
@@ -69,37 +70,39 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
       case 'Youtube':
         return <YoutubeIcon className="w-5 h-5 text-red-400" />;
       default:
-        return <Boxes className="w-5 h-5 text-slate-200" />;
+        return <Boxes className="w-5 h-5 text-[#f4f1ea]" />;
     }
   };
 
   return (
-    <section id="projects" className="py-24 relative">
+    <section id="projects" className="py-24 relative overflow-hidden">
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-r from-cyan-500/8 via-indigo-500/8 to-emerald-500/8 blur-[140px] rounded-full pointer-events-none -z-10" />
+
       <div className="w-full max-w-full sm:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-pill text-xs font-mono text-cyan-400">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[rgba(244,241,234,0.14)] bg-[#111114] text-xs font-mono text-cyan-400">
                 <Layers className="w-3.5 h-3.5" />
                 SOVEREIGN SOFTWARE PORTFOLIO
               </span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-heading font-black text-white tracking-tight">
-              Featured <span className="text-gradient-cyan">Work &amp; Systems</span>
+            <h2 className="text-3xl sm:text-5xl font-normal text-[#f4f1ea] tracking-[-0.04em]">
+              Featured <span className="text-cyan-300">Work &amp; Systems</span>
             </h2>
-            <p className="text-slate-300 text-sm sm:text-base mt-3 max-w-2xl font-light leading-relaxed">
-              Flagship engineering deployments developed across the f0undr Team: native Android architectures, sovereign cryptographic file vaults, autonomous AI engines, and computing literature.
+            <p className="text-[#8d8b86] text-sm sm:text-base mt-3 max-w-2xl font-light leading-relaxed">
+              Flagship engineering deployments developed across the f0undr Team: native Android architectures, sovereign cryptographic file vaults, autonomous AI engines, web platforms, and independent study labs.
             </p>
           </div>
 
           <div className="relative w-full md:w-80">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <Search className="w-4 h-4 text-[#8d8b86] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               type="text"
-              placeholder="Search work, tech, keywords..."
+              placeholder="Search work, tech, webs..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 rounded-2xl glass-card text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400/50 transition-all font-mono"
+              className="w-full pl-10 pr-4 py-2.5 rounded-full border border-[rgba(244,241,234,0.14)] bg-[#111114] text-xs sm:text-sm text-[#f4f1ea] placeholder-[#8d8b86] focus:outline-none focus:border-cyan-400/60 transition-all font-mono"
             />
           </div>
         </div>
@@ -109,16 +112,17 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
             const isActive = activeCategory === cat.id;
             return (
               <button
+                type="button"
                 key={cat.id}
                 onClick={() => {
                   playClickSound();
                   setActiveCategory(cat.id);
                 }}
                 onMouseEnter={playHoverSound}
-                className={`px-4 py-2 rounded-xl text-xs font-medium whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                className={`px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-all duration-200 cursor-pointer ${
                   isActive
-                    ? 'bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-white border border-cyan-400/40 shadow-[0_0_20px_-4px_rgba(56,189,248,0.3)]'
-                    : 'glass-pill text-slate-300 hover:text-white'
+                    ? 'bg-[#f4f1ea] text-[#0a0a0b] font-semibold shadow-md'
+                    : 'border border-[rgba(244,241,234,0.12)] bg-[#111114] text-[#8d8b86] hover:text-[#f4f1ea] hover:border-[rgba(244,241,234,0.3)]'
                 }`}
               >
                 {cat.label}
@@ -132,22 +136,22 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
             <div
               key={project.id}
               onMouseEnter={playHoverSound}
-              className="glass-card rounded-2xl p-6 flex flex-col justify-between group hover:border-cyan-400/40 transition-all duration-300 relative overflow-hidden"
+              className="rounded-3xl p-6 flex flex-col justify-between group bg-[#111114] border border-[rgba(244,241,234,0.12)] hover:border-cyan-400/50 hover:shadow-[0_0_35px_-5px_rgba(6,182,212,0.22)] hover:-translate-y-2 transition-all duration-300 relative overflow-hidden"
             >
               <div>
                 <div className="flex items-start justify-between gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center group-hover:border-cyan-400/40 group-hover:bg-cyan-500/10 transition-all">
+                  <div className="w-12 h-12 rounded-2xl bg-[#0a0a0b] border border-[rgba(244,241,234,0.12)] flex items-center justify-center group-hover:border-cyan-400/50 group-hover:scale-105 transition-all">
                     {getProjectIcon(project.iconName)}
                   </div>
-                  <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-white/[0.04] text-slate-300 border border-white/10">
+                  <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-[#0a0a0b] text-[#8d8b86] border border-[rgba(244,241,234,0.12)]">
                     {project.metrics}
                   </span>
                 </div>
 
-                <h3 className="text-lg font-heading font-bold text-white group-hover:text-cyan-300 transition-colors mb-2">
+                <h3 className="text-lg font-normal text-[#f4f1ea] group-hover:text-cyan-300 transition-colors mb-2 tracking-[-0.02em]">
                   {project.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed mb-4 line-clamp-3">
+                <p className="text-xs sm:text-sm text-[#8d8b86] font-light leading-relaxed mb-4 line-clamp-3">
                   {project.description}
                 </p>
 
@@ -155,21 +159,22 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
                   {project.techStack.slice(0, 4).map((tech, idx) => (
                     <span
                       key={idx}
-                      className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/[0.04] text-slate-300 border border-white/05"
+                      className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#0a0a0b] text-[#8d8b86] border border-[rgba(244,241,234,0.08)]"
                     >
                       {tech}
                     </span>
                   ))}
                   {project.techStack.length > 4 && (
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/[0.02] text-slate-500">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-[#0a0a0b] text-[#8d8b86]/60">
                       +{project.techStack.length - 4}
                     </span>
                   )}
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
+              <div className="pt-4 border-t border-[rgba(244,241,234,0.08)] flex items-center justify-between">
                 <button
+                  type="button"
                   onClick={() => {
                     playModalOpenSound();
                     onSelectProject(project);
@@ -187,7 +192,7 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
                       target="_blank"
                       rel="noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="p-1.5 rounded-lg bg-white/[0.04] hover:bg-white/10 text-slate-300 hover:text-white transition-all border border-white/10"
+                      className="p-1.5 rounded-xl bg-[#0a0a0b] hover:bg-white/10 text-[#8d8b86] hover:text-[#f4f1ea] transition-all border border-[rgba(244,241,234,0.12)]"
                       title="Launch Live Application"
                     >
                       <ArrowUpRight className="w-3.5 h-3.5" />
@@ -199,7 +204,7 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
                       target="_blank"
                       rel="noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="p-1.5 rounded-lg bg-white/[0.04] hover:bg-white/10 text-slate-300 hover:text-white transition-all border border-white/10"
+                      className="p-1.5 rounded-xl bg-[#0a0a0b] hover:bg-white/10 text-[#8d8b86] hover:text-[#f4f1ea] transition-all border border-[rgba(244,241,234,0.12)]"
                       title="GitHub Source"
                     >
                       <GithubIcon className="w-3.5 h-3.5" />

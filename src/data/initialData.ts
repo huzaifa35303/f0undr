@@ -187,9 +187,9 @@ export const INITIAL_TEAM: TeamMember[] = [
 export const INITIAL_BOOKS: Book[] = [
   {
     id: 'book-foundr-ebook',
-    title: 'f0undr Book: Computing & Technology Architecture (Units 1–6)',
-    author: 'f0undr & Rai Abdur Rehman',
-    year: '2026 Live Edition',
+    title: 'Computing & Technology Study Lab (Units 1–6)',
+    author: 'Curriculum Rights: National Book Foundation (NBF) • Software by f0undr',
+    year: '2026 Reference Edition',
     coverGradient: 'from-emerald-600 via-teal-700 to-slate-950',
     status: 'reading',
     rating: 5,
@@ -206,20 +206,20 @@ export const INITIAL_BOOKS: Book[] = [
       'Unit 6: Entrepreneurship in the Digital Age',
     ],
     keyTakeaways: [
-      'Comprehensive literature series mapping hardware foundations, algorithms, and digital entrepreneurship.',
+      'Independent interactive study companion for computer science students and founders.',
       'The Input-Process-Output-Storage (IPO) cycle serves as the unified operational mental model of every digital device.',
       'Algorithmic thinking (decomposition, pattern recognition, abstraction, algorithm design) is the foundation of future software creation.',
       'Digital citizenship and cyber hygiene (2FA, malware taxonomy, PECA compliance) are non-negotiable modern life skills.',
       'Entrepreneurship in the digital age requires a Lean Canvas mindset, rapid prototyping, and customer problem empathy.'
     ],
-    notes: 'Flagship interactive online publication engineered by f0undr. Features comprehensive diagrams, real-world case studies (e.g. Supermarket barcode IPO cycle), interactive quizzes with live score badges, and autosaving student lab workbooks.',
+    notes: 'Independent interactive online study software engineered by f0undr. All textbook content and curriculum copyrights are strictly reserved to National Book Foundation (NBF). f0undr provides the interactive trace tables, algorithmic flowcharts, and browser-autosaving lab workbooks.',
     favoriteQuote: 'Connecting computational foundations, human reasoning, and practical creative skills.',
     dateAdded: '2026-10-13',
   },
   {
     id: 'book-urdu-ebook',
-    title: 'صحیفۂ اردو: نصاب و ادب (جماعت ہفتم)',
-    author: 'Huzaifa & f0undr Team',
+    title: 'صحیفۂ اردو: درسی معاون و ادبی پلیٹ فارم (جماعت ہفتم)',
+    author: 'Curriculum Reference (FBISE / NBF) • Software by f0undr',
     year: '2026 FBISE Edition',
     coverGradient: 'from-amber-700 via-emerald-800 to-slate-950',
     status: 'reading',
