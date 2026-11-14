@@ -1,143 +1,300 @@
+import React, { useState } from 'react';
+import type { TeamMember } from '../types';
 import { TEAM_MEMBERS } from '../data/portfolioData';
-import { ExternalLink, Award, Users, Shield, Cpu, Terminal, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Award, Users, Shield, Cpu, Terminal, Sparkles, Activity, Layers, Code2 } from 'lucide-react';
 import { playHoverSound, playClickSound } from '../utils/audio';
 
-export const TeamSection = () => {
-  return (
-    <section id="team" className="py-24 relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-cyan-600/10 via-indigo-600/10 to-purple-600/10 blur-[130px] rounded-full pointer-events-none -z-10" />
+interface TeamSectionProps {
+  team?: TeamMember[];
+}
 
-      <div className="w-full max-w-full sm:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden">
+export const TeamSection: React.FC<TeamSectionProps> = ({ team = TEAM_MEMBERS }) => {
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const [mousePos, setMousePos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, id: string) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setMousePos({ x, y });
+    setHoveredCard(id);
+  };
+
+  const getMemberConfig = (member: TeamMember, index: number) => {
+    const isFounder = member.name.toLowerCase().includes('huzaifa') || member.id === 'founder-huzaifa' || member.id === 'team-huzaifa';
+    if (isFounder) {
+      return {
+        badge: 'SOLE FOUNDER',
+        badgeColor: 'from-amber-400/20 via-cyan-400/20 to-indigo-500/20 text-cyan-300 border-cyan-400/40',
+        ringGradient: 'from-cyan-400 via-amber-400 to-indigo-500',
+        glowColor: 'rgba(6, 182, 212, 0.25)',
+        accentColor: '#06b6d4',
+        codeBadge: 'F0-ARCH // 00',
+        clearance: 'LEVEL 0 // PRINCIPAL FOUNDER',
+        icon: Award,
+        nodeId: 'NODE // 01',
+      };
+    }
+
+    if (member.name.toLowerCase().includes('rehman')) {
+      return {
+        badge: 'HEAD OF SYSTEMS',
+        badgeColor: 'from-cyan-500/20 to-blue-600/20 text-cyan-300 border-cyan-500/30',
+        ringGradient: 'from-cyan-400 via-sky-500 to-blue-600',
+        glowColor: 'rgba(14, 165, 233, 0.2)',
+        accentColor: '#38bdf8',
+        codeBadge: 'SYS-OPS // 01',
+        clearance: 'LEVEL 1 // SYSTEMS LEAD',
+        icon: Cpu,
+        nodeId: 'NODE // 02',
+      };
+    }
+
+    if (member.name.toLowerCase().includes('ammar')) {
+      return {
+        badge: 'CHIEF OF STAFF',
+        badgeColor: 'from-emerald-500/20 to-teal-600/20 text-emerald-300 border-emerald-500/30',
+        ringGradient: 'from-emerald-400 via-teal-500 to-cyan-500',
+        glowColor: 'rgba(16, 185, 129, 0.2)',
+        accentColor: '#10b981',
+        codeBadge: 'COS-EXEC // 02',
+        clearance: 'LEVEL 1 // OPERATIONS GOVERNANCE',
+        icon: Shield,
+        nodeId: 'NODE // 03',
+      };
+    }
+
+    if (member.name.toLowerCase().includes('ayan')) {
+      return {
+        badge: 'DEPUTY HEAD & PLATFORM ARCHITECT',
+        badgeColor: 'from-indigo-500/20 to-purple-600/20 text-indigo-300 border-indigo-500/30',
+        ringGradient: 'from-indigo-400 via-purple-500 to-pink-500',
+        glowColor: 'rgba(99, 102, 241, 0.2)',
+        accentColor: '#818cf8',
+        codeBadge: 'PLAT-ARC // 03',
+        clearance: 'LEVEL 1 // DEPUTY HEAD',
+        icon: Layers,
+        nodeId: 'NODE // 04',
+      };
+    }
+
+    return {
+      badge: 'CORE FELLOW',
+      badgeColor: 'from-slate-500/20 to-zinc-600/20 text-slate-300 border-slate-500/30',
+      ringGradient: 'from-slate-400 via-zinc-500 to-neutral-600',
+      glowColor: 'rgba(148, 163, 184, 0.2)',
+      accentColor: '#94a3b8',
+      codeBadge: `FELLOW // 0${index + 1}`,
+      clearance: 'LEVEL 2 // FELLOWSHIP',
+      icon: Layers,
+      nodeId: `NODE // 0${index + 1}`,
+    };
+  };
+
+  return (
+    <section id="team" className="py-28 relative bg-[#0a0a0b] border-t border-[rgba(244,241,234,0.08)] overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-gradient-to-r from-cyan-500/05 via-emerald-500/05 to-indigo-500/05 blur-[160px] rounded-full pointer-events-none -z-10" />
+
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full glass-pill text-xs font-mono text-cyan-400">
-                <Users className="w-3.5 h-3.5" />
-                EXECUTIVE COLLECTIVE &bull; LEADERSHIP ROSTER
-              </span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/25 text-xs font-mono text-cyan-300 mb-3">
+              <Users className="w-3.5 h-3.5" />
+              <span>EXECUTIVE COLLECTIVE &bull; LEADERSHIP ROSTER</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-heading font-black text-white tracking-tight">
-              The <span className="text-gradient-cyan">f0undr Team</span>
+            <h2 className="text-3xl sm:text-5xl font-normal text-[#f4f1ea] tracking-[-0.035em]">
+              The <span className="text-cyan-400 font-semibold">f0undr Team</span>
             </h2>
-            <p className="text-slate-300 text-sm sm:text-base mt-3 max-w-2xl font-light leading-relaxed">
-              Founded and directed by <strong className="text-white font-medium">Muhammad Huzaifa Zahid (Founder)</strong>.
-              Unified executive leadership across autonomous software systems, operations, system architecture, and strategic scale.
+            <p className="text-[#8d8b86] text-sm sm:text-base mt-3 max-w-2xl font-light leading-relaxed">
+              Directed by <strong className="text-[#f4f1ea] font-medium">Muhammad Huzaifa Zahid (Founder)</strong>.
+              Sovereign engineering leadership spanning autonomous AI systems, native Android architectures, executive operations, and platform governance.
             </p>
           </div>
 
-          <div className="text-left md:text-right">
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl glass-card text-xs font-mono text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>Roster: <strong className="text-white">04 Leadership Pillars</strong></span>
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#111114] border border-[rgba(244,241,234,0.12)] text-xs font-mono text-[#8d8b86]">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Status: <strong className="text-[#f4f1ea]">04 Pillars Active</strong></span>
             </span>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {TEAM_MEMBERS.map((member) => (
-            <div
-              key={member.id}
-              onMouseEnter={playHoverSound}
-              className="glass-card rounded-2xl p-6 flex flex-col justify-between group hover:border-cyan-400/40 relative overflow-hidden transition-all duration-300 shadow-xl"
-            >
-              <div>
-                <div className="flex items-start justify-between gap-4 mb-6">
-                  <div className="relative">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-white/10 to-white/02 border border-white/15 flex items-center justify-center font-mono font-black text-lg text-white shadow-md group-hover:scale-105 group-hover:border-cyan-400/50 transition-all">
-                      {member.name
-                        .split(' ')
-                        .map((n) => n[0])
-                        .join('')
-                        .slice(0, 2)}
-                    </div>
-                    {member.isFounder && (
-                      <div className="absolute -bottom-1 -right-1 p-1.5 rounded-full bg-cyan-400 text-slate-950 shadow-md" title="Founder & Principal">
-                        <Award className="w-3.5 h-3.5 stroke-[2.5]" />
-                      </div>
-                    )}
-                  </div>
+          {team.slice(0, 4).map((member, index) => {
+            const config = getMemberConfig(member, index);
+            const isHovered = hoveredCard === member.id;
+            const IconComp = config.icon;
 
-                  <div className="text-right">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-[10px] font-mono text-emerald-400 font-semibold">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                      {member.status}
-                    </span>
-                    <div className="text-[11px] font-mono text-slate-400 mt-1.5 font-medium">
-                      {member.handle}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mb-4">
-                  <h3 className="text-lg font-heading font-extrabold text-white leading-snug group-hover:text-cyan-300 transition-colors">
-                    {member.name}
-                  </h3>
-                  <div className="text-xs text-cyan-400 font-mono font-medium mt-1">
-                    {member.role}
-                  </div>
-                  {member.isFounder && (
-                    <span className="inline-block px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 text-[10px] font-mono font-bold border border-cyan-500/20 mt-2">
-                      SOLE FOUNDER
-                    </span>
-                  )}
-                </div>
-
-                <p className="text-xs sm:text-[13px] text-slate-300 font-light leading-relaxed mb-4">
-                  {member.bio}
-                </p>
-
-                {member.quote && (
-                  <blockquote className="p-3 rounded-xl bg-white/[0.03] border-l-2 border-cyan-400 text-[11px] text-slate-300 italic mb-4">
-                    "{member.quote}"
-                  </blockquote>
+            return (
+              <div
+                key={member.id}
+                onMouseEnter={() => {
+                  playHoverSound();
+                  setHoveredCard(member.id);
+                }}
+                onMouseLeave={() => setHoveredCard(null)}
+                onMouseMove={(e) => handleMouseMove(e, member.id)}
+                className={`relative rounded-3xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 bg-[#111114] border group cursor-default overflow-hidden ${
+                  isHovered
+                    ? 'border-cyan-400/50 shadow-2xl shadow-cyan-950/40 -translate-y-1.5'
+                    : 'border-[rgba(244,241,234,0.1)] hover:border-[rgba(244,241,234,0.25)]'
+                }`}
+                style={{
+                  background: isHovered
+                    ? `radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, rgba(255, 255, 255, 0.05) 0%, #111114 65%)`
+                    : '#111114',
+                }}
+              >
+                <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                {isHovered && (
+                  <div
+                    className="absolute inset-0 pointer-events-none opacity-20 bg-gradient-to-b from-transparent via-cyan-400/20 to-transparent animate-laser-scan"
+                    style={{ height: '30%' }}
+                  />
                 )}
 
-                <div className="flex flex-wrap gap-1.5 mb-6">
-                  {member.skills.map((skill, idx) => (
-                    <span
-                      key={idx}
-                      className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-white/[0.04] text-slate-300 border border-white/05"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                <div className="absolute top-2 left-2 text-[8px] font-mono text-[rgba(244,241,234,0.15)] select-none">
+                  &#9484;
+                </div>
+                <div className="absolute top-2 right-2 text-[8px] font-mono text-[rgba(244,241,234,0.15)] select-none">
+                  &#9488;
+                </div>
+                <div className="absolute bottom-2 left-2 text-[8px] font-mono text-[rgba(244,241,234,0.15)] select-none">
+                  &#9492;
+                </div>
+                <div className="absolute bottom-2 right-2 text-[8px] font-mono text-[rgba(244,241,234,0.15)] select-none">
+                  &#9494;
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between pb-3 mb-5 border-b border-[rgba(244,241,234,0.06)] text-[10px] font-mono text-[#8d8b86]">
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                      <span className="text-cyan-300 font-semibold">{config.nodeId}</span>
+                    </div>
+                    <span className="text-[10px] uppercase tracking-wider text-[#8d8b86]">{config.codeBadge}</span>
+                  </div>
+
+                  <div className="flex items-start justify-between gap-4 mb-6">
+                    <div className="relative">
+                      <div
+                        className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl p-[1.5px] relative group-hover:scale-105 transition-transform duration-300 shadow-xl"
+                        style={{
+                          background: `linear-gradient(135deg, ${config.accentColor}, #0a0a0b)`,
+                        }}
+                      >
+                        <div className="w-full h-full rounded-[14px] bg-[#16161a] overflow-hidden flex items-center justify-center relative">
+                          {member.avatarUrl ? (
+                            <img
+                              src={member.avatarUrl}
+                              alt={member.name}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 relative z-10"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center font-mono font-bold text-base sm:text-lg text-[#f4f1ea]">
+                              {member.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      <div
+                        className="absolute -bottom-1 -right-1 p-1.5 rounded-full text-[#0a0a0b] shadow-md flex items-center justify-center"
+                        style={{ backgroundColor: config.accentColor }}
+                        title={config.clearance}
+                      >
+                        <IconComp className="w-3.5 h-3.5 stroke-[2.5]" />
+                      </div>
+                    </div>
+
+                    <div className="text-right flex flex-col items-end">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#0a0a0b] border border-[rgba(244,241,234,0.12)] text-[10px] font-mono text-emerald-400 font-medium">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span>{member.status || 'Active'}</span>
+                      </span>
+                      <span className="text-[11px] font-mono text-[#8d8b86] mt-2 font-medium">
+                        {member.handle}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="mb-4">
+                    <h3 className="text-lg sm:text-xl font-normal text-[#f4f1ea] leading-tight group-hover:text-cyan-300 transition-colors">
+                      {member.name}
+                    </h3>
+                    <div className="text-xs text-cyan-400 font-mono font-medium mt-1.5 leading-snug">
+                      {member.role}
+                    </div>
+
+                    <div className="mt-2.5 flex items-center gap-1.5">
+                      <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gradient-to-r text-[9px] font-mono font-bold border tracking-wider uppercase ${config.badgeColor}`}>
+                        <Sparkles className="w-2.5 h-2.5" />
+                        <span>{config.badge}</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-[#8d8b86] font-light leading-relaxed mb-4 line-clamp-3 group-hover:line-clamp-none transition-all duration-300">
+                    {member.bio}
+                  </p>
+
+                  {member.quote && (
+                    <div className="p-3 rounded-2xl bg-[#0a0a0b] border-l-2 border-cyan-400 text-[11px] text-[#f4f1ea]/90 italic mb-5 shadow-inner">
+                      "{member.quote}"
+                    </div>
+                  )}
+
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {member.skills.map((skill, idx) => (
+                      <span
+                        key={idx}
+                        onMouseEnter={playHoverSound}
+                        className="text-[10px] font-mono px-2.5 py-1 rounded-lg bg-[#0a0a0b] text-[#8d8b86] hover:text-[#f4f1ea] border border-[rgba(244,241,234,0.08)] hover:border-cyan-400/40 transition-all cursor-default"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-[rgba(244,241,234,0.08)] flex items-center justify-between gap-3 mt-auto">
+                  <div className="text-[11px] font-mono text-[#8d8b86] line-clamp-1 flex-1 pr-1">
+                    {member.highlightProject || 'f0undr Core Operations'}
+                  </div>
+
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    {member.social?.website && (
+                      <a
+                        href={member.social.website}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={playClickSound}
+                        onMouseEnter={playHoverSound}
+                        className="p-2 rounded-xl bg-[#0a0a0b] hover:bg-[#16161a] text-[#8d8b86] hover:text-[#f4f1ea] border border-[rgba(244,241,234,0.12)] hover:border-cyan-400/50 transition-all"
+                        title="Platform Gateway"
+                      >
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    {member.social?.github && (
+                      <a
+                        href={member.social.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={playClickSound}
+                        onMouseEnter={playHoverSound}
+                        className="p-2 rounded-xl bg-[#0a0a0b] hover:bg-[#16161a] text-[#8d8b86] hover:text-[#f4f1ea] border border-[rgba(244,241,234,0.12)] hover:border-cyan-400/50 transition-all"
+                        title="GitHub Profile"
+                      >
+                        <Terminal className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
-
-              <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
-                <span className="text-[11px] font-mono text-slate-400 line-clamp-1 flex-1 pr-2">
-                  {member.highlightProject}
-                </span>
-
-                <div className="flex items-center gap-1.5 shrink-0">
-                  {member.social.website && (
-                    <a
-                      href={member.social.website}
-                      target="_blank"
-                      rel="noreferrer"
-                      onClick={playClickSound}
-                      className="p-1.5 rounded-lg bg-white/[0.04] hover:bg-white/10 text-slate-300 hover:text-white transition-all border border-white/10"
-                      title="Curriculum & Works"
-                    >
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </a>
-                  )}
-                  {member.social.github && (
-                    <a
-                      href={member.social.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      onClick={playClickSound}
-                      className="p-1.5 rounded-lg bg-white/[0.04] hover:bg-white/10 text-slate-300 hover:text-white transition-all border border-white/10"
-                      title="GitHub Profile"
-                    >
-                      <Terminal className="w-3.5 h-3.5" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

@@ -329,7 +329,7 @@ export function App() {
         />
         <FounderSection />
         <ProjectsSection onSelectProject={(p) => setSelectedProject(p)} />
-        <TeamSection />
+        <TeamSection team={team} />
         <TemplatesSection />
         <CurriculumSection />
         <ToolsSection tools={tools} />
