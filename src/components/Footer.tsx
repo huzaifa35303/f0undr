@@ -154,6 +154,22 @@ export const Footer = ({ currentUser, onOpenLogin, onOpenAdmin }: FooterProps = 
             <ul className="space-y-2.5 text-xs text-[#8d8b86] font-light">
               <li>
                 <a
+                  href="https://ffs.f0undrteam.site/"
+                  target="_blank"
+                  rel="noreferrer"
+                  onMouseEnter={playHoverSound}
+                  onClick={playClickSound}
+                  className="p-2.5 rounded-xl bg-[#111114] border border-[rgba(244,241,234,0.1)] hover:border-emerald-400/40 hover:text-emerald-300 transition-all flex items-center justify-between group"
+                >
+                  <div className="flex items-center gap-2">
+                    <Globe className="w-3.5 h-3.5 text-emerald-400" />
+                    <span className="text-[#f4f1ea] font-medium">FFS Institutional Portal</span>
+                  </div>
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#8d8b86]" />
+                </a>
+              </li>
+              <li>
+                <a
                   href={ORDER_URL}
                   target="_blank"
                   rel="noreferrer"

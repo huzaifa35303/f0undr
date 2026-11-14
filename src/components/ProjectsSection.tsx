@@ -26,12 +26,9 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
 
   const categories = [
     { id: 'all', label: 'All Work' },
-    { id: 'others', label: 'Others / Web Portfolios' },
+    { id: 'others', label: 'Web Portals & Platforms' },
     { id: 'mobile', label: 'Native Android APK' },
-    { id: 'ai', label: 'Autonomous AI' },
-    { id: 'tools', label: 'Cloud Vaults & Tools' },
-    { id: 'systems', label: 'Desktop & OS' },
-    { id: 'education', label: 'Study Labs (NBF Ref)' },
+    { id: 'systems', label: 'Games & Systems' },
   ];
 
   const filteredProjects = useMemo(() => {

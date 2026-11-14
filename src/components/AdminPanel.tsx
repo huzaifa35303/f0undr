@@ -112,8 +112,10 @@ export const AdminPanel = ({
   const [editHighlightProject, setEditHighlightProject] = useState('');
   const [editTwitter, setEditTwitter] = useState('');
   const [editGithub, setEditGithub] = useState('');
+  const [editLinkedin, setEditLinkedin] = useState('');
   const [editEmail, setEditEmail] = useState('');
   const [editWebsite, setEditWebsite] = useState('');
+  const [editVerifiedFounder, setEditVerifiedFounder] = useState<boolean>(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const openEditFellowModal = (m: TeamMember) => {
@@ -124,6 +126,7 @@ export const AdminPanel = ({
     setEditDepartment(m.department || 'Fellowship Core');
     setEditRank(m.rank || (m.verifiedFounder ? 'Co-Founder' : 'Core Fellow'));
     setEditStatus(m.status);
+    setEditVerifiedFounder(!!m.verifiedFounder);
     setEditAvatarUrl(m.avatarUrl);
     setEditBio(m.bio);
     setEditSkills(m.skills ? m.skills.join(', ') : '');
@@ -131,6 +134,7 @@ export const AdminPanel = ({
     setEditHighlightProject(m.highlightProject || '');
     setEditTwitter(m.social?.twitter || '');
     setEditGithub(m.social?.github || '');
+    setEditLinkedin(m.social?.linkedin || '');
     setEditEmail(m.social?.email || '');
     setEditWebsite(m.social?.website || '');
   };
@@ -138,7 +142,7 @@ export const AdminPanel = ({
   const handleSaveFellow = (e: React.FormEvent) => {
     e.preventDefault();
     if (!editingMember || !editName.trim()) return;
-    const isFounder = editRank.toLowerCase().includes('founder');
+    const isFounder = editVerifiedFounder || editRank.toLowerCase().includes('founder');
     const updated: TeamMember = {
       ...editingMember,
       name: editName.trim(),
@@ -163,6 +167,7 @@ export const AdminPanel = ({
         ...editingMember.social,
         twitter: editTwitter.trim() || undefined,
         github: editGithub.trim() || undefined,
+        linkedin: editLinkedin.trim() || undefined,
         email: editEmail.trim() || undefined,
         website: editWebsite.trim() || undefined,
       },
@@ -1327,11 +1332,27 @@ export const AdminPanel = ({
                   <label className="block text-xs font-mono font-medium text-slate-300 uppercase tracking-wider mb-1">
                     Rank / Hierarchy
                   </label>
+                  <div className="flex flex-wrap gap-1 mb-2">
+                    {PRESET_RANKS.map((pr) => (
+                      <button
+                        key={pr.value}
+                        type="button"
+                        onClick={() => setEditRank(pr.value)}
+                        className={`px-2 py-0.5 rounded text-[10px] font-mono border transition-colors cursor-pointer ${
+                          editRank === pr.value
+                            ? 'bg-cyan-500/20 text-cyan-300 border-cyan-400'
+                            : 'bg-[#16151c] text-slate-400 border-white/10 hover:text-white'
+                        }`}
+                      >
+                        {pr.icon} {pr.label}
+                      </button>
+                    ))}
+                  </div>
                   <input
                     type="text"
                     value={editRank}
                     onChange={(e) => setEditRank(e.target.value)}
-                    placeholder="e.g. Core Fellow, Co-Founder"
+                    placeholder="Custom Rank..."
                     className="w-full px-3.5 py-2 bg-[#16151c] border border-white/10 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-mono"
                   />
                 </div>
@@ -1349,6 +1370,20 @@ export const AdminPanel = ({
                     <option value="Available">Available</option>
                     <option value="Offline">Offline</option>
                   </select>
+
+                  <div className="mt-3 p-3 rounded-xl bg-[#16151c] border border-white/10 flex items-center justify-between">
+                    <div>
+                      <span className="text-xs font-mono text-white font-medium block">Executive Leadership Privilege</span>
+                      <span className="text-[10px] text-slate-400">Verified core leadership status</span>
+                    </div>
+                    <input
+                      type="checkbox"
+                      id="editVerifiedFounder"
+                      checked={editVerifiedFounder}
+                      onChange={(e) => setEditVerifiedFounder(e.target.checked)}
+                      className="w-4 h-4 rounded border-white/20 bg-black text-cyan-400 focus:ring-cyan-500/30 cursor-pointer"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -1418,7 +1453,7 @@ export const AdminPanel = ({
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
                 <div>
                   <label className="block text-[10px] font-mono text-slate-400 uppercase mb-1">Twitter / X</label>
                   <input
@@ -1436,6 +1471,16 @@ export const AdminPanel = ({
                     value={editGithub}
                     onChange={(e) => setEditGithub(e.target.value)}
                     placeholder="username"
+                    className="w-full px-2.5 py-1.5 bg-[#16151c] border border-white/10 rounded-lg text-xs text-white placeholder-slate-500 font-mono focus:border-cyan-400 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-mono text-slate-400 uppercase mb-1">LinkedIn</label>
+                  <input
+                    type="text"
+                    value={editLinkedin}
+                    onChange={(e) => setEditLinkedin(e.target.value)}
+                    placeholder="in/username"
                     className="w-full px-2.5 py-1.5 bg-[#16151c] border border-white/10 rounded-lg text-xs text-white placeholder-slate-500 font-mono focus:border-cyan-400 focus:outline-none"
                   />
                 </div>

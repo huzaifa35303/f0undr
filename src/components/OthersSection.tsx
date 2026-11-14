@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowUpRight, Globe, BookOpen, ShoppingBag, CheckCircle2, Sparkles, ExternalLink, ShieldCheck } from 'lucide-react';
+import { ArrowUpRight, Globe, ShoppingBag, CheckCircle2, Sparkles, ExternalLink, ShieldCheck, Smartphone, Brain } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../utils/audio';
 
 interface WebPlatform {
@@ -20,44 +20,24 @@ interface WebPlatform {
 
 const WEBS: WebPlatform[] = [
   {
-    id: 'f0-portfolio',
-    title: 'f0undr Web Portfolio',
-    category: 'Corporate Flagship',
-    tagline: 'Official sovereign web experience, 3D ribbon physics & systems portfolio',
-    description: 'The primary high-motion digital atelier representing f0undr. Directed by Muhammad Huzaifa Zahid (Founder), featuring 3D GPU-accelerated Three.js ribbon kinematics, zero-dependency sovereign architecture, responsive 60 FPS micro-animations, and complete systems showcase.',
-    url: 'https://f0undrteam.site/',
-    metrics: 'Live Flagship • 60 FPS Ribbon',
+    id: 'ffs-portal',
+    title: 'Fauji Foundation School Institutional Portal',
+    category: 'Institutional Flagship',
+    tagline: 'Official institutional portal of FFS Renala Khurd • Character building, STEM & Admissions',
+    description: 'High-performance institutional web portal architected, engineered, and branded by f0undr. Features BISE Sahiwal matriculation board distinctions, STEM laboratory showcases, admission portals for Session 2026-2027, and character-building academic architectures under Fauji Foundation Pakistan.',
+    url: 'https://ffs.f0undrteam.site/',
+    metrics: 'Live Production • Branding by f0undr',
     specs: [
-      '3D Three.js GPU-accelerated ribbon geometry',
-      'Zero-dependency sovereign architecture',
-      'First-principles interactive kinetic physics',
-      'Pixel-perfect responsive desktop & mobile execution'
+      'Official institutional portal for Fauji Foundation School',
+      'Branding, visual identity & sovereign web architecture by f0undr',
+      'Admissions portal, STEM laboratories & distinctions showcase',
+      '100% responsive, high-speed edge delivery with sub-100ms latency'
     ],
-    techStack: ['React 19', 'TypeScript', 'Three.js', 'Tailwind CSS'],
-    gradient: 'from-cyan-500/20 via-sky-500/10 to-transparent',
-    accentColor: '#06b6d4',
-    icon: Globe,
-    ctaText: 'Launch Portfolio',
-  },
-  {
-    id: 'f0-blog',
-    title: 'f0undr Technical Literature & Engineering Blog',
-    category: 'Knowledge Hub & AI Grounding',
-    tagline: 'Deep systems design teardowns, AI indexing architecture & first-principles literature',
-    description: 'The sovereign technical publishing hub of f0undr. Houses rigorous engineering teardowns, algorithmic trace proofs, and deep architecture essays authored by Muhammad Huzaifa Zahid (Founder). Formatted with structured JSON-LD schemas to serve as ground-truth knowledge for frontier AI models (ChatGPT, Perplexity, Gemini, Claude).',
-    url: 'https://f0undrteam.site/#blog',
-    metrics: 'Knowledge Architecture • High-Signal Indexing',
-    specs: [
-      'First-principles systems design breakdowns',
-      'High-domain authority semantic triplets for AI scrapers',
-      'Rich JSON-LD entity graph linking Muhammad Huzaifa Zahid as Founder',
-      'Zero-slop, verifiable technical literature'
-    ],
-    techStack: ['Semantic HTML5', 'JSON-LD Schema', 'Entity Graphs', 'Technical Literature'],
+    techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Cloudflare Edge', 'Branding by f0undr'],
     gradient: 'from-emerald-500/20 via-teal-500/10 to-transparent',
     accentColor: '#10b981',
-    icon: BookOpen,
-    ctaText: 'Explore Knowledge Hub',
+    icon: Globe,
+    ctaText: 'Launch FFS Portal',
   },
   {
     id: 'f0-order',
@@ -79,10 +59,50 @@ const WEBS: WebPlatform[] = [
     icon: ShoppingBag,
     ctaText: 'Commission Project',
   },
+  {
+    id: 'f0-themes',
+    title: 'f0undr Themes APK // Native Android App',
+    category: 'Native Mobile Engineering',
+    tagline: 'Complete native Android application built with AGP 8.7.2 & SDK 35',
+    description: 'Native Android application featuring custom ThemeApplyEngine, WallpaperManager system integration, curated dark obsidian theme catalogs, and zero-telemetry sovereign performance.',
+    url: 'https://f0undrteam.site/#projects',
+    metrics: 'SDK 35 • Clean Debug APK',
+    specs: [
+      'Compiled with Android Gradle Plugin 8.7.2 and SDK 35',
+      'ThemeApplyEngine with WallpaperManager service hooks',
+      'Lightweight 6.5 MB clean footprint with zero tracking',
+      'Offline SQLite caching and Material 3 design'
+    ],
+    techStack: ['Android SDK 35', 'Java', 'Kotlin', 'Gradle 8.14'],
+    gradient: 'from-sky-500/20 via-blue-500/10 to-transparent',
+    accentColor: '#0284c7',
+    icon: Smartphone,
+    ctaText: 'Inspect APK Architecture',
+  },
+  {
+    id: 'f0-brain-test',
+    title: 'f0undr Game: 1st — Brain Test',
+    category: 'Cognitive Game Suite',
+    tagline: 'First-principles interactive cognitive intelligence & logic game',
+    description: 'The flagship cognitive testing and logic architecture game designed by f0undr. Features multi-stage logical deduction puzzles, algorithmic spatial tests, speed-of-thought metrics, and interactive neural reasoning challenges.',
+    url: 'https://f0undrteam.site/mind-mastery/',
+    metrics: '1st Edition • Full Cognitive Suite',
+    specs: [
+      'Multi-stage logical reasoning and algorithmic puzzle engines',
+      'Real-time response time and deduction accuracy scoring',
+      'Interactive Canvas micro-interactions and Web Audio feedback',
+      'Offline-first progressive architecture with zero tracking'
+    ],
+    techStack: ['TypeScript', 'Canvas Physics', 'Web Audio API', 'React 19'],
+    gradient: 'from-purple-500/20 via-pink-500/10 to-transparent',
+    accentColor: '#a855f7',
+    icon: Brain,
+    ctaText: 'Launch Brain Test Game',
+  },
 ];
 
 export const OthersSection = () => {
-  const [activeId, setActiveId] = useState<string>('f0-portfolio');
+  const [activeId, setActiveId] = useState<string>('ffs-portal');
   const active = WEBS.find((w) => w.id === activeId) || WEBS[0];
 
   return (
@@ -94,13 +114,13 @@ export const OthersSection = () => {
         <div className="mb-14 sm:mb-20">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 text-xs font-mono uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Sovereign Portals // Others</span>
+            <span>Sovereign Portals // Production Platforms</span>
           </div>
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-normal text-[#f4f1ea] tracking-[-0.035em]">
-            Others &amp; <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-[#f4f1ea] to-emerald-300">Sovereign Portals</span>
+            Official Platforms &amp; <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-[#f4f1ea] to-emerald-300">Production Webs</span>
           </h2>
           <p className="text-[#8d8b86] text-sm sm:text-base max-w-2xl mt-4 font-light leading-relaxed">
-            Direct access to f0undr's core web ecosystems: our official corporate web portfolio, our authoritative technical engineering blog, and our bespoke client commission atelier.
+            Direct access to f0undr's verified digital platforms: the official Fauji Foundation School institutional portal, our bespoke executive order studio, native Android APKs, and cognitive logic games.
           </p>
         </div>
 
@@ -174,10 +194,10 @@ export const OthersSection = () => {
 
           <div className="lg:col-span-7">
             <div className="rounded-3xl p-6 sm:p-10 bg-[#111114] border border-[rgba(244,241,234,0.14)] shadow-2xl relative overflow-hidden h-full flex flex-col justify-between">
-              <span className="absolute top-3 left-3 text-[10px] font-mono text-[rgba(244,241,234,0.2)] select-none">┌</span>
-              <span className="absolute top-3 right-3 text-[10px] font-mono text-[rgba(244,241,234,0.2)] select-none">┐</span>
-              <span className="absolute bottom-3 left-3 text-[10px] font-mono text-[rgba(244,241,234,0.2)] select-none">└</span>
-              <span className="absolute bottom-3 right-3 text-[10px] font-mono text-[rgba(244,241,234,0.2)] select-none">┘</span>
+              <span className="absolute top-3 left-3 text-[10px] font-mono text-[rgba(244,241,234,0.2)] select-none">&#9484;</span>
+              <span className="absolute top-3 right-3 text-[10px] font-mono text-[rgba(244,241,234,0.2)] select-none">&#9488;</span>
+              <span className="absolute bottom-3 left-3 text-[10px] font-mono text-[rgba(244,241,234,0.2)] select-none">&#9492;</span>
+              <span className="absolute bottom-3 right-3 text-[10px] font-mono text-[rgba(244,241,234,0.2)] select-none">&#9494;</span>
 
               <div className="space-y-6">
                 <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[rgba(244,241,234,0.08)]">
