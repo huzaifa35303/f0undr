@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { ArrowUpRight, ArrowDown, Users, Layers, ShieldCheck, Sparkles, Smartphone, Globe, BookOpen, Lock, Terminal, CheckCircle2, ChevronRight, Zap } from 'lucide-react';
+import { ArrowUpRight, ArrowDown, Users, Layers, CheckCircle2, Zap } from 'lucide-react';
 import { STATS } from '../data/portfolioData';
 import { playClickSound, playHoverSound } from '../utils/audio';
+import { VanteRibbonHero } from './VanteRibbonHero';
 
 interface HeroSectionProps {
   onExploreProjects: () => void;
@@ -64,7 +65,7 @@ const SHOWCASE_TABS: ShowcaseTab[] = [
     tag: 'Units 1–6 Independent Series',
     tagColor: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
     title: 'f0undr Systems Literature',
-    description: 'Authored by f0undr & Rai Abdur Rehman. A complete modern computer science e-book with interactive trace tables, algorithmic flowcharts, and autosaving student labs.',
+    description: 'Authored by f0undr & Rai Abdur Rehman. A complete modern computer science literature with interactive trace tables, algorithmic flowcharts, and autosaving student labs.',
     stat: 'Units 1–6',
     statLabel: 'Volume Scope',
     specs: ['Hardware IPO cycle analysis', 'Algorithmic logic & Scratch', 'PECA cyber legislation', 'Instant auto-grading quizzes'],
@@ -93,206 +94,216 @@ export const HeroSection = ({
   ];
 
   return (
-    <section id="hero" className="relative pt-28 sm:pt-40 md:pt-44 pb-20 sm:pb-28 flex flex-col justify-center text-center overflow-hidden w-full max-w-full">
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] lg:w-[700px] h-[350px] bg-gradient-to-r from-cyan-500/12 via-indigo-600/10 to-purple-600/10 blur-[130px] rounded-full pointer-events-none -z-10" />
+    <div id="hero" className="w-full max-w-full bg-[#0a0a0b] text-[#f4f1ea]">
+      <VanteRibbonHero
+        onExploreProjects={onExploreProjects}
+        onMeetTeam={onMeetTeam}
+      />
 
-      <div className="w-full max-w-full sm:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden">
-        <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass-pill text-[10px] sm:text-xs font-mono mb-6 sm:mb-12 hover:border-cyan-400/40 transition-all cursor-default max-w-full overflow-hidden">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-          <span className="text-white font-semibold tracking-wide truncate">f0undr &amp; f0undr TEAM</span>
-          <span className="text-slate-600 shrink-0">•</span>
-          <span className="text-cyan-400 font-medium shrink-0">TECHNOLOGY CORPORATION</span>
-        </div>
+      <section id="showcase" className="relative pt-24 sm:pt-32 pb-24 sm:pb-32 flex flex-col justify-center text-center overflow-hidden w-full max-w-full border-t border-[rgba(244,241,234,0.12)] bg-[#0a0a0b]">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] lg:w-[700px] h-[350px] bg-gradient-to-r from-emerald-500/8 via-cyan-500/8 to-indigo-500/8 blur-[140px] rounded-full pointer-events-none -z-10" />
 
-        <h1 className="w-full text-2xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-black text-white tracking-tight leading-[1.18] mb-6 sm:mb-8 mx-auto break-words">
-          <span>Building the next generation of </span>
-          <span className="text-gradient-cyan block sm:inline">
-            Autonomous AI &amp; Native Systems.
-          </span>
-        </h1>
-
-        <p className="w-full text-slate-300 text-xs sm:text-base md:text-lg font-light mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed break-words">
-          Directed by{' '}
-          <strong className="text-white font-medium font-mono px-1.5 py-0.5 rounded-lg bg-white/[0.08] border border-white/10 whitespace-nowrap">
-            Muhammad Huzaifa Zahid (Founder)
-          </strong>{' '}
-          and the{' '}
-          <strong className="text-white font-medium font-mono px-1.5 py-0.5 rounded-lg bg-white/[0.08] border border-white/10 whitespace-nowrap">
-            f0undr Team
-          </strong>
-          . We architect high-speed encrypted file vaults, native Android mobile software (SDK 35), AI agents, proprietary software systems, and corporate digital goods.
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-14 max-w-md sm:max-w-lg mx-auto w-full">
-          <a
-            href={ORDER_URL}
-            target="_blank"
-            rel="noreferrer"
-            onMouseEnter={playHoverSound}
-            onClick={playClickSound}
-            className="flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl btn-primary-white text-xs sm:text-sm font-bold tracking-tight cursor-pointer group shadow-xl w-full sm:w-auto"
-          >
-            <span>Commission Order (order.f0undrteam.site)</span>
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </a>
-
-          <div className="flex items-center gap-2.5 w-full sm:w-auto">
-            <button
-              onClick={() => {
-                playClickSound();
-                onExploreProjects();
-              }}
-              onMouseEnter={playHoverSound}
-              className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3.5 rounded-2xl glass-card text-xs sm:text-sm font-semibold text-white tracking-normal cursor-pointer hover:border-cyan-400/50"
-            >
-              <Layers className="w-4 h-4 text-cyan-400" />
-              <span>Explore Work</span>
-              <ArrowDown className="w-3.5 h-3.5 text-slate-400" />
-            </button>
-
-            <button
-              onClick={() => {
-                playClickSound();
-                onMeetTeam();
-              }}
-              onMouseEnter={playHoverSound}
-              className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3.5 rounded-2xl glass-card text-xs sm:text-sm font-semibold text-white tracking-normal cursor-pointer hover:border-indigo-400/50"
-            >
-              <Users className="w-4 h-4 text-indigo-400" />
-              <span>Meet Team</span>
-            </button>
+        <div className="w-full max-w-full sm:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-[rgba(244,241,234,0.14)] bg-[#111114] text-[10px] sm:text-xs font-mono mb-6 sm:mb-10 text-[#8d8b86] max-w-full overflow-hidden">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+            <span className="text-[#f4f1ea] font-semibold tracking-wide truncate">f0undr &bull; f0undr TEAM</span>
+            <span className="text-[rgba(244,241,234,0.2)] shrink-0">•</span>
+            <span className="text-[#f4f1ea] font-medium shrink-0">TECHNOLOGY CORPORATION</span>
           </div>
-        </div>
 
-        <div className="w-full max-w-full sm:max-w-5xl mx-auto mb-16 text-left rounded-2xl sm:rounded-3xl glass-card-interactive p-4 sm:p-8 shadow-2xl relative overflow-hidden border border-white/12">
-          <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10">
-            <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-cyan-400"></span>
-              <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">
-                Interactive Flagship Showcase
-              </span>
-            </div>
+          <h2 className="w-full text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-[#f4f1ea] tracking-[-0.04em] leading-[1.12] mb-6 sm:mb-8 mx-auto break-words">
+            <span>Sovereign Architecture &bull; </span>
+            <span className="text-[#8d8b86] block sm:inline">
+              Built for High-Signal Scale.
+            </span>
+          </h2>
 
-            <div className="w-full sm:w-auto flex items-center gap-1.5 p-1 rounded-2xl glass-card overflow-x-auto no-scrollbar scrollbar-none">
-              {SHOWCASE_TABS.map((tab) => {
-                const isActive = activeTabId === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => {
-                      playClickSound();
-                      setActiveTabId(tab.id);
-                    }}
-                    onMouseEnter={playHoverSound}
-                    className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
-                      isActive
-                        ? 'bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 text-white border border-cyan-400/40 shadow-sm'
-                        : 'text-slate-400 hover:text-white'
-                    }`}
-                  >
-                    {tab.label}
-                  </button>
-                );
-              })}
+          <p className="w-full text-[#8d8b86] text-xs sm:text-base md:text-lg font-light mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed break-words">
+            Directed by{' '}
+            <strong className="text-[#f4f1ea] font-medium font-mono px-2 py-0.5 rounded-lg bg-[rgba(244,241,234,0.06)] border border-[rgba(244,241,234,0.12)] whitespace-nowrap">
+              Muhammad Huzaifa Zahid (Founder)
+            </strong>{' '}
+            and the{' '}
+            <strong className="text-[#f4f1ea] font-medium font-mono px-2 py-0.5 rounded-lg bg-[rgba(244,241,234,0.06)] border border-[rgba(244,241,234,0.12)] whitespace-nowrap">
+              f0undr Team
+            </strong>
+            . We engineer zero-knowledge client vaults, native Android systems (SDK 35), autonomous AI agents, and tactile micro-interaction engines.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-14 max-w-md sm:max-w-lg mx-auto w-full">
+            <a
+              href={ORDER_URL}
+              target="_blank"
+              rel="noreferrer"
+              onMouseEnter={playHoverSound}
+              onClick={playClickSound}
+              className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-[#f4f1ea] text-[#0a0a0b] text-xs sm:text-sm font-semibold tracking-tight hover:bg-white transition-all shadow-xl w-full sm:w-auto"
+            >
+              <span>Commission Atelier (order.f0undrteam.site)</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </a>
+
+            <div className="flex items-center gap-2.5 w-full sm:w-auto">
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  onExploreProjects();
+                }}
+                onMouseEnter={playHoverSound}
+                className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3.5 rounded-full border border-[rgba(244,241,234,0.18)] bg-[#111114] text-xs sm:text-sm font-medium text-[#f4f1ea] hover:border-[rgba(244,241,234,0.45)] transition-all cursor-pointer"
+              >
+                <Layers className="w-4 h-4 text-emerald-400" />
+                <span>Explore Work</span>
+                <ArrowDown className="w-3.5 h-3.5 text-[#8d8b86]" />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  onMeetTeam();
+                }}
+                onMouseEnter={playHoverSound}
+                className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3.5 rounded-full border border-[rgba(244,241,234,0.18)] bg-[#111114] text-xs sm:text-sm font-medium text-[#f4f1ea] hover:border-[rgba(244,241,234,0.45)] transition-all cursor-pointer"
+              >
+                <Users className="w-4 h-4 text-cyan-400" />
+                <span>Meet Team</span>
+              </button>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6 items-center">
-            <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono border font-semibold">
-                <span className={`px-2.5 py-0.5 rounded-full ${activeTab.tagColor} border`}>
-                  {activeTab.tag}
+          <div className="w-full max-w-full sm:max-w-5xl mx-auto mb-16 text-left rounded-3xl bg-[#111114] p-4 sm:p-8 shadow-2xl relative overflow-hidden border border-[rgba(244,241,234,0.12)]">
+            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[rgba(244,241,234,0.1)]">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+                <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#f4f1ea]">
+                  Interactive Architecture Matrix
                 </span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-heading font-extrabold text-white leading-tight">
-                {activeTab.title}
-              </h3>
-
-              <p className="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">
-                {activeTab.description}
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
-                {activeTab.specs.map((spec, idx) => (
-                  <div key={idx} className="flex items-center gap-2 text-xs text-slate-300 font-mono">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
-                    <span>{spec}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="pt-3">
-                <a
-                  href={activeTab.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  onMouseEnter={playHoverSound}
-                  onClick={playClickSound}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl btn-primary-white text-xs font-bold transition-all shadow-md group cursor-pointer"
-                >
-                  <span>Launch Live Platform</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </a>
+              <div className="w-full sm:w-auto flex items-center gap-1.5 p-1 rounded-full border border-[rgba(244,241,234,0.12)] bg-[#0a0a0b] overflow-x-auto no-scrollbar scrollbar-none">
+                {SHOWCASE_TABS.map((tab) => {
+                  const isActive = activeTabId === tab.id;
+                  return (
+                    <button
+                      type="button"
+                      key={tab.id}
+                      onClick={() => {
+                        playClickSound();
+                        setActiveTabId(tab.id);
+                      }}
+                      onMouseEnter={playHoverSound}
+                      className={`px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
+                        isActive
+                          ? 'bg-[#f4f1ea] text-[#0a0a0b] shadow-sm font-semibold'
+                          : 'text-[#8d8b86] hover:text-[#f4f1ea]'
+                      }`}
+                    >
+                      {tab.label}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
-            <div className="lg:col-span-5 rounded-2xl glass-card p-6 border border-white/10 flex flex-col justify-between">
-              <div>
-                <div className="text-[10px] font-mono uppercase text-slate-400 tracking-widest mb-1">
-                  Architecture Metric
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6 items-center">
+              <div className="lg:col-span-7 space-y-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono border border-[rgba(244,241,234,0.12)] font-semibold">
+                  <span className={`px-2.5 py-0.5 rounded-full ${activeTab.tagColor} border`}>
+                    {activeTab.tag}
+                  </span>
                 </div>
-                <div className="text-4xl sm:text-5xl font-heading font-black text-white tracking-tight text-gradient-cyan mb-1">
-                  {activeTab.stat}
+
+                <h3 className="text-2xl sm:text-3xl font-normal text-[#f4f1ea] leading-tight tracking-[-0.03em]">
+                  {activeTab.title}
+                </h3>
+
+                <p className="text-xs sm:text-sm text-[#8d8b86] font-light leading-relaxed">
+                  {activeTab.description}
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
+                  {activeTab.specs.map((spec, idx) => (
+                    <div key={idx} className="flex items-center gap-2 text-xs text-[#8d8b86] font-mono">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                      <span>{spec}</span>
+                    </div>
+                  ))}
                 </div>
-                <div className="text-xs font-mono text-cyan-400 mb-6 font-semibold">
-                  {activeTab.statLabel}
+
+                <div className="pt-3">
+                  <a
+                    href={activeTab.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    onMouseEnter={playHoverSound}
+                    onClick={playClickSound}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#f4f1ea] text-[#0a0a0b] text-xs font-semibold hover:bg-white transition-all shadow-md group cursor-pointer"
+                  >
+                    <span>Launch Live Platform</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </a>
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-white/[0.03] border border-white/06 text-xs text-slate-300 leading-relaxed font-light">
-                <span className="font-semibold text-white">Direct Production Status:</span> Verified active on Vercel Edge with zero security vulnerabilities and continuous delivery pipelines.
+              <div className="lg:col-span-5 rounded-2xl bg-[#0a0a0b] p-6 border border-[rgba(244,241,234,0.12)] flex flex-col justify-between">
+                <div>
+                  <div className="text-[10px] font-mono uppercase text-[#8d8b86] tracking-widest mb-1">
+                    Architecture Metric
+                  </div>
+                  <div className="text-4xl sm:text-5xl font-mono font-bold text-[#f4f1ea] tracking-tight mb-1">
+                    {activeTab.stat}
+                  </div>
+                  <div className="text-xs font-mono text-emerald-400 mb-6 font-semibold">
+                    {activeTab.statLabel}
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-xl bg-[rgba(244,241,234,0.04)] border border-[rgba(244,241,234,0.08)] text-xs text-[#8d8b86] leading-relaxed font-light">
+                  <span className="font-semibold text-[#f4f1ea]">Direct Production Status:</span> Verified active on Vercel Edge with zero security vulnerabilities and continuous delivery pipelines.
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="relative w-full max-w-full overflow-hidden py-3 mb-16 border-y border-white/[0.08] bg-slate-950/40 backdrop-blur-md">
-          <div className="flex w-max gap-8 animate-marquee">
-            {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, idx) => (
-              <div key={idx} className="flex items-center gap-2.5 text-xs font-mono text-slate-300 whitespace-nowrap">
-                <Zap className="w-3.5 h-3.5 text-cyan-400" />
-                <span className="tracking-wide text-slate-200 font-medium">{item}</span>
-                <span className="text-slate-600 ml-4">•</span>
+          <div className="relative w-full max-w-full overflow-hidden py-3 mb-16 border-y border-[rgba(244,241,234,0.1)] bg-[#0a0a0b]">
+            <div className="flex w-max gap-8 animate-marquee">
+              {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-2.5 text-xs font-mono text-[#8d8b86] whitespace-nowrap">
+                  <Zap className="w-3.5 h-3.5 text-emerald-400" />
+                  <span className="tracking-wide text-[#f4f1ea] font-medium">{item}</span>
+                  <span className="text-[#8d8b86]/30 ml-4">•</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto text-left">
+            {STATS.map((stat, idx) => (
+              <div
+                key={idx}
+                onMouseEnter={playHoverSound}
+                className="rounded-3xl p-6 bg-[#111114] border border-[rgba(244,241,234,0.12)] hover:border-[rgba(244,241,234,0.35)] relative overflow-hidden transition-all duration-300 shadow-lg group"
+              >
+                <div className="text-[10px] font-mono text-[#8d8b86] uppercase tracking-widest mb-2 flex items-center justify-between">
+                  <span>{stat.change}</span>
+                  <span className="w-2 h-2 rounded-full bg-emerald-400/80 group-hover:scale-125 transition-transform" />
+                </div>
+                <div className="text-3xl sm:text-4xl font-mono font-bold text-[#f4f1ea] mb-2 tracking-tight">
+                  {stat.value}
+                </div>
+                <div className="text-xs font-bold text-[#f4f1ea] mb-1">
+                  {stat.label}
+                </div>
+                <div className="text-[11px] text-[#8d8b86] font-light leading-relaxed line-clamp-2">
+                  {stat.subtext}
+                </div>
               </div>
             ))}
           </div>
         </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto text-left">
-          {STATS.map((stat, idx) => (
-            <div
-              key={idx}
-              onMouseEnter={playHoverSound}
-              className="glass-card rounded-3xl p-6 group hover:border-cyan-400/40 relative overflow-hidden transition-all duration-300 shadow-lg"
-            >
-              <div className="text-[10px] font-mono text-slate-400 uppercase tracking-widest mb-2 flex items-center justify-between">
-                <span>{stat.change}</span>
-                <span className="w-2 h-2 rounded-full bg-cyan-400/80 group-hover:scale-125 transition-transform"></span>
-              </div>
-              <div className="text-3xl sm:text-4xl font-heading font-black text-white mb-2 tracking-tight group-hover:text-cyan-300 transition-colors">
-                {stat.value}
-              </div>
-              <div className="text-xs font-bold text-slate-200 mb-1">
-                {stat.label}
-              </div>
-              <div className="text-[11px] text-slate-400 font-light leading-relaxed line-clamp-2">
-                {stat.subtext}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
