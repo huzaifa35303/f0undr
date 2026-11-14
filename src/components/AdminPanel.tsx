@@ -236,11 +236,9 @@ export const AdminPanel = ({
 
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-[#f5f2eb] border border-[#e7e5e4]">
-              <img
-                src={currentUser.avatarUrl}
-                alt={currentUser.name}
-                className="w-7 h-7 rounded-lg object-cover border border-[#c2410c]"
-              />
+              <div className="w-7 h-7 rounded-lg bg-[#1c1917] text-[#f5f2eb] flex items-center justify-center font-mono font-bold text-xs border border-[#c2410c] select-none">
+                {currentUser.name.split(' ').filter(Boolean).map((n) => n[0]).join('').slice(0, 2)}
+              </div>
               <div className="hidden sm:block text-left">
                 <span className="text-xs font-semibold text-[#1c1917] block leading-tight">
                   {currentUser.name}
@@ -917,11 +915,9 @@ export const AdminPanel = ({
                 return (
                   <div key={member.id} className="p-4 sm:p-5 flex flex-col lg:flex-row lg:items-center justify-between gap-4 hover:bg-[#faf8f5] transition-colors">
                     <div className="flex items-center gap-3.5 min-w-0">
-                      <img
-                        src={member.avatarUrl}
-                        alt={member.name}
-                        className="w-12 h-12 rounded-xl object-cover border border-[#e7e5e4] shrink-0"
-                      />
+                      <div className="w-12 h-12 rounded-xl bg-[#1c1917] text-[#f5f2eb] flex items-center justify-center font-mono font-bold text-base border border-[#e7e5e4] shrink-0 select-none">
+                        {member.name.split(' ').filter(Boolean).map((n) => n[0]).join('').slice(0, 2)}
+                      </div>
                       <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2">
                           <span className="font-serif font-bold text-base text-[#1c1917]">{member.name}</span>

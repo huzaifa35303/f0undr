@@ -199,17 +199,9 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ team = TEAM_MEMBERS })
                         }}
                       >
                         <div className="w-full h-full rounded-[14px] bg-[#16161a] overflow-hidden flex items-center justify-center relative">
-                          {member.avatarUrl ? (
-                            <img
-                              src={member.avatarUrl}
-                              alt={member.name}
-                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 relative z-10"
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center font-mono font-bold text-base sm:text-lg text-[#f4f1ea]">
-                              {member.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
-                            </div>
-                          )}
+                          <div className="w-full h-full flex items-center justify-center font-mono font-bold text-base sm:text-lg text-[#f4f1ea] select-none">
+                            {member.name.split(' ').filter(Boolean).map((n) => n[0]).join('').slice(0, 2)}
+                          </div>
                         </div>
                       </div>
 
