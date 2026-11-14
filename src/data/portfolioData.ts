@@ -519,6 +519,25 @@ export const TEAM_MEMBERS: TeamMember[] = [
     },
     highlightProject: 'Core Platform Governance & Systems',
   },
+  {
+    id: 'team-kabir',
+    name: 'KABIR ALI',
+    role: 'Manager',
+    handle: '@kabir_mgr',
+    avatarUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
+    bio: 'Manager at f0undr. Overseeing operations, project delivery, cross-functional team execution, and systems workflow alignment.',
+    status: 'Building',
+    isFounder: false,
+    department: 'Core Leadership',
+    skills: ['Operations Management', 'Project Delivery', 'Team Synchronization', 'Systems Execution', 'Venture Governance'],
+    quote: 'Disciplined execution transforms ambitious strategy into sovereign reality.',
+    social: {
+      github: 'https://github.com',
+      twitter: 'https://x.com',
+      email: 'kabir@f0undrteam.site',
+    },
+    highlightProject: 'Systems Operations & Project Governance',
+  },
 ];
 
 export const SKILL_CATEGORIES: SkillCategory[] = [

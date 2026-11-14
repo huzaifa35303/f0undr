@@ -71,7 +71,7 @@ export function App() {
 
   const [team, setTeam] = useState<TeamMember[]>(() => {
     try {
-      const saved = localStorage.getItem('f0undr_team_editorial_v6');
+      const saved = localStorage.getItem('f0undr_team_editorial_v7');
       return saved ? JSON.parse(saved) : INITIAL_TEAM;
     } catch {
       return INITIAL_TEAM;
@@ -205,19 +205,19 @@ export function App() {
   const handleUpdateTeamMember = (updated: TeamMember) => {
     const next = team.map((m) => (m.id === updated.id ? updated : m));
     setTeam(next);
-    localStorage.setItem('f0undr_team_editorial_v6', JSON.stringify(next));
+    localStorage.setItem('f0undr_team_editorial_v7', JSON.stringify(next));
   };
 
   const handleDeleteTeamMember = (id: string) => {
     const next = team.filter((m) => m.id !== id);
     setTeam(next);
-    localStorage.setItem('f0undr_team_editorial_v6', JSON.stringify(next));
+    localStorage.setItem('f0undr_team_editorial_v7', JSON.stringify(next));
   };
 
   const handleAddTeamMember = (member: TeamMember) => {
     const next = [...team, member];
     setTeam(next);
-    localStorage.setItem('f0undr_team_editorial_v6', JSON.stringify(next));
+    localStorage.setItem('f0undr_team_editorial_v7', JSON.stringify(next));
   };
 
   const handleUpdateTool = (updated: CuratedTool) => {

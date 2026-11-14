@@ -1,6 +1,7 @@
 export const PRESET_RANKS: { value: string; label: string; icon: string }[] = [
   { value: 'Founder', label: 'Founder', icon: '👑' },
   { value: 'Co-Founder', label: 'Co-Founder', icon: '⭐' },
+  { value: 'Manager', label: 'Manager', icon: '💼' },
   { value: 'Principal Fellow', label: 'Principal Fellow', icon: '💎' },
   { value: 'Senior Fellow', label: 'Senior Fellow', icon: '🌿' },
   { value: 'Core Fellow', label: 'Core Fellow', icon: '⚡' },
@@ -29,6 +30,15 @@ export const getRankBadgeInfo = (rank?: string, verifiedFounder?: boolean) => {
         pillBg: 'bg-[#c2410c] text-white',
         dot: 'bg-[#c2410c]',
         tier: 'Executive Tier'
+      };
+    case 'Manager':
+      return {
+        label: 'Manager',
+        icon: '💼',
+        bg: 'bg-[#fffbeb] text-[#b45309] border-[#fde68a]',
+        pillBg: 'bg-[#b45309] text-white',
+        dot: 'bg-[#d97706]',
+        tier: 'Management Tier'
       };
     case 'Principal Fellow':
       return {
