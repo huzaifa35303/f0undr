@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowUpRight, Globe, ShoppingBag, CheckCircle2, Sparkles, ExternalLink, ShieldCheck, Smartphone, Brain, Bot, BookOpen, FileText } from 'lucide-react';
+import { ArrowUpRight, Globe, ShoppingBag, CheckCircle2, Sparkles, ExternalLink, ShieldCheck, Smartphone, Brain, Bot, BookOpen, FileText, Download } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../utils/audio';
 
 interface WebPlatform {
@@ -158,6 +158,26 @@ const WEBS: WebPlatform[] = [
     accentColor: '#a855f7',
     icon: Brain,
     ctaText: 'Launch Brain Test Game',
+  },
+  {
+    id: 'dany-downloader',
+    title: 'DANY // Universal Video & Media Downloader',
+    category: 'Universal Media Extraction',
+    tagline: 'Download Anything • Universal Video, Media, APK, EXE & Sticker Downloader',
+    description: 'High-velocity sovereign media extraction platform engineered by f0undr. Paste any link to extract and download high-resolution videos without watermarks (TikTok, Instagram Reels, YouTube MP4/MP3), webpage image bundles, GIFs, Telegram stickers, Discord emojis, Android APKs, and Windows EXEs. Fast, free, and unrestricted.',
+    url: 'https://dany.f0undrteam.site/',
+    metrics: 'Live Production • Unrestricted',
+    specs: [
+      'Universal link extraction across video, social reels, audio, APKs, and EXEs',
+      'Watermark-free high-definition video processing for TikTok, Reels, and YouTube',
+      'Instant batch extraction for webpage graphics, GIFs, Telegram stickers, and emojis',
+      '100% unrestricted sovereign delivery with zero telemetry or data retention'
+    ],
+    techStack: ['Media Extraction', 'TypeScript', 'Node Stream Pipes', 'Tailwind CSS', 'Cloudflare Edge'],
+    gradient: 'from-fuchsia-500/20 via-pink-500/10 to-transparent',
+    accentColor: '#d946ef',
+    icon: Download,
+    ctaText: 'Launch DANY Downloader',
   },
 ];
 

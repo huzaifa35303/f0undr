@@ -35,10 +35,10 @@ const R2 = 'https://pub-86dc5b5484314368ac5436a674b0d919.r2.dev/';
 const WORK_ITEMS = [
   { title: 'Fauji Foundation School // Institutional Portal', src: 'designs/roadster-3d-car-landing.mp4', category: 'INSTITUTIONAL' },
   { title: 'f0undr AI // Autonomous Intelligence Engine', src: 'aaaf/living-portrait-hero.mp4', category: 'OUR AI' },
-  { title: 'Online Quran Learning // Educational Platform', src: 'designs/space-voyage-video.mp4', category: 'QURAN ACADEMY' },
-  { title: 'f-Forms Platform // Precision Form Engine', src: 'designs/ink-reveal-hover.mp4', category: 'FORM BUILDER' },
+  { title: 'DANY // Universal Video & Media Downloader', src: 'designs/space-voyage-video.mp4', category: 'MEDIA SUITE' },
+  { title: 'Online Quran Learning // Educational Platform', src: 'designs/ink-reveal-hover.mp4', category: 'QURAN ACADEMY' },
+  { title: 'f-Forms Platform // Precision Form Engine', src: 'designs/roadster-3d-car-landing.mp4', category: 'FORM BUILDER' },
   { title: 'f0undr Order Atelier // Bespoke Commission Gateway', src: 'designs/helion-dispatch-landing.mp4', category: 'COMMISSION' },
-  { title: 'f0undr Themes APK // Native Android SDK 35', src: 'aaaf/oraciteslArea.mp4', category: 'NATIVE APK' },
 ];
 
 const clamp = (x: number, a = 0, b = 1) => Math.min(b, Math.max(a, x));

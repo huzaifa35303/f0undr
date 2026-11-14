@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ArrowUp, ArrowUpRight, ShieldCheck, Globe, Clock, Sparkles, Bot, BookOpen, FileText } from 'lucide-react';
+import { ArrowUp, ArrowUpRight, ShieldCheck, Globe, Clock, Sparkles, Bot, BookOpen, FileText, Download } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../utils/audio';
 import type { AuthUser } from '../types';
 
@@ -212,6 +212,22 @@ export const Footer = ({ currentUser, onOpenLogin, onOpenAdmin }: FooterProps = 
                   <div className="flex items-center gap-2">
                     <FileText className="w-3.5 h-3.5 text-indigo-400" />
                     <span className="text-[#f4f1ea] font-medium">f-Forms Platform</span>
+                  </div>
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#8d8b86]" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://dany.f0undrteam.site/"
+                  target="_blank"
+                  rel="noreferrer"
+                  onMouseEnter={playHoverSound}
+                  onClick={playClickSound}
+                  className="p-2 rounded-xl bg-[#111114] border border-fuchsia-500/20 hover:border-fuchsia-400/50 hover:text-fuchsia-300 transition-all flex items-center justify-between group"
+                >
+                  <div className="flex items-center gap-2">
+                    <Download className="w-3.5 h-3.5 text-fuchsia-400" />
+                    <span className="text-[#f4f1ea] font-medium">DANY // Download Anything</span>
                   </div>
                   <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#8d8b86]" />
                 </a>

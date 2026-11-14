@@ -2,6 +2,7 @@ export const PRESET_RANKS: { value: string; label: string; icon: string }[] = [
   { value: 'Founder', label: 'Founder', icon: '👑' },
   { value: 'Co-Founder', label: 'Co-Founder', icon: '⭐' },
   { value: 'Manager', label: 'Manager', icon: '💼' },
+  { value: 'Junior Manager', label: 'Junior Manager', icon: '📊' },
   { value: 'Principal Fellow', label: 'Principal Fellow', icon: '💎' },
   { value: 'Senior Fellow', label: 'Senior Fellow', icon: '🌿' },
   { value: 'Core Fellow', label: 'Core Fellow', icon: '⚡' },
@@ -39,6 +40,15 @@ export const getRankBadgeInfo = (rank?: string, verifiedFounder?: boolean) => {
         pillBg: 'bg-[#b45309] text-white',
         dot: 'bg-[#d97706]',
         tier: 'Management Tier'
+      };
+    case 'Junior Manager':
+      return {
+        label: 'Junior Manager',
+        icon: '📊',
+        bg: 'bg-[#fefce8] text-[#a16207] border-[#fef08a]',
+        pillBg: 'bg-[#a16207] text-white',
+        dot: 'bg-[#ca8a04]',
+        tier: 'Operations Tier'
       };
     case 'Principal Fellow':
       return {

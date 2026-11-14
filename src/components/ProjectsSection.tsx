@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { PROJECTS } from '../data/portfolioData';
 import type { Project } from '../types';
-import { Search, ShieldCheck, Bot, FileText, Smartphone, Calculator, BookOpen, Brain, Boxes, Layers, ArrowUpRight, Monitor, Film } from 'lucide-react';
+import { Search, ShieldCheck, Bot, FileText, Smartphone, Calculator, BookOpen, Brain, Boxes, Layers, ArrowUpRight, Monitor, Film, Download } from 'lucide-react';
 import { playClickSound, playHoverSound, playModalOpenSound } from '../utils/audio';
 
 const GithubIcon = ({ className = 'w-3.5 h-3.5' }: { className?: string }) => (
@@ -67,6 +67,8 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
         return <Monitor className="w-5 h-5 text-indigo-300" />;
       case 'Film':
         return <Film className="w-5 h-5 text-amber-300" />;
+      case 'Download':
+        return <Download className="w-5 h-5 text-fuchsia-300" />;
       case 'Youtube':
         return <YoutubeIcon className="w-5 h-5 text-red-400" />;
       default:

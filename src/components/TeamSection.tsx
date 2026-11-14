@@ -92,6 +92,20 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ team = TEAM_MEMBERS })
       };
     }
 
+    if (member.name.toLowerCase().includes('ahmed')) {
+      return {
+        badge: 'JUNIOR MANAGER',
+        badgeColor: 'from-amber-400/20 to-yellow-600/20 text-yellow-300 border-yellow-500/30',
+        ringGradient: 'from-yellow-400 via-amber-500 to-orange-500',
+        glowColor: 'rgba(234, 179, 8, 0.2)',
+        accentColor: '#eab308',
+        codeBadge: 'JR-MGR // 05',
+        clearance: 'LEVEL 2 // OPERATIONS & MANAGEMENT',
+        icon: Terminal,
+        nodeId: 'NODE // 06',
+      };
+    }
+
     return {
       badge: 'CORE FELLOW',
       badgeColor: 'from-slate-500/20 to-zinc-600/20 text-slate-300 border-slate-500/30',
@@ -128,13 +142,13 @@ export const TeamSection: React.FC<TeamSectionProps> = ({ team = TEAM_MEMBERS })
           <div className="flex items-center gap-3">
             <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#111114] border border-[rgba(244,241,234,0.12)] text-xs font-mono text-[#8d8b86]">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Status: <strong className="text-[#f4f1ea]">05 Pillars Active</strong></span>
+              <span>Status: <strong className="text-[#f4f1ea]">06 Pillars Active</strong></span>
             </span>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
-          {team.slice(0, 5).map((member, index) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {team.slice(0, 6).map((member, index) => {
             const config = getMemberConfig(member, index);
             const isHovered = hoveredCard === member.id;
             const IconComp = config.icon;

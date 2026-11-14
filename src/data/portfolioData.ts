@@ -232,6 +232,29 @@ export const PROJECTS: Project[] = [
     ],
     techStack: ['TypeScript', 'Canvas Physics', 'Web Audio API', 'React 19', 'Tailwind CSS'],
   },
+  {
+    id: 'dany-downloader',
+    title: 'DANY // Universal Video & Media Downloader',
+    tagline: 'Download Anything • Universal Video, Media, APK, EXE & Sticker Extraction Engine',
+    description: 'High-velocity sovereign media extraction platform engineered by f0undr. Paste any link to extract and download high-resolution videos without watermarks (TikTok, Instagram Reels, YouTube MP4/MP3), webpage image bundles, GIFs, Telegram stickers, Discord emojis, Android APKs, and Windows EXEs. Fast, free, and unrestricted.',
+    fullOverview: 'The official universal media extraction and file download platform of the f0undr ecosystem. Delivers instantaneous parsing, zero-telemetry media streaming, multi-platform asset extraction, and direct high-speed client downloads with no throttling.',
+    category: 'others',
+    tags: ['Universal Downloader', 'Media Extraction', 'APK & EXE', 'Watermark-Free', 'Live Production'],
+    metrics: 'Live • Universal Media Suite',
+    liveUrl: 'https://dany.f0undrteam.site/',
+    featured: true,
+    status: 'Production Ready',
+    gradient: 'from-fuchsia-500/20 via-pink-500/10 to-transparent',
+    accentColor: '#d946ef',
+    iconName: 'Download',
+    highlights: [
+      'Universal link extraction across video, social reels, audio, APKs, and EXEs',
+      'Watermark-free high-definition video processing for TikTok, Reels, and YouTube',
+      'Instant batch scraping for webpage graphics, GIFs, Telegram stickers, and emojis',
+      '100% unrestricted sovereign delivery with zero telemetry or data retention',
+    ],
+    techStack: ['Media Extraction', 'TypeScript', 'Node Stream Pipes', 'Tailwind CSS', 'Cloudflare Edge'],
+  },
 ];
 
 export const TEAM_MEMBERS: TeamMember[] = [
@@ -333,6 +356,25 @@ export const TEAM_MEMBERS: TeamMember[] = [
       email: 'kabir@f0undrteam.site',
     },
     highlightProject: 'Systems Operations & Project Governance',
+  },
+  {
+    id: 'team-ahmed',
+    name: 'Ahmed Ali',
+    role: 'Junior Manager',
+    handle: '@ahmed_jrmgr',
+    avatarUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
+    bio: 'Junior Manager at f0undr. Supporting executive operations, workflow synchronization, project tracking, and cross-functional task delivery.',
+    status: 'Building',
+    isFounder: false,
+    department: 'Core Leadership',
+    skills: ['Operations Support', 'Workflow Tracking', 'Task Delivery', 'Team Coordination', 'Project Synchronization'],
+    quote: 'Attention to detail in daily operations powers compounding organizational velocity.',
+    social: {
+      github: 'https://github.com',
+      twitter: 'https://x.com',
+      email: 'ahmed@f0undrteam.site',
+    },
+    highlightProject: 'Operational Coordination & Task Delivery',
   },
 ];
 
