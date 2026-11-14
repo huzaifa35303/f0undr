@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ArrowUp, ArrowUpRight, ShieldCheck, Globe, Clock, Sparkles } from 'lucide-react';
+import { ArrowUp, ArrowUpRight, ShieldCheck, Globe, Clock, Sparkles, Bot, BookOpen, FileText } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../utils/audio';
 import type { AuthUser } from '../types';
 
@@ -151,7 +151,23 @@ export const Footer = ({ currentUser, onOpenLogin, onOpenAdmin }: FooterProps = 
             <div className="text-xs font-mono uppercase tracking-wider text-[#f4f1ea] font-bold">
               Sovereign Gateways &bull; Executive Links
             </div>
-            <ul className="space-y-2.5 text-xs text-[#8d8b86] font-light">
+            <ul className="space-y-2 text-xs text-[#8d8b86] font-light">
+              <li>
+                <a
+                  href="https://ai.f0undrteam.site/"
+                  target="_blank"
+                  rel="noreferrer"
+                  onMouseEnter={playHoverSound}
+                  onClick={playClickSound}
+                  className="p-2 rounded-xl bg-[#111114] border border-cyan-500/20 hover:border-cyan-400/50 hover:text-cyan-300 transition-all flex items-center justify-between group"
+                >
+                  <div className="flex items-center gap-2">
+                    <Bot className="w-3.5 h-3.5 text-cyan-400" />
+                    <span className="text-[#f4f1ea] font-medium">f0undr AI // Our AI</span>
+                  </div>
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#8d8b86]" />
+                </a>
+              </li>
               <li>
                 <a
                   href="https://ffs.f0undrteam.site/"
@@ -159,11 +175,43 @@ export const Footer = ({ currentUser, onOpenLogin, onOpenAdmin }: FooterProps = 
                   rel="noreferrer"
                   onMouseEnter={playHoverSound}
                   onClick={playClickSound}
-                  className="p-2.5 rounded-xl bg-[#111114] border border-[rgba(244,241,234,0.1)] hover:border-emerald-400/40 hover:text-emerald-300 transition-all flex items-center justify-between group"
+                  className="p-2 rounded-xl bg-[#111114] border border-[rgba(244,241,234,0.1)] hover:border-emerald-400/40 hover:text-emerald-300 transition-all flex items-center justify-between group"
                 >
                   <div className="flex items-center gap-2">
                     <Globe className="w-3.5 h-3.5 text-emerald-400" />
                     <span className="text-[#f4f1ea] font-medium">FFS Institutional Portal</span>
+                  </div>
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#8d8b86]" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://online-quran-learning.f0undrteam.site/"
+                  target="_blank"
+                  rel="noreferrer"
+                  onMouseEnter={playHoverSound}
+                  onClick={playClickSound}
+                  className="p-2 rounded-xl bg-[#111114] border border-[rgba(244,241,234,0.1)] hover:border-teal-400/40 hover:text-teal-300 transition-all flex items-center justify-between group"
+                >
+                  <div className="flex items-center gap-2">
+                    <BookOpen className="w-3.5 h-3.5 text-teal-400" />
+                    <span className="text-[#f4f1ea] font-medium">Online Quran Learning</span>
+                  </div>
+                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#8d8b86]" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://f-forms.f0undrteam.site/"
+                  target="_blank"
+                  rel="noreferrer"
+                  onMouseEnter={playHoverSound}
+                  onClick={playClickSound}
+                  className="p-2 rounded-xl bg-[#111114] border border-[rgba(244,241,234,0.1)] hover:border-indigo-400/40 hover:text-indigo-300 transition-all flex items-center justify-between group"
+                >
+                  <div className="flex items-center gap-2">
+                    <FileText className="w-3.5 h-3.5 text-indigo-400" />
+                    <span className="text-[#f4f1ea] font-medium">f-Forms Platform</span>
                   </div>
                   <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#8d8b86]" />
                 </a>
@@ -175,10 +223,10 @@ export const Footer = ({ currentUser, onOpenLogin, onOpenAdmin }: FooterProps = 
                   rel="noreferrer"
                   onMouseEnter={playHoverSound}
                   onClick={playClickSound}
-                  className="p-2.5 rounded-xl bg-[#111114] border border-[rgba(244,241,234,0.1)] hover:border-cyan-400/40 hover:text-cyan-300 transition-all flex items-center justify-between group"
+                  className="p-2 rounded-xl bg-[#111114] border border-[rgba(244,241,234,0.1)] hover:border-amber-400/40 hover:text-amber-300 transition-all flex items-center justify-between group"
                 >
                   <div className="flex items-center gap-2">
-                    <Globe className="w-3.5 h-3.5 text-cyan-400" />
+                    <Globe className="w-3.5 h-3.5 text-amber-400" />
                     <span className="text-[#f4f1ea] font-medium">f0undr Order Studio</span>
                   </div>
                   <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#8d8b86]" />
@@ -191,27 +239,11 @@ export const Footer = ({ currentUser, onOpenLogin, onOpenAdmin }: FooterProps = 
                   rel="noreferrer"
                   onMouseEnter={playHoverSound}
                   onClick={playClickSound}
-                  className="p-2.5 rounded-xl bg-[#111114] border border-[rgba(244,241,234,0.1)] hover:border-cyan-400/40 hover:text-cyan-300 transition-all flex items-center justify-between group"
+                  className="p-2 rounded-xl bg-[#111114] border border-[rgba(244,241,234,0.1)] hover:border-cyan-400/40 hover:text-cyan-300 transition-all flex items-center justify-between group"
                 >
                   <div className="flex items-center gap-2">
                     <Globe className="w-3.5 h-3.5 text-cyan-400" />
                     <span className="text-[#f4f1ea] font-medium">f0undr Web Portfolio (3D)</span>
-                  </div>
-                  <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#8d8b86]" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://f0undrteam.site/#blog"
-                  target="_blank"
-                  rel="noreferrer"
-                  onMouseEnter={playHoverSound}
-                  onClick={playClickSound}
-                  className="p-2.5 rounded-xl bg-[#111114] border border-[rgba(244,241,234,0.1)] hover:border-cyan-400/40 hover:text-cyan-300 transition-all flex items-center justify-between group"
-                >
-                  <div className="flex items-center gap-2">
-                    <Globe className="w-3.5 h-3.5 text-emerald-400" />
-                    <span className="text-[#f4f1ea] font-medium">Technical Engineering Blog</span>
                   </div>
                   <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-[#8d8b86]" />
                 </a>
@@ -223,7 +255,7 @@ export const Footer = ({ currentUser, onOpenLogin, onOpenAdmin }: FooterProps = 
                   rel="noreferrer"
                   onMouseEnter={playHoverSound}
                   onClick={playClickSound}
-                  className="p-2.5 rounded-xl bg-[#111114] border border-emerald-500/20 hover:border-emerald-400/40 hover:text-emerald-300 transition-all flex items-center justify-between group"
+                  className="p-2 rounded-xl bg-[#111114] border border-emerald-500/20 hover:border-emerald-400/40 hover:text-emerald-300 transition-all flex items-center justify-between group"
                 >
                   <div className="flex items-center gap-2">
                     <Clock className="w-3.5 h-3.5 text-emerald-400" />

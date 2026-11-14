@@ -27,6 +27,7 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
   const categories = [
     { id: 'all', label: 'All Work' },
     { id: 'others', label: 'Web Portals & Platforms' },
+    { id: 'ai', label: 'Autonomous AI' },
     { id: 'mobile', label: 'Native Android APK' },
     { id: 'systems', label: 'Games & Systems' },
   ];
@@ -34,7 +35,9 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
   const filteredProjects = useMemo(() => {
     return PROJECTS.filter((project) => {
       const matchesCategory =
-        activeCategory === 'all' || project.category === activeCategory;
+        activeCategory === 'all' ||
+        project.category === activeCategory ||
+        (activeCategory === 'others' && project.category === 'ai');
       const matchesSearch =
         project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         project.tagline.toLowerCase().includes(searchQuery.toLowerCase()) ||

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowUpRight, Globe, ShoppingBag, CheckCircle2, Sparkles, ExternalLink, ShieldCheck, Smartphone, Brain } from 'lucide-react';
+import { ArrowUpRight, Globe, ShoppingBag, CheckCircle2, Sparkles, ExternalLink, ShieldCheck, Smartphone, Brain, Bot, BookOpen, FileText } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../utils/audio';
 
 interface WebPlatform {
@@ -38,6 +38,66 @@ const WEBS: WebPlatform[] = [
     accentColor: '#10b981',
     icon: Globe,
     ctaText: 'Launch FFS Portal',
+  },
+  {
+    id: 'f0-ai',
+    title: 'f0undr AI // Autonomous Intelligence Engine',
+    category: 'Autonomous AI Platform',
+    tagline: 'Official autonomous AI search engine, neural intelligence & multi-script NLP',
+    description: 'Proprietary autonomous conversational AI assistant and search engine engineered by f0undr. Delivers real-time web intelligence, multi-script understanding, neural document parsing, and compounding taught memory.',
+    url: 'https://ai.f0undrteam.site/',
+    metrics: 'Live • Sovereign AI Engine',
+    specs: [
+      'Official proprietary AI intelligence platform of f0undr',
+      'Autonomous live web fact extraction and compounding memory brain',
+      'Multi-script NLP support across English, Urdu, and regional languages',
+      'High-throughput real-time streaming inference architecture'
+    ],
+    techStack: ['Autonomous AI', 'TypeScript', 'Vector Retrieval', 'Multi-Script NLP', 'Cloudflare Edge'],
+    gradient: 'from-cyan-500/20 via-blue-500/10 to-transparent',
+    accentColor: '#06b6d4',
+    icon: Bot,
+    ctaText: 'Launch f0undr AI',
+  },
+  {
+    id: 'online-quran',
+    title: 'Online Quran Learning Platform',
+    category: 'Sovereign EdTech Portal',
+    tagline: 'Global digital Quranic education, Tajweed mastery & interactive recitation portal',
+    description: 'Global digital Quran academy and educational web portal architected and engineered by f0undr. Features interactive Tajweed curricula, certified tutors, one-on-one virtual classrooms, and flexible global learning schedules.',
+    url: 'https://online-quran-learning.f0undrteam.site/',
+    metrics: 'Live • Global Academic Portal',
+    specs: [
+      'Global digital Quran academy portal engineered by f0undr',
+      'One-on-one virtual classroom scheduling across international time zones',
+      'Interactive Tajweed pronunciation and recitation curriculum guides',
+      '100% responsive, high-speed low-latency educational interface'
+    ],
+    techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Interactive Recitation', 'Cloudflare Edge'],
+    gradient: 'from-teal-500/20 via-emerald-500/10 to-transparent',
+    accentColor: '#14b8a6',
+    icon: BookOpen,
+    ctaText: 'Launch Quran Academy',
+  },
+  {
+    id: 'f-forms',
+    title: 'f-Forms Platform // Precision Form Builder',
+    category: 'Dynamic Document Architecture',
+    tagline: '1:1 precision dynamic form engine, sovereign data capture & schema validation',
+    description: 'High-precision form and document architecture platform built by f0undr. Delivers zero-latency client-side validation, drag-and-drop schema generation, encrypted data capture, and instant webhook integrations.',
+    url: 'https://f-forms.f0undrteam.site/',
+    metrics: 'Live • Precision Form Engine',
+    specs: [
+      'Sovereign interactive dynamic form builder and document capture engine',
+      'Drag-and-drop schema creation with instantaneous client-side validation',
+      'Zero third-party tracking, end-to-end encrypted submission payloads',
+      'Direct webhook integrations and automated export workflows'
+    ],
+    techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Dynamic Schemas', 'Webhook API'],
+    gradient: 'from-indigo-500/20 via-purple-500/10 to-transparent',
+    accentColor: '#6366f1',
+    icon: FileText,
+    ctaText: 'Launch f-Forms Studio',
   },
   {
     id: 'f0-order',
@@ -120,7 +180,7 @@ export const OthersSection = () => {
             Official Platforms &amp; <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-[#f4f1ea] to-emerald-300">Production Webs</span>
           </h2>
           <p className="text-[#8d8b86] text-sm sm:text-base max-w-2xl mt-4 font-light leading-relaxed">
-            Direct access to f0undr's verified digital platforms: the official Fauji Foundation School institutional portal, our bespoke executive order studio, native Android APKs, and cognitive logic games.
+            Direct access to f0undr's verified digital platforms: our autonomous AI engine, the official Fauji Foundation School institutional portal, online Quran learning academy, precision f-Forms builder, bespoke executive order studio, native Android APKs, and cognitive logic games.
           </p>
         </div>
 
