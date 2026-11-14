@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { ArrowUpRight, ChevronDown } from 'lucide-react';
 
@@ -33,14 +33,10 @@ interface CardItem {
 const R2 = 'https://pub-86dc5b5484314368ac5436a674b0d919.r2.dev/';
 
 const WORK_ITEMS = [
-  { title: 'f0-Share Vault // Sovereign AES-256 Cloud Engine', src: 'designs/roadster-3d-car-landing.mp4', category: 'AES-256 VAULT' },
-  { title: 'f0undr AI (genni 1) // Multilingual Neural Agent', src: 'aaaf/living-portrait-hero.mp4', category: 'AI AGENTS' },
+  { title: 'Fauji Foundation School // Institutional Portal', src: 'designs/roadster-3d-car-landing.mp4', category: 'INSTITUTIONAL' },
+  { title: 'f0undr Order Atelier // Bespoke Commission Gateway', src: 'designs/helion-dispatch-landing.mp4', category: 'COMMISSION' },
   { title: 'f0undr Themes APK // Native Android SDK 35', src: 'aaaf/oraciteslArea.mp4', category: 'NATIVE APK' },
-  { title: 'f0-OTP Suite // Hardware-Grade Tactile Gateway', src: 'aaaf/medusa-jellyfish-hero.mp4', category: 'TACTILE UI' },
-  { title: 'f0-Calculator // Precision Engineering Suite', src: 'designs/ink-reveal-hover.mp4', category: 'PRECISION MATH' },
-  { title: 'f-Forms Platform // 1:1 Precision Form Builder', src: 'designs/space-voyage-video.mp4', category: 'WEB PLATFORM' },
-  { title: 'f0undr Atelier // Executive Direct Commission', src: 'designs/helion-dispatch-landing.mp4', category: 'COMMISSION' },
-  { title: 'f0undr Studio Hub // Corporate Systems Architecture', src: 'designs/honey-bee-melli-landing.mp4', category: 'STUDIO' },
+  { title: 'f0undr Game: 1st — Brain Test // Cognitive Architecture', src: 'aaaf/living-portrait-hero.mp4', category: 'COGNITIVE GAME' },
 ];
 
 const clamp = (x: number, a = 0, b = 1) => Math.min(b, Math.max(a, x));
@@ -100,8 +96,6 @@ export function VanteRibbonHero({ onExploreProjects, onMeetTeam }: VanteRibbonHe
   const crossRef = useRef<HTMLDivElement>(null);
   const ruleRef = useRef<HTMLDivElement>(null);
   const hintRef = useRef<HTMLDivElement>(null);
-  const nameRef = useRef<HTMLDivElement>(null);
-  const [activeCardTitle, setActiveCardTitle] = useState<string>('');
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -375,34 +369,6 @@ export function VanteRibbonHero({ onExploreProjects, onMeetTeam }: VanteRibbonHe
       renderer.render(scene, camera);
     };
 
-    const handlePointerMove = (e: PointerEvent) => {
-      let hit: CardItem | null = null;
-      if (p > 0.86) {
-        const nx = e.clientX / W - 0.5;
-        const ny = 0.5 - e.clientY / H;
-        for (const c of cards) {
-          const g = c.rect;
-          if (!g) continue;
-          const x = nx * g.vw;
-          const y = ny * g.vh;
-          if (Math.abs(x - g.x) < g.w / 2 && Math.abs(y - g.y) < g.h / 2) {
-            hit = c;
-            break;
-          }
-        }
-      }
-
-      if (nameRef.current) {
-        nameRef.current.style.opacity = hit ? '1' : '0';
-        if (hit) {
-          setActiveCardTitle(hit.title);
-          nameRef.current.style.transform = `translate(${e.clientX + 14}px, ${e.clientY + 16}px)`;
-        }
-      }
-    };
-
-    stage.addEventListener('pointermove', handlePointerMove);
-
     let animationFrameId = 0;
     const loop = () => {
       p += (target - p) * 0.09;
@@ -426,7 +392,6 @@ export function VanteRibbonHero({ onExploreProjects, onMeetTeam }: VanteRibbonHe
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', resize);
       window.removeEventListener('scroll', readScroll);
-      stage.removeEventListener('pointermove', handlePointerMove);
 
       for (const c of cards) {
         c.v.pause();
@@ -577,14 +542,6 @@ export function VanteRibbonHero({ onExploreProjects, onMeetTeam }: VanteRibbonHe
             </button>
           </div>
         </footer>
-
-        <div
-          id="name"
-          ref={nameRef}
-          className="fixed left-0 top-0 px-3 py-1.5 bg-[#f4f1ea] text-[#0a0a0b] rounded-full text-[11.5px] font-semibold tracking-[0.04em] pointer-events-none opacity-0 transition-opacity duration-150 whitespace-nowrap z-50 shadow-2xl"
-        >
-          {activeCardTitle}
-        </div>
       </main>
     </div>
   );
