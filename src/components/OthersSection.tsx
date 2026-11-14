@@ -86,15 +86,18 @@ export const OthersSection = () => {
   const active = WEBS.find((w) => w.id === activeId) || WEBS[0];
 
   return (
-    <section id="others" className="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-[rgba(244,241,234,0.1)] bg-[#0a0a0b]">
-      <div className="max-w-7xl mx-auto">
+    <section id="others" className="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-[rgba(244,241,234,0.1)] bg-[#0a0a0b] overflow-hidden">
+      <div className="absolute top-1/2 -left-20 w-[500px] h-[500px] rounded-full bg-cyan-500/5 blur-[160px] pointer-events-none" />
+      <div className="absolute bottom-10 -right-20 w-[500px] h-[500px] rounded-full bg-emerald-500/5 blur-[160px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-14 sm:mb-20">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 text-xs font-mono uppercase tracking-wider mb-4">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>f0undr Core Platforms</span>
+            <span>Sovereign Portals // Others</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-normal text-[#f4f1ea] tracking-[-0.035em]">
-            Others & Sovereign Portals
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-normal text-[#f4f1ea] tracking-[-0.035em]">
+            Others &amp; <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-[#f4f1ea] to-emerald-300">Sovereign Portals</span>
           </h2>
           <p className="text-[#8d8b86] text-sm sm:text-base max-w-2xl mt-4 font-light leading-relaxed">
             Direct access to f0undr's core web ecosystems: our official corporate web portfolio, our authoritative technical engineering blog, and our bespoke client commission atelier.
@@ -102,7 +105,7 @@ export const OthersSection = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          <div className="lg:col-span-5 flex flex-col gap-3">
+          <div className="lg:col-span-5 flex flex-col gap-3.5">
             {WEBS.map((web) => {
               const isSelected = web.id === activeId;
               const IconComponent = web.icon;
@@ -114,13 +117,17 @@ export const OthersSection = () => {
                     setActiveId(web.id);
                   }}
                   onMouseEnter={playHoverSound}
-                  className={`w-full text-left p-5 rounded-2xl border transition-all duration-300 flex items-center justify-between gap-4 cursor-pointer group ${
+                  className={`w-full text-left p-5 rounded-2xl border transition-all duration-300 flex items-center justify-between gap-4 cursor-pointer group relative overflow-hidden ${
                     isSelected
-                      ? 'bg-[#16161a] border-cyan-400/50 shadow-lg shadow-cyan-950/30 -translate-y-0.5'
+                      ? 'bg-[#16161a] border-cyan-400/50 shadow-xl shadow-cyan-950/30 -translate-y-0.5'
                       : 'bg-[#111114] border-[rgba(244,241,234,0.1)] hover:border-[rgba(244,241,234,0.25)] hover:bg-[#141418]'
                   }`}
                 >
-                  <div className="min-w-0 flex-1">
+                  {isSelected && (
+                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-400 to-emerald-400" />
+                  )}
+
+                  <div className="min-w-0 flex-1 pl-1">
                     <div className="flex items-center gap-2 mb-1.5">
                       <div
                         className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
@@ -154,7 +161,7 @@ export const OthersSection = () => {
               );
             })}
 
-            <div className="mt-4 p-5 rounded-2xl bg-[#111114] border border-[rgba(244,241,234,0.08)]">
+            <div className="mt-2 p-5 rounded-2xl bg-[#111114] border border-[rgba(244,241,234,0.08)]">
               <div className="flex items-center gap-2 text-xs font-mono text-cyan-400 font-semibold mb-2">
                 <ShieldCheck className="w-4 h-4" />
                 <span>Verified Sovereign Ecosystem</span>
@@ -167,6 +174,11 @@ export const OthersSection = () => {
 
           <div className="lg:col-span-7">
             <div className="rounded-3xl p-6 sm:p-10 bg-[#111114] border border-[rgba(244,241,234,0.14)] shadow-2xl relative overflow-hidden h-full flex flex-col justify-between">
+              <span className="absolute top-3 left-3 text-[10px] font-mono text-[rgba(244,241,234,0.2)] select-none">┌</span>
+              <span className="absolute top-3 right-3 text-[10px] font-mono text-[rgba(244,241,234,0.2)] select-none">┐</span>
+              <span className="absolute bottom-3 left-3 text-[10px] font-mono text-[rgba(244,241,234,0.2)] select-none">└</span>
+              <span className="absolute bottom-3 right-3 text-[10px] font-mono text-[rgba(244,241,234,0.2)] select-none">┘</span>
+
               <div className="space-y-6">
                 <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[rgba(244,241,234,0.08)]">
                   <div>
@@ -199,7 +211,7 @@ export const OthersSection = () => {
                 <div>
                   <h4 className="text-xs font-mono uppercase tracking-wider text-[#f4f1ea] mb-3 flex items-center gap-2 font-bold">
                     <Sparkles className="w-4 h-4 text-cyan-400" />
-                    Architecture & Systems Specifications
+                    Architecture &amp; Systems Specifications
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {active.specs.map((spec, idx) => (

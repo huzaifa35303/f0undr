@@ -14,16 +14,16 @@ export const StartupIdeaValidator = () => {
   );
 
   let statusLabel = 'Tier 1 • High Potential';
-  let statusColor = 'text-[#166534] bg-[#f0fdf4] border-[#dcfce7]';
+  let statusColor = 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30';
   let recommendation = 'Exceptional venture metrics. Rapidly build a functional MVP, validate with 5 design partners, and launch in public.';
 
   if (totalScore < 50) {
     statusLabel = 'High Friction • Needs Refinement';
-    statusColor = 'text-rose-800 bg-[#fdf2f2] border-rose-300';
+    statusColor = 'text-rose-400 bg-rose-500/10 border-rose-500/30';
     recommendation = 'The current value proposition lacks either urgency or clear distribution channels. Conduct 10 problem interviews before writing code.';
   } else if (totalScore < 75) {
     statusLabel = 'Promising • Requires Moat';
-    statusColor = 'text-[#c2410c] bg-[#fff7ed] border-[#ffedd5]';
+    statusColor = 'text-amber-400 bg-amber-500/10 border-amber-500/30';
     recommendation = 'Solid opportunity, but watch out for commoditization. Identify your unfair technical distribution lever or proprietary data loop.';
   }
 
@@ -43,152 +43,154 @@ Generated via f0undr Studio`;
   };
 
   return (
-    <div className="flex flex-col relative">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#e7e5e4]">
+    <div className="flex flex-col relative text-[#f4f1ea]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[rgba(244,241,234,0.08)]">
         <div>
           <div className="flex items-center gap-2">
-            <Lightbulb className="w-5 h-5 text-amber-600" />
-            <h3 className="font-serif text-lg font-bold text-[#1c1917]">Startup Idea Viability Matrix</h3>
+            <Lightbulb className="w-5 h-5 text-amber-400" />
+            <h3 className="text-xl font-normal text-[#f4f1ea] tracking-[-0.02em]">Startup Idea Viability Matrix</h3>
           </div>
-          <p className="text-xs text-[#57534e] mt-1 font-normal">
-            Quantify founder intuition across five core dimensional vectors.
+          <p className="text-xs text-[#8d8b86] mt-1 font-light">
+            Quantify venture viability across five core dimensional vectors.
           </p>
         </div>
 
         <button
           onClick={copyBrief}
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg btn-editorial-outline self-start sm:self-auto transition-colors shadow-2xs"
+          className="flex items-center gap-1.5 px-4 py-2 text-xs font-semibold rounded-full bg-[#0a0a0b] border border-[rgba(244,241,234,0.12)] text-[#f4f1ea] hover:border-cyan-400/50 transition-all cursor-pointer shadow-md self-start sm:self-auto"
         >
-          <Share2 className="w-3.5 h-3.5" /> Copy Brief
+          <Share2 className="w-3.5 h-3.5 text-cyan-400" />
+          <span>Copy Brief</span>
         </button>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-6">
         <div className="lg:col-span-2 space-y-5">
           <div>
-            <label className="text-xs font-medium text-[#1c1917] block mb-1.5">Venture / Product Hypothesis</label>
+            <label className="text-xs font-mono uppercase tracking-wider text-[#8d8b86] block mb-2 font-semibold">
+              Venture / Product Hypothesis
+            </label>
             <input
               type="text"
               value={ideaName}
               onChange={(e) => setIdeaName(e.target.value)}
-              className="w-full px-3.5 py-2.5 bg-white border border-[#e7e5e4] rounded-xl text-sm text-[#1c1917] focus:outline-none focus:border-[#1c1917] shadow-2xs"
+              className="w-full px-4 py-3 bg-[#0a0a0b] border border-[rgba(244,241,234,0.14)] rounded-2xl text-xs sm:text-sm text-[#f4f1ea] placeholder-[#8d8b86] focus:outline-none focus:border-cyan-400 transition-colors shadow-inner font-mono"
             />
           </div>
 
-          <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-[#1c1917] font-medium">1. Hair-on-Fire Problem Urgency</span>
-              <span className="font-mono text-[#2b5346] font-bold">{urgency}/10</span>
+          <div className="space-y-4">
+            <div>
+              <div className="flex items-center justify-between text-xs font-mono mb-1.5">
+                <span className="text-[#f4f1ea]">Problem Urgency (Hair-on-Fire Need)</span>
+                <span className="text-cyan-400 font-bold">{urgency} / 10</span>
+              </div>
+              <input
+                type="range"
+                min="1"
+                max="10"
+                value={urgency}
+                onChange={(e) => setUrgency(parseInt(e.target.value))}
+                className="w-full accent-cyan-400 cursor-pointer"
+              />
             </div>
-            <input
-              type="range"
-              min="1"
-              max="10"
-              value={urgency}
-              onChange={(e) => setUrgency(Number(e.target.value))}
-              className="w-full accent-[#1c1917] cursor-pointer"
-            />
-            <p className="text-[11px] text-[#78716c] mt-0.5">Is the pain acute right now, or is it a "nice to have vitamin"?</p>
-          </div>
 
-          <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-[#1c1917] font-medium">2. Willingness to Pay &amp; Economics</span>
-              <span className="font-mono text-[#2b5346] font-bold">{marketWillingness}/10</span>
+            <div>
+              <div className="flex items-center justify-between text-xs font-mono mb-1.5">
+                <span className="text-[#f4f1ea]">Willingness to Pay (Commercial Intent)</span>
+                <span className="text-cyan-400 font-bold">{marketWillingness} / 10</span>
+              </div>
+              <input
+                type="range"
+                min="1"
+                max="10"
+                value={marketWillingness}
+                onChange={(e) => setMarketWillingness(parseInt(e.target.value))}
+                className="w-full accent-cyan-400 cursor-pointer"
+              />
             </div>
-            <input
-              type="range"
-              min="1"
-              max="10"
-              value={marketWillingness}
-              onChange={(e) => setMarketWillingness(Number(e.target.value))}
-              className="w-full accent-[#1c1917] cursor-pointer"
-            />
-            <p className="text-[11px] text-[#78716c] mt-0.5">Do buyers have existing budgets, or is monetization hypothetical?</p>
-          </div>
 
-          <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-[#1c1917] font-medium">3. Founder Unfair Advantage</span>
-              <span className="font-mono text-[#2b5346] font-bold">{unfairAdvantage}/10</span>
+            <div>
+              <div className="flex items-center justify-between text-xs font-mono mb-1.5">
+                <span className="text-[#f4f1ea]">Unfair Advantage (Proprietary Tech / Speed)</span>
+                <span className="text-cyan-400 font-bold">{unfairAdvantage} / 10</span>
+              </div>
+              <input
+                type="range"
+                min="1"
+                max="10"
+                value={unfairAdvantage}
+                onChange={(e) => setUnfairAdvantage(parseInt(e.target.value))}
+                className="w-full accent-cyan-400 cursor-pointer"
+              />
             </div>
-            <input
-              type="range"
-              min="1"
-              max="10"
-              value={unfairAdvantage}
-              onChange={(e) => setUnfairAdvantage(Number(e.target.value))}
-              className="w-full accent-[#1c1917] cursor-pointer"
-            />
-            <p className="text-[11px] text-[#78716c] mt-0.5">Do you possess proprietary insight, distribution, or unique domain depth?</p>
-          </div>
 
-          <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-[#1c1917] font-medium">4. Distribution &amp; Acquisition Velocity</span>
-              <span className="font-mono text-[#2b5346] font-bold">{distributionFeasibility}/10</span>
+            <div>
+              <div className="flex items-center justify-between text-xs font-mono mb-1.5">
+                <span className="text-[#f4f1ea]">Distribution Flywheel (Low CAC Scaling)</span>
+                <span className="text-cyan-400 font-bold">{distributionFeasibility} / 10</span>
+              </div>
+              <input
+                type="range"
+                min="1"
+                max="10"
+                value={distributionFeasibility}
+                onChange={(e) => setDistributionFeasibility(parseInt(e.target.value))}
+                className="w-full accent-cyan-400 cursor-pointer"
+              />
             </div>
-            <input
-              type="range"
-              min="1"
-              max="10"
-              value={distributionFeasibility}
-              onChange={(e) => setDistributionFeasibility(Number(e.target.value))}
-              className="w-full accent-[#1c1917] cursor-pointer"
-            />
-            <p className="text-[11px] text-[#78716c] mt-0.5">Can you acquire the first 100 users without burning paid advertising budgets?</p>
-          </div>
 
-          <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-[#1c1917] font-medium">5. Defensibility &amp; Switching Costs</span>
-              <span className="font-mono text-[#2b5346] font-bold">{moatDefensibility}/10</span>
+            <div>
+              <div className="flex items-center justify-between text-xs font-mono mb-1.5">
+                <span className="text-[#f4f1ea]">Moat &amp; Defensibility (Network Effects / Code IP)</span>
+                <span className="text-cyan-400 font-bold">{moatDefensibility} / 10</span>
+              </div>
+              <input
+                type="range"
+                min="1"
+                max="10"
+                value={moatDefensibility}
+                onChange={(e) => setMoatDefensibility(parseInt(e.target.value))}
+                className="w-full accent-cyan-400 cursor-pointer"
+              />
             </div>
-            <input
-              type="range"
-              min="1"
-              max="10"
-              value={moatDefensibility}
-              onChange={(e) => setMoatDefensibility(Number(e.target.value))}
-              className="w-full accent-[#1c1917] cursor-pointer"
-            />
-            <p className="text-[11px] text-[#78716c] mt-0.5">How difficult is it for an incumbent or competitor to clone in 48 hours?</p>
           </div>
         </div>
 
-        <div className="bg-[#f5f2eb] border border-[#e7e5e4] rounded-xl p-6 flex flex-col justify-between">
+        <div className="rounded-3xl p-6 bg-[#0a0a0b] border border-[rgba(244,241,234,0.12)] flex flex-col justify-between shadow-xl">
           <div>
-            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#78716c]">Viability Score</span>
-            <div className="flex items-baseline gap-2 mt-2">
-              <span className="text-5xl font-mono font-bold text-[#1c1917]">{totalScore}</span>
-              <span className="text-[#78716c] font-mono text-lg">/100</span>
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-xs font-mono uppercase text-[#8d8b86]">Viability Score</span>
+              <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono border font-semibold ${statusColor}`}>
+                {statusLabel}
+              </span>
             </div>
 
-            <div className={`inline-block px-3 py-1 rounded-full text-xs font-semibold border mt-3 ${statusColor}`}>
-              {statusLabel}
+            <div className="text-5xl font-mono font-bold text-[#f4f1ea] mb-2 tracking-tight">
+              {totalScore}
+              <span className="text-lg text-[#8d8b86] font-normal"> / 100</span>
             </div>
 
-            <div className="mt-6 pt-5 border-t border-[#e7e5e4] space-y-3">
-              <div className="flex items-start gap-2 text-xs text-[#1c1917]">
-                <CheckCircle2 className="w-4 h-4 text-[#2b5346] shrink-0 mt-0.5" />
-                <span>Highest Signal: {urgency >= marketWillingness ? 'Acute Pain Point' : 'Strong Monetization'}</span>
+            <div className="w-full h-2 rounded-full bg-[#16161a] overflow-hidden mb-6 border border-[rgba(244,241,234,0.06)]">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-700"
+                style={{ width: `${totalScore}%` }}
+              />
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[#111114] border border-[rgba(244,241,234,0.08)] mb-4">
+              <div className="text-xs font-mono text-cyan-300 font-semibold mb-1 flex items-center gap-1.5">
+                <Zap className="w-3.5 h-3.5" />
+                <span>Strategic Guidance</span>
               </div>
-              <div className="flex items-start gap-2 text-xs text-[#1c1917]">
-                {moatDefensibility < 6 ? (
-                  <AlertTriangle className="w-4 h-4 text-[#c2410c] shrink-0 mt-0.5" />
-                ) : (
-                  <ShieldCheck className="w-4 h-4 text-[#2b5346] shrink-0 mt-0.5" />
-                )}
-                <span>Defensibility: {moatDefensibility < 6 ? 'Vulnerable to Clones' : 'Durable Moat'}</span>
-              </div>
+              <p className="text-xs text-[#8d8b86] leading-relaxed font-light">
+                {recommendation}
+              </p>
             </div>
           </div>
 
-          <div className="mt-6 p-4 rounded-xl bg-white border border-[#e7e5e4] text-xs text-[#57534e] leading-relaxed shadow-2xs">
-            <span className="font-semibold text-[#1c1917] block mb-1 flex items-center gap-1.5">
-              <Zap className="w-3.5 h-3.5 text-amber-600" /> Strategic Action:
-            </span>
-            {recommendation}
+          <div className="text-[11px] font-mono text-[#8d8b86] pt-4 border-t border-[rgba(244,241,234,0.06)] flex items-center gap-2">
+            <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+            <span>Validated by f0undr Venture Engineering</span>
           </div>
         </div>
       </div>
