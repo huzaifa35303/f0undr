@@ -93,76 +93,78 @@ export const HeroSection = ({
   ];
 
   return (
-    <section id="hero" className="relative pt-32 sm:pt-40 md:pt-44 pb-20 sm:pb-28 flex flex-col justify-center text-center overflow-hidden">
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-cyan-500/12 via-indigo-600/10 to-purple-600/10 blur-[130px] rounded-full pointer-events-none -z-10" />
+    <section id="hero" className="relative pt-28 sm:pt-40 md:pt-44 pb-20 sm:pb-28 flex flex-col justify-center text-center overflow-hidden w-full max-w-full">
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[600px] lg:w-[700px] h-[350px] bg-gradient-to-r from-cyan-500/12 via-indigo-600/10 to-purple-600/10 blur-[130px] rounded-full pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass-pill text-[11px] sm:text-xs font-mono mb-8 sm:mb-12 hover:border-cyan-400/40 transition-all cursor-default max-w-full overflow-hidden">
+      <div className="w-full max-w-full sm:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden">
+        <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass-pill text-[10px] sm:text-xs font-mono mb-6 sm:mb-12 hover:border-cyan-400/40 transition-all cursor-default max-w-full overflow-hidden">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
           <span className="text-white font-semibold tracking-wide truncate">f0undr &amp; f0undr TEAM</span>
           <span className="text-slate-600 shrink-0">•</span>
           <span className="text-cyan-400 font-medium shrink-0">TECHNOLOGY CORPORATION</span>
         </div>
 
-        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-heading font-black text-white tracking-tight leading-[1.08] mb-8 max-w-6xl mx-auto flex flex-col gap-2">
-          <span>Building the next generation of</span>
-          <span className="text-gradient-cyan">
+        <h1 className="w-full text-2xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-heading font-black text-white tracking-tight leading-[1.18] mb-6 sm:mb-8 mx-auto break-words">
+          <span>Building the next generation of </span>
+          <span className="text-gradient-cyan block sm:inline">
             Autonomous AI &amp; Native Systems.
           </span>
         </h1>
 
-        <p className="text-slate-300 text-base sm:text-xl font-light mb-10 max-w-3xl mx-auto leading-relaxed">
+        <p className="w-full text-slate-300 text-xs sm:text-base md:text-lg font-light mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed break-words">
           Directed by{' '}
-          <strong className="text-white font-medium font-mono px-2 py-0.5 rounded-lg bg-white/[0.08] border border-white/10">
+          <strong className="text-white font-medium font-mono px-1.5 py-0.5 rounded-lg bg-white/[0.08] border border-white/10 whitespace-nowrap">
             Muhammad Huzaifa Zahid (Founder)
           </strong>{' '}
           and the{' '}
-          <strong className="text-white font-medium font-mono px-2 py-0.5 rounded-lg bg-white/[0.08] border border-white/10">
+          <strong className="text-white font-medium font-mono px-1.5 py-0.5 rounded-lg bg-white/[0.08] border border-white/10 whitespace-nowrap">
             f0undr Team
           </strong>
           . We architect high-speed encrypted file vaults, native Android mobile software (SDK 35), AI agents, proprietary software systems, and corporate digital goods.
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-14">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-12 sm:mb-14 max-w-md sm:max-w-lg mx-auto w-full">
           <a
             href={ORDER_URL}
             target="_blank"
             rel="noreferrer"
             onMouseEnter={playHoverSound}
             onClick={playClickSound}
-            className="flex items-center gap-2 px-7 py-3.5 rounded-2xl btn-primary-white text-xs sm:text-sm font-bold tracking-tight cursor-pointer group shadow-xl"
+            className="flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl btn-primary-white text-xs sm:text-sm font-bold tracking-tight cursor-pointer group shadow-xl w-full sm:w-auto"
           >
             <span>Commission Order (order.f0undrteam.site)</span>
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
 
-          <button
-            onClick={() => {
-              playClickSound();
-              onExploreProjects();
-            }}
-            onMouseEnter={playHoverSound}
-            className="flex items-center gap-2 px-6 py-3.5 rounded-2xl glass-card text-xs sm:text-sm font-semibold text-white tracking-normal cursor-pointer hover:border-cyan-400/50"
-          >
-            <Layers className="w-4 h-4 text-cyan-400" />
-            <span>Explore Work</span>
-            <ArrowDown className="w-3.5 h-3.5 text-slate-400" />
-          </button>
+          <div className="flex items-center gap-2.5 w-full sm:w-auto">
+            <button
+              onClick={() => {
+                playClickSound();
+                onExploreProjects();
+              }}
+              onMouseEnter={playHoverSound}
+              className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3.5 rounded-2xl glass-card text-xs sm:text-sm font-semibold text-white tracking-normal cursor-pointer hover:border-cyan-400/50"
+            >
+              <Layers className="w-4 h-4 text-cyan-400" />
+              <span>Explore Work</span>
+              <ArrowDown className="w-3.5 h-3.5 text-slate-400" />
+            </button>
 
-          <button
-            onClick={() => {
-              playClickSound();
-              onMeetTeam();
-            }}
-            onMouseEnter={playHoverSound}
-            className="flex items-center gap-2 px-6 py-3.5 rounded-2xl glass-card text-xs sm:text-sm font-semibold text-white tracking-normal cursor-pointer hover:border-indigo-400/50"
-          >
-            <Users className="w-4 h-4 text-indigo-400" />
-            <span>Meet Team</span>
-          </button>
+            <button
+              onClick={() => {
+                playClickSound();
+                onMeetTeam();
+              }}
+              onMouseEnter={playHoverSound}
+              className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-4 sm:px-6 py-3.5 rounded-2xl glass-card text-xs sm:text-sm font-semibold text-white tracking-normal cursor-pointer hover:border-indigo-400/50"
+            >
+              <Users className="w-4 h-4 text-indigo-400" />
+              <span>Meet Team</span>
+            </button>
+          </div>
         </div>
 
-        <div className="max-w-5xl mx-auto mb-16 text-left rounded-3xl glass-card-interactive p-6 sm:p-8 shadow-2xl relative overflow-hidden border border-white/12">
+        <div className="w-full max-w-full sm:max-w-5xl mx-auto mb-16 text-left rounded-2xl sm:rounded-3xl glass-card-interactive p-4 sm:p-8 shadow-2xl relative overflow-hidden border border-white/12">
           <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10">
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-cyan-400"></span>
@@ -171,7 +173,7 @@ export const HeroSection = ({
               </span>
             </div>
 
-            <div className="flex items-center gap-1.5 p-1 rounded-2xl glass-card overflow-x-auto no-scrollbar">
+            <div className="w-full sm:w-auto flex items-center gap-1.5 p-1 rounded-2xl glass-card overflow-x-auto no-scrollbar scrollbar-none">
               {SHOWCASE_TABS.map((tab) => {
                 const isActive = activeTabId === tab.id;
                 return (
@@ -255,7 +257,7 @@ export const HeroSection = ({
           </div>
         </div>
 
-        <div className="relative w-full overflow-hidden py-3 mb-16 border-y border-white/[0.08] bg-slate-950/40 backdrop-blur-md">
+        <div className="relative w-full max-w-full overflow-hidden py-3 mb-16 border-y border-white/[0.08] bg-slate-950/40 backdrop-blur-md">
           <div className="flex w-max gap-8 animate-marquee">
             {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, idx) => (
               <div key={idx} className="flex items-center gap-2.5 text-xs font-mono text-slate-300 whitespace-nowrap">

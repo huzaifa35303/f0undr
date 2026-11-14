@@ -112,7 +112,7 @@ Commission link: ${ORDER_URL}`;
   };
 
   return (
-    <section id="templates" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+    <section id="templates" className="py-24 px-4 sm:px-6 lg:px-8 w-full max-w-full sm:max-w-7xl mx-auto relative z-10 overflow-hidden">
       <div className="flex flex-col gap-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/[0.08] pb-8">
           <div>

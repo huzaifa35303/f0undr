@@ -75,7 +75,7 @@ export const ProjectsSection = ({ onSelectProject }: ProjectsSectionProps) => {
 
   return (
     <section id="projects" className="py-24 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-full sm:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-3">

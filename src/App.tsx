@@ -301,7 +301,7 @@ export function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[var(--bg)] text-[var(--fg)] selection:bg-[var(--hl)] selection:text-[var(--on-hl)] overflow-x-hidden">
+    <div className="relative min-h-screen bg-[var(--bg)] text-[var(--fg)] selection:bg-[var(--hl)] selection:text-[var(--on-hl)] w-full max-w-full overflow-x-hidden">
       <div className="flowing-bg-track" aria-hidden="true">
         <div className="flow-stream flow-stream-left">
           <span>f0undr &bull; f0undr team &bull; technology corporation &bull; autonomous systems &bull; f0undr &bull; f0undr team &bull; technology corporation &bull; autonomous systems &bull;&nbsp;</span>
@@ -329,7 +329,7 @@ export function App() {
         }}
       />
 
-      <main className="relative z-10">
+      <main className="relative z-10 w-full max-w-full overflow-x-hidden">
         <HeroSection
           onExploreProjects={() => scrollTo('projects')}
           onMeetTeam={() => scrollTo('team')}
